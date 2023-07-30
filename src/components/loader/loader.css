@@ -35,7 +35,7 @@ img {
 
 #loader {
   z-index: 99;
-  animation: loaderAnimation 1s 3s forwards;
+  animation: loaderAnimation 1s 2s forwards;
 }
 
 @keyframes loaderAnimation {
