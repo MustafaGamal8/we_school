@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai&display=swap');
+
+body{
+    height: 100vh;
+    background-color: rgb(181, 124, 234);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    text-decoration: none;
+    list-style: none;
+    font-size: 18px;
+}
+.parent{
+    display: flex;
+    justify-content: space-between;
+ 
+    width: 80%;
+    margin: auto;
+min-height: 500px ;
+    height: fit-content;
+    background-color: #fff;
+    border-radius: 45px;
+ 
+    margin-top: 100px;
+    
+}
+.textt{
+    padding: 40px;
+    margin: 10px;
+    width: 50%;
+}
+.textt h1{
+    font-size: 40px;
+    font-style: oblique;
+    font-weight: 900;
+}
+.textt p{
+    font-size: 30px;
+    font-style: oblique;
+    font-weight: 700;
+    padding: 10px;
+}
+.inp{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.inp input{
+    border: none;
+    border-bottom: 1px solid rgb(209, 206, 206);
+    outline: none;
+    padding: 5px;
+    width: 40%;
+}
+.lastinp input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(209, 206, 206);
+    outline: none;
+    padding: 5px;
+    margin-top: 50px;
+
+}
+.btn{
+    width: 200px;
+    padding: 10px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+
+
+.img{
+width: 50%;
+direction: rtl;
+height: 100%;
+}
+.img img{
+    height: 550px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+      }
+
+
+      @media(max-width: 1200px){
+        .parent{
+            flex-direction: column;
+            text-align: center;
+         
+        
+        }
+        .textt{
+            width: 100%;
+        }
+        .img{
+            
+            display: none;
+        }
+       
+    
+
+
+      }
+
+      @media(max-width: 770px){
+        .parent{
+            width: 90%;
+        }
+
+ .inp{
+        flex-direction: column;
+        margin-top: 0;
+     }
+     .inp input{
+        margin-top: 50px;
+        width: 100%;
+       
+     }
+  
+
+      }
