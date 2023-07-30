@@ -1,0 +1,48 @@
+
+img {
+  -webkit-user-drag: none;
+}
+
+@keyframes dot-animation {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  background-color: #6e237e;
+  border-radius: 50%;
+  margin: 0 5px;
+  animation: dot-animation 2s infinite linear;
+}
+
+.dot-1 {
+  animation-delay: 0s;
+}
+
+.dot-2 {
+  animation-delay: .5s;
+}
+
+.dot-3 {
+  animation-delay: 1s;
+}
+
+#loader {
+  animation: loaderAnimation 1s 3s forwards;
+}
+
+@keyframes loaderAnimation {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+    display: none;
+  }
+}
