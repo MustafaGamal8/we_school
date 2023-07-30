@@ -34,6 +34,7 @@ img {
 }
 
 #loader {
+  z-index: 99;
   animation: loaderAnimation 1s 3s forwards;
 }
 

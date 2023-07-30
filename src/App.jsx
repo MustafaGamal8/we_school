@@ -1,13 +1,20 @@
+import { useState } from "react";
+import Loader from "./components/loader/loader";
+import NavBar from "./components/navBar";
+import "./index.css";
 
-import Loader from './components/loader/loader';
-import  "./App.css"
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  setTimeout(() => {
+    setIsLoading(false)
+  }, 5000);
+
   return (
     <>
-    <Loader />
-    
+      {isLoading && <Loader />}
+      <NavBar />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
