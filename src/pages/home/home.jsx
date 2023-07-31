@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {CiUser } from "react-icons/ci"
-import {MdPhone,MdHome,MdListAlt,MdSchool,MdMenu} from "react-icons/md"
+import {MdPhone,MdHome,MdListAlt,MdSchool,MdMenu,MdPeopleAlt} from "react-icons/md"
 import { Link } from "react-router-dom";
 import "./home.css"
 
@@ -55,12 +55,14 @@ const Home = () => {
       <img className=" absolute top-0 right-0 -z-10 w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
 
+      <section>
       <div className="text-center  mt-20 bg-white rounded-lg w-80  m-auto py-2 drop-shadow">
       <h1 className="text-xl md:text-3xl drop-shadow">مدرسة وي <br /> للتكنولوجيا التطبيقية</h1>
       <h2 className="mt-2 md:text-2xl  text-[#6e237e] relative w-max m-auto text-animition ">في المنصورة</h2>
     </div>
+      </section>
 
-      <section className="flex flex-col md:flex-row items-center justify-around px-5 w-full  mt-50  md:pt-40 pt-20 text-right">
+      <section className="flex flex-col md:flex-row items-center justify-around px-5 w-full   pt-20 text-right">
       <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative">
       <img
         className="md:h-96 h-60 rounded-lg transition-all duration-500 transform hover:scale-105"
@@ -89,13 +91,17 @@ const Home = () => {
 
       <img className="m-auto h-12 mt-10"  src="/assets/mouseAnimition.gif" />
 
-      <section   className="w-full h-36 bg-white  border-y flex items-center justify-evenly gap-5 p-5">
-        <img className="h-full " src="/assets/Picture1.png" alt="" />
-        <img className="h-full " src="/assets/Picture2.png" alt="" />
-        <img className="h-full " src="/assets/Picture3.png" alt="" />
-        <img className="h-full " src="/assets/Picture4.png" alt="" />
-        <img className="h-full " src="/assets/Picture5.png" alt="" />
-        <img className="h-full " src="/assets/Picture6.png" alt="" />
+      <section   className="w-full">
+        <div className="flex items-center  justify-center  gap-2 text-3xl text-sec my-4"  ><h1 >شركائنا</h1> <MdPeopleAlt /></div>
+
+        <div className="w-full  bg-white  border-y flex flex-col md:flex-row items-center justify-evenly gap-5 p-5">
+        <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture1.png" alt="" /></div>
+        <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture2.png" alt="" /></div>
+        <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture3.png" alt="" /></div>
+        <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture4.png" alt="" /></div>
+        <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture5.png" alt="" /></div>
+        <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture6.png" alt="" /></div>
+        </div>
       </section>
       
     </main>

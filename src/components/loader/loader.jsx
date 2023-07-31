@@ -1,7 +1,7 @@
 import "./loader.css"
 const Loader = () => (
   
-  <div id="loader" className="absolute bg-white overflow-hidden h-full w-full flex items-center justify-center text-right after:bg-[#6e237e] after:absolute after:w-full after:h-4 after:-bottom-2 drop-shadow-xl select-none">
+  <div id="loader" className="fixed bg-white overflow-hidden h-full w-full flex items-center justify-center text-right after:bg-[#6e237e] after:absolute after:w-full after:h-4 after:-bottom-2 drop-shadow-xl select-none">
     <img className="w-32 md:w-52" src="/logo.jpg" alt="" />
     <div>
       <h1 className="text-xl md:text-3xl drop-shadow">مدرسة وي <br /> للتكنولوجيا التطبيقية</h1>
