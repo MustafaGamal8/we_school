@@ -7,7 +7,7 @@
 body {
   font-family: 'Almarai', sans-serif;
   user-select: none;
-  -webkit-user-drag: none;
+  /* -webkit-user-drag: none; */
   overflow-x: hidden
   
 }

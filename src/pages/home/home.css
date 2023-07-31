@@ -31,11 +31,13 @@
 
 
 @keyframes text-animition {
-  25%{
+  25%,100%{
     width: 0;
   }
-  100%{
+  50%{
     width: 100%;
   }
+
+
   
 }
