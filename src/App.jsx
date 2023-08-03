@@ -4,6 +4,7 @@ import Home from './pages/home/home';
 import Login from './pages/login/login';
 import { Routes,Route } from "react-router-dom";
 import "./index.css";
+import Natega from "./pages/natega/natega";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,7 +21,7 @@ function App() {
 
 
       <Routes>
-        <Route path="/"  element={<Home />}/>
+        <Route path="/"  element={<Natega />}/>
         <Route path="/login"  element={<Login />}/>
       </Routes>
 
