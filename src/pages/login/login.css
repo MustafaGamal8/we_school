@@ -32,6 +32,7 @@
   text-align: center;
   border-radius: 8px;
   margin-top: 50px;
+  cursor: pointer;
 }
 
 
@@ -85,7 +86,7 @@
     border-radius: 8px;
     margin-bottom: 50px;
     margin: auto;
- 
+ cursor: pointer;
 }
 
 
