@@ -102,7 +102,8 @@ const Login = () => {
       <img className="absolute top-0 right-0 z-[-1] w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
       <section className="h-full mt-20 capitalize">
-        <h1 className="text-center text-3xl capitalize text-white">{isLogin ? 'login' : 'sign up'}</h1>
+        
+        <h1 className="text-center text-5xl  capitalize text-white">{isLogin ? 'login' : 'sign up'}</h1>
 
         <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20">
           <div className=" h-full lg:w-[80%]">

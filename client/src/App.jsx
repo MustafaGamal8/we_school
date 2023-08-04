@@ -5,6 +5,7 @@ import Login from './pages/login/login';
 import { Routes,Route } from "react-router-dom";
 import "./index.css";
 import Natega from "./pages/natega/natega";
+import Edit from "./pages/edit/edit";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,12 +17,12 @@ function App() {
   return (
     <>
     
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
 
 
 
       <Routes>
-        <Route path="/"  element={<Home />}/>
+        <Route path="/"  element={<Edit />}/>
         <Route path="/login"  element={<Login />}/>
       </Routes>
 
