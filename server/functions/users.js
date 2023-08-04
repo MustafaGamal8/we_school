@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
 
     // If the user is not found or the password doesn't match, return an error
     if (!user || !(await bcrypt.compare(password, user.password))) {
-      return res.status(401).send({ msg: "Email or Password are wrong" });
+      return res.status(401).send({ error: "Email or Password are wrong" });
     }
 
     // Password matches, user is authenticated
