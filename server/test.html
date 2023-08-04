@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload and Post Creation</title>
+  <style>
+    /* Basic styling for the form */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>File Upload and Post Creation</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+
+    <label for="content">Content:</label>
+    <input type="text" id="content" name="content" required>
+
+    <label for="file">Upload File:</label>
+    <input type="file" id="file" name="file" required multiple>
+
+    <button type="submit">Upload and Create Post</button>
+  </form>
+
+  <script>
+    // JavaScript to handle the form submission
+    const uploadForm = document.getElementById('uploadForm');
+
+    uploadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const content = document.getElementById('content').value;
+      const files = document.getElementById('file').files;
+
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('content', content);
+
+      // Append each selected file to the FormData
+      for (const file of files) {
+        formData.append('files', file);
+      }
+
+      try {
+        const response = await fetch('http://localhost:8000/upload-post', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert('File uploaded and post created successfully!');
+        } else {
+          alert(data.error || 'Failed to upload files and create post.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('An error occurred while uploading files and creating the post.');
+      }
+    });
+  </script>
+</body>
+</html>
