@@ -7,4 +7,4 @@ Welcome to the We-School website! This project was created collaboratively by Mu
 The website is built using modern web development technologies. The frontend is powered by React with Vite as the bundler to ensure fast and efficient development. On the backend, we utilize Express, a flexible and robust Node.js framework, and MongoDB as the database to handle and store data.
 
 ## Getting Started
-###live on vercel : https://we-school.vercel.app/
+live on vercel : https://we-school.vercel.app/
