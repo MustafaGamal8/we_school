@@ -15,6 +15,7 @@ const Login = () => {
     lastName: '',
     invitationCode: '',
     role: '',
+    grade:''
   });
 
   const toastConfig = {
@@ -26,6 +27,7 @@ const Login = () => {
     draggable: true,
     progress: undefined,
     theme: 'light',
+    className:"md:w-80 md:text-base w-60 text-sm "
   };
 
   const schema = Yup.object().shape({
@@ -38,6 +40,7 @@ const Login = () => {
           lastName: Yup.string().required('Last Name is required'),
           invitationCode: Yup.string().min(8).required('Invitation Code is required'),
           role: Yup.string().required('Please select a role'),
+          grade: Yup.string().required('Please select a grade'),
         }),
   });
 
@@ -63,6 +66,8 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+  console.log(formData)
     validateForm();
     
     if (await schema.isValid(formData)) {
@@ -77,7 +82,6 @@ const Login = () => {
       } else {
         toast.success(msg, toastConfig);
         toast.dismiss(loadingToast)
-
 
       }
       
@@ -94,7 +98,6 @@ const Login = () => {
 
   const handleChangeMood = () => {
     setIsLogin(!isLogin);
-    setFormData({})
   };
 
   return (
@@ -206,6 +209,25 @@ const Login = () => {
                       </option>
                       <option value="student">Student</option>
                       <option value="teacher">Teacher</option>
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none p-2">
+                      <FaChevronDown className="w-5 h-5 text-main" />
+                    </div>
+                  </div>
+
+                  <div className="relative w-full">
+                    <select
+                      className="w-full border border-gray-300 bg-white text-gray-900 rounded-md px-8 py-2 pr-8 focus:text-main appearance-none"
+                      name="grade"
+                      value={formData.grade}
+                      onChange={handleInputChange}
+                    >
+                      <option value="" disabled>
+                        Select Your Grade
+                      </option>
+                      <option value="A">Grade 1 (A)</option>
+                      <option value="B">Grade 2 (B)</option>
+                      <option value="C">Grade 3 (C)</option>
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none p-2">
                       <FaChevronDown className="w-5 h-5 text-main" />
