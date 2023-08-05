@@ -32,7 +32,7 @@ const sendMail = async (email) => {
 
     // Construct the confirmation link
     const confirmationLink = `https://we-school-api.vercel.app/auth/confirm-email?token=${confirmationToken}`;
-      console.log(confirmationLink);
+      
     // Email content with the confirmation link
     const emailContent = `
       Hello,

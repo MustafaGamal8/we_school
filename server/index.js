@@ -5,10 +5,10 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
 
+const crypto = require('crypto');
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
 const { confirmEmail } = require('./functions/mailConfirmation.js');
-
 
 const app = express();
 
@@ -41,7 +41,9 @@ app.get('/', async (req, res) => {
   });
 });
 
-
+const generateConfirmationToken = () => {
+  return crypto.randomBytes(20).toString('hex');
+};
 
 
 const startServer = async () => {
@@ -51,6 +53,12 @@ const startServer = async () => {
 
     // Auth 
 
+  
+
+    app.get('/auth/test', async (req, res) => {
+      const t =generateConfirmationToken()
+      res.send(t) 
+    });
     app.get('/auth/users', async (req, res) => {
       getUsers(res);
     });
