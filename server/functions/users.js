@@ -43,8 +43,8 @@ const signUp = async (req, res) => {
       isConfirmed:false
     });
 
-    sendMail(email)
     await userModel.save();
+    sendMail(email)
     res.status(200).json({ msg: 'Account Created Successfully, Please Confirm Your Email' });
   } catch (err) {
     console.log(err);
