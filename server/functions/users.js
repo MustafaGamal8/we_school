@@ -3,14 +3,6 @@ const UserModel = require("../mongo/userModel.js");
 const bcrypt = require('bcrypt');
 
 
-
-
-
-
-
-
-
-
 const getUsers = async (res) => {
   try {
     const users = await UserModel.find();
@@ -52,7 +44,7 @@ const signUp = async (req, res) => {
     });
 
     await userModel.save();
-    sendMail(email)
+    await sendMail(email)
     res.status(200).json({ msg: 'Account Created Successfully, Please Confirm Your Email' });
   } catch (err) {
     console.log(err);

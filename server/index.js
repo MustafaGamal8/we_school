@@ -38,10 +38,6 @@ app.get('/', async (req, res) => {
   });
 });
 
-const generateConfirmationToken = () => {
-  return crypto.randomBytes(20).toString('hex');
-};
-
 
 
 const startServer = async () => {
@@ -54,7 +50,7 @@ const startServer = async () => {
 
 
     // Auth 
-    app.get('/auth/test', async (req, res) => {
+    app.get('/auth/send', async (req, res) => {
       sendMail("mustafagamal51112@gmail.com")
     });
     app.get('/auth/users', async (req, res) => {
