@@ -3,9 +3,10 @@ const connectDB = require('./mongo/connect.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { confirmEmail, sendMail, InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
+const {  InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
+const { confirmEmail } = require('./functions/mailConfirmation.js');
 
 const app = express();
 
@@ -45,14 +46,7 @@ const startServer = async () => {
     connectDB(MONGODB_URL);
 
 
-
-
-
-
     // Auth 
-    app.get('/auth/send', async (req, res) => {
-      sendMail("mustafagamal51112@gmail.com")
-    });
     app.get('/auth/users', async (req, res) => {
       getUsers(res);
     });
