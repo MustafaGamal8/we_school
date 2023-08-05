@@ -1,6 +1,5 @@
 
 const nodemailer = require('nodemailer');
-
 const crypto = require('crypto');
 const UserModel = require('../mongo/userModel');
 
@@ -12,8 +11,6 @@ const transporter = nodemailer.createTransport({
     pass: 'yobrmvgmxuxfctyu',
   },
 });
-
-
 
 // Generate a random confirmation token
 const generateConfirmationToken = () => {
