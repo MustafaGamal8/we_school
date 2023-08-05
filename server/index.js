@@ -5,6 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const { InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
 
+const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
@@ -46,9 +47,22 @@ const generateConfirmationToken = () => {
 };
 
 
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'weschoolmansoura@gmail.com',
+    pass: 'yobrmvgmxuxfctyu',
+  },
+});
+
+
 const startServer = async () => {
   try {
     connectDB(MONGODB_URL);
+
+
+
+
 
 
     // Auth 
@@ -58,6 +72,14 @@ const startServer = async () => {
     app.get('/auth/test', async (req, res) => {
       const t =generateConfirmationToken()
       res.send(t) 
+    });
+    app.get('/auth/test2', async (req, res) => {
+      await transporter.sendMail({
+        from: 'weschoolmansoura@gmail.com',
+        to: "mustafagamal51112@gmail.com",
+        subject: 'Email Confirmation',
+        text: "emailContent",
+      });
     });
     app.get('/auth/users', async (req, res) => {
       getUsers(res);
