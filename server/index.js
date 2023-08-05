@@ -3,11 +3,9 @@ const connectDB = require('./mongo/connect.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const { InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
+const { confirmEmail, sendMail, InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
-const { confirmEmail, sendMail } = require('./functions/mailConfirmation.js');
-const Mail = require('nodemailer/lib/mailer/index.js');
 
 const app = express();
 
@@ -58,14 +56,6 @@ const startServer = async () => {
     // Auth 
     app.get('/auth/test', async (req, res) => {
       sendMail("mustafagamal51112@gmail.com")
-    });
-    app.get('/auth/test2', async (req, res) => {
-      await transporter.sendMail({
-        from: 'weschoolmansoura@gmail.com',
-        to: "mustafagamal51112@gmail.com",
-        subject: 'Email Confirmation',
-        text: "emailContent",
-      });
     });
     app.get('/auth/users', async (req, res) => {
       getUsers(res);
