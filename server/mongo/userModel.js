@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { bool } = require("yup");
 
 const userSchema = mongoose.Schema({
   id:{
@@ -26,7 +25,11 @@ const userSchema = mongoose.Schema({
     required:true
   },
   isConfirmed:{
-    type:Boolean
+    type:Boolean,
+    required:true
+  },
+  confirmationToken: {
+    type: String,
   }
 })
 

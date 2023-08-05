@@ -22,7 +22,9 @@ function App() {
 
 
       <Routes>
-        <Route path="/"  element={<Edit />}/>
+        <Route path="/profile"  element={<Home />}/>
+        <Route path="/profile"  element={<Edit />}/>
+        <Route path="/natega"  element={<Natega />}/>
         <Route path="/login"  element={<Login />}/>
       </Routes>
 

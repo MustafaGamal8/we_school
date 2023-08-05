@@ -1,6 +1,7 @@
 const InvitationModel = require("../mongo/InvitationModel.js");
 const UserModel = require("../mongo/userModel.js");
 const bcrypt = require('bcrypt');
+const { sendMail } = require("./mailConfirmation.js");
 
 const getUsers = async (res) => {
   try {
@@ -39,10 +40,12 @@ const signUp = async (req, res) => {
       email,
       password: hashedPassword,
       role,
+      isConfirmed:false
     });
 
     await userModel.save();
-    res.status(200).json({ msg: 'Account Created Successfully' });
+    res.status(200).json({ msg: 'Account Created Successfully, Please Confirm Your Email' });
+    sendMail(email)
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Failed to insert data' });
@@ -60,7 +63,12 @@ const loginUser = async (req, res) => {
       return res.status(401).send({ error: "Email or Password are wrong" });
     }
 
-    // Password matches, user is authenticated
+    // Check if the user's email is confirmed
+    if (!user.isConfirmed) {
+      return res.status(401).send({ error: "Email not confirmed. Please check your email for the confirmation link." });
+    }
+
+    // Password matches, user is authenticated and email is confirmed
     res.status(200).send({ msg: "Login successful", user });
   } catch (err) {
     console.log(err);
