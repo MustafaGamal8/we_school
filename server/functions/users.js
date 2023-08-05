@@ -17,7 +17,7 @@ const signUp = async (req, res) => {
 
   try {
     // Check if the invitation code exists in the database
-    const isValidInvitation = await InvitationModel.exists({ code: code });
+    const isValidInvitation = await InvitationModel.exists({ code: code,userType:role });
     if (!isValidInvitation) {
       return res.status(403).json({ error: 'Invalid invitation code' });
     }
@@ -42,7 +42,7 @@ const signUp = async (req, res) => {
     });
 
     await userModel.save();
-    res.status(200).json({ msg: 'Inserted to MongoDB' });
+    res.status(200).json({ msg: 'Account Created Successfully' });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Failed to insert data' });
@@ -68,6 +68,7 @@ const loginUser = async (req, res) => {
   }
 };
 
+
 function generateInvitationCode() {
   const length = 8;
   const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -79,23 +80,24 @@ function generateInvitationCode() {
   return invitationCode;
 }
 
-const InvitationCode = async (res) => {
+const InvitationCode = async (res, userType) => {
   try {
-    // Remove all old invitation codes from the database
-    await InvitationModel.deleteMany({});
+    // Check if an invitation code with the given user type already exists
+    const existingInvitation = await InvitationModel.findOneAndDelete({ userType });
 
-    // Generate a new invitation code
-    const newInvitationCode = generateInvitationCode();
+    
+      const newInvitationCode = generateInvitationCode();
 
-    // Save the new invitation code to the database (Assuming InvitationModel is your MongoDB model)
-    const invitation = new InvitationModel({ code: newInvitationCode });
-    await invitation.save();
+      // Save the new invitation code to the database
+      const invitation = new InvitationModel({ code: newInvitationCode, userType });
+      await invitation.save();
 
-    res.status(200).json({ invitationCode: newInvitationCode });
+      res.status(200).json({ invitationCode: newInvitationCode });
+    
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Failed to generate invitation code' });
   }
-}
+};
 
 module.exports = { getUsers, signUp, loginUser, InvitationCode };

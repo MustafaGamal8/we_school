@@ -8,6 +8,7 @@ const { InvitationCode, getUsers, loginUser, signUp } = require('./functions/use
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
 
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -39,6 +40,39 @@ app.get('/', async (req, res) => {
   });
 });
 
+
+
+const nodemailer = require('nodemailer');
+
+// Create a Nodemailer transporter
+
+const transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: 'weschoolmansoura@gmail.com',
+    pass: 'uxohhldkfezrhnlb',
+  },
+});
+
+app.get('/send-email', async (req, res) => {
+  try {
+    // const { to, subject, text } = req.body;
+
+    // Send mail with defined transport object
+    await transporter.sendMail({
+      from: 'weschoolmansoura@gmail.com',
+      to: "mustafagamal51112@gmail.com",
+      subject: "test",
+      text: "no",
+    });
+
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to send email' });
+  }
+});
+
 const startServer = async () => {
   try {
     connectDB(MONGODB_URL);
@@ -54,8 +88,11 @@ const startServer = async () => {
     app.post('/login', async (req, res) => {
       loginUser(req, res);
     });
-    app.get('/invitationcode', async (req, res) => {
-      InvitationCode(res)
+    app.get('/invitationcode-student', async (req, res) => {
+      InvitationCode(res,"student")
+    })
+    app.get('/invitationcode-teacher', async (req, res) => {
+      InvitationCode(res,"teacher")
     })
 
 
