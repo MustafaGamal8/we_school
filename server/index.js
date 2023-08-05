@@ -56,9 +56,6 @@ const startServer = async () => {
 
 
     // Auth 
-
-  
-
     app.get('/auth/test', async (req, res) => {
       sendMail("mustafagamal51112@gmail.com")
     });
