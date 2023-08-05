@@ -38,15 +38,13 @@ const sendMail = async (email) => {
 
     // Email content with the confirmation link
     const emailContent = `
-      <html>
-        <body>
-          <p>Hello,</p>
-          <p>Please click the button below to confirm your Email:</p>
-          <a href="${confirmationLink}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Confirm Email</a>
-          <p>Best regards,</p>
-          <p>We-school-mansoura</p>
-        </body>
-      </html>
+      Hello,
+
+      Please click on the link below to confirm your email:
+      ${confirmationLink}
+
+      Best regards,
+      We School Mansoura
     `;
 
     // Send the email
@@ -90,15 +88,16 @@ const confirmEmail = async(token,res)=>{
 
     // Send a response to the user indicating successful email confirmation
     res.send('Email confirmed successfully!');
-    setTimeout(() => {
-      res.redirect('https://we-school.vercel.app/login');
-    }, 1000);
+    
   } catch (error) {
     // Handle any errors that occurred during the database operation
     console.error('Failed to confirm email:', error);
     res.status(500).send('Failed to confirm email.');
   }
-  
+
+  setTimeout(() => {
+    res.redirect('https://we-school.vercel.app/login');
+  }, 1000);
 }
 
 module.exports = {sendMail,confirmEmail}

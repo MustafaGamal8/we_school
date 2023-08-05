@@ -43,9 +43,9 @@ const signUp = async (req, res) => {
       isConfirmed:false
     });
 
+    sendMail(email)
     await userModel.save();
     res.status(200).json({ msg: 'Account Created Successfully, Please Confirm Your Email' });
-    sendMail(email)
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Failed to insert data' });
