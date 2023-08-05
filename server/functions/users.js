@@ -44,7 +44,9 @@ const signUp = async (req, res) => {
     });
 
     await userModel.save();
-    await sendMail(email)
+     console.log('Before sending email for signup:', email);
+    await sendMail(email);
+    console.log('After sending email for signup:', email);
     res.status(200).json({ msg: 'Account Created Successfully, Please Confirm Your Email' });
   } catch (err) {
     console.log(err);
@@ -132,6 +134,8 @@ const generateConfirmationToken = () => {
 // Send the confirmation email
 const sendMail = async (email) => {
   try {
+    
+    console.log('Sending email to:', email);
     // Generate a confirmation token for the user
     const confirmationToken = generateConfirmationToken();
 
@@ -163,6 +167,7 @@ const sendMail = async (email) => {
       subject: 'Email Confirmation',
       text: emailContent,
     });
+    console.log('Email sent successfully:', email);
   } catch (error) {
     console.error('Failed to send confirmation email:', error);
   }
