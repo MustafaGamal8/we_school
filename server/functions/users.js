@@ -3,6 +3,16 @@ const UserModel = require("../mongo/userModel.js");
 const bcrypt = require('bcrypt');
 const { sendMail } = require("./mailConfirmation.js");
 
+
+
+
+
+
+
+
+
+
+
 const getUsers = async (res) => {
   try {
     const users = await UserModel.find();

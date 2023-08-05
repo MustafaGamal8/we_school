@@ -4,12 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
-
-const nodemailer = require('nodemailer');
-const crypto = require('crypto');
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
-const { confirmEmail } = require('./functions/mailConfirmation.js');
+const { confirmEmail, sendMail } = require('./functions/mailConfirmation.js');
+const Mail = require('nodemailer/lib/mailer/index.js');
 
 const app = express();
 
@@ -42,14 +40,10 @@ app.get('/', async (req, res) => {
   });
 });
 
+const generateConfirmationToken = () => {
+  return crypto.randomBytes(20).toString('hex');
+};
 
-const transporter = nodemailer.createTransport({
-  service: 'Gmail',
-  auth: {
-    user: 'weschoolmansoura@gmail.com',
-    pass: 'yobrmvgmxuxfctyu',
-  },
-});
 
 
 const startServer = async () => {
@@ -62,6 +56,12 @@ const startServer = async () => {
 
 
     // Auth 
+
+  
+
+    app.get('/auth/test', async (req, res) => {
+      sendMail("mustafagamal51112@gmail.com")
+    });
     app.get('/auth/test2', async (req, res) => {
       await transporter.sendMail({
         from: 'weschoolmansoura@gmail.com',
