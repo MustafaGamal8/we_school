@@ -72,7 +72,6 @@ const startServer = async () => {
     app.get('/auth/confirm-email', async (req, res) => {
       const { token } = req.query;
       await confirmEmail(token,res)
-      res.redirect('https://we-school.vercel.app/login');
     });
     
     // Auth end

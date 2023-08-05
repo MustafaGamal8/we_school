@@ -56,8 +56,6 @@ const sendMail = async (email) => {
       subject: 'Email Confirmation',
       text: emailContent,
     });
-
-    console.log('Confirmation email sent successfully!');
   } catch (error) {
     console.error('Failed to send confirmation email:', error);
   }
@@ -92,6 +90,9 @@ const confirmEmail = async(token,res)=>{
 
     // Send a response to the user indicating successful email confirmation
     res.send('Email confirmed successfully!');
+    setTimeout(() => {
+      res.redirect('https://we-school.vercel.app/login');
+    }, 1000);
   } catch (error) {
     // Handle any errors that occurred during the database operation
     console.error('Failed to confirm email:', error);
