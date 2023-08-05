@@ -42,10 +42,6 @@ app.get('/', async (req, res) => {
   });
 });
 
-const generateConfirmationToken = () => {
-  return crypto.randomBytes(20).toString('hex');
-};
-
 
 const transporter = nodemailer.createTransport({
   service: 'Gmail',
@@ -66,13 +62,6 @@ const startServer = async () => {
 
 
     // Auth 
-
-  
-
-    app.get('/auth/test', async (req, res) => {
-      const t =generateConfirmationToken()
-      res.send(t) 
-    });
     app.get('/auth/test2', async (req, res) => {
       await transporter.sendMail({
         from: 'weschoolmansoura@gmail.com',
