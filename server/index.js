@@ -3,7 +3,7 @@ const connectDB = require('./mongo/connect.js');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const {  InvitationCode, getUsers, loginUser, signUp } = require('./functions/users.js');
+const {  InvitationCode, getUsers, loginUser, signUp, createInvitationCode, getInvitationCodes } = require('./functions/users.js');
 const multer = require('multer');
 const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
 const { confirmEmail } = require('./functions/mailConfirmation.js');
@@ -58,11 +58,14 @@ const startServer = async () => {
     app.post('/auth/login', async (req, res) => {
       loginUser(req, res);
     });
-    app.get('/auth/invitationcode-student', async (req, res) => {
-      InvitationCode(res,"student")
+    
+
+    app.get('/auth/invitcode', async (req, res) => {
+      getInvitationCodes(res)
     })
-    app.get('/auth/invitationcode-teacher', async (req, res) => {
-      InvitationCode(res,"teacher")
+    app.get('/auth/invitcode/:userType', async (req, res) => {
+      const {userType} = req.params
+      createInvitationCode(res,userType)
     })
 
     app.get('/auth/confirm-email', async (req, res) => {
@@ -73,7 +76,7 @@ const startServer = async () => {
     // Auth end
 
 
-    // Route to handle file upload
+    // Route to handle post upload
     app.post('/upload-post', upload.array('files'), async (req, res) => {
       uploadFile(req, res)
     });
