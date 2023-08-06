@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CiUser } from "react-icons/ci"
-import { MdPhone, MdHome, MdListAlt, MdSchool, MdMenu, MdPeopleAlt, MdBook, MdClass } from "react-icons/md"
+import { MdPhone, MdHome, MdListAlt, MdSchool, MdMenu, MdPeopleAlt,MdEditLocation, MdClass,MdPhoneBluetoothSpeaker,MdMessage,MdEmail } from "react-icons/md"
 import { Link } from "react-router-dom";
 import "./home.css"
 import ListItem from "../../components/items";
@@ -14,6 +14,15 @@ const Home = () => {
       setIsMenuOpen(false)
     }, 300);
   }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    const emailBody = `اسم: ${name}%0Aبريد إلكتروني: ${email}%0Aرسالة: ${message}`;
+    const emailLink = `mailto:weschoolmansoura@gmail.com?subject=رسالة من ${name}&body=${emailBody}`;
+    window.location.href = emailLink;
+  };
 
   return (
 
@@ -116,7 +125,7 @@ const Home = () => {
 
           <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
             <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
-              <img src="/public/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+              <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
               <h1 className="text-center p-3 text-3xl font-bold text-main">الشبكات</h1>
               <p className="text-center p-3">
                 في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.
@@ -124,7 +133,7 @@ const Home = () => {
             </div>
 
             <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
-              <img src="/public/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+              <img src="/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
               <h1 className="text-center p-3 text-3xl font-bold text-main">البرمجة</h1>
               <p className="text-center p-3">
                 في هذا القسم، ندرس مجال البرمجة وتطوير البرمجيات. نقوم بدراسة تطوير تطبيقات الويب والتقنيات المستخدمة في برمجة البرامج.
@@ -132,7 +141,7 @@ const Home = () => {
             </div>
 
             <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
-              <img src="/public/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+              <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
               <h1 className="text-center p-3 text-3xl font-bold">الاتصالات</h1>
               <p className="text-center p-3">
                 في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث.
@@ -325,6 +334,50 @@ const Home = () => {
 
           </div>
         </section>
+
+<h1 className="text-5xl text-main text-center ">contact us</h1>
+<section className="w-full h-fit md:w-[70%] mt-16 flex flex-col md:flex-row bg-gray md:min-h-[700px] drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
+
+      <div className="w-full flex flex-col md:w-[45%] h-[100%]">
+        <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
+        <p className="text-md md:text-2xl p-2">نحن هنا من أجلك، كيف يمكننا مساعدتك؟</p>
+        <form onSubmit={handleSubmit} className="mt-5">
+          <input type="text" required name="name" placeholder="أدخل اسمك" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
+          <input type="email" required name="email" placeholder="أدخل بريدك الإلكتروني" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
+          <input type="text" required name="message" placeholder="أدخل رسالتك" className="w-full bg-gray-200 placeholder-black outline-none h-40 p-5 rounded-md mt-10" />
+          <input type="submit" value="إرسال" className="w-full rounded-xl h-16 p-2 text-center bg-main text-white mt-10" />
+        </form>
+      </div>
+
+      <div className="w-full flex flex-col md:w-[45%] h-[100%]">
+        <div className="w-full  md:w-[100%]  h-[60%] object-cover"><img src="assets/undraw_profile_data_re_v81r.svg" className="object-cover" alt="" /></div>
+        <div className="w-full h-[40%] flex flex-col justify-between">
+          <div className="w-full h-[40%] flex flex-row justify-start items- mt-10">
+            <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEditLocation /></div>
+            <p className="ml-0 text-md md:text-xl md:ml-10">دقهلية المنصورة</p>
+          </div>
+          <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
+            <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdPhoneBluetoothSpeaker /></div>
+            <p className="ml-0 text-md md:text-xl md:ml-10">01001236789</p>
+          </div>
+          <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
+            <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEmail /></div>
+            <p className="ml-0 text-md md:text-xl md:ml-10">weschoolmansoura@gmail.com</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+<section className="mt-[200px]"></section>
+
+
+
+
+
+
+
+        
 
       </main>
 

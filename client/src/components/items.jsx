@@ -10,9 +10,9 @@ const ListItem = ({ title, content }) => {
   };
 
   return (
-    <div className="mb-4 w-[80%] m-auto">
+    <div className="w-full mb-4 md:w-[80%] m-auto p-5">
       <button
-        className={`block w-full text-center text-xl font-bold py-3 px-6  bg-white drop-shadow-md  border-t-4 border-t-main rounded-md `}
+        className={`flex flex-row justify-between items-center text-md  md:justify-center w-full text-center md:text-xl font-bold py-3 px-6  bg-[#6e237e] text-white drop-shadow-md  rounded-lg `}
         onClick={toggleExpand}
       >
         {title}
@@ -21,9 +21,9 @@ const ListItem = ({ title, content }) => {
         </span>
       </button>
       {isExpanded && (
-        <div className="p-4  mt-1 text-sm bg-white drop-shadow-md border-b-4 border-b-main rounded-md">
+      <div className="bg-white divide-y divide-gray-200 drop-shadow-lg ">
           {content.map((item, index) => (
-            <p key={index} className="mb-2">
+            <p key={index} className=" text-md p-5 py-2 md:text-lg text-gray-800">
               {item}
             </p>
           ))}
