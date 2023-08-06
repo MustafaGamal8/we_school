@@ -10,7 +10,7 @@ const invitationCodeSchema = mongoose.Schema({
   userType: {
     type: String,
     required: true,
-    enum: ["student", "teacher"], // The userType can be either "student" or "teacher"
+    enum: ["studentA","studentB","studentC", "teacher"], // The userType can be either "student" or "teacher"
   },
 })
 

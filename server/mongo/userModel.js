@@ -4,6 +4,11 @@ const userSchema = mongoose.Schema({
   id:{
     type:Number,
   },
+  photo:{
+    name: String,
+    data: Buffer,
+    contentType: String,
+  },
   firstName:{
       type:String,
       required:true

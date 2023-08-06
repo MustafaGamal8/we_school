@@ -2,6 +2,7 @@ const InvitationModel = require("../mongo/InvitationModel.js");
 const UserModel = require("../mongo/userModel.js");
 const bcrypt = require('bcrypt');
 const { sendMail } = require("./mailConfirmation.js");
+
 const getUsers = async (res) => {
   try {
     const users = await UserModel.find();
@@ -87,7 +88,7 @@ function generateInvitationCode() {
   return invitationCode;
 }
 
-const InvitationCode = async (res, userType) => {
+const createInvitationCode = async (res, userType) => {
   try {
     // Check if an invitation code with the given user type already exists
     const existingInvitation = await InvitationModel.findOneAndDelete({ userType });
@@ -107,5 +108,11 @@ const InvitationCode = async (res, userType) => {
   }
 };
 
-module.exports = { getUsers, signUp, loginUser, InvitationCode };
+
+const getInvitationCodes =async (res)=>{
+  const invitCodes = await InvitationModel.find()
+  res.json(invitCodes)
+}
+
+module.exports = { getUsers, signUp, loginUser, createInvitationCode ,getInvitationCodes  };
 
