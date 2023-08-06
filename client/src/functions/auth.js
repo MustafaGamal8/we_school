@@ -29,7 +29,8 @@ export const signUp = async (formData)=>{
     email:formData.email,
     password:formData.password,
     code:formData.invitationCode, 
-    role:formData.role
+    role:formData.role,
+    grade:formData.grade
   })
   return response.data
     
