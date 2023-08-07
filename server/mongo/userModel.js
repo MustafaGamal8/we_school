@@ -29,6 +29,9 @@ const userSchema = mongoose.Schema({
     type:String,
     required:true
   },
+  grade:{
+    type:String,
+  },  
   isConfirmed:{
     type:Boolean,
     required:true

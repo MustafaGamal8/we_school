@@ -1,7 +1,7 @@
 
-import { list } from 'postcss';
 import { useState } from 'react';
-import { BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
+;
 const ListItem = ({ title, content }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -10,7 +10,7 @@ const ListItem = ({ title, content }) => {
   };
 
   return (
-    <div className="w-full mb-4 md:w-[80%] m-auto p-5">
+    <div className="w-full mb-4 md:w-[60%] m-auto p-5">
       <button
         className={`flex flex-row justify-between items-center text-md  md:justify-center w-full text-center md:text-xl font-bold py-3 px-6  bg-[#6e237e] text-white drop-shadow-md  rounded-lg `}
         onClick={toggleExpand}

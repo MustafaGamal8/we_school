@@ -1,37 +1,52 @@
 const fileModel = require("../mongo/fileModel.js");
 const postModel = require("../mongo/postModel.js");
 
-const uploadFile = async (req, res) => {
 
+const uploadFile = async (buffer, originalname, mimetype) => {
+  const newFile = new fileModel({
+    name: originalname,
+    data: buffer,
+    contentType: mimetype,
+  });
+
+  await newFile.save();
+  return newFile._id; // Return the file ID
+};
+
+const createPost = async (postFields, fileIds) => {
   try {
+    const { email, content } = postFields;
 
+    const post = new postModel({
+      email,
+      content,
+      files: fileIds,
+    });
+
+    await post.save();
+  } catch (error) {
+    throw error;
+  }
+};
+
+const uploadAndCreatePost = async (req, res) => {
+  try {
     const postFields = {
       email: req.body.email,
       content: req.body.content,
     };
 
-    if (!req.files || req.files.length === 0) {
-      uploadPost(postFields)
-      res.status(200).json({ msg: 'post created successfully' });
-      return 
+    const fileIds = [];
+
+    if (req.files && req.files.length > 0) {
+      for (const file of req.files) {
+        const { originalname, buffer, mimetype } = file;
+        const fileId = await uploadFile(buffer, originalname, mimetype);
+        fileIds.push({ type: mimetype, link: `/files/${fileId}` });
+      }
     }
 
-    const fileIds = []; // Array to store the file IDs for the post
-
-    for (const file of req.files) {
-      const { originalname, buffer, mimetype } = file;
-
-      const newFile = new fileModel({
-        name: originalname,
-        data: buffer,
-        contentType: mimetype,
-      });
-
-      await newFile.save();
-      fileIds.push({type:mimetype,link:`/files/${newFile._id}`}); // Store the file ID in the array
-    }
-    
-    await uploadPost(postFields, fileIds);
+    await createPost(postFields, fileIds);
 
     res.status(200).json({ msg: 'post created successfully' });
   } catch (err) {
@@ -39,6 +54,11 @@ const uploadFile = async (req, res) => {
     res.status(500).json({ error: 'Failed to create post' });
   }
 };
+
+
+
+
+
 
 const readFile = async (req, res) => {
   try {
@@ -58,22 +78,6 @@ const readFile = async (req, res) => {
 };
 
 
-const uploadPost = async (postFields, fileId) => {
-  try {
-    const { email, content } = postFields;
-
-    const post = new postModel({
-      email,
-      content,
-      files: fileId, // Assign the file ID to the 'files' field as an array
-    });
-
-    await post.save();
-    
-  } catch (error) {
-    throw error;
-  }
-};
 
 const readAllPosts = async (res)=>{
   try {
@@ -118,4 +122,4 @@ const readAllFiles = async (res) => {
 
 
 
-module.exports = { uploadFile, readAllFiles, readFile , readAllPosts };
+module.exports = { uploadFile, readAllFiles, readFile , readAllPosts , uploadAndCreatePost };

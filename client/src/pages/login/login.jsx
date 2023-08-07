@@ -4,6 +4,7 @@ import { FaChevronDown } from 'react-icons/fa';
 import { login, signUp } from '../../functions/auth';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,6 +18,9 @@ const Login = () => {
     role: '',
     grade:''
   });
+
+  
+  const Navigate =  useNavigate()
 
   const toastConfig = {
     position: 'bottom-left',
@@ -66,8 +70,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-  console.log(formData)
     validateForm();
     
     if (await schema.isValid(formData)) {
@@ -78,10 +80,10 @@ const Login = () => {
         toast.error(error, toastConfig);
         toast.dismiss(loadingToast)
 
-
       } else {
         toast.success(msg, toastConfig);
         toast.dismiss(loadingToast)
+        Navigate("/dashboard")
 
       }
       

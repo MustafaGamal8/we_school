@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FaCamera } from "react-icons/fa";
 import { useEffect } from "react";
 
-function Edit() {
+function Profile() {
     const [isMenuOpen,setIsMenuOpen] = useState(false);
     const [imageSrc, setImageSrc] = useState('/public/assets/nardin.jpg');
 
@@ -124,4 +124,4 @@ function Edit() {
     );
 }
 
-export default Edit;
+export default Profile;

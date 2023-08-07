@@ -14,7 +14,7 @@ const getUsers = async (res) => {
 };
 
 const signUp = async (req, res) => {
-  const { firstName, lastName, email, password, role, code } = req.body;
+  const { firstName, lastName, email, password, role,grade , code } = req.body;
 
   try {
     // Check if the invitation code exists in the database
@@ -40,6 +40,7 @@ const signUp = async (req, res) => {
       email,
       password: hashedPassword,
       role,
+      grade,
       isConfirmed:false
     });
 
@@ -55,26 +56,23 @@ const signUp = async (req, res) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    // Find the user in the database by email
     const user = await UserModel.findOne({ email });
 
-    // If the user is not found or the password doesn't match, return an error
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).send({ error: "Email or Password are wrong" });
     }
 
-    // Check if the user's email is confirmed
     if (!user.isConfirmed) {
       return res.status(401).send({ error: "Email not confirmed. Please check your email for the confirmation link." });
     }
 
-    // Password matches, user is authenticated and email is confirmed
     res.status(200).send({ msg: "Login successful", user });
   } catch (err) {
     console.log(err);
     res.status(500).send({ error: "Server error" });
   }
 };
+
 
 
 function generateInvitationCode() {

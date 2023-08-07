@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CiUser } from "react-icons/ci"
-import { MdPhone, MdHome, MdListAlt, MdSchool, MdMenu, MdPeopleAlt,MdEditLocation, MdClass,MdPhoneBluetoothSpeaker,MdMessage,MdEmail } from "react-icons/md"
+import { MdPhone, MdHome, MdListAlt, MdSchool, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker, MdMessage, MdEmail } from "react-icons/md"
 import { Link } from "react-router-dom";
 import "./home.css"
-import ListItem from "../../components/items";
+import ListItem from "../../components/listItem";
 
 
 const Home = () => {
@@ -151,7 +151,7 @@ const Home = () => {
         </section>
 
 
-        <section className="w-full mt-10 list-decimal " >
+        <section className="w-full mt-10 " >
           <div className="text-2xl justify-center gap-2 flex  md:flex items-center md:justify-center md:gap-2 md:text-4xl  text-sec mb-5 my-4">
             <h1>معلومات حول المدرسه</h1>
           </div>
@@ -182,16 +182,6 @@ const Home = () => {
                 "* الأخلاقيات والمهارات الحياتية (زي مهارات التواصل الفعال والعمل في فريق وغيرهم)"
               ]}
             />
-
-
-
-
-
-
-
-
-
-
 
             <ListItem
               title=". ايه هي فروع WE ومواقعها؟"
@@ -335,49 +325,44 @@ const Home = () => {
           </div>
         </section>
 
-<h1 className="text-5xl text-main text-center ">contact us</h1>
-<section className="w-full h-fit md:w-[70%] mt-16 flex flex-col md:flex-row bg-gray md:min-h-[700px] drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
+        <h1 className="text-5xl text-main text-center ">تواصل معنا</h1>
+        <section className="w-full  lg:w-[50%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
 
-      <div className="w-full flex flex-col md:w-[45%] h-[100%]">
-        <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
-        <p className="text-md md:text-2xl p-2">نحن هنا من أجلك، كيف يمكننا مساعدتك؟</p>
-        <form onSubmit={handleSubmit} className="mt-5">
-          <input type="text" required name="name" placeholder="أدخل اسمك" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
-          <input type="email" required name="email" placeholder="أدخل بريدك الإلكتروني" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
-          <input type="text" required name="message" placeholder="أدخل رسالتك" className="w-full bg-gray-200 placeholder-black outline-none h-40 p-5 rounded-md mt-10" />
-          <input type="submit" value="إرسال" className="w-full rounded-xl h-16 p-2 text-center bg-main text-white mt-10" />
-        </form>
-      </div>
-
-      <div className="w-full flex flex-col md:w-[45%] h-[100%]">
-        <div className="w-full  md:w-[100%]  h-[60%] object-cover"><img src="assets/undraw_profile_data_re_v81r.svg" className="object-cover" alt="" /></div>
-        <div className="w-full h-[40%] flex flex-col justify-between">
-          <div className="w-full h-[40%] flex flex-row justify-start items- mt-10">
-            <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEditLocation /></div>
-            <p className="ml-0 text-md md:text-xl md:ml-10">دقهلية المنصورة</p>
+          <div className="w-full flex flex-col md:w-[45%]">
+            <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
+            <p className="text-md md:text-2xl p-2">نحن هنا من أجلك، كيف يمكننا مساعدتك؟</p>
+            <form onSubmit={handleSubmit} className="mt-5">
+              <input type="text" required name="name" placeholder="أدخل اسمك" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
+              <input type="email" required name="email" placeholder="أدخل بريدك الإلكتروني" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
+              <input type="text" required name="message" placeholder="أدخل رسالتك" className="w-full bg-gray-200 placeholder-black outline-none h-40 p-5 rounded-md mt-10" />
+              <input type="submit" value="إرسال" className="w-full rounded-xl h-16 p-2 text-center bg-main text-white mt-10" />
+            </form>
           </div>
-          <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
-            <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdPhoneBluetoothSpeaker /></div>
-            <p className="ml-0 text-md md:text-xl md:ml-10">01001236789</p>
+
+          <div className="w-full flex flex-col md:w-[45%] ">
+            <div className="w-full  md:w-[100%]   "><img src="assets/undraw_profile_data_re_v81r.svg" className="object-cover" alt="" /></div>
+            <div className="w-full h-[40%] flex flex-col justify-between">
+              <div className="w-full h-[40%] flex flex-row justify-start items- mt-10">
+                <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEditLocation /></div>
+                <p className="ml-0 text-md md:text-xl md:ml-10">دقهلية المنصورة</p>
+              </div>
+              <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
+                <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdPhoneBluetoothSpeaker /></div>
+                <p className="ml-0 text-md md:text-xl md:ml-10">01001236789</p>
+              </div>
+              <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
+                <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEmail /></div>
+                <p className="ml-0 text-md md:text-xl md:ml-10">weschoolmansoura@gmail.com</p>
+              </div>
+            </div>
           </div>
-          <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
-            <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEmail /></div>
-            <p className="ml-0 text-md md:text-xl md:ml-10">weschoolmansoura@gmail.com</p>
-          </div>
-        </div>
-      </div>
 
-    </section>
-
-<section className="mt-[200px]"></section>
+        </section>
 
 
 
 
 
-
-
-        
 
       </main>
 
