@@ -6,9 +6,43 @@
 
 body {
   font-family: 'Almarai', sans-serif;
-  /* user-select: none; */
-  /* -webkit-user-drag: none; */
+  user-select: none;
+  -webkit-user-drag: none;
   overflow-x: hidden
+  
+}
+
+
+.animated-title::after{
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  width: 0;
+  height: 3px;
+  background-color: #573589;
+  z-index: -1;
+  animation: animated-title 5s infinite;
+}
+
+
+@keyframes animated-title {
+  0%{
+    width: 0;
+  }
+  25%{
+    width: 50%;
+  }
+  50%{
+    
+    width: 0;
+  }
+  75%{
+    width: 100%;
+  }
+  100%{
+    width: 0;
+  }
   
 }
 

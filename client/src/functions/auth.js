@@ -11,6 +11,10 @@ export const login = async (formData)=>{
     email:formData.email,
     password:formData.password
   })
+
+
+  localStorage.setItem('user', JSON.stringify(response.data.user));
+
   return response.data
 
   } catch (error) {
@@ -19,6 +23,9 @@ export const login = async (formData)=>{
 }
 
 
+export const logout = () => {
+  localStorage.removeItem('user');
+};
 
 
 export const signUp = async (formData)=>{  
@@ -42,25 +49,4 @@ export const signUp = async (formData)=>{
 
 
 
-export const validateForm = async () => {
-  const schema = Yup.object().shape({
-    email: Yup.string().email('Invalid email format').required('Email is required'),
-    password: Yup.string().required('Password is required'),
-    firstName: isLogin ? Yup.string() : Yup.string().required('First Name is required'),
-    lastName: isLogin ? Yup.string() : Yup.string().required('Last Name is required'),
-    invitationCode: isLogin ? Yup.string() : Yup.string().required('Invitation Code is required'),
-    role: isLogin ? Yup.string() : Yup.string().required('Please select a role'),
-  });
 
-  try {
-    await schema.validate(formData, { abortEarly: false });
-    
-    return null;
-  } catch (error) {
-    const errors =[];
-    error.inner.forEach((err) => {
-      errors[err.path] = err.message;
-    });
-     return errors;
-  }
-};

@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const {  InvitationCode, getUsers, loginUser, signUp, createInvitationCode, getInvitationCodes } = require('./functions/users.js');
 const multer = require('multer');
-const { readAllFiles, readFile, uploadFile,readAllPosts } = require('./functions/posts.js');
+const { readAllFiles, readFile, uploadFile,readAllPosts, uploadAndCreatePost } = require('./functions/posts.js');
 const { confirmEmail } = require('./functions/mailConfirmation.js');
 
 const app = express();
@@ -78,7 +78,7 @@ const startServer = async () => {
 
     // Route to handle post upload
     app.post('/upload-post', upload.array('files'), async (req, res) => {
-      uploadFile(req, res)
+      uploadAndCreatePost(req, res)
     });
 
     // Route to get all posts
