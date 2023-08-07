@@ -11,7 +11,7 @@ const SideBar = () => {
     <section  className=" bg-white drop-shadow border-r w-[300px] h-[100vh] p-5">
 
 
-      <Link to="/Profile" className='flex  items-center gap-3 cursor-pointer'>
+      <Link to="/Profile" className='flex  items-center gap-3 cursor-pointer '>
         <div><CgProfile className='text-3xl text-sec'/></div>
         <div>
         <h1> <span className='text-main text-xl'>{user.firstName}</span> {user.lastName}</h1>

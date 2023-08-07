@@ -1,15 +1,31 @@
 import { useState } from "react";
 import { CiUser } from "react-icons/ci"
 import { MdPhone, MdHome, MdListAlt, MdSchool, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker, MdMessage, MdEmail } from "react-icons/md"
+import {BiShowAlt} from "react-icons/bi"
+
+import { FaHandshake, FaPhone, FaSchool, FaThLarge } from 'react-icons/fa';
+import { IoMdPhotos } from 'react-icons/io';
 import { Link } from "react-router-dom";
 import "./home.css"
 import ListItem from "../../components/listItem";
+import Slider from './../../components/slider';
+import { BsFileText } from "react-icons/bs";
 
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isShowMore, setIsShowMore] = useState(false)
 
-  const handleMenuClick = () => {
+  const handleMenuClick = (elementId) => {
+    const targetElement = document.getElementById(elementId);
+  
+  if (targetElement) {
+    window.scrollTo({
+      top: targetElement.offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
     setTimeout(() => {
       setIsMenuOpen(false)
     }, 300);
@@ -24,6 +40,9 @@ const Home = () => {
     window.location.href = emailLink;
   };
 
+
+  const slides = [ { img: "/assets/nardin.jpg" }, { img: "/assets/school/school1.jpeg" }, { img: "/assets/school/school2.jpeg" }, { img: "/assets/school/school3.jpeg" }, { img: "/assets/school/school4.jpeg" } ]
+
   return (
 
     <>
@@ -34,10 +53,12 @@ const Home = () => {
 
 
         <div className={` ${isMenuOpen ? "menuAnimitionOpen flex md:hidden" : "hidden"} absolute top-[100%] left-0 bg-white text-main  w-full h-0  flex-col-reverse items-center justify-center   whitespace-nowrap`}>
-          <Link onClick={handleMenuClick} to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <MdPhone className="text-xl" /></Link>
-          <Link onClick={handleMenuClick} to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <MdListAlt /></Link>
-          <Link onClick={handleMenuClick} to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>عن المدرسة</h1> <MdSchool className="text-xl" /></Link>
-          <Link onClick={handleMenuClick} to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl" /></Link>
+          <div onClick={()=>handleMenuClick("school_contact")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <FaPhone className="text-xl" /></div>
+          <div onClick={()=>handleMenuClick("school_terms")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <BsFileText  /></div>
+          <div onClick={()=>handleMenuClick("school_debartments")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الاقسام</h1> <FaThLarge  className="text-xl" /></div>
+          <div onClick={()=>handleMenuClick("about_school")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>عن المدرسة</h1> <FaSchool className="text-xl" /></div>
+          <div onClick={()=>handleMenuClick("school_partners")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شركائنا</h1> <FaHandshake  /></div>
+          <div onClick={()=>handleMenuClick("school_main")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl" /></div>
 
         </div>
 
@@ -46,10 +67,13 @@ const Home = () => {
         <img src="/logo.jpg" alt="" className="h-full " />
 
         <div className="hidden  md:flex items-center justify-center gap-3  whitespace-nowrap">
-          <Link to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <MdPhone className="text-xl" /></Link>
-          <Link to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <MdListAlt /></Link>
-          <Link to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>عن المدرسة</h1> <MdSchool className="text-xl" /></Link>
-          <Link to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl" /></Link>
+          <div onClick={()=>handleMenuClick("school_contact")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <FaPhone className="text-xl" /></div>
+          <div onClick={()=>handleMenuClick("school_terms")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <BsFileText  /></div>
+          <div onClick={()=>handleMenuClick("school_debartments")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الاقسام</h1> <FaThLarge  className="text-xl" /></div>
+          <div onClick={()=>handleMenuClick("about_school")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>عن المدرسة</h1> <FaSchool className="text-xl" /></div>
+          <div onClick={()=>handleMenuClick("school_partners")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شركائنا</h1> <FaHandshake  /></div>
+          <div onClick={()=>handleMenuClick("school_main")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl" /></div>
+
 
         </div>
 
@@ -65,7 +89,7 @@ const Home = () => {
         <img className=" absolute top-0 right-0 -z-10 w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
 
-        <section>
+        <section id="school_main">
           <div className="text-center  mt-20 bg-white rounded-lg w-80  m-auto py-2 drop-shadow">
             <h1 className="text-xl md:text-3xl drop-shadow">مدرسة وي <br /> للتكنولوجيا التطبيقية</h1>
             <h2 className="mt-2 md:text-2xl  text-[#6e237e] relative w-max m-auto text-animition ">في المنصورة</h2>
@@ -101,10 +125,14 @@ const Home = () => {
 
         <img className="m-auto h-12 mt-10" src="/assets/mouseAnimition.gif" />
 
-        <section className="w-full">
-          <div className="flex items-center  justify-center  gap-2 text-3xl text-sec my-4"  ><h1 >شركائنا</h1> <MdPeopleAlt /></div>
+        <section  id="school_partners" className="w-full">
+          <h1  className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+            <MdPeopleAlt className="inline-block mr-2 text-2xl md:text-4xl " />            
+            شركائنا
+            </h1> 
+            
 
-          <div className="w-full  bg-white  border-y flex flex-col md:flex-row items-center justify-evenly gap-5 p-5">
+          <div className="w-full  bg-white  border-y flex flex-col md:flex-row items-center justify-evenly gap-5 p-5 mt-10">
             <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture1.png" alt="" /></div>
             <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture2.png" alt="" /></div>
             <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture3.png" alt="" /></div>
@@ -117,11 +145,11 @@ const Home = () => {
 
 
 
-        <section className="w-full mt-5 ">
-          <div className="flex items-center justify-center gap-2 text-3xl text-sec my-4">
-            <h1>الأقسام</h1>
-            <MdClass />
-          </div>
+        <section id="school_debartments" className="w-full mt-5 ">
+          <h1 className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+            <MdClass  className="inline-block mr-2 text-2xl md:text-4xl " />            
+            الأقسام
+            </h1>
 
           <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
             <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
@@ -150,13 +178,29 @@ const Home = () => {
           </div>
         </section>
 
+        <section id="about_school" className="w-[60%] m-auto  drop-shadow-md">
+          <h1 className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+            <IoMdPhotos className="inline-block mr-2 text-2xl md:text-4xl "/>
+            صور من المدرسة
+          
+          </h1>
 
-        <section className="w-full mt-10 " >
-          <div className="text-2xl justify-center gap-2 flex  md:flex items-center md:justify-center md:gap-2 md:text-4xl  text-sec mb-5 my-4">
-            <h1>معلومات حول المدرسه</h1>
-          </div>
+        <div className="w-full m-auto mt-10"><Slider slides={slides} /></div>
 
-          <div className="p-2 mt-16" dir="rtl">
+        </section>
+
+
+        <section id="school_terms" className="w-full mt-10  relative" >
+
+      <h1  className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+        <FaSchool className="inline-block mr-2 text-2xl md:text-4xl " />
+        معلومات حول المدرسة
+      </h1>
+
+          
+          <img src="/assets/bloab1.svg" className="absolute top-40  -left-80 " alt="" />
+          
+          <div  className="p-2 mt-16" dir="rtl">
             <ListItem
               title="ما هي مدارس التكنولوجيا التطبيقية؟"
               content={[
@@ -164,6 +208,9 @@ const Home = () => {
                 "- تتنوع تخصصات مدارس التكنولوجيا التطبيقية لتواكب احتياجات سوق العمل المتغيرة، وتهدف إلى تزويد الطلاب بالمهارات والمعرفة اللازمة للعمل في صناعات التكنولوجيا والابتكار."
               ]}
             />
+            
+
+
 
 
             <ListItem
@@ -182,8 +229,7 @@ const Home = () => {
                 "* الأخلاقيات والمهارات الحياتية (زي مهارات التواصل الفعال والعمل في فريق وغيرهم)"
               ]}
             />
-
-            <ListItem
+         <ListItem
               title=". ايه هي فروع WE ومواقعها؟"
               content={[
                 "- حاليا فروع WE عبارة عن 7 فروع في سبع محافظات مختلفة وهم:",
@@ -196,6 +242,22 @@ const Home = () => {
                 "- الجيزة(الشيخ زايد )"
               ]}
             />
+
+            <ListItem
+            
+              title="ايه هي شروط القبول بمدارس WE ؟"
+              content={[
+                "- بتختلف الشروط من عام لآخر ولكن بالنسبة لشروط السنة اللي فاتت 2021/2022 كانت:",
+                "* أن يكون الطالب لائق طبيا",
+                "* أن لا يزيد سن الطالب في أول أكتوبر عن 18 سنة",
+                "* أن يتمتع الطالب بالجنسية المصرية",
+                "* إجادة اللغة الانجليزية",
+                "* ألا يقل مجموع الطالب في الشهادة الاعدادية عن 250 درجة (ممكن تختلف السنة دي وممكن لا)",
+                "* اجتياز الطالب لاختبارات القبول والمقابلة الشخصية"
+              ]}
+            />
+
+
 
             <ListItem
               title=". ايه هي المواد اللي بتدرسوها؟"
@@ -220,8 +282,13 @@ const Home = () => {
 
 
 
+            <button onClick={()=>{setIsShowMore(!isShowMore)}}   className="bg-sec text-white drop-shadow p-2 rounded m-auto w-40 text-center flex items-center justify-center gap-2 cursor-pointer hover:scale-110 transition-all ">{isShowMore ? 'عرض اقل' : 'عرض المزيد '} <BiShowAlt /></button>
 
-            <ListItem
+
+
+
+            {
+              isShowMore &&<><ListItem
               title="في سنة تانيه بندرس :)"
               content={[
                 "* مادة تخصص واحدة بتختارها Telecom أو IT (Networks and cybersecurity او programming /web)",
@@ -272,18 +339,7 @@ const Home = () => {
               ]}
             />
 
-            <ListItem
-              title="ايه هي شروط القبول بمدارس WE ؟"
-              content={[
-                "- بتختلف الشروط من عام لآخر ولكن بالنسبة لشروط السنة اللي فاتت 2021/2022 كانت:",
-                "* أن يكون الطالب لائق طبيا",
-                "* أن لا يزيد سن الطالب في أول أكتوبر عن 18 سنة",
-                "* أن يتمتع الطالب بالجنسية المصرية",
-                "* إجادة اللغة الانجليزية",
-                "* ألا يقل مجموع الطالب في الشهادة الاعدادية عن 250 درجة (ممكن تختلف السنة دي وممكن لا)",
-                "* اجتياز الطالب لاختبارات القبول والمقابلة الشخصية"
-              ]}
-            />
+            
 
             <ListItem
               title="ايه هي طبيعة اختبارات القبول والمقابلة الشخصية؟"
@@ -316,44 +372,41 @@ const Home = () => {
                   اضغط هنا
                 </a>
               ]}
-            />
+            /></>
+            }
 
 
 
 
 
           </div>
-        </section>
+          
+          </section>
 
-        <h1 className="text-5xl text-main text-center ">تواصل معنا</h1>
-        <section className="w-full  lg:w-[50%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
+
+        
+
+
+        <h1 className="text-3xl text-main text-center ">تواصل معنا</h1>
+        <section id="school_contact" className="w-full  lg:w-[50%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
 
           <div className="w-full flex flex-col md:w-[45%]">
             <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
             <p className="text-md md:text-2xl p-2">نحن هنا من أجلك، كيف يمكننا مساعدتك؟</p>
             <form onSubmit={handleSubmit} className="mt-5">
-              <input type="text" required name="name" placeholder="أدخل اسمك" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
-              <input type="email" required name="email" placeholder="أدخل بريدك الإلكتروني" className="w-full bg-gray-200 placeholder-black outline-none h-16 p-5 rounded-md mt-10" />
-              <input type="text" required name="message" placeholder="أدخل رسالتك" className="w-full bg-gray-200 placeholder-black outline-none h-40 p-5 rounded-md mt-10" />
+              <input type="text" required name="name" placeholder="أدخل اسمك" className="w-full bg-gray-200 placeholder-black outline-none  p-5 rounded-md mt-5" />
+              <input type="email" required name="email" placeholder="أدخل بريدك الإلكتروني" className="w-full bg-gray-200 placeholder-black outline-none  p-5 rounded-md mt-4" />
+              <input type="text" required name="message" placeholder="أدخل رسالتك" className="w-full bg-gray-200 placeholder-black outline-none  p-8 rounded-md mt-10" />
               <input type="submit" value="إرسال" className="w-full rounded-xl h-16 p-2 text-center bg-main text-white mt-10" />
             </form>
           </div>
 
           <div className="w-full flex flex-col md:w-[45%] ">
             <div className="w-full  md:w-[100%]   "><img src="assets/undraw_profile_data_re_v81r.svg" className="object-cover" alt="" /></div>
-            <div className="w-full h-[40%] flex flex-col justify-between">
-              <div className="w-full h-[40%] flex flex-row justify-start items- mt-10">
-                <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEditLocation /></div>
-                <p className="ml-0 text-md md:text-xl md:ml-10">دقهلية المنصورة</p>
-              </div>
-              <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
-                <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdPhoneBluetoothSpeaker /></div>
-                <p className="ml-0 text-md md:text-xl md:ml-10">01001236789</p>
-              </div>
-              <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
-                <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl"><MdEmail /></div>
-                <p className="ml-0 text-md md:text-xl md:ml-10">weschoolmansoura@gmail.com</p>
-              </div>
+            <div className="w-full h-[40%] flex flex-col justify-between space-y-5 mt-10">
+              <ContactInfo icon={<MdEditLocation />} text="دقهلية المنصورة" />
+              <ContactInfo icon={<MdPhoneBluetoothSpeaker />} text="01001236789" />
+              <ContactInfo icon={<MdEmail />} text="weschoolmansoura@gmail.com" />
             </div>
           </div>
 
@@ -366,10 +419,26 @@ const Home = () => {
 
       </main>
 
-      <footer></footer>
+      <footer className="relative  mt-[600px]">
+
+
+        <img src="/assets/waves2.svg" className="w-full   absolute bottom-0 " alt="" />
+      </footer>
 
     </>
   );
 }
 
 export default Home;
+
+
+const ContactInfo = ({ icon, text }) => {
+  return (
+    <div className="w-full h-[40%] flex flex-row justify-start items-center mt-10">
+      <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl">
+        {icon}
+      </div>
+      <p className="ml-0 text-md md:text-xl md:ml-10">{text}</p>
+    </div>
+  );
+};
