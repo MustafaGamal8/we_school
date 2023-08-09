@@ -23,7 +23,7 @@ const Sidebar = () => {
     <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  h-[100vh] text-main  flex flex-col relative`}>
 
 
-      <div className='absolute top-2 right-2 text-lg z-[2]' onClick={() => setIsCollapsed(!iscollapsed)}>
+      <div className='absolute top-2 right-2 text-lg z-[2] cursor-pointer' onClick={() => setIsCollapsed(!iscollapsed)}>
         {iscollapsed ? <AiOutlinePlus /> : <AiOutlineMinus />}
       </div>
 
@@ -47,7 +47,7 @@ const Sidebar = () => {
 
 
 
-        <MenuItem to={"/"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
         <MenuItem to={"/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
         <MenuItem to={"/"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />
 

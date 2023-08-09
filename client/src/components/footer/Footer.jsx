@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaWhatsapp,FaMailBulk } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -46,6 +46,7 @@ function Footer() {
         <ul>
           <li className='text-white text-md mt-1'>Karem Mahmoud</li>
           <li className='text-white text-md mt-1'>Mustafa Gamal</li>
+          <li className='text-white text-md mt-1 '><Link to="/login" className='text-lg'>about them</Link> </li>
         </ul>
       </div>
     </div>
