@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { CiUser } from "react-icons/ci"
-import { MdPhone, MdHome, MdListAlt, MdSchool, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker, MdMessage, MdEmail } from "react-icons/md"
+import {  MdHome, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker,  MdEmail } from "react-icons/md"
 import {BiShowAlt} from "react-icons/bi"
+import {HiOutlineMail} from "react-icons/hi"
 
 import { FaHandshake, FaPhone, FaSchool, FaThLarge } from 'react-icons/fa';
 import { IoMdPhotos } from 'react-icons/io';
@@ -73,7 +74,7 @@ const Home = () => {
 
         <img src="/logo.jpg" alt="" className="h-full " />
 
-        <div className="hidden  md:flex items-center justify-center gap-3  whitespace-nowrap">
+        <div className="hidden  md:flex items-center justify-center lg:gap-3  whitespace-nowrap">
           <div onClick={()=>handleMenuClick("school_contact")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <FaPhone className="text-xl" /></div>
           <div onClick={()=>handleMenuClick("school_terms")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <BsFileText  /></div>
           <div onClick={()=>handleMenuClick("school_debartments")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الاقسام</h1> <FaThLarge  className="text-xl" /></div>
@@ -116,8 +117,8 @@ const Home = () => {
               <p className="text-lg text-center">
                 تعلم  البرمجة واستكشف عالمًا مشوقًا في تقنية الاتصالات والشبكات في مدرسة وي.
               </p>
-              <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 mt-4 rounded">
-                استكشف البرامج
+              <button onClick={()=>handleMenuClick("school_debartments")} className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 mt-4 rounded">
+                استكشف المناهج
               </button>
             </div>
           </div>
@@ -290,11 +291,6 @@ const Home = () => {
 
 
 
-            <button onClick={()=>{setIsShowMore(!isShowMore)}}   className="bg-sec text-white drop-shadow p-2 rounded m-auto w-40 text-center flex items-center justify-center gap-2 cursor-pointer hover:scale-110 transition-all ">{isShowMore ? 'عرض اقل' : 'عرض المزيد '} <BiShowAlt /></button>
-
-
-
-
             {
               isShowMore &&<><ListItem
               title="في سنة تانيه بندرس :)"
@@ -385,6 +381,12 @@ const Home = () => {
 
 
 
+<button onClick={()=>{setIsShowMore(!isShowMore)}}   className="bg-sec text-white drop-shadow p-2 rounded m-auto w-40 text-center flex items-center justify-center gap-2 cursor-pointer hover:scale-110 transition-all ">{isShowMore ? 'عرض اقل' : 'عرض المزيد '} <BiShowAlt /></button>
+
+
+
+
+
 
 
           </div>
@@ -395,8 +397,11 @@ const Home = () => {
         
 
 
-        <h1 className="text-3xl text-main text-center ">تواصل معنا</h1>
-        <section id="school_contact" className="w-full  lg:w-[50%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
+          <h1  className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+        <HiOutlineMail className="inline-block  mr-2 text-2xl md:text-4xl " />
+        تواصل معنا
+      </h1>
+        <section id="school_contact" className=" lg:w-[50%] w-[80%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
 
           <div className="w-full flex flex-col md:w-[45%]">
             <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
@@ -431,7 +436,7 @@ const Home = () => {
         <Footer />
 
 
-        {/* <img src="/assets/waves2.svg" className="w-full z-[-2]   absolute bottom-0 " alt="" /> */}
+        <img src="/assets/waves2.svg" className="w-full z-[-2]   absolute bottom-0 " alt="" />
       </footer>
 
     </>

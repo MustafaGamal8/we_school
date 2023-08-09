@@ -90,7 +90,6 @@ const Login = () => {
         toast.success(msg, toastConfig);
         toast.dismiss(loadingToast)
         Navigate("/dashboard")
-
       }
 
 

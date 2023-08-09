@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaWhatsapp } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <div className="w-full bg-main flex flex-col md:flex-row md:justify-between p-10 md:items-center ">
+    <div className="w-full  flex flex-col md:flex-row md:justify-between p-10 md:items-center ">
       <div className='mt-5 w-full md:w-[20%] mb-10 md:mb-0'>
         <div className='flex flex-row  text-2xl items-center'>
           <img src="/public/logo.jpg" className='rounded-[50%] w-[50px]' alt="" />

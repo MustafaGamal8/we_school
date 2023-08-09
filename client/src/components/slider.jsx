@@ -36,7 +36,7 @@ const Slider = ({ slides }) => {
       </div>
       {slides.map((s, index) => (
         <SwiperSlide key={index} className='flex items-center justify-center drop-shadow'>
-          <div className="md:h-[550px] w-full">
+          <div className="md:h-[550px] h-[300px] w-full">
             <img src={s.img} alt="nophotos" className="rounded-lg w-full h-full object-cover" />
           </div>
         </SwiperSlide>
