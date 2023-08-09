@@ -26,9 +26,9 @@ function Footer() {
         <h1 className='text-white text-2xl mb-5 '>contact us</h1>
         <ul>
           <li className='text-white text-md mt-1'>weschoolmansoura@gmail.com</li>
-          <li className='text-white text-md mt-1'>010000000</li>
-          <li className='text-white text-md mt-1'>010000000</li>
-          <li className='text-white text-md mt-1'>010000000</li>
+          <li className='text-white text-md mt-1'>01276071829</li>
+          <li className='text-white text-md mt-1'>01008572255</li>
+          <li className='text-white text-md mt-1'>0100723782</li>
         </ul>
       </div>
       <div className='mt-5 w-full md:w-[20%] text-white'>

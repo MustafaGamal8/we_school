@@ -45,13 +45,9 @@ const Sidebar = () => {
 
       <main className='mt-10 uppercase flex flex-col  '>
 
-<<<<<<< HEAD
 
 
         <MenuItem to={"/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
-=======
-        <MenuItem to={"/"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
->>>>>>> 81b10bc1d6be3526c871e5627c32c0951d16f3c6
         <MenuItem to={"/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
         <MenuItem to={"/"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />
 
