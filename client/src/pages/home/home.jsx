@@ -10,6 +10,7 @@ import "./home.css"
 import ListItem from "../../components/listItem";
 import Slider from './../../components/slider';
 import { BsFileText } from "react-icons/bs";
+import Footer from "../../components/footer/Footer";
 
 
 const Home = () => {
@@ -420,10 +421,11 @@ const Home = () => {
 
       </main>
 
-      <footer className="relative  mt-[600px]">
+      <footer className="relative  mt-[300px]">
+        <Footer />
 
 
-        <img src="/assets/waves2.svg" className="w-full z-[-2]   absolute bottom-0 " alt="" />
+        {/* <img src="/assets/waves2.svg" className="w-full z-[-2]   absolute bottom-0 " alt="" /> */}
       </footer>
 
     </>
