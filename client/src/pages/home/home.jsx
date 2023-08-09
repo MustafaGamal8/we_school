@@ -432,11 +432,11 @@ const Home = () => {
 
       </main>
 
-      <footer className="relative  mt-[300px]">
+      <footer className="relative  md:mt-[300px] mt-[100px]">
         <Footer />
 
 
-        <img src="/assets/waves2.svg" className="w-full z-[-2]   absolute bottom-0 " alt="" />
+        <img src="/assets/waves2.svg" className="md:w-full  z-[-2]  hidden md:flex  absolute bottom-0 " alt="" />
       </footer>
 
     </>
