@@ -205,6 +205,7 @@ const Home = () => {
 
           
           <img src="/assets/bloab1.svg" className="absolute top-40  -left-80 " alt="" />
+
           
           <div  className="p-2 mt-16" dir="rtl">
             <ListItem
@@ -428,7 +429,7 @@ const Home = () => {
       <footer className="relative  mt-[600px]">
 
 
-        <img src="/assets/waves2.svg" className="w-full   absolute bottom-0 " alt="" />
+        <img src="/assets/waves2.svg" className="w-full z-[-2]   absolute bottom-0 " alt="" />
       </footer>
 
     </>

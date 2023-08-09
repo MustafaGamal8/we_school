@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Almarai', sans-serif;
-  user-select: none;
+  /* user-select: none; */
   -webkit-user-drag: none;
   overflow-x: hidden
   
@@ -23,6 +23,7 @@ body {
   background-color: #573589;
   z-index: -1;
   animation: animated-title 5s infinite;
+  
 }
 
 
@@ -39,9 +40,11 @@ body {
   }
   75%{
     width: 100%;
+    
   }
   100%{
     width: 0;
+
   }
   
 }
