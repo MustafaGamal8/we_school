@@ -67,7 +67,7 @@ const handelGoTop = ()=>{
     <>
 
 
-<button onClick={handelGoTop} className="bg-main text-white font-semibold py-2 px-4 rounded-full fixed bottom-7 right-7 z-10" id="btn"><AiOutlineArrowUp/></button>
+<button onClick={handelGoTop} className="bg-main text-white font-semibold h-10 w-10 flex items-center justify-center rounded-full fixed bottom-7 right-7 z-10" id="btn"><AiOutlineArrowUp/></button>
 
       <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]  ">
 

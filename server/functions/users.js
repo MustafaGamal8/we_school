@@ -16,9 +16,12 @@ const getUsers = async (res) => {
 const signUp = async (req, res) => {
   const { firstName, lastName, email, password, role,grade , code } = req.body;
 
+  console.log(grade,role)
+
   try {
     // Check if the invitation code exists in the database
-    const isValidInvitation = await InvitationModel.exists({ code: code,userType:role });
+    const isValidInvitation = await InvitationModel.exists({ code: code,userType:grade });
+
     if (!isValidInvitation) {
       return res.status(403).json({ error: 'Invalid invitation code' });
     }
