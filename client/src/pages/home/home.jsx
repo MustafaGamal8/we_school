@@ -43,6 +43,12 @@ const Home = () => {
 
   const slides = [ { img: "/assets/nardin.jpg" }, { img: "/assets/school/school1.jpeg" }, { img: "/assets/school/school2.jpeg" }, { img: "/assets/school/school3.jpeg" }, { img: "/assets/school/school4.jpeg" } ]
 
+
+  
+  const userJSON = localStorage.getItem('user');
+  const user = JSON.parse(userJSON);
+
+  
   return (
 
     <>
@@ -77,7 +83,7 @@ const Home = () => {
 
         </div>
 
-        <Link to="/login" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">تسجيل الدخول<CiUser className="md:text-2xl text-lg " /> </Link>
+        <Link to={ user ?"/dashboard" :"/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">تسجيل الدخول<CiUser className="md:text-2xl text-lg " /> </Link>
 
 
 
