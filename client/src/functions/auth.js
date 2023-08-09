@@ -1,5 +1,4 @@
 import axios from "axios"
-import * as Yup from 'yup';
 
 const baseUrl = "https://we-school-api.vercel.app/auth"
 
