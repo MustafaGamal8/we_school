@@ -3,6 +3,7 @@ import { CiUser } from "react-icons/ci"
 import {  MdHome, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker,  MdEmail } from "react-icons/md"
 import {BiShowAlt} from "react-icons/bi"
 import {HiOutlineMail} from "react-icons/hi"
+import {AiOutlineArrowUp} from "react-icons/ai"
 
 import { FaHandshake, FaPhone, FaSchool, FaThLarge } from 'react-icons/fa';
 import { IoMdPhotos } from 'react-icons/io';
@@ -46,6 +47,16 @@ const Home = () => {
   const slides = [ { img: "/assets/nardin.jpg" }, { img: "/assets/school/school1.jpeg" }, { img: "/assets/school/school2.jpeg" }, { img: "/assets/school/school3.jpeg" }, { img: "/assets/school/school4.jpeg" } ]
 
 
+  const btn = document.getElementById('btn');
+
+
+const handelGoTop = ()=>{
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+});
+
+}
   
   const userJSON = localStorage.getItem('user');
   const user = JSON.parse(userJSON);
@@ -54,6 +65,10 @@ const Home = () => {
   return (
 
     <>
+
+
+<button onClick={handelGoTop} className="bg-main text-white font-semibold py-2 px-4 rounded-full fixed bottom-7 right-7 z-10" id="btn"><AiOutlineArrowUp/></button>
+
       <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]  ">
 
         {/* sm screen */}
@@ -134,7 +149,7 @@ const Home = () => {
         <img className="m-auto h-12 mt-10" src="/assets/mouseAnimition.gif" />
 
         <section  id="school_partners" className="w-full">
-          <h1  className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+          <h1  className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
             <MdPeopleAlt className="inline-block mr-2 text-2xl md:text-4xl " />            
             شركائنا
             </h1> 
@@ -154,7 +169,7 @@ const Home = () => {
 
 
         <section id="school_debartments" className="w-full mt-5 ">
-          <h1 className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+          <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
             <MdClass  className="inline-block mr-2 text-2xl md:text-4xl " />            
             الأقسام
             </h1>
@@ -170,7 +185,7 @@ const Home = () => {
 
             <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
               <img src="/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
-              <h1 className="text-center p-3 text-3xl font-bold text-main">البرمجة</h1>
+              <h1 className="text-center p-3 text-3xl font-bold text-yellow-500">البرمجة</h1>
               <p className="text-center p-3">
                 في هذا القسم، ندرس مجال البرمجة وتطوير البرمجيات. نقوم بدراسة تطوير تطبيقات الويب والتقنيات المستخدمة في برمجة البرامج.
               </p>
@@ -186,8 +201,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section id="about_school" className="w-[60%] m-auto  drop-shadow-md">
-          <h1 className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+        <section id="about_school" className="md:w-[60%] w-[80%] m-auto  drop-shadow-md">
+          <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
             <IoMdPhotos className="inline-block mr-2 text-2xl md:text-4xl "/>
             صور من المدرسة
           
@@ -200,7 +215,7 @@ const Home = () => {
 
         <section id="school_terms" className="w-full mt-10  relative" >
 
-      <h1  className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+      <h1  className="md:text-3xl  text-xl text-sec font-semibold animated-title text-center relative w-max m-auto">
         <FaSchool className="inline-block mr-2 text-2xl md:text-4xl " />
         معلومات حول المدرسة
       </h1>
@@ -401,7 +416,7 @@ const Home = () => {
         <HiOutlineMail className="inline-block  mr-2 text-2xl md:text-4xl " />
         تواصل معنا
       </h1>
-        <section id="school_contact" className=" lg:w-[50%] w-[80%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-10 gap-2" style={{ direction: 'rtl' }}>
+        <section id="school_contact" className=" lg:w-[50%] w-[80%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-2 md:p-10 gap-2" style={{ direction: 'rtl' }}>
 
           <div className="w-full flex flex-col md:w-[45%]">
             <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
