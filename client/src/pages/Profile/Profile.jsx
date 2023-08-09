@@ -56,6 +56,7 @@ function Profile() {
                     <Link to="" className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl"/></Link>
                 </div>
             </nav>
+            
       <img className="opacity-0 absolute top-0 right-0 z-[-1] w-full drop-shadow-xl md:opacity-[1]" src="/assets/wave.svg" alt="" />
 
             

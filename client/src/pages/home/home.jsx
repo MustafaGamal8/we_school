@@ -160,7 +160,7 @@ const Home = () => {
             </h1>
 
           <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+            <div className="bg-white drop-shadow flex-col rounded-lg w-[95%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
               <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
               <h1 className="text-center p-3 text-3xl font-bold text-main">الشبكات</h1>
               <p className="text-center p-3">
@@ -168,7 +168,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+            <div className="bg-white drop-shadow flex-col rounded-lg w-[95%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
               <img src="/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
               <h1 className="text-center p-3 text-3xl font-bold text-main">البرمجة</h1>
               <p className="text-center p-3">
@@ -176,7 +176,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+            <div className="bg-white drop-shadow flex-col rounded-lg w-[95%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
               <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
               <h1 className="text-center p-3 text-3xl font-bold">الاتصالات</h1>
               <p className="text-center p-3">
