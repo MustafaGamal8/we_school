@@ -426,7 +426,7 @@ const Home = () => {
         </section>
 
 
-
+        <button className="btn btn-info" style="position: fixed;bottom: 30px; right: 30px; border-radius: 50px;" id="btnn">up</button>
 
 
 
