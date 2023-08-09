@@ -23,6 +23,7 @@ const Login = () => {
 
   const Navigate = useNavigate()
 
+  
   const toastConfig = {
     position: 'bottom-left',
     autoClose: 3000,
@@ -35,6 +36,7 @@ const Login = () => {
     className: "md:w-80 md:text-base w-60 text-sm "
   };
 
+
   const schema = Yup.object().shape({
     email: Yup.string().email('Invalid email format').required('Email is required'),
     password: Yup.string().min(6).max(12).required('Password is required'),
@@ -45,7 +47,10 @@ const Login = () => {
         lastName: Yup.string().required('Last Name is required'),
         invitationCode: Yup.string().min(8).required('Invitation Code is required'),
         role: Yup.string().required('Please select a role'),
-        grade: Yup.string().required('Please select a grade'),
+         ...(formData.role =="student"        ? {
+            grade: Yup.string().required('Please select a grade'),
+           }: null
+         )
       }),
   });
 
@@ -119,7 +124,7 @@ const Login = () => {
 
         <section className="h-full mt-20 capitalize">
 
-          <h1 className="text-center text-5xl  capitalize text-white">{isLogin ? 'login' : 'sign up'}</h1>
+          <h1 className="text-center text-5xl  capitalize lg:text-white ">{isLogin ? 'login' : 'sign up'}</h1>
 
           <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20">
             <div className=" h-full lg:w-[80%]">
@@ -228,7 +233,8 @@ const Login = () => {
                       </div>
                     </div>
 
-                    <div className="relative w-full">
+                    { formData.role  == "student"? 
+                      <div className="relative w-full">
                       <select
                         className="w-full border border-gray-300 bg-white text-gray-900 rounded-md px-8 py-2 pr-8 focus:text-main appearance-none"
                         name="grade"
@@ -245,7 +251,8 @@ const Login = () => {
                       <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none p-2">
                         <FaChevronDown className="w-5 h-5 text-main" />
                       </div>
-                    </div>
+                    </div>:null
+                    }
                   </>
                 )}
 

@@ -1,0 +1,36 @@
+
+
+.active{
+  background: rgb(110 35 126 / var(--tw-bg-opacity));
+  color: white;
+}
+
+
+.sideBarAnimation{
+  animation: sideBarAnimation .3s forwards ;
+}
+
+
+@keyframes sideBarAnimation {
+  0%{
+    width: 200px;
+  }
+  100%{
+    width: 80px;
+  }
+  
+}
+.sideBarAnimationR{
+  animation: sideBarAnimationR .3s forwards ;
+}
+
+
+@keyframes sideBarAnimationR {
+  0%{
+    width: 80px;
+  }
+  100%{
+    width: 200px;
+  }
+  
+}
