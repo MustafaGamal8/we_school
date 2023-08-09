@@ -19,7 +19,7 @@
 
 
 .text-animition::after{
-  content: "karem store";
+  content: "";
   position: absolute;
   top: 1px;
   right: 0;
