@@ -13,7 +13,8 @@ import ListItem from "../../components/listItem";
 import Slider from './../../components/slider';
 import { BsFileText } from "react-icons/bs";
 import Footer from "../../components/footer/Footer";
-
+import { Trans} from "react-i18next";
+import  i18n from 'i18next';
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -60,7 +61,18 @@ const handelGoTop = ()=>{
   
   const userJSON = localStorage.getItem('user');
   const user = JSON.parse(userJSON);
+  
+  
+  const changeLanguage = ()=>{
 
+    const currentLanguage = i18n.language
+    
+    i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en" )
+    localStorage.setItem("lang" , currentLanguage == "en" ? "ar" : "en")
+    window.location.reload()
+    
+  }
+  
   
   return (
 
@@ -69,90 +81,111 @@ const handelGoTop = ()=>{
 
 <button onClick={handelGoTop} className="bg-main text-white font-semibold h-10 w-10 flex items-center justify-center rounded-full fixed bottom-7 right-7 z-10" id="btn"><AiOutlineArrowUp/></button>
 
-      <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]  ">
 
-        {/* sm screen */}
-        <div onClick={() => setIsMenuOpen(!isMenuOpen)} className="flex md:hidden text-3xl hover:bg-main hover:text-white rounded-full cursor-pointer p-1 transition-all "><MdMenu /></div>
+ <button onClick={changeLanguage} className="p-2 bg-sec rounded-md">change lang</button>
 
+ <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]">
 
-        <div className={` ${isMenuOpen ? "menuAnimitionOpen flex md:hidden" : "hidden"} absolute top-[100%] left-0 bg-white text-main  w-full h-0  flex-col-reverse items-center justify-center   whitespace-nowrap`}>
-          <div onClick={()=>handleMenuClick("school_contact")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <FaPhone className="text-xl" /></div>
-          <div onClick={()=>handleMenuClick("school_terms")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <BsFileText  /></div>
-          <div onClick={()=>handleMenuClick("school_debartments")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الاقسام</h1> <FaThLarge  className="text-xl" /></div>
-          <div onClick={()=>handleMenuClick("about_school")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>عن المدرسة</h1> <FaSchool className="text-xl" /></div>
-          <div onClick={()=>handleMenuClick("school_partners")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شركائنا</h1> <FaHandshake  /></div>
-          <div onClick={()=>handleMenuClick("school_main")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl" /></div>
+{/* sm screen*/}
+<div onClick={() => setIsMenuOpen(!isMenuOpen)} className="flex md:hidden text-3xl hover:bg-main hover:text-white rounded-full cursor-pointer p-1 transition-all ">
+  <MdMenu />
+</div>
 
-        </div>
+<div className={` ${isMenuOpen ? "menuAnimitionOpen flex md:hidden" : "hidden"} absolute top-[100%] left-0 bg-white text-main  w-full h-0  flex-col-reverse items-center justify-center   whitespace-nowrap`}>
+  <div onClick={() => handleMenuClick("school_contact")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>تواصل</Trans></h1> <FaPhone className="text-xl" />
+  </div>
+  <div onClick={() => handleMenuClick("school_terms")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>شروط التقديم</Trans></h1> <BsFileText />
+  </div>
+  <div onClick={() => handleMenuClick("school_debartments")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>الأقسام</Trans></h1> <FaThLarge className="text-xl" />
+  </div>
+  <div onClick={() => handleMenuClick("about_school")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>عن المدرسة</Trans></h1> <FaSchool className="text-xl" />
+  </div>
+  <div onClick={() => handleMenuClick("school_partners")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>شركاؤنا</Trans></h1> <FaHandshake />
+  </div>
+  <div onClick={() => handleMenuClick("school_main")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>الصفحة الرئيسية</Trans></h1> <MdHome className="text-xl" />
+  </div>
+</div>
+{/* end of sm screen*/}
 
-        {/* end of sm screen */}
+<img src="/logo.jpg" alt="" className="h-full " />
 
-        <img src="/logo.jpg" alt="" className="h-full " />
+<div className="hidden  md:flex items-center justify-center lg:gap-3  whitespace-nowrap">
+  <div onClick={() => handleMenuClick("school_contact")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>تواصل</Trans></h1> <FaPhone className="text-xl" />
+  </div>
+  <div onClick={() => handleMenuClick("school_terms")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>شروط التقديم</Trans></h1> <BsFileText />
+  </div>
+  <div onClick={() => handleMenuClick("school_debartments")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>الأقسام</Trans></h1> <FaThLarge className="text-xl" />
+  </div>
+  <div onClick={() => handleMenuClick("about_school")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>عن المدرسة</Trans></h1> <FaSchool className="text-xl" />
+  </div>
+  <div onClick={() => handleMenuClick("school_partners")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>شركاؤنا</Trans></h1> <FaHandshake />
+  </div>
+  <div onClick={() => handleMenuClick("school_main")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
+    <h1><Trans>الصفحة الرئيسية</Trans></h1> <MdHome className="text-xl" />
+  </div>
+</div>
 
-        <div className="hidden  md:flex items-center justify-center lg:gap-3  whitespace-nowrap">
-          <div onClick={()=>handleMenuClick("school_contact")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>تواصل</h1> <FaPhone className="text-xl" /></div>
-          <div onClick={()=>handleMenuClick("school_terms")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شروط التقديم</h1> <BsFileText  /></div>
-          <div onClick={()=>handleMenuClick("school_debartments")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الاقسام</h1> <FaThLarge  className="text-xl" /></div>
-          <div onClick={()=>handleMenuClick("about_school")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>عن المدرسة</h1> <FaSchool className="text-xl" /></div>
-          <div onClick={()=>handleMenuClick("school_partners")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>شركائنا</h1> <FaHandshake  /></div>
-          <div onClick={()=>handleMenuClick("school_main")}  className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg"><h1>الصفحة الرئيسية</h1> <MdHome className="text-xl" /></div>
+<Link to={user ? "/dashboard" : "/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">
+  <Trans>تسجيل الدخول</Trans><CiUser className="md:text-2xl text-lg " />
+</Link>
+</nav>
 
-
-        </div>
-
-        <Link to={ user ?"/dashboard" :"/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">تسجيل الدخول<CiUser className="md:text-2xl text-lg " /> </Link>
-
-
-
-
-
-      </nav>
 
       <main className="relative  w-full flex flex-col gap-8">
         <img className=" absolute top-0 right-0 -z-10 w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
 
         <section id="school_main">
-          <div className="text-center  mt-20 bg-white rounded-lg w-80  m-auto py-2 drop-shadow">
-            <h1 className="text-xl md:text-3xl drop-shadow">مدرسة وي <br /> للتكنولوجيا التطبيقية</h1>
-            <h2 className="mt-2 md:text-2xl  text-[#6e237e] relative w-max m-auto text-animition ">في المنصورة</h2>
-          </div>
-        </section>
+  <div className="text-center  mt-20 bg-white rounded-lg w-80  m-auto py-2 drop-shadow">
+    <h1 className="text-xl md:text-3xl drop-shadow"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
+    <h2 className="mt-2 md:text-2xl  text-[#6e237e] relative w-max m-auto text-animition "><Trans>في المنصورة</Trans></h2>
+  </div>
+</section>
 
-        <section className="flex flex-col md:flex-row items-center justify-around px-5 w-full   pt-20 text-right">
-          <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative">
-            <img
-              className="md:h-96 h-60 rounded-lg transition-all duration-500 transform hover:scale-105"
-              src="/assets/student.jpg"
-              alt="الطلاب في مدرسة WeTech للتكنولوجيا التطبيقية"
-            />
+<section className="flex flex-col md:flex-row items-center justify-around px-5 w-full   pt-20 text-right">
+  <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative">
+    <img
+      className="md:h-96 h-60 rounded-lg transition-all duration-500 transform hover:scale-105"
+      src="/assets/student.jpg"
+      alt="الطلاب في مدرسة WeTech للتكنولوجيا التطبيقية"
+    />
 
-            <div className="absolute top-0 left-0 w-full h-full p-4 flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100">
-              <h2 className="text-2xl font-semibold mb-4">مدرسة وي للتكنولوجيا التطبيقية</h2>
-              <p className="text-lg text-center">
-                تعلم  البرمجة واستكشف عالمًا مشوقًا في تقنية الاتصالات والشبكات في مدرسة وي.
-              </p>
-              <button onClick={()=>handleMenuClick("school_debartments")} className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 mt-4 rounded">
-                استكشف المناهج
-              </button>
-            </div>
-          </div>
+    <div className="absolute top-0 left-0 w-full h-full p-4 flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100">
+      <h2 className="text-2xl font-semibold mb-4"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h2>
+      <p className="text-lg text-center">
+        <Trans>تعلم  البرمجة واستكشف عالمًا مشوقًا في تقنية الاتصالات والشبكات في مدرسة وي.</Trans>
+      </p>
+      <button onClick={() => handleMenuClick("school_debartments")} className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 mt-4 rounded">
+        <Trans>استكشف المناهج</Trans>
+      </button>
+    </div>
+  </div>
 
-          <div className="md:w-[520px]  flex flex-col items-end justify-end  gap-3 mt-5">
-            <p className="font-semibold text-lg">ما هي ؟</p>
-            <h1 className="text-main text-3xl semi semi">مدرسة وي للتكنولوجيا التطبيقية</h1>
-            <p className="md:text-lg">مرحبًا بك في "مدرسة وي للتكنولوجيا التطبيقية"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في "وي للتكنولوجيا التطبيقية"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور.</p>
-          </div>
+  <div className="md:w-[520px]  flex flex-col items-end justify-end  gap-3 mt-5">
+    <p className="font-semibold text-lg"><Trans>ما هي ؟</Trans></p>
+    <h1 className="text-main text-3xl semi semi"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
+    <p className="md:text-lg"><Trans>مرحبًا بك في "مدرسة وي للتكنولوجيا التطبيقية"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في "وي للتكنولوجيا التطبيقية"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور.</Trans></p>
+  </div>
+</section>
 
-        </section>
+<img className="m-auto h-12 mt-10" src="/assets/mouseAnimition.gif" />
 
-        <img className="m-auto h-12 mt-10" src="/assets/mouseAnimition.gif" />
-
-        <section  id="school_partners" className="w-full">
-          <h1  className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
-            <MdPeopleAlt className="inline-block mr-2 text-2xl md:text-4xl " />            
-            شركائنا
-            </h1> 
+<section id="school_partners" className="w-full">
+  <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+    <MdPeopleAlt className="inline-block mr-2 text-2xl md:text-4xl " />            
+    <Trans>شركاؤنا</Trans>
+  </h1>
             
 
           <div className="w-full  bg-white  border-y flex flex-col md:flex-row items-center justify-evenly gap-5 p-5 mt-10">
