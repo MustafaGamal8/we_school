@@ -3,15 +3,17 @@ import Loader from "./components/loader/loader";
 import Home from './pages/home/home';
 import Login from './pages/login/login';
 import { Routes,Route } from "react-router-dom";
-import "./index.css";
-import Natega from "./pages/natega/natega";
-import DashBoard from "./pages/dashBoard/dashBoard";
 import Profile from "./pages/Profile/Profile";
 import  i18n from 'i18next';
-
 import enTranslation from './locales/en.json';
 import arTranslation from './locales/ar.json';
-import { initReactI18next } from "react-i18next";
+import { initReactI18next ,Trans} from "react-i18next";
+import "./index.css";
+import Main from './pages/main/main';
+import DashBoard from './pages/dashBoard/dashBoard';
+import TimeLine from './pages/timeLine/timeLine';
+import Degree from "./pages/degree/degree";
+import Settings from "./pages/settings/settings";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,10 +25,15 @@ function App() {
   }, 5000);
 
   useEffect(() => {
-
-    defultLang == "en" ? document.body.dir ="rtl" : document.body.dir ="ltr"
-    
-  }, []);
+    const direction = defultLang === "en" ? "rtl" : "ltr";
+    const alignment = defultLang === "en" ? "left" : "right";
+  
+    document.body.dir = direction;
+    document.querySelectorAll("p").forEach((h1) => {
+      h1.style.textAlign = alignment;
+    });
+  }, [defultLang]);
+  
 
   
 
@@ -44,6 +51,19 @@ function App() {
     },
   })
 
+
+  const changeLanguage = ()=>{
+
+    const currentLanguage = i18n.language
+    
+    i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en" )
+    localStorage.setItem("lang" , currentLanguage == "en" ? "ar" : "en")
+    window.location.reload()  
+    
+    
+  }
+  
+
   return (
     <>
     
@@ -53,11 +73,22 @@ function App() {
 
       <Routes>
         <Route path="/"  element={<Home />}/>
-        <Route path="/profile"  element={<Profile />}/>
-        <Route path="/natega"  element={<Natega />}/>
         <Route path="/login"  element={<Login />}/>
-        <Route path="/dashboard"  element={<DashBoard />}/>
+
+        <Route path="/main/"  element={<Main />}>
+          <Route path="profile"  element={<Profile />}/>
+          <Route path="dashboard"  element={<DashBoard />}/>
+          <Route path="timeline"  element={<TimeLine />}/>
+          <Route path="degree"  element={<Degree />}/>
+          <Route path="settings"  element={<Settings />}/>
+        </Route>
+
       </Routes>
+
+
+
+      <button onClick={changeLanguage} className="p-2 bg-sec rounded-t-md text-white fixed -bottom-1  left-2 hover:bottom-2 transition-all"><Trans>تغير اللغة</Trans></button>
+
 
       
     </>

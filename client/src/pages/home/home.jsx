@@ -63,16 +63,7 @@ const handelGoTop = ()=>{
   const user = JSON.parse(userJSON);
   
   
-  const changeLanguage = ()=>{
 
-    const currentLanguage = i18n.language
-    
-    i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en" )
-    localStorage.setItem("lang" , currentLanguage == "en" ? "ar" : "en")
-    window.location.reload()
-    
-  }
-  
   
   return (
 
@@ -81,8 +72,6 @@ const handelGoTop = ()=>{
 
 <button onClick={handelGoTop} className="bg-main text-white font-semibold h-10 w-10 flex items-center justify-center rounded-full fixed bottom-7 right-7 z-10" id="btn"><AiOutlineArrowUp/></button>
 
-
- <button onClick={changeLanguage} className="p-2 bg-sec rounded-md">change lang</button>
 
  <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]">
 
@@ -136,10 +125,13 @@ const handelGoTop = ()=>{
   </div>
 </div>
 
-<Link to={user ? "/dashboard" : "/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">
+<Link to={user ? "/main/timeline" : "/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">
   <Trans>تسجيل الدخول</Trans><CiUser className="md:text-2xl text-lg " />
 </Link>
 </nav>
+
+
+
 
 
       <main className="relative  w-full flex flex-col gap-8">
@@ -148,7 +140,7 @@ const handelGoTop = ()=>{
 
         <section id="school_main">
   <div className="text-center  mt-20 bg-white rounded-lg w-80  m-auto py-2 drop-shadow">
-    <h1 className="text-xl md:text-3xl drop-shadow"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
+    <h1 className="text-xl md:text-3xl drop-shadow text-center"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
     <h2 className="mt-2 md:text-2xl  text-[#6e237e] relative w-max m-auto text-animition "><Trans>في المنصورة</Trans></h2>
   </div>
 </section>
