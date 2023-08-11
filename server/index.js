@@ -39,11 +39,20 @@ app.get('/', async (req, res) => {
   });
 });
 
+const translate = require('translate-google')
 
 
 const startServer = async () => {
   try {
     connectDB(MONGODB_URL);
+
+    app.post('/translate', async (req, res) => {
+      const {msg} = req.body
+
+      const myres =  await translate(msg,{ from :"ar",to: "en"})
+      res.json({msg:myres})
+      
+    });
 
 
     // Auth 

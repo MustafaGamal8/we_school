@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import"./natega.css"
 
-function Natega() {
+
+function Degree() {
   const [showTable, setShowTable] = useState(false);
   const [studentId, setStudentId] = useState('');
 
@@ -131,4 +131,4 @@ function Natega() {
   );
 }
 
-export default Natega;
+export default Degree;
