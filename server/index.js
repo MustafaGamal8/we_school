@@ -39,7 +39,8 @@ app.get('/', async (req, res) => {
   });
 });
 
-const translate = require('translate-google')
+const translate = require('translate-google');
+const { default: DegreesModel } = require('./mongo/degreeModel.js');
 
 
 const startServer = async () => {
@@ -103,6 +104,34 @@ const startServer = async () => {
     app.get('/files/:id', async (req, res) => {
       readFile(req, res)
     });
+
+
+
+
+
+
+
+    // _________
+    app.post('/degrees-upload', upload.single('file'), async (req, res) => {
+      try {
+        const workbook = xlsx.read(req.file.buffer, { type: 'buffer' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const data = xlsx.utils.sheet_to_json(worksheet, { raw: true });
+    
+        const chunkSize = 100; // Adjust as needed
+        for (let i = 0; i < data.length; i += chunkSize) {
+          const chunk = data.slice(i, i + chunkSize);
+          await DegreesModel.create(chunk);
+        }
+    
+        res.status(201).json({ message: 'Data uploaded successfully' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while uploading data' });
+      }
+    });
+    
 
     app.listen(8000 || process.env.PORT, () => console.log('Server has started on port http://localhost:8000'));
   } catch (error) {
