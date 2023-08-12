@@ -27,10 +27,10 @@ const Sidebar = () => {
         {iscollapsed ? <AiOutlinePlus /> : <AiOutlineMinus />}
       </div>
 
-      <header className='w-full capitalize'>
+      <header className='w-full capitalize '>
 
-        <div className=" w-full bg-white   overflow-hidden">
-          <div className="flex justify-center mt-4 border-2 border-white w-max m-auto rounded-full ">
+        <div className=" w-full bg-white   overflow-hidden ">
+          <div className="flex justify-center mt-4 border-2 border-main w-max m-auto rounded-full ">
             <FaUserCircle className={` ${iscollapsed ? 'text-3xl' : 'text-6xl'} text-gray-200  `} />
           </div>
           <div className="text-center mt-4">
@@ -44,15 +44,12 @@ const Sidebar = () => {
 
 
       <main className='mt-10 uppercase flex flex-col  '>
+        <MenuItem to={"/main/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/degree"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />
 
-
-
-        <MenuItem to={"/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
-        <MenuItem to={"/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
-        <MenuItem to={"/"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />
-
-        <MenuItem to={"/"} icon={<FiSettings />} title={"Settings"} iscollapsed={iscollapsed} />
-        <MenuItem to={"/"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/settings"} icon={<FiSettings />} title={"Settings"} iscollapsed={iscollapsed} />
 
         <div onClick={logout}><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
 
