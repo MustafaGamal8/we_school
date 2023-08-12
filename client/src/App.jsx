@@ -1,67 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loader from "./components/loader/loader";
 import Home from './pages/home/home';
 import Login from './pages/login/login';
 import { Routes,Route } from "react-router-dom";
-import Profile from "./pages/Profile/Profile";
-import  i18n from 'i18next';
-import enTranslation from './locales/en.json';
-import arTranslation from './locales/ar.json';
-import { initReactI18next ,Trans} from "react-i18next";
 import "./index.css";
-import Main from './pages/main/main';
-import DashBoard from './pages/dashBoard/dashBoard';
-import TimeLine from './pages/timeLine/timeLine';
-import Degree from "./pages/degree/degree";
-import Settings from "./pages/settings/settings";
+import Natega from "./pages/natega/natega";
+import DashBoard from "./pages/dashBoard/dashBoard";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
-  const defultLang = localStorage.getItem("lang") 
-
   setTimeout(() => {
     setIsLoading(false)
   }, 5000);
 
-  useEffect(() => {
-    const direction = defultLang === "en" ? "rtl" : "ltr";
-    const alignment = defultLang === "en" ? "left" : "right";
-  
-    document.body.dir = direction;
-    document.querySelectorAll("p").forEach((h1) => {
-      h1.style.textAlign = alignment;
-    });
-  }, [defultLang]);
-  
-
-  
-
-  
-
-  i18n.use(initReactI18next).init({
-    resources:{
-      ar: { translation: arTranslation },
-      en:{ translation : enTranslation }
-    },
-    lng: defultLang  || "ar",  // Set default language to Arabic
-    fallbackLng: 'ar', // Fallback language if translation is missing for a key
-    interpolation: {
-      escapeValue: false, // React already sanitizes the output, so no need to escape
-    },
-  })
-
-
-  const changeLanguage = ()=>{
-
-    const currentLanguage = i18n.language
-    
-    i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en" )
-    localStorage.setItem("lang" , currentLanguage == "en" ? "ar" : "en")
-    window.location.reload()  
-    
-    
-  }
   
 
   return (
@@ -73,22 +25,11 @@ function App() {
 
       <Routes>
         <Route path="/"  element={<Home />}/>
+        <Route path="/profile"  element={<Profile />}/>
+        <Route path="/natega"  element={<Natega />}/>
         <Route path="/login"  element={<Login />}/>
-
-        <Route path="/main/"  element={<Main />}>
-          <Route path="profile"  element={<Profile />}/>
-          <Route path="dashboard"  element={<DashBoard />}/>
-          <Route path="timeline"  element={<TimeLine />}/>
-          <Route path="degree"  element={<Degree />}/>
-          <Route path="settings"  element={<Settings />}/>
-        </Route>
-
+        <Route path="/dashboard"  element={<DashBoard />}/>
       </Routes>
-
-
-
-      <button onClick={changeLanguage} className="p-2 bg-sec rounded-t-md text-white fixed -bottom-1  left-2 hover:bottom-2 transition-all"><Trans>تغير اللغة</Trans></button>
-
 
       
     </>
