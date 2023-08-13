@@ -1,7 +1,7 @@
 
 
 .active{
-  @apply bg-blue-500;
+  background: rgb(110 35 126 / var(--tw-bg-opacity));
   color: white;
 }
 
@@ -13,7 +13,7 @@
 
 @keyframes sideBarAnimation {
   0%{
-    width: 250px;
+    width: 220px;
   }
   100%{
     width: 80px;
@@ -30,7 +30,7 @@
     width: 80px;
   }
   100%{
-    width: 250px;
+    width: 220px;
   }
   
 }
