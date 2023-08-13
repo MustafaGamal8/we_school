@@ -25,7 +25,7 @@ const Calendar = () => {
           {format(currentMonth, 'MMMM yyyy')}
         </h2>
         <button
-          className="text-blue-500"
+          className="text-blue-500 "
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
         >
           <IoIosArrowForward size={20} />
