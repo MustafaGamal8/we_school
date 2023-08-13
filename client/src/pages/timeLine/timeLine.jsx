@@ -5,6 +5,12 @@ import Task from "../../components/task";
 
 const TimeLine = () => {
   return ( 
+    <>
+      <div className="h-10 w-96"><Search /></div>
+  <div className="w-96"><Calendar /> </div>
+  <div className="w-96 m-5"><Task /> </div>
+    
+    
     <div className="w-[90%] md:w-[60%] m-auto bg-main flex flex-col justify-between items-center   h-[250px] border-[2px] border-black border-solid rounded-lg mt-[70px] p-2 md:p-5 " >
     <input
       type="text"
@@ -28,7 +34,11 @@ const TimeLine = () => {
     >
       رفع الملف
     </button>
-  </div>    );
+  </div>
+  </>
+  
+  
+      );
 }
  
 export default TimeLine;
