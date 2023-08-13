@@ -20,7 +20,7 @@ const Sidebar = () => {
 
 
   return (
-    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  h-[100vh] text-main  flex flex-col relative`}>
+    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  h-[100vh] text-black  flex flex-col relative`}>
 
 
       <div className='absolute top-2 right-2 text-lg z-[2] cursor-pointer' onClick={() => setIsCollapsed(!iscollapsed)}>
@@ -30,7 +30,7 @@ const Sidebar = () => {
       <header className='w-full capitalize '>
 
         <div className=" w-full bg-white   overflow-hidden ">
-          <div className="flex justify-center mt-4 border-2 border-main w-max m-auto rounded-full ">
+          <div className="flex justify-center mt-4 border-2 border-blue-500 w-max m-auto rounded-full ">
             <FaUserCircle className={` ${iscollapsed ? 'text-3xl' : 'text-6xl'} text-gray-200  `} />
           </div>
           <div className="text-center mt-4">
@@ -70,7 +70,7 @@ export default Sidebar;
 
 const MenuItem = ({ icon, title, iscollapsed ,to }) => {
   return (
-    <NavLink to={to} className="flex items-center  gap-x-5 text-lg hover:bg-main rounded p-2 hover:text-white m-2">
+    <NavLink to={to} className="flex items-center  gap-x-5 text-lg  hover:scale-90 transition-all hover:bg-blue-500 rounded p-3  hover:text-white m-2">
       {icon}
       {!iscollapsed && <h1>{title}</h1>}
     </NavLink>

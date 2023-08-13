@@ -24,7 +24,7 @@ const Main = () => {
        <Sidebar />
         
 
-        <section className=' w-full'>
+        <section className=' w-full drop-shadow-md bg-white rounded-l-lg overflow-hidden'>
         <Outlet />
         </section>
        
