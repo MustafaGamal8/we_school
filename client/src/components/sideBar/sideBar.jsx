@@ -71,7 +71,7 @@ const Sidebar = () => {
           fetchAdvice();
           setIsAdviceHidden(false);
         }}>
-          <MenuItem icon={<IoSchoolOutline />} title={"advice"} iscollapsed={iscollapsed} />
+          <MenuItem icon={<IoSchoolOutline />} title={"Advice"} iscollapsed={iscollapsed} />
         </button>
         <Adviceitem title={isAdviceHidden ? "clik on advice  " : advice} iscollapsed={iscollapsed} />
       </div>
