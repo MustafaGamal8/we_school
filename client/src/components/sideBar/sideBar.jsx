@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom'; // Make sure to import Link if you're using it
 import { FiSettings } from 'react-icons/fi';
-import { IoPersonOutline, IoLogOutOutline, IoSchoolOutline } from 'react-icons/io5';
+import { IoPersonOutline, IoLogOutOutline, IoSchoolOutline,IoArrowUp } from 'react-icons/io5';
 import { CiViewTimeline } from 'react-icons/ci';
 import { RxDashboard } from 'react-icons/rx';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import "./sideBar.css"
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { FaUserCircle } from 'react-icons/fa';
@@ -12,6 +12,19 @@ import { logout } from '../../functions/auth';
 
 const Sidebar = () => {
   const [iscollapsed, setIsCollapsed] = useState(false);
+  const [advice, setAdvice] = useState('');
+  const [isAdviceHidden, setIsAdviceHidden] = useState(true);
+
+  const fetchAdvice = () => {
+    fetch('https://api.adviceslip.com/advice')
+      .then(response => response.json())
+      .then(data => setAdvice(data.slip.advice))
+      .catch(error => alert(error ,"check your internet connection"));
+  }
+
+  useEffect(() => {
+    fetchAdvice();
+  }, []);
   
   const userJSON = localStorage.getItem('user');
   const user = JSON.parse(userJSON);
@@ -52,6 +65,16 @@ const Sidebar = () => {
         <MenuItem to={"/main/settings"} icon={<FiSettings />} title={"Settings"} iscollapsed={iscollapsed} />
 
         <div onClick={logout}><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
+        
+        <div className='w-full border-[1px] border-solid '>
+        <button className='w-full' onClick={() => {
+          fetchAdvice();
+          setIsAdviceHidden(false);
+        }}>
+          <MenuItem icon={<IoSchoolOutline />} title={"advice"} iscollapsed={iscollapsed} />
+        </button>
+        <Adviceitem title={isAdviceHidden ? "clik on advice  " : advice} iscollapsed={iscollapsed} />
+      </div>
 
 
       </main>
@@ -77,6 +100,11 @@ const MenuItem = ({ icon, title, iscollapsed ,to }) => {
 
   );
 }
-
+const Adviceitem = ({ icon, title, iscollapsed}) => {
+  return (
+    <NavLink  className="flex items-center  bg-main text-white p-2 gap-x-5 text-sm hover:bg-main rounded  hover:text-white m-2">
+      {icon}
+      {!iscollapsed && <h1>{title}</h1>}
+    </NavLink>)}
 
 

@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { FaFileUpload } from "react-icons/fa";
+// import Calendar from "../../components/calender";
+
+
 
 const DashBoard = () => {
   const [file, setFile] = useState(null);
+  const display=document.getElementById("dispaly")
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
+    console.log(
+      display.value 
+,
+      event.target.files[0]);
+
   };
 
   const handleUpload = () => {
@@ -13,11 +22,13 @@ const DashBoard = () => {
   };
 
   return (
-    <div className="w-[90%] md:w-[60%] m-auto bg-main flex flex-col justify-between items-center   h-[250px] border-[2px] border-black border-solid rounded-lg mt-[70px] p-2 md:p-5 " >
+    <>
+    <div className="w-[90%] md:w-[60%] m-auto bg-main flex flex-col justify-between items-center   border-[2px] border-black border-solid rounded-lg mt-[70px] p-2 md:p-5 " >
       <input
         type="text"
         placeholder="أدخل النص هنا"
         className=" w-full md:w-[95%] p-4 mb-4 rounded-lg text-center outline-none"
+        id="dispaly"
       />
       <label className=" w-full bg-white text-main px-4 py-2 md:w-[70%] rounded-lg flex items-center justify-center">
         <FaFileUpload className="mt-2" />
@@ -37,6 +48,17 @@ const DashBoard = () => {
         رفع الملف
       </button>
     </div>
+    {/* <Calendar /> */}
+
+    {/* post */}
+    <section>
+
+
+    </section>
+
+    </>
+    
+
   );
 };
 
