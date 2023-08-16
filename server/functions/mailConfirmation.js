@@ -127,8 +127,9 @@ const sendMail = async (email) => {
 
 
 
-const confirmEmail = async(token,res)=>{
-  try {
+const confirmEmail = async(req,res)=>{
+  const {token} = req.params
+  try {  
     // Find the user with the given token in the database
     const user = await UserModel.findOne({ confirmationToken: token });
 

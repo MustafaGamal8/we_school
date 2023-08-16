@@ -1,38 +1,35 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
+const subjectSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  finalDegree: {
+    type: Number,
+    required: true
+  },
+  studentDegree: {
+    type: Number,
+    required: true
+  },
+  taqdeer: {
+    type: String,
+  }
+});
 
 const degreesSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  seatNumber: {
+  code: {
     type: String,
     required: true
   },
-  degrees: [
-    {
-      subject: {
-        type: String,
-        required: true
-      },
-      finalDegree: {
-        type: Number,
-        required: true
-      },
-      studentDegree: {
-        type: Number,
-        required: true
-      }
-    }
-  ]
+  subjects: [subjectSchema],
 });
 
+const DegreesModel = mongoose.model("Degrees", degreesSchema);
 
-
-
-
-const DegreesModel = mongoose.model("degrees",degreesSchema)
-
-
-export default DegreesModel;
+module.exports = DegreesModel;

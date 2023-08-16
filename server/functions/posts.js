@@ -79,7 +79,7 @@ const readFile = async (req, res) => {
 
 
 
-const readAllPosts = async (res)=>{
+const readAllPosts = async (req,res)=>{
   try {
     const posts = await postModel.find()
     
@@ -93,7 +93,7 @@ const readAllPosts = async (res)=>{
 }
 
 // not needed !!!!!!!!!
-const readAllFiles = async (res) => {
+const readAllFiles = async (req,res) => {
   try {
     const files = await fileModel.find({}, 'name contentType');
 

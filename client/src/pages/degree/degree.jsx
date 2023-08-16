@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
-
+import { getDegree } from '../../functions/degrees';
+import * as yup from 'yup';
 
 function Degree() {
   const [showTable, setShowTable] = useState(false);
-  const [studentId, setStudentId] = useState('');
+  const [studentId, setStudentId] = useState("");
+  const [studentData, setStudentData] = useState(null);
 
-  const handleSearch = () => {
-    setShowTable(true);
+  const schema = yup.object().shape({
+    studentId: yup.string().required('Student ID is required').min(2, 'Student ID must be at least 2 characters long'),
+  });
+
+  const handleSearch = async () => {
+    try {
+      await schema.validate({ studentId }, { abortEarly: false });
+      const response = await getDegree(studentId);
+      setStudentData(response); // Save the response data
+      setShowTable(true);
+    } catch (error) {
+      console.log(error.message); // Log validation error messages
+    }
   };
 
   return (
@@ -27,105 +40,46 @@ function Degree() {
         </button>
       </div>
 
-      {showTable && (
+      {showTable && studentData && (
         <div className="container mx-auto mt-10" id='table'>
-            <h1 className='text-center text-2xl mt-4'>الاسم : كارم محمود عبدالقادر</h1>
-        <table className="min-w-full bg-white mt-14">
-          <thead>
-            <tr>
-              <th className="px-6 py-3 border-b-2 border-gray-300 text-right text-xs font-semibold uppercase tracking-wider">
-                المادة
-              </th>
-              <th className="px-6 py-3 border-b-2 border-gray-300 text-right text-xs font-semibold uppercase tracking-wider">
-                الدرجة
-              </th>
-              <th className="px-6 py-3 border-b-2 border-gray-300 text-right text-xs font-semibold uppercase tracking-wider">
-                الدرجة النهائية
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                MAth
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                90
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-               100
-              </td>
-            </tr>
-            <tr className="bg-gray-100">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                physics
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                85
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-               100
-              </td>
-            </tr>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                اللغة العربية
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                92
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                92
-              </td>
-            </tr>
-            <tr className="bg-gray-100">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                English
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                88
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                88
-              </td>
-            </tr>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                soshial
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                95
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-               100
-              </td>
-            </tr>
-            <tr className="bg-gray-100">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                programming
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                100
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                100
-              </td>
-            </tr>
-            <tr className="bg-gray-50">
-              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-              autocatd
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                87
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                100
-              </td>
-            </tr>
-       
-          </tbody>
-        </table>
-      </div>
+          <h1 className='text-center text-2xl mt-4'>{studentData.name}</h1>
+          <table className="min-w-full bg-white mt-14 text-left">
+            <thead>
+              <tr>
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
+                  المادة
+                </th>
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
+                  الدرجة
+                </th>
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
+                  الدرجة النهائية
+                </th>
+                <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
+                  تقدير
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {studentData.subjects.map((subject) => (
+                <tr key={subject._id} className="bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {subject.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {subject.studentDegree}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {subject.finalDegree}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {subject.taqdeer}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </>
   );
