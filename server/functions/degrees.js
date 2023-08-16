@@ -1,6 +1,7 @@
 const DegreesModel = require("../mongo/degreeModel");
 
 
+const xlsx = require('xlsx');
 
 const upload_xlsx = async(req,res)=>{
   try {
@@ -30,9 +31,9 @@ const upload_xlsx = async(req,res)=>{
         code: studentCode,
         subjects: subjects
       };
-    });
 
-    console.log(studentsData[0].subjects[0])
+      console.log(subjects)
+    });
 
 
 

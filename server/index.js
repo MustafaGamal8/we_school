@@ -5,7 +5,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const app = express();
 const multer = require('multer');
-const xlsx = require('xlsx');
 app.use(bodyParser.json());
 app.use(cors());
 dotenv.config();

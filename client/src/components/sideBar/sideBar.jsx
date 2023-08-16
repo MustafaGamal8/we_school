@@ -40,15 +40,15 @@ const Sidebar = () => {
         {iscollapsed ? <AiOutlinePlus /> : <AiOutlineMinus />}
       </div>
 
-      <header className='w-full capitalize '>
+      <header className='w-full capitalize  '>
 
-        <div className=" w-full bg-white   overflow-hidden ">
+        <div className=" w-full bg-white   overflow-hidden  ">
           <div className="flex justify-center mt-4 border-2 border-main w-max m-auto rounded-full ">
             <FaUserCircle className={` ${iscollapsed ? 'text-3xl' : 'text-6xl'} text-gray-200  `} />
           </div>
-          <div className="text-center mt-4">
-            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
-            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600  `}>Student</p>
+          <div className="mt-4 ">
+            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 text-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
+            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    text-center`}>Student</p>
           </div>
         </div>
 
