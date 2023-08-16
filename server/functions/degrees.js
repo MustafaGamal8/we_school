@@ -59,7 +59,6 @@ const getDegrees = async (req,res)=>{
 const getStudentDegrees = async (req, res) => {
   try {
     const studentCode = req.params.code;
-    console.log(studentCode);
 
     if (!studentCode) {
       return res.status(400).json({ error: 'Student code is required' });
