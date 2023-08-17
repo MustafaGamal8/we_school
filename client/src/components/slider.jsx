@@ -17,7 +17,7 @@ const Slider = ({ slides }) => {
         prevEl: '.swiper-button-prev',
         nextEl: '.swiper-button-next',
       }}
-      className="rounded-lg overflow-hidden drop-shadow-xl relative"
+      className="rounded-lg overflow-hidden drop-shadow-xl relative w-full h-full"
       breakpoints={{
         // 640px is the breakpoint where only 1 slide will be shown
         900: {
@@ -34,6 +34,7 @@ const Slider = ({ slides }) => {
       <div className="absolute right-0 top-1/2 transform md:-translate-x-1/2  -translate-y-1/2 z-10 swiper-button-next cursor-pointer hover:bg-sec hover:text-white text-sec rounded-full">
         <FiChevronRight className="text-5xl" />
       </div>
+
       {slides.map((s, index) => (
         <SwiperSlide key={index} className='flex items-center justify-center drop-shadow'>
           <div className="md:h-[550px] h-[300px] w-full">

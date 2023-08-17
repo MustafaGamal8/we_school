@@ -23,14 +23,11 @@
 .sideBarAnimationR{
   animation: sideBarAnimationR .3s forwards ;
 }
-
-
 @keyframes sideBarAnimationR {
-  0%{
+  0% {
     width: 80px;
   }
-  100%{
+  100% {
     width: 220px;
   }
-  
 }

@@ -9,8 +9,6 @@ export const getDegree = async(StudentCode)=>{
   return response.data
     
   } catch (error) {
-
-    
     return error.response.data
     
   }
