@@ -40,7 +40,7 @@ const upload_xlsx = async(req,res)=>{
 
     await DegreesModel.insertMany(studentsData);
 
-    res.status(200).json({ message: 'File uploaded and data processed successfully' });
+    res.status(200).json({ msg: 'File uploaded and data processed successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });

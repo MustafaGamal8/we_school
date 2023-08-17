@@ -10,8 +10,8 @@ import { FaUserCircle } from 'react-icons/fa';
 import { logout } from '../../functions/auth';
 
 
-const Sidebar = () => {
-  const [iscollapsed, setIsCollapsed] = useState(false);
+const Sidebar = ({user}) => {
+  const [iscollapsed, setIsCollapsed] = useState(true);
   const [advice, setAdvice] = useState('');
   const [isAdviceHidden, setIsAdviceHidden] = useState(true);
 
@@ -26,14 +26,10 @@ const Sidebar = () => {
     fetchAdvice();
   }, []);
   
-  const userJSON = localStorage.getItem('user');
-  const user = JSON.parse(userJSON);
-
-  
 
 
   return (
-    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  h-[100vh] text-main  flex flex-col relative`}>
+    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  h-[100vh] text-main  flex flex-col relative `}>
 
 
       <div className='absolute top-2 right-2 text-lg z-[2] cursor-pointer' onClick={() => setIsCollapsed(!iscollapsed)}>
@@ -48,7 +44,7 @@ const Sidebar = () => {
           </div>
           <div className="mt-4 ">
             <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 text-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
-            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    text-center`}>Student</p>
+            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    text-center`}>{user.role}</p>
           </div>
         </div>
 
