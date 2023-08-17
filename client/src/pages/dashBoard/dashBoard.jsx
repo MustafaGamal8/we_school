@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaFileUpload } from "react-icons/fa";
-// import Calendar from "../../components/calender";
+import Calendar from "../../components/calender";
+import Task from "../../components/task";
 
 
 
@@ -23,38 +24,40 @@ const DashBoard = () => {
 
   return (
     <>
-    <div className="w-[90%] md:w-[60%] m-auto bg-main flex flex-col justify-between items-center   border-[2px] border-black border-solid rounded-lg mt-[70px] p-2 md:p-5 " >
-      <input
-        type="text"
-        placeholder="أدخل النص هنا"
-        className=" w-full md:w-[95%] p-4 mb-4 rounded-lg text-center outline-none"
-        id="dispaly"
-      />
-      <label className=" w-full bg-white text-main px-4 py-2 md:w-[70%] rounded-lg flex items-center justify-center">
-        <FaFileUpload className="mt-2" />
-        <span>تحميل الملف</span>
-        <input
-          type="file"
-          className="hidden"
-          onChange={handleFileChange}
-          accept="*/*"
-        />
-      </label>
-      <button
-        className="w-full md:w-[50%] bg-white text-main px-4 py-2 rounded-lg mt-5"
-        onClick={handleUpload}
-        disabled={!file}
-      >
-        رفع الملف
-      </button>
+ <div className="w-[80%] m-auto min-h-[300px] h-fit flex flex-col md:flex-row justify-between bg-[#b285f2] text-white mt-10 rounded-xl">
+        <div className="w-full md:w-[50%] p-5 flex flex-col justify-between items-start h-full">
+          <h1 className="text-2xl">Welcome to We School Dashboard</h1>
+          <h2 className="text-xl mt-4">
+            You can upload by clicking on "Upload" and choose your file. Be careful when selecting a file. Have a nice time!
+          </h2>
+          <div className="mt-8 flex flex-col items-start">
+            <label htmlFor="fileInput" className="h-[30px] p-5 bg-main w-[120px] rounded-lg hover:scale-[1.1] transition-[2s] flex flex-col justify-center items-center text-white drop-shadow-lg cursor-pointer">
+              <FaFileUpload className="mr-2" />
+              Upload
+            </label>
+            <input type="file" id="fileInput" className="hidden" onChange={handleFileChange} />
+          </div>
+          <button className="mt-4 h-[30px] p-5 bg-main w-[120px] rounded-lg hover:scale-[1.1] transition-[2s] flex flex-col justify-center items-center text-white drop-shadow-lg" onClick={handleUpload}>
+            Submit
+          </button>
+        </div>
+
+        <div className="w-full md:w-[30%] p-5 flex flex-col justify-between items-start h-full m-auto">
+          <img src="/assets/undraw_upload_re_pasx.svg" className="w-full" alt="" />
+        </div>
+      </div>
+      <div className=" flex flex-col md:flex-row justify-between w-[80%] m-auto h-fit mt-10 ">
+
+    <div className="w-[50%]"><Calendar /></div>
+    <div className="w-[40%] flex flex-col justify-between h-full mt-10 ">
+    <div className="w-full h-20 mt-7 "><Task /></div>
+    <div className="w-full h-20 mt-7 "><Task /></div>
+    <div className="w-full h-20 mt-7 "><Task /></div>
+
+
+
     </div>
-    {/* <Calendar /> */}
-
-    {/* post */}
-    <section>
-
-
-    </section>
+    </div>
 
     </>
     

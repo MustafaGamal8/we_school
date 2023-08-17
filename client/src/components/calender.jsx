@@ -12,11 +12,16 @@ const Calendar = () => {
 
   const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+  const isToday = (day) => {
+    const today = new Date();
+    return day.getDate() === today.getDate() && day.getMonth() === today.getMonth() && day.getFullYear() === today.getFullYear();
+  };
+
   return (
-    <div className="p-4 bg-white drop-shadow-md rounded-lg w-full h-full">
+    <div className="p-4 bg-white rounded-lg w-full drop-shadow-2xl h-full">
       <div className="flex justify-between mb-4">
         <button
-          className="text-blue-500"
+          className="text-blue-500 "
           onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
         >
           <IoIosArrowBack size={20} />
@@ -25,7 +30,7 @@ const Calendar = () => {
           {format(currentMonth, 'MMMM yyyy')}
         </h2>
         <button
-          className="text-blue-500 "
+          className="text-blue-500  "
           onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
         >
           <IoIosArrowForward size={20} />
@@ -40,8 +45,8 @@ const Calendar = () => {
         {daysInMonth.map((day, index) => (
           <div
             key={index}
-            className={`p-2 text-center ${
-              isToday(day) ? 'bg-blue-500 rounded-md text-white font-semibold' : ''
+            className={`p-2 text-center cursor-pointer ${
+              isToday(day) ? 'bg-red-500 rounded-md text-white font-semibold' : ''
             } ${
               day.getMonth() === currentMonth.getMonth()
                 ? 'text-black'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getDegree } from '../../functions/degrees';
 import * as yup from 'yup';
-
+import { toast } from "react-toastify";
 function Degree() {
   const [showTable, setShowTable] = useState(false);
   const [studentId, setStudentId] = useState("");
@@ -15,10 +15,10 @@ function Degree() {
     try {
       await schema.validate({ studentId }, { abortEarly: false });
       const response = await getDegree(studentId);
-      setStudentData(response); // Save the response data
+      setStudentData(response);
       setShowTable(true);
     } catch (error) {
-      console.log(error.message); // Log validation error messages
+      toast.success(error.message); 
     }
   };
 
@@ -42,7 +42,7 @@ function Degree() {
 
       {showTable && studentData && (
         <div className="container mx-auto mt-10" id='table'>
-          <h1 className='text-center text-2xl mt-4'>{studentData.name}</h1>
+          <h1 className='text-center text-2xl mt-4'>name :  {studentData.name}</h1>
           <table className="min-w-full bg-white mt-14 text-left">
             <thead>
               <tr>

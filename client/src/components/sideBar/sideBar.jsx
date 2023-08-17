@@ -47,8 +47,8 @@ const Sidebar = () => {
             <FaUserCircle className={` ${iscollapsed ? 'text-3xl' : 'text-6xl'} text-gray-200  `} />
           </div>
           <div className="text-center mt-4">
-            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
-            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600  `}>Student</p>
+            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 flex items-center justify-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
+            <p className={` ${iscollapsed ? 'text-sm  ' : 'text-sm'} text-gray-600 flex items-center justify-center `}>Student</p>
           </div>
         </div>
 
