@@ -67,13 +67,14 @@ const Sidebar = () => {
         <div onClick={logout}><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
         
         <div className='w-full border-[1px] border-solid '>
+    
+        <Adviceitem title={ advice} iscollapsed={iscollapsed} />
         <button className='w-full' onClick={() => {
           fetchAdvice();
           setIsAdviceHidden(false);
         }}>
-          <MenuItem icon={<IoSchoolOutline />} title={"Advice"} iscollapsed={iscollapsed} />
+          <MenuItem icon={<IoSchoolOutline />} title={"change advice"} iscollapsed={iscollapsed} />
         </button>
-        <Adviceitem title={isAdviceHidden ? "clik on advice  " : advice} iscollapsed={iscollapsed} />
       </div>
 
 
