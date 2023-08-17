@@ -43,11 +43,7 @@ function Degree() {
 
       {showTable && studentData && (
         <div className="container mx-auto mt-10" id='table'>
-<<<<<<< HEAD
           <h1 className='text-center text-2xl mt-4'>name :  {studentData.name}</h1>
-=======
-          <h1 className='text-center text-2xl mt-4'><span className='text-sec'>{studentData.name}</span> : الاسم</h1>
->>>>>>> 5751d9a7189740ac4b6240848882db549758d0f5
           <table className="min-w-full bg-white mt-14 text-left">
             <thead>
               <tr>
