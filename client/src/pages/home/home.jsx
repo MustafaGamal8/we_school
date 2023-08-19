@@ -62,12 +62,28 @@ const handelGoTop = ()=>{
   const userJSON = localStorage.getItem('user');
   const user = JSON.parse(userJSON);
   
+
+  
+  const changeLanguage = ()=>{
+
+    const currentLanguage = i18n.language
+    
+    i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en" )
+    localStorage.setItem("lang" , currentLanguage == "en" ? "ar" : "en")
+    window.location.reload()  
+    
+    
+  }
+  
   
 
   
   return (
 
     <>
+
+<button onClick={changeLanguage} className="p-2 bg-sec rounded-t-md text-white fixed -bottom-1  left-2 hover:bottom-2 transition-all"><Trans>تغير اللغة</Trans></button>
+
 
 
 <button onClick={handelGoTop} className="bg-main text-white font-semibold h-10 w-10 flex items-center justify-center rounded-full fixed bottom-7 right-7 z-10" id="btn"><AiOutlineArrowUp/></button>

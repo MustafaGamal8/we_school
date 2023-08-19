@@ -29,7 +29,7 @@ const Sidebar = ({user}) => {
 
 
   return (
-    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  h-[100vh] text-main  flex flex-col relative `}>
+    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  lg:h-[100vh]   text-main  flex flex-col  items-center  relative`}>
 
 
       <div className='absolute top-2 right-2 text-lg z-[2] cursor-pointer' onClick={() => setIsCollapsed(!iscollapsed)}>
@@ -38,17 +38,14 @@ const Sidebar = ({user}) => {
 
       <header className='w-full capitalize  '>
 
-        <div className=" w-full bg-white   overflow-hidden  ">
-          <div className="flex justify-center mt-4 border-2 border-main w-max m-auto rounded-full ">
-            <FaUserCircle className={` ${iscollapsed ? 'text-3xl' : 'text-6xl'} text-gray-200  `} />
-          </div>=
+        <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden  ">
+          <div className="flex  justify-center lg:mt-4 border-2 border-main w-max m-auto rounded-full ">
+            <FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200  `} />
+          </div>
           <div className="text-center mt-4">
+          <div className="lg:mt-4 ">
             <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 flex items-center justify-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
-            <p className={` ${iscollapsed ? 'text-sm  ' : 'text-sm'} text-gray-600 flex items-center justify-center `}>Student</p>
-
-          <div className="mt-4 ">
-            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 text-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
-            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    text-center`}>{user.role}</p>
+            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    flex items-center justify-center`}>{user.role}</p>
           </div>
         </div>
         </div>
@@ -56,7 +53,7 @@ const Sidebar = ({user}) => {
 
 
 
-      <main className='mt-10 uppercase flex flex-col  '>
+      <main className={`  ${iscollapsed ?  '' : 'flex-col h-max' }  items-start lg:mt-10 my-3 uppercase flex lg:flex-col  h-full  gap-y-3`}>
         <MenuItem to={"/main/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
@@ -66,7 +63,7 @@ const Sidebar = ({user}) => {
 
         <div onClick={logout}><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
         
-        <div className='w-full border-[1px] border-solid '>
+        <div className='w-full border-[1px] border-solid  hidden lg:block'>
     
         <Adviceitem title={ advice} iscollapsed={iscollapsed} />
         <button className='w-full' onClick={() => {
@@ -94,7 +91,7 @@ export default Sidebar;
 
 const MenuItem = ({ icon, title, iscollapsed ,to }) => {
   return (
-    <NavLink to={to} className="flex items-center  gap-x-5 text-lg hover:bg-main rounded p-2 hover:text-white m-2">
+    <NavLink to={to} className="flex items-center  gap-x-2 lg:gap-x-5 text-lg hover:bg-main rounded p-2 hover:text-white  lg:h-max h-full    w-full ">
       {icon}
       {!iscollapsed && <h1>{title}</h1>}
     </NavLink>

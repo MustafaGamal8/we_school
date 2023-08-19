@@ -52,17 +52,6 @@ function App() {
   })
 
 
-  const changeLanguage = ()=>{
-
-    const currentLanguage = i18n.language
-    
-    i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en" )
-    localStorage.setItem("lang" , currentLanguage == "en" ? "ar" : "en")
-    window.location.reload()  
-    
-    
-  }
-  
 
   return (
     <>
@@ -85,9 +74,6 @@ function App() {
 
       </Routes>
 
-
-
-      <button onClick={changeLanguage} className="p-2 bg-sec rounded-t-md text-white fixed -bottom-1  left-2 hover:bottom-2 transition-all"><Trans>تغير اللغة</Trans></button>
 
 
       
