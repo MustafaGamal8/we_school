@@ -41,13 +41,17 @@ const Sidebar = ({user}) => {
         <div className=" w-full bg-white   overflow-hidden  ">
           <div className="flex justify-center mt-4 border-2 border-main w-max m-auto rounded-full ">
             <FaUserCircle className={` ${iscollapsed ? 'text-3xl' : 'text-6xl'} text-gray-200  `} />
-          </div>
+          </div>=
+          <div className="text-center mt-4">
+            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 flex items-center justify-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
+            <p className={` ${iscollapsed ? 'text-sm  ' : 'text-sm'} text-gray-600 flex items-center justify-center `}>Student</p>
+
           <div className="mt-4 ">
             <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 text-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
             <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    text-center`}>{user.role}</p>
           </div>
         </div>
-
+        </div>
       </header>
 
 
@@ -63,13 +67,14 @@ const Sidebar = ({user}) => {
         <div onClick={logout}><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
         
         <div className='w-full border-[1px] border-solid '>
+    
+        <Adviceitem title={ advice} iscollapsed={iscollapsed} />
         <button className='w-full' onClick={() => {
           fetchAdvice();
           setIsAdviceHidden(false);
         }}>
-          <MenuItem icon={<IoSchoolOutline />} title={"Advice"} iscollapsed={iscollapsed} />
+          <MenuItem icon={<IoSchoolOutline />} title={"change advice"} iscollapsed={iscollapsed} />
         </button>
-        <Adviceitem title={isAdviceHidden ? "clik on advice  " : advice} iscollapsed={iscollapsed} />
       </div>
 
 

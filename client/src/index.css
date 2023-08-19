@@ -3,6 +3,8 @@
  /* @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@700&display=swap'); */
  body {
   font-family: 'Almarai', sans-serif;
+  /* user-select: none; */
+  /* -webkit-user-drag: none; */
   user-select: none;
   -webkit-user-drag: none;
   overflow-x: hidden
