@@ -30,7 +30,6 @@ export const logout = () => {
 
 
 export const signUp = async (formData)=>{  
-  console.log(formData)
   try {
     const response =  await axios.post(baseUrl + "/signup",{
     firstName:formData.firstName,

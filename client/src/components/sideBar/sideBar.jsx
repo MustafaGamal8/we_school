@@ -5,9 +5,10 @@ import { CiViewTimeline } from 'react-icons/ci';
 import { RxDashboard } from 'react-icons/rx';
 import { useState,useEffect } from 'react';
 import "./sideBar.css"
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import { AiOutlinePlus, AiOutlineMinus, AiOutlineInfoCircle } from 'react-icons/ai';
 import { FaUserCircle } from 'react-icons/fa';
 import { logout } from '../../functions/auth';
+import axios from 'axios';
 
 
 const Sidebar = ({user}) => {
@@ -16,11 +17,10 @@ const Sidebar = ({user}) => {
   const [isAdviceHidden, setIsAdviceHidden] = useState(true);
 
   const fetchAdvice = () => {
-    fetch('https://api.adviceslip.com/advice')
-      .then(response => response.json())
-      .then(data => setAdvice(data.slip.advice))
-      .catch(error => alert(error ,"check your internet connection"));
-  }
+  axios.get('https://api.adviceslip.com/advice')
+    .then(response => setAdvice(response.data.slip.advice))
+    .catch(error => alert(error, "check your internet connection"));
+}
 
   useEffect(() => {
     fetchAdvice();
@@ -53,7 +53,7 @@ const Sidebar = ({user}) => {
 
 
 
-      <main className={`  ${iscollapsed ?  '' : 'flex-col h-max' }  items-start lg:mt-10 my-3 uppercase flex lg:flex-col  h-full  gap-y-3`}>
+      <main className={`  ${iscollapsed ?  '' : 'flex-col h-max' }  items-start lg:mt-10 my-3 uppercase flex lg:flex-col  h-full  gap-y-3 p-2`}>
         <MenuItem to={"/main/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
@@ -63,14 +63,14 @@ const Sidebar = ({user}) => {
 
         <div  onClick={logout} className='w-full'><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
         
-        <div className='w-full border-[1px] border-solid  hidden lg:block'>
+        <div className={` ${iscollapsed ? 'hidden'  :null} w-full border-[1px] border-solid `}>
     
-        <Adviceitem title={ advice} iscollapsed={iscollapsed} />
         <button className='w-full' onClick={() => {
           fetchAdvice();
           setIsAdviceHidden(false);
         }}>
-          <MenuItem icon={<IoSchoolOutline />} title={"change advice"} iscollapsed={iscollapsed} />
+          <MenuItem icon={<AiOutlineInfoCircle  />} title={"change advice"} iscollapsed={iscollapsed} />
+          <Adviceitem title={ advice} iscollapsed={iscollapsed} />
         </button>
       </div>
 
@@ -100,9 +100,9 @@ const MenuItem = ({ icon, title, iscollapsed ,to }) => {
 }
 const Adviceitem = ({ icon, title, iscollapsed}) => {
   return (
-    <NavLink  className="flex items-center  bg-main text-white p-1 gap-x-5 text-sm hover:bg-main rounded  hover:text-white ">
+    <div  className="flex items-center  text-main bg-white p-1 gap-x-5 md:text-sm text-xs hover:bg-main rounded  hover:text-white ">
       {icon}
       {!iscollapsed && <h1>{title}</h1>}
-    </NavLink>)}
+    </div>)}
 
 

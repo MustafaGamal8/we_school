@@ -12,8 +12,10 @@ const postSchema = mongoose.Schema({
     required:true
   },
   files:[{
+    fileName:String,
     fileType: String, 
-    fileLink: String 
+    fileLink: String ,
+    fileSize:String,
   }]
 
 })

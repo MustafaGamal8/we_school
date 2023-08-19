@@ -249,7 +249,7 @@ const handelGoTop = ()=>{
           
           </h1>
 
-        <div className="w-full m-auto mt-10"><Slider slides={slides} /></div>
+        <div className="w-full m-auto mt-10"><Slider slides={slides}  coverOrContain="object-cover"/></div>
 
         </section>
 

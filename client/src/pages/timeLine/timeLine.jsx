@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Post from "../../components/post";
 import Task from './../../components/task';
 import FilesModal from "../../components/filesModal";
+import { getPosts } from "../../functions/posts";
 
 const TimeLine = () => {  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postFiles, setPostFiles] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   const handleOpenModal = (PostFiles) => {
     setPostFiles(PostFiles);
@@ -15,6 +17,18 @@ const TimeLine = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+
+  
+  const fetchPosts = async ()=>{
+    const posts =  await getPosts()
+    setPosts(posts)
+  }
+  useEffect(()=>{
+    fetchPosts()
+  }
+    ,[]
+  )
 
 
   return ( 
@@ -27,9 +41,14 @@ const TimeLine = () => {
   <section className="  lg:w-[75%] ">
     <h1 className="text-3xl bg-sec text-white rounded m-auto w-40 p-2 text-center font-semibold uppercase mt-3  mb-5">time line</h1>
     <div className="flex flex-col gap-5">
-      <Post handleOpenModal={handleOpenModal}/>
-      <Post handleOpenModal={handleOpenModal}/>
-      <Post handleOpenModal={handleOpenModal}/>
+      {
+        !posts ? null:(
+          posts.map(post =>{
+            return <Post  key={post._id}   post={post}  handleOpenModal={handleOpenModal}/>
+          })
+        )
+      }
+      
     </div>
   </section>
   

@@ -35,7 +35,7 @@ function Profile() {
     }, []);
     
     return (
-        <>
+        <section className="m-auto w-full h-full">
             
       <img className="opacity-0 absolute top-0 right-0 z-[-1] w-full drop-shadow-xl md:opacity-[1]" src="/assets/wave.svg" alt="" />
 
@@ -101,7 +101,7 @@ function Profile() {
                     </div>
                 </form>
             </div>
-        </>
+        </section>
     );
 }
 

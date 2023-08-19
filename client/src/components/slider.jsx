@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
-const Slider = ({ slides }) => {
+const Slider = ({ slides ,coverOrContain }) => {
   return (
     <Swiper
       modules={[Navigation,Pagination]}
@@ -43,7 +43,7 @@ const Slider = ({ slides }) => {
       {slides.map((s, index) => (
         <SwiperSlide key={index} className='flex items-center justify-center drop-shadow'>
           <div className="md:h-[550px] h-[300px] w-full">
-            <LazyLoadImage  src={s.img} alt="Photo" className="rounded-lg w-full h-full object-cover" />
+            <LazyLoadImage  src={s.img} alt="Photo" className={`rounded-lg w-full h-full ${coverOrContain}`} />
           </div>
         </SwiperSlide>
       ))}

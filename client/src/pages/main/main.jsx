@@ -18,11 +18,11 @@ const Main = () => {
           </Link>
         </div>
       ) : (
-        <main className="flex flex-col lg:flex-row w-full">
-          <div className=' z-50 lg:fixed '><Sidebar user={user} /></div>
+        <main className="flex flex-col lg:flex-row w-full ">
+          <div className=' lg:fixed '><Sidebar user={user} /></div>
           <div className='lg:w-[200px]'></div>
 
-          <section className="">
+          <section className="w-full">
             <Outlet />
           </section>
         </main>

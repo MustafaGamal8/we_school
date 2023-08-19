@@ -3,11 +3,12 @@ const postModel = require("../mongo/postModel.js");
 const UserModel = require("../mongo/userModel.js");
 
 
-const uploadFile = async (buffer, originalname, mimetype) => {
+const uploadFile = async (buffer, originalname, mimetype,fileSize) => {
   const newFile = new fileModel({
     name: originalname,
     data: buffer,
     contentType: mimetype,
+    fileSize
   });
 
   await newFile.save();
@@ -61,9 +62,15 @@ const uploadAndCreatePost = async (req, res) => {
 
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
-        const { originalname, buffer, mimetype } = file;
-        const fileId = await uploadFile(buffer, originalname, mimetype);
-        fileIds.push({ fileType: mimetype, fileLink: `/files/${fileId}` });
+        const { originalname, buffer, mimetype} = file;
+        
+    const fileSizeInBytes = buffer.length;
+    const fileSizeInMB = fileSizeInBytes / (1024 * 1024); 
+    const fileSize = fileSizeInMB.toFixed(2) + "Mb";
+
+        
+        const fileId = await uploadFile(buffer, originalname, mimetype,fileSize);
+        fileIds.push({  fileName:originalname,fileSize,fileType: mimetype, fileLink: `/files/${fileId}` });
       }
     }
 
