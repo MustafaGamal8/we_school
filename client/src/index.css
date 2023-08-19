@@ -86,6 +86,37 @@
 }
 
 
+.scrollbar-hide::-webkit-scrollbar {
+  height: 4px;
+}
+
+
+
+
+
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: papayawhip;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Tailwind config */
 @tailwind base;

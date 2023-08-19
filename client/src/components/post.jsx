@@ -2,11 +2,26 @@ import {FaCircleUser} from "react-icons/fa6"
 import {AiFillEye, AiOutlineHeart} from "react-icons/ai"
 import Slider from './slider';
 
-const slides = [ { img: "/assets/nardin.jpg" }, { img: "/assets/school/school1.jpeg" }, { img: "/assets/school/school2.jpeg" }, { img: "/assets/school/school3.jpeg" }, { img: "/assets/school/school4.jpeg" } ]
 
-const Post = () => {
+const Post = ({handleOpenModal,post}) => {
+  // const {user,files,content} = post
+  const PostFiles = [
+    { id: 1, name: "File 1", size: "10 MB", link: "/path/to/file1" },
+    { id: 2, name: "File 2", size: "5 MB", link: "/path/to/file2" },
+    { id: 1, name: "File 1", size: "10 MB", link: "/path/to/file1" },
+    { id: 2, name: "File 2", size: "5 MB", link: "/path/to/file2" },
+    { id: 1, name: "File 1", size: "10 MB", link: "/path/to/file1" },
+    { id: 1, name: "File 1", size: "10 MB", link: "/path/to/file1" },
+    { id: 1, name: "File 1", size: "10 MB", link: "/path/to/file1" },
+    { id: 1, name: "File 1", size: "10 MB", link: "/path/to/file1" },
+    { id: 2, name: "File 2", size: "5 MB", link: "/path/to/file2" },
+  
+  ];
+
+  
+  const slides = [ { img: "/assets/nardin.jpg" }, { img: "/assets/school/school1.jpeg" }, { img: "/assets/school/school2.jpeg" }, { img: "/assets/school/school3.jpeg" }, { img: "/assets/school/school4.jpeg" } ]
   return ( 
-  <div className=" w-[80%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl">
+  <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl">
 
     <div className="flex items-center gap-3 text-xl mt-2">
       <FaCircleUser className="text-gray-500 text-2xl" />
@@ -32,7 +47,7 @@ const Post = () => {
       </div>
       
       
-      <button className="p-3 rounded bg-main text-white drop-shadow  flex items-center gap-2 hover:scale-90 transition-all">Show Files <AiFillEye/></button>
+      <button onClick={()=>handleOpenModal(PostFiles)} className="p-3 rounded bg-main text-white drop-shadow  flex items-center gap-2 hover:scale-90 transition-all">Show Files <AiFillEye/></button>
       
     </div>
     

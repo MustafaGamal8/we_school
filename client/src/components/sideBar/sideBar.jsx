@@ -61,7 +61,7 @@ const Sidebar = ({user}) => {
 
         <MenuItem to={"/main/settings"} icon={<FiSettings />} title={"Settings"} iscollapsed={iscollapsed} />
 
-        <div onClick={logout}><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
+        <div  onClick={logout} className='w-full'><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
         
         <div className='w-full border-[1px] border-solid  hidden lg:block'>
     
@@ -91,7 +91,7 @@ export default Sidebar;
 
 const MenuItem = ({ icon, title, iscollapsed ,to }) => {
   return (
-    <NavLink to={to} className="flex items-center  gap-x-2 lg:gap-x-5 text-lg hover:bg-main rounded p-2 hover:text-white  lg:h-max h-full    w-full ">
+    <NavLink to={to} className="flex items-center  gap-x-2 lg:gap-x-5 text-lg hover:bg-main rounded p-2 hover:text-white  lg:h-max h-full    w-full cd client">
       {icon}
       {!iscollapsed && <h1>{title}</h1>}
     </NavLink>

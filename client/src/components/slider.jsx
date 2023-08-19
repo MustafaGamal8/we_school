@@ -2,15 +2,21 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // Import react-icons
 import 'swiper/css';
-import { Navigation } from 'swiper/modules';
+import { Navigation,Pagination } from 'swiper/modules';
+
+import 'swiper/css/pagination';
+
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
 
 const Slider = ({ slides }) => {
   return (
     <Swiper
-      modules={[Navigation]}
+      modules={[Navigation,Pagination]}
       spaceBetween={20}
       centeredSlides={true}
       autoplay={{ delay: 3000 }}
+      pagination={{ clickable: true }}
       loop={true}
       speed={500}
       navigation={{
@@ -19,12 +25,11 @@ const Slider = ({ slides }) => {
       }}
       className="rounded-lg overflow-hidden drop-shadow-xl relative w-full h-full"
       breakpoints={{
-        // 640px is the breakpoint where only 1 slide will be shown
         900: {
           slidesPerView: 1,
         },
         // 1024px is the breakpoint where 2 slides will be shown
-        1200: {
+        1024: {
           slidesPerView: 2,
         },}}
     >
@@ -38,10 +43,11 @@ const Slider = ({ slides }) => {
       {slides.map((s, index) => (
         <SwiperSlide key={index} className='flex items-center justify-center drop-shadow'>
           <div className="md:h-[550px] h-[300px] w-full">
-            <img src={s.img} alt="nophotos" className="rounded-lg w-full h-full object-cover" />
+            <LazyLoadImage  src={s.img} alt="Photo" className="rounded-lg w-full h-full object-cover" />
           </div>
         </SwiperSlide>
       ))}
+      
     </Swiper>
   );
 }
