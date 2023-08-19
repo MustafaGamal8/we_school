@@ -13,7 +13,7 @@
 
 @keyframes sideBarAnimation {
   0%{
-    width: 220px;
+    width: 200px;
   }
   100%{
     width: 80px;
@@ -28,6 +28,31 @@
     width: 80px;
   }
   100% {
-    width: 220px;
+    width: 200px;
   }
+}
+
+/* Adjust animation for screens with a maximum width of 768px */
+@media (max-width: 900px) {
+  
+@keyframes sideBarAnimation {
+  0%{
+    width: 180px;
+  }
+  100%{
+    width: 50px;
+  }
+  
+}
+
+  
+@keyframes sideBarAnimationR {
+  0% {
+    width: 50px;
+  }
+  100% {
+    width: 180px;
+  }
+}
+
 }
