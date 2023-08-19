@@ -243,9 +243,9 @@ const Login = () => {
                         <option value="" disabled>
                           Select Your Grade
                         </option>
-                        <option value="studentA">Grade 1 (A)</option>
-                        <option value="studentB">Grade 2 (B)</option>
-                        <option value="studentC">Grade 3 (C)</option>
+                        <option value="A">Grade 1 (A)</option>
+                        <option value="B">Grade 2 (B)</option>
+                        <option value="C">Grade 3 (C)</option>
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none p-2">
                         <FaChevronDown className="w-5 h-5 text-main" />

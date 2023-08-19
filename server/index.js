@@ -68,11 +68,7 @@ const startServer = async () => {
 
     // Handle degrees upload
     app.post('/degrees-upload', upload.single('file'), upload_xlsx);
-
-    // Get all degrees
     app.get('/degrees', getDegrees);
-
-    // Get student degrees by code
     app.get('/degrees/:code', getStudentDegrees);
 
     // Handle translation

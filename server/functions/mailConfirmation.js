@@ -128,33 +128,25 @@ const sendMail = async (email) => {
 
 
 const confirmEmail = async(req,res)=>{
-  const {token} = req.params
+  const {token} = req.query
   try {  
-    // Find the user with the given token in the database
     const user = await UserModel.findOne({ confirmationToken: token });
 
     if (!user) {
-      // If the token is not valid or the user is not found, handle the error
       return res.status(400).send('Invalid confirmation token.');
     }
 
     if (user.isConfirmed) {
-      // If the user is already confirmed, handle the case where they try to confirm again
       return res.send('Email is already confirmed.');
     }
 
-    // Update the isConfirmed field to true for the user
     user.isConfirmed = true;
-    // Clear the confirmation token (optional: once the email is confirmed, you might want to clear the token)
     user.confirmationToken = null;
-    // Save the updated user record
     await user.save();
 
-    // Send a response to the user indicating successful email confirmation
     res.send('Email confirmed successfully!');
     
   } catch (error) {
-    // Handle any errors that occurred during the database operation
     console.error('Failed to confirm email:', error);
     res.status(500).send('Failed to confirm email.');
   }
