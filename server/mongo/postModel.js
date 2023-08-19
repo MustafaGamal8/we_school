@@ -3,17 +3,18 @@ const   mongoose  = require("mongoose");
 
 
 const postSchema = mongoose.Schema({
-  email:{
-    type:String,
+  user:{
+    type:Object,
     required:true
   },
   content:{
     type:String,
     required:true
   },
-  files:{
-    type:Array,
-  }
+  files:[{
+    fileType: String, 
+    fileLink: String 
+  }]
 
 })
 

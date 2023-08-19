@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
   id:{
     type:Number,
   },
-  photo:{
+  picture:{
     name: String,
     data: Buffer,
     contentType: String,

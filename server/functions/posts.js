@@ -1,5 +1,6 @@
 const fileModel = require("../mongo/fileModel.js");
 const postModel = require("../mongo/postModel.js");
+const UserModel = require("../mongo/userModel.js");
 
 
 const uploadFile = async (buffer, originalname, mimetype) => {
@@ -13,14 +14,21 @@ const uploadFile = async (buffer, originalname, mimetype) => {
   return newFile._id; // Return the file ID
 };
 
-const createPost = async (postFields, fileIds) => {
+const createPost = async (postFields, files) => {
   try {
-    const { email, content } = postFields;
-
+    const { user, content } = postFields;
+    const {firstName,lastName,email,role,picture} = user
+ 
     const post = new postModel({
-      email,
+      user:{
+        firstName,
+        lastName,
+        email,
+        role,
+        picture
+      } ,
       content,
-      files: fileIds,
+      files
     });
 
     await post.save();
@@ -31,10 +39,23 @@ const createPost = async (postFields, fileIds) => {
 
 const uploadAndCreatePost = async (req, res) => {
   try {
+    
+    const  user =   await UserModel.findOne({ email:req.body.email });
+
     const postFields = {
-      email: req.body.email,
+      user: user,
       content: req.body.content,
     };
+
+     
+    if (!user) {
+      return res.json({ error: 'Email dose not exist ' })
+    }  
+    if (user.role != "admin"| "teacher") {
+      return res.json({ error: 'You are not allowed to post ' })
+    }  
+
+
 
     const fileIds = [];
 
@@ -42,7 +63,7 @@ const uploadAndCreatePost = async (req, res) => {
       for (const file of req.files) {
         const { originalname, buffer, mimetype } = file;
         const fileId = await uploadFile(buffer, originalname, mimetype);
-        fileIds.push({ type: mimetype, link: `/files/${fileId}` });
+        fileIds.push({ fileType: mimetype, fileLink: `/files/${fileId}` });
       }
     }
 
@@ -91,8 +112,6 @@ const readAllPosts = async (req,res)=>{
 
 
 }
-
-// not needed !!!!!!!!!
 const readAllFiles = async (req,res) => {
   try {
     const files = await fileModel.find({}, 'name contentType');

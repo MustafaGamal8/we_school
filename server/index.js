@@ -89,21 +89,20 @@ const startServer = async () => {
     });
 
     // Auth routes
-    app.get('/auth/users', getUsers);
     app.post('/auth/signup', signUp);
     app.post('/auth/login', loginUser);
+    app.get('/auth/users', getUsers);
     app.get('/auth/invitcode', getInvitationCodes);
     app.get('/auth/invitcode/:userType', createInvitationCode);
     app.get('/auth/confirm-email', confirmEmail);
 
-    // Route to handle post upload
-    app.post('/upload-post', upload.array('files'), uploadAndCreatePost);
-
-    // Route to get all posts and files
+    // Post routes
     app.get('/posts', readAllPosts);
+    app.post('/posts/upload', upload.array('files'), uploadAndCreatePost);
+    
+    
+    // files routes
     app.get('/files', readAllFiles);
-
-    // Route to retrieve and download a specific file
     app.get('/files/:id', readFile);
 
     const PORT = process.env.PORT || 8000;
