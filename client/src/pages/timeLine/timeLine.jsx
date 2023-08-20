@@ -3,7 +3,6 @@ import Post from "../../components/post";
 import Task from './../../components/task';
 import FilesModal from "../../components/filesModal";
 import { getPosts } from "../../functions/posts";
-
 const TimeLine = () => {  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postFiles, setPostFiles] = useState([]);
@@ -35,7 +34,6 @@ const TimeLine = () => {
 <div className="flex flex-col-reverse lg:flex-row  gap-5 w-full">
   
 <img className=" absolute lg:top-0 top-60 right-0 z-[-1] w-full drop-shadow-xl " src="/assets/wave.svg" alt="" />
-
 
 
   <section className="  lg:w-[75%] ">

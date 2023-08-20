@@ -3,17 +3,7 @@ const postModel = require("../mongo/postModel.js");
 const UserModel = require("../mongo/userModel.js");
 
 
-const uploadFile = async (buffer, originalname, mimetype,fileSize) => {
-  const newFile = new fileModel({
-    name: originalname,
-    data: buffer,
-    contentType: mimetype,
-    fileSize
-  });
 
-  await newFile.save();
-  return newFile._id; // Return the file ID
-};
 
 const createPost = async (postFields, files) => {
   try {
@@ -29,7 +19,8 @@ const createPost = async (postFields, files) => {
         picture
       } ,
       content,
-      files
+      files,
+      likes: [], 
     });
 
     await post.save();
@@ -83,10 +74,71 @@ const uploadAndCreatePost = async (req, res) => {
   }
 };
 
+const readAllPosts = async (req,res)=>{
+  try {
+    const posts = await postModel.find()
+    
+    res.status(200).json(posts);
+
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get posts' });
+  }
+
+
+}
+
+
+
+const togglePostLike = async (req, res) => {
+  try {
+    const { postId, userId } = req.body;
+
+    const post = await postModel.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    const user = await UserModel.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const likeIndex = post.likes.findIndex((like) => like.userId.toString() === userId);
+
+    if (likeIndex === -1) {
+      post.likes.push({ userId });
+      await post.save();
+      res.status(200).json({ msg: 'Post like added successfully' });
+    } else {
+      post.likes.splice(likeIndex, 1);
+      await post.save();
+      res.status(200).json({ msg: 'Post like removed successfully' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 
 
 
+
+
+
+
+const uploadFile = async (buffer, originalname, mimetype,fileSize) => {
+  const newFile = new fileModel({
+    name: originalname,
+    data: buffer,
+    contentType: mimetype,
+    fileSize
+  });
+
+  await newFile.save();
+  return newFile._id; // Return the file ID
+};
 
 const readFile = async (req, res) => {
   try {
@@ -105,20 +157,6 @@ const readFile = async (req, res) => {
   }
 };
 
-
-
-const readAllPosts = async (req,res)=>{
-  try {
-    const posts = await postModel.find()
-    
-    res.status(200).json(posts);
-
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to get posts' });
-  }
-
-
-}
 const readAllFiles = async (req,res) => {
   try {
     const files = await fileModel.find({}, 'name contentType');
@@ -148,4 +186,6 @@ const readAllFiles = async (req,res) => {
 
 
 
-module.exports = { uploadFile, readAllFiles, readFile , readAllPosts , uploadAndCreatePost };
+
+
+module.exports = { uploadFile, readAllFiles, readFile , readAllPosts , uploadAndCreatePost,togglePostLike };

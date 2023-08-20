@@ -37,6 +37,7 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
   if (smScreenMediaQuery.matches) {
     modalStyle.maxWidth = '90%'; // For medium screens
   }
+  console.log(files)
 
   return (
     <Modal
@@ -89,9 +90,9 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
               </div>
 
               <a
-                href={ "https://we-school-api.vercel.app/"+ file.fileLink}
-                className="bg-white drop-shadow-lg hover:bg-main hover:text-white rounded-full p-2 cursor-pointer text-xl"
                 download
+                href={ "https://we-school-api.vercel.app/"+ file.fileLink  }
+                className="bg-white drop-shadow-lg hover:bg-main hover:text-white rounded-full p-2 cursor-pointer text-xl"
               >
                 <AiOutlineDownload />
               </a>

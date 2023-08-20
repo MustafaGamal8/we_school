@@ -51,6 +51,7 @@ const {
   readFile,
   uploadAndCreatePost,
   readAllPosts,
+  togglePostLike,
 } = require('./functions/posts');
 
 const { confirmEmail } = require('./functions/mailConfirmation');
@@ -95,6 +96,7 @@ const startServer = async () => {
     // Post routes
     app.get('/posts', readAllPosts);
     app.post('/posts/upload', upload.array('files'), uploadAndCreatePost);
+    app.post('/posts/toggle-like',togglePostLike );
     
     
     // files routes

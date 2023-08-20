@@ -3,8 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import Sidebar from '../../components/sideBar/sideBar';
 
 const Main = () => {
-  const userJSON = localStorage.getItem('user');
-  const user = JSON.parse(userJSON);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   return (
     <>
