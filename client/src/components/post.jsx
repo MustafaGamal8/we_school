@@ -31,8 +31,6 @@ const Post = ({handleOpenModal, post }) => {
 
   const handleLike = ()=>{
     toggleLike(currentUser._id,_id)
-    console.log(_id)
-
     if (postLikes?.some(like => like.userId === currentUser._id)) {
       setIsLiked(false);
       const updatedPostLikes = postLikes.filter(like => like.userId !== currentUser._id);
@@ -48,7 +46,7 @@ const Post = ({handleOpenModal, post }) => {
   }
 
   return (
-    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl">
+    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl ">
 
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-3 text-xl mt-2">
@@ -57,11 +55,11 @@ const Post = ({handleOpenModal, post }) => {
         </div>
         <div className="b" >
           <p className="text-sm text-gray-600 ">{user.email}</p>
-          <p className="text-sm text-gray-600 text-center">{user.role}</p>
+          <p className="text-sm text-gray-600 text-center capitalize">{user.role}</p>
         </div>
       </div>
 
-      <div className="mt-5 rounded p-2">
+      <div className="mt-5 rounded p-2 capitalize">
         {content}
       </div>
 
@@ -77,11 +75,11 @@ const Post = ({handleOpenModal, post }) => {
         </div>
 
 
-        <button onClick={() => handleOpenModal(PostFiles)} className="p-3 rounded bg-main text-white drop-shadow  flex items-center gap-2 hover:scale-90 transition-all">Show Files <AiFillEye /></button>
+        <button onClick={() => handleOpenModal(PostFiles)} className="p-3 rounded bg-sec text-white drop-shadow  flex items-center gap-2 hover:scale-90 transition-all">Show Files <AiFillEye /></button>
 
       </div>
 
-      <div className="flex w-full p-1 justify-around capitalize text-white bg-main rounded-b"><h1 className="bg-main  p-1 rounded">photos : {slides.length}</h1>  <h1 className="bg-main  p-1 rounded">files :{PostFiles.length}</h1></div>
+      <div className="flex w-full p-1 justify-around capitalize text-white bg-sec rounded-b"><h1 className="  p-1 rounded">photos : {slides.length}</h1>  <h1 className=" p-1 rounded">files :{PostFiles.length}</h1></div>
 
 
     </div>

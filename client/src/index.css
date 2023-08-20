@@ -7,7 +7,8 @@
   /* -webkit-user-drag: none; */
   user-select: none;
   -webkit-user-drag: none;
-  overflow-x: hidden
+  overflow-x: hidden;
+  background: #f5f5f5;
   
 }
 

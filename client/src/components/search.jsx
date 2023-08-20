@@ -1,14 +1,45 @@
+import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
+const Search = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchCategory, setSearchCategory] = useState("userName");
 
-const Search = () => {
-  return ( 
-    <div className="w-full h-full bg-blue-400 bg-opacity-20 m-2 rounded-lg  flex ">
-      <div className="bg-blue-400 w-max h-full p-3 rounded-lg flex items-center justify-center bg-opacity-50"><FiSearch  className="text-blue-500"/></div>
-      <input type="text" placeholder="Search"  className="w-full bg-transparent h-full  outline-none p-2 text-lg"/>
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    onSearch(value, searchCategory);
+  };
 
+  const handleSelectChange = (event) => {
+    const value = event.target.value;
+    setSearchCategory(value);
+    onSearch(searchTerm, value);
+  };
+
+  return (
+    <div className="w-full h-full bg-white m-2 rounded-lg flex p-1">
+      <div className="bg-sec w-max h-full p-3 rounded-lg flex items-center justify-center">
+        <FiSearch className="text-white" />
+      </div>
+      <input
+        type="text"
+        placeholder="Search"
+        className="w-full bg-transparent h-full outline-none p-2 text-lg"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <select
+        className="bg-transparent outline-none p-2 text-lg "
+        value={searchCategory}
+        onChange={handleSelectChange}
+      >
+        <option value="userName">User Name</option>
+        <option value="content">Post Content</option>
+        <option value="email">Email</option>
+      </select>
     </div>
-   );
-}
- 
+  );
+};
+
 export default Search;
