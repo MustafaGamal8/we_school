@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import Post from "../../components/post";
 import Task from './../../components/task';
 import FilesModal from "../../components/filesModal";
 import { getPosts } from "../../functions/posts";
+
 const TimeLine = () => {  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postFiles, setPostFiles] = useState([]);
@@ -65,9 +66,8 @@ const TimeLine = () => {
 
 
    {isModalOpen && (
-      
     
-        <FilesModal postFiles={postFiles} isOpen={true}  onClose={handleCloseModal} />
+        <FilesModal  postFiles={postFiles} isOpen={true}  onClose={handleCloseModal} />
       )}
 
   

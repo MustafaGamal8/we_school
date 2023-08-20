@@ -8,7 +8,7 @@ Modal.setAppElement('#root');
 const FilesModal = ({ postFiles,isOpen ,onClose}) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
   const [files, setFiles] = useState(postFiles);
-  console.log(files)
+  
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -37,8 +37,6 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
   if (smScreenMediaQuery.matches) {
     modalStyle.maxWidth = '90%'; // For medium screens
   }
-  console.log(files)
-
   return (
     <Modal
       isOpen={isModalOpen}
@@ -64,7 +62,7 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
         ) : (
           files.map((file) => (
             <div
-              key={file.id}
+              key={file._id}
               className="flex items-center justify-between lg:px-10 px-2 bg-white drop-shadow rounded-md h-20"
             >
               <div className="flex items-center justify-center lg:w-1/2 bg-white h-full">

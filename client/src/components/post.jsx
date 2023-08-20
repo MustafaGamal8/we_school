@@ -2,15 +2,22 @@ import { FaCircleUser } from "react-icons/fa6"
 import { AiFillEye, AiOutlineHeart } from "react-icons/ai"
 import Slider from './slider';
 import { toggleLike } from "../functions/posts";
+import { useEffect, useState } from "react";
 
 
-const Post = ({ handleOpenModal, post }) => {
+const Post = ({handleOpenModal, post }) => {
   const { _id, user, files, content , likes } = post
+  const  [isLiked,setIsLiked]  = useState(null)
+  const  [postLikes,setPostLikes]  = useState(likes)
+  
   const PostFiles = [];
   const slides = []
   
   const currentUser = JSON.parse(localStorage.getItem('user'))
 
+  useEffect(()=>{
+    setIsLiked(postLikes?.some(like => like.userId === currentUser._id))
+  },[])
 
   const serverUrl = "https://we-school-api.vercel.app/"
 
@@ -20,6 +27,26 @@ const Post = ({ handleOpenModal, post }) => {
     PostFiles.push(file)
 
   })
+
+
+  const handleLike = ()=>{
+    toggleLike(currentUser._id,_id)
+    console.log(_id)
+
+    if (postLikes?.some(like => like.userId === currentUser._id)) {
+      setIsLiked(false);
+      const updatedPostLikes = postLikes.filter(like => like.userId !== currentUser._id);
+      setPostLikes(updatedPostLikes);
+    } else {
+      setIsLiked(true);
+      setPostLikes([...postLikes, { userId: currentUser._id, _id }]);
+    }
+    
+
+    
+
+  }
+
   return (
     <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl">
 
@@ -30,7 +57,7 @@ const Post = ({ handleOpenModal, post }) => {
         </div>
         <div className="b" >
           <p className="text-sm text-gray-600 ">{user.email}</p>
-          <p className="text-sm text-gray-600">{user.role}</p>
+          <p className="text-sm text-gray-600 text-center">{user.role}</p>
         </div>
       </div>
 
@@ -45,8 +72,8 @@ const Post = ({ handleOpenModal, post }) => {
 
       <div className="flex items-center justify-around w-full mt-7 ">
         <div className="flex flex-col items-center gap-2 text-lg">
-          <div onClick={()=>toggleLike(currentUser._id,_id)} className={`group ${likes?.some(like => like.userId === currentUser._id) ? 'bg-red-400 text-white' : 'bg-white' } drop-shadow-md p-2 rounded-md cursor-pointer hover:bg-red-400 hover:text-white`}><AiOutlineHeart /></div>
-          {likes?.length || "0"}
+          <div onClick={handleLike} className={`group ${isLiked ? 'bg-red-400 text-white' : 'bg-white' } drop-shadow-md p-2 rounded-md cursor-pointer `}><AiOutlineHeart /></div>
+          {postLikes?.length || "0"}
         </div>
 
 
