@@ -82,7 +82,7 @@ const handelGoTop = ()=>{
 
     <>
 
-<button onClick={changeLanguage} className="p-2 bg-sec rounded-t-md text-white fixed -bottom-1  left-2 hover:bottom-2 transition-all"><Trans>تغير اللغة</Trans></button>
+<button onClick={changeLanguage} className="p-2 bg-sec rounded-t-md text-white fixed -bottom-1  left-2 hover:bottom-2 transition-all z-10"><Trans>تغير اللغة</Trans></button>
 
 
 
@@ -161,7 +161,7 @@ const handelGoTop = ()=>{
   </div>
 </section>
 
-<section className="flex flex-col md:flex-row items-center justify-around px-5 w-full   pt-20 text-right">
+<section className="flex flex-col md:flex-row-reverse items-center justify-around px-5 w-full   pt-20 text-right">
   <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative">
     <img
       className="md:h-96 h-60 rounded-lg transition-all duration-500 transform hover:scale-105"
@@ -180,9 +180,9 @@ const handelGoTop = ()=>{
     </div>
   </div>
 
-  <div className="md:w-[520px]  flex flex-col items-end justify-end  gap-3 mt-5">
+  <div className="md:w-[520px]  flex  flex-col justify-end  gap-3 mt-5">
     <p className="font-semibold text-lg"><Trans>ما هي ؟</Trans></p>
-    <h1 className="text-main text-3xl semi semi"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
+    <h1 className="text-main text-3xl  "><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
     <p className="md:text-lg"><Trans>مرحبًا بك في "مدرسة وي للتكنولوجيا التطبيقية"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في "وي للتكنولوجيا التطبيقية"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور.</Trans></p>
   </div>
 </section>
@@ -209,47 +209,58 @@ const handelGoTop = ()=>{
 
 
 
-        <section id="school_debartments" className="w-full mt-5 ">
-          <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
-            <MdClass  className="inline-block mr-2 text-2xl md:text-4xl " />            
-            الأقسام
-            </h1>
+        <section id="school_debartments" className="w-full mt-5">
+      <h1 className="md:text-3xl text-xl text-sec font-semibold animated-title text-center relative w-max m-auto">
+        <MdClass className="inline-block mr-2 text-2xl md:text-4xl" />
+        <Trans>الأقسام</Trans>
+      </h1>
 
-          <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
-              <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
-              <h1 className="text-center p-3 text-3xl font-bold text-main">الشبكات</h1>
-              <p className="text-center p-3">
-                في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.
-              </p>
-            </div>
+      <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+          <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+          <h1 className="text-center p-3 text-3xl font-bold text-main">
+            <Trans>الشبكات</Trans>
+          </h1>
+          <p className="text-center p-3">
+            <Trans>
+              في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.
+            </Trans>
+          </p>
+        </div>
 
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
-              <img src="/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
-              <h1 className="text-center p-3 text-3xl font-bold text-yellow-500">البرمجة</h1>
-              <p className="text-center p-3">
-                في هذا القسم، ندرس مجال البرمجة وتطوير البرمجيات. نقوم بدراسة تطوير تطبيقات الويب والتقنيات المستخدمة في برمجة البرامج.
-              </p>
-            </div>
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+          <img src="/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+          <h1 className="text-center p-3 text-3xl font-bold text-yellow-500">
+            <Trans>البرمجة</Trans>
+          </h1>
+          <p className="text-center p-3">
+            <Trans>
+              في هذا القسم، ندرس مجال البرمجة وتطوير البرمجيات. نقوم بدراسة تطوير تطبيقات الويب والتقنيات المستخدمة في برمجة البرامج.
+            </Trans>
+          </p>
+        </div>
 
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
-              <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
-              <h1 className="text-center p-3 text-3xl font-bold">الاتصالات</h1>
-              <p className="text-center p-3">
-                في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث.
-              </p>
-            </div>
-          </div>
-        </section>
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+          <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+          <h1 className="text-center p-3 text-3xl font-bold">
+            <Trans>الاتصالات</Trans>
+          </h1>
+          <p className="text-center p-3">
+            <Trans>
+              في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث.
+            </Trans>
+          </p>
+        </div>
+      </div>
+    </section>
 
         <section id="about_school" className="md:w-[60%] w-[80%] m-auto  drop-shadow-md">
           <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
             <IoMdPhotos className="inline-block mr-2 text-2xl md:text-4xl "/>
-            صور من المدرسة
-          
+            <Trans>صور من المدرسة</Trans>
           </h1>
 
-        <div className="w-full m-auto mt-10"><Slider slides={slides}  coverOrContain="object-cover"/></div>
+        <div className="w-full m-auto mt-10"><Slider slides={slides}  coverOrContain={"object-cover"} /></div>
 
         </section>
 
@@ -257,8 +268,8 @@ const handelGoTop = ()=>{
         <section id="school_terms" className="w-full mt-10  relative" >
 
       <h1  className="md:text-3xl  text-xl text-sec font-semibold animated-title text-center relative w-max m-auto">
-        <FaSchool className="inline-block mr-2 text-2xl md:text-4xl " />
-        معلومات حول المدرسة
+        <FaSchool className="inline-block mx-2 text-2xl md:text-4xl " />
+        <Trans >معلومات حول المدرسة</Trans>
       </h1>
 
           
@@ -429,7 +440,7 @@ const handelGoTop = ()=>{
                 "الآن وقتك للانضمام إلى مدارس وي للتكنولوجيا التطبيقية، يمكنك التقديم من خلال اللينك التالي:",
                 <br />,
                 <a href="https://dualedu.moe.gov.eg/home" className="text-blue-500">
-                  اضغط هنا
+                  <Trans>اضغط هنا</Trans>
                 </a>
               ]}
             /></>
@@ -437,7 +448,7 @@ const handelGoTop = ()=>{
 
 
 
-<button onClick={()=>{setIsShowMore(!isShowMore)}}   className="bg-sec text-white drop-shadow p-2 rounded m-auto w-40 text-center flex items-center justify-center gap-2 cursor-pointer hover:scale-110 transition-all ">{isShowMore ? 'عرض اقل' : 'عرض المزيد '} <BiShowAlt /></button>
+<button onClick={()=>{setIsShowMore(!isShowMore)}}   className="bg-sec text-white drop-shadow p-2 rounded m-auto w-40 text-center flex items-center justify-center gap-2 cursor-pointer hover:scale-110 transition-all "><Trans>{isShowMore ? 'عرض اقل' : 'عرض المزيد'}</Trans><BiShowAlt /></button>
 
 
 
@@ -455,13 +466,13 @@ const handelGoTop = ()=>{
 
           <h1  className="text-3xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
         <HiOutlineMail className="inline-block  mr-2 text-2xl md:text-4xl " />
-        تواصل معنا
+        <Trans>تواصل معنا</Trans>
       </h1>
-        <section id="school_contact" className=" lg:w-[50%] w-[80%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-2 md:p-10 gap-2" style={{ direction: 'rtl' }}>
+        <section id="school_contact" className=" lg:w-[50%] w-[80%] mt-16 flex flex-col md:flex-row bg-gray drop-shadow-2xl bg-white rounded-md m-auto justify-between p-2 md:p-10 gap-2" >
 
           <div className="w-full flex flex-col md:w-[45%]">
-            <h1 className="p-2 text-main text-4xl">اتصل بنا</h1>
-            <p className="text-md md:text-2xl p-2">نحن هنا من أجلك، كيف يمكننا مساعدتك؟</p>
+            <h1 className="p-2 text-main text-4xl"><Trans>اتصل بنا</Trans></h1>
+            <p className="text-md md:text-2xl p-2"><Trans>نحن هنا من أجلك، كيف يمكننا مساعدتك؟</Trans></p>
             <form onSubmit={handleSubmit} className="mt-5">
               <input type="text" required name="name" placeholder="أدخل اسمك" className="w-full bg-gray-200 placeholder-black outline-none  p-5 rounded-md mt-5" />
               <input type="email" required name="email" placeholder="أدخل بريدك الإلكتروني" className="w-full bg-gray-200 placeholder-black outline-none  p-5 rounded-md mt-4" />
@@ -508,7 +519,7 @@ const ContactInfo = ({ icon, text }) => {
       <div className="text-main rounded-[50px] w-[50px] h-[50px] flex justify-center items-center text-sm md:text-2xl">
         {icon}
       </div>
-      <p className="ml-0 text-md md:text-xl md:ml-10">{text}</p>
+      <p className="ml-0 text-md md:text-xl md:ml-10"><Trans>{text}</Trans></p>
     </div>
   );
 };

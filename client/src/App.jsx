@@ -25,7 +25,7 @@ function App() {
   }, 5000);
 
   useEffect(() => {
-    const direction = defultLang === "en" ? "rtl" : "ltr";
+    const direction = defultLang === "en" ? "ltr" : "rtl";
     const alignment = defultLang === "en" ? "left" : "right";
   
     document.body.dir = direction;
@@ -56,7 +56,7 @@ function App() {
   return (
     <>
     
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
 
 
 

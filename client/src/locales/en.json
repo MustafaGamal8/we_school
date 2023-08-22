@@ -1,4 +1,6 @@
 {
+  "مدرسة وي":"We school",
+  "للتكنولوجيا التطبيقية":"for applied technology",
   "تواصل": "Contact",
   "تسجيل الدخول": "Login",
   "شروط التقديم": "Terms of Application",
@@ -13,7 +15,157 @@
   "ما هي ؟": "What is it?",
       "مرحبًا بك في \"مدرسة وي للتكنولوجيا التطبيقية\"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في \"وي للتكنولوجيا التطبيقية\"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور.":
     "Welcome to 'We School of Applied Technology'! Our school is a leading institution specialized in providing excellent education in the fields of programming, communications, and networks. At 'WY School of Applied Technology', we strive to empower our students with the knowledge and skills necessary to excel in the rapidly evolving world of technology.",
-  "تغير اللغة":"Change Langauge"
+  "تغير اللغة":"Change Langauge",
+
+  
+  "الشبكات": "Networks",
+  "البرمجة": "Programming",
+  "الاتصالات": "Communications",
+  "في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.":
+    "In this section, we study the field of networks and cybersecurity. We study the design, management, and protection of networks from cyber threats.",
+  "في هذا القسم، ندرس مجال البرمجة وتطوير البرمجيات. نقوم بدراسة تطوير تطبيقات الويب والتقنيات المستخدمة في برمجة البرامج.":
+    "In this section, we study the field of programming and software development. We study the development of web applications and the technologies used in software programming.",
+  "في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث.":
+    "In this section, we study the field of communications science. We study the fundamentals of communications, various communication technologies, and their applications in the modern world of communications.",
+
+
+
+
+  "معلومات حول المدرسة": "Information About the School",
+  "صور من المدرسة": "Photos from the School",
+  "ايه هي شروط القبول بمدارس WE ؟": "What are the admission requirements for WE Schools?",
+  
+  "ما هي مدارس التكنولوجيا التطبيقية؟": "What Are Applied Technology Schools?",
+  "- مدارس التكنولوجيا التطبيقية هي نوع من مدارس التعليم الفني، حيث تعتمد على الشراكة مع شركة في القطاع الخاص لإعداد فنيين متعلمين ومدربين ومحترفين في مجالات تخصصهم.":
+    "- Applied Technology Schools are a type of technical education institutions that rely on partnerships with private sector companies to prepare skilled and trained technicians and professionals in their specialized fields.",
+  "- تتنوع تخصصات مدارس التكنولوجيا التطبيقية لتواكب احتياجات سوق العمل المتغيرة، وتهدف إلى تزويد الطلاب بالمهارات والمعرفة اللازمة للعمل في صناعات التكنولوجيا والابتكار.":
+    "- Specializations in Applied Technology Schools vary to meet the changing needs of the job market, aiming to provide students with the skills and knowledge required to work in the fields of technology and innovation industries.",
+    "ايه هي مدرسة WE للتكنولوجيا التطبيقية؟": "What is WE School of Applied Technology?",
+  "- هي أول مدرسة متخصصة في مجالي الاتصالات وتكنولوجيا المعلومات وهي عبارة عن شراكة بين وزارة الاتصالات وتكنولوجيا المعلومات MCIT وشركة المصرية للاتصالات Telecom Egypt ونظام التعليم فيها قائم على نظام الجدارات":
+    "- WE School of Applied Technology is the first specialized school in the fields of communications and information technology. It's a partnership between the Ministry of Communications and Information Technology (MCIT) and Telecom Egypt. The school's educational system is based on the competency-based education approach.",
+  "يعني إيه نظام الجدارات؟": "What does the competency-based education approach mean?",
+  "- هو نظام للتعليم تم تطبيقه عشان نتأكد إن طالب WE يبقى فني محترف عنده العوامل الأساسية عشان يكون فني جدير متميز عن غيره ومحترف في مجال تخصصه وهي:":
+    "- The competency-based education approach is a system that ensures that WE School students possess the fundamental factors to become professional technicians. This approach aims to create skilled and exceptional technicians who excel in their fields of specialization. The approach includes:",
+  "* المعارف النظرية": "* Theoretical knowledge",
+  "* المهارات العملية": "* Practical skills",
+  "* الأخلاقيات والمهارات الحياتية (زي مهارات التواصل الفعال والعمل في فريق وغيرهم)":
+    "* Ethics and life skills (such as effective communication skills, teamwork, and more)",
+  ". ايه هي فروع WE ومواقعها؟": "What are the branches and locations of WE?",
+  "- حاليا فروع WE عبارة عن 7 فروع في سبع محافظات مختلفة وهم:":
+    "- Currently, WE has 7 branches in 7 different governorates, which are:",
+  "القاهرة (مدينة نصر)،": "Cairo (Nasr City),",
+  "-الاسكندرية": "-Alexandria",
+  "-المنيا": "-Minya",
+  "-المنصورة": "-Mansoura",
+  "-السويس": "-Suez",
+  "-والوادي الجديد": "-New Valley",
+  "- الجيزة(الشيخ زايد )": "-Giza (Sheikh Zayed)",
+  ". ايه هي شروط القبول بمدارس WE ؟": "What are the admission requirements for WE Schools?",
+  "- بتختلف الشروط من عام لآخر ولكن بالنسبة لشروط السنة اللي فاتت 2021/2022 كانت:":
+    "- The admission requirements may vary from year to year, but for the previous year 2021/2022, they were:",
+  "* أن يكون الطالب لائق طبيا": "* The student must be medically fit",
+  "* أن لا يزيد سن الطالب في أول أكتوبر عن 18 سنة": "* The student's age should not exceed 18 years on October 1st",
+  "* أن يتمتع الطالب بالجنسية المصرية": "* The student must hold Egyptian nationality",
+  "* إجادة اللغة الانجليزية": "* Proficiency in the English language",
+  "* ألا يقل مجموع الطالب في الشهادة الاعدادية عن 250 درجة (ممكن تختلف السنة دي وممكن لا)":
+    "* The student's total score in the preparatory certificate should not be less than 250 points (this may vary from year to year)",
+  "* اجتياز الطالب لاختبارات القبول والمقابلة الشخصية":
+    "* The student's successful completion of the admission tests and personal interview",
+  ". ايه هي المواد اللي بتدرسوها؟": "What are the subjects taught?",
+  "في سنة أولى بندرس :": "In the first year, we study:",
+  "* Telecommunications (Telecom)": "* Telecommunications (Telecom)",
+  "* Information technology (IT)": "* Information technology (IT)",
+  "* Math": "* Math",
+  "* Physics": "* Physics",
+  "* English": "* English",
+  "* لغة عربية": "* Arabic language",
+  "* تربية دينية": "* Religious education",
+  "* تربية وطنية": "* National education",
+  "* Technical drawing": "* Technical drawing",
+  "* Electrical systems": "* Electrical systems",
+  "* ICT": "* ICT",
+  "* PE": "* Physical education",
+  "* Life skills": "* Life skills",
+  "بالاضافة الى التدريب الميداني بالمواقع الخاصة بشركة المصرية للاتصالات":
+    "In addition to field training at Telecom Egypt's sites",
+  "في سنة تانيه بندرس :)": "In the second year, we study:",
+  "* مادة تخصص واحدة بتختارها Telecom أو IT (Networks and cybersecurity او programming /web)":
+    "* One specialized subject of your choice, either Telecom or IT (Networks and cybersecurity or programming/web)",
+    "* دراسات اجتماعية": "* Social studies",
+  "* Auto Cad": "* Auto Cad",
+  "إلى جانب الدراسة هتلاقيهم بيطوروا من مهاراتنا المختلفة في التواصل والثقة بالنفس والاعتماد ع الذات ومهارات presentation skills وغيرها من ال soft skills وال life skills وازاي تبقى قائد قوي الشخصية وشخص مؤثر في مجتمعك ومفيد ليه وازاي تشتغل في فريق وغير النشاطات المختلفة اللي بتساعدك تبقى جدير ، وع ذكر كلمة جدير ف نقول مرة تانية عشان لو نسيت معناها ده نظام التعليم عندنا ، نظام الجدارات واللي بيعتبر من أنجح الأنظمة التعليمية وبيعتمد على أن الطالب يكون عنده المعرفة النظرية والمهارات العملية إلى جانب الأخلاقيات والسلوكيات ومهارات التواصل":
+    "In addition to the studies, you will also develop various skills such as communication, self-confidence, self-reliance, presentation skills, and other soft skills and life skills. You will learn how to become a strong personal leader, an influential individual in your community, useful to others, and how to work in a team. All these activities help you become worthy. Regarding the term 'worthy,' we emphasize again that this is the foundation of our educational system, the competency-based education approach. It is considered one of the most successful educational systems and relies on the student having theoretical knowledge, practical skills, ethics, behaviors, and communication skills.",
+  "ايه الكليات اللي نقدر ندخلها بعد التخرج وهل يمكن دخول هندسة؟":
+    "What colleges can we enter after graduation and can we study engineering?",
+  "*  الكليات المسموحة لخريجي مدارس WE هي :":
+    "* The allowed colleges for WE School graduates are:",
+  "* كليه الهندسة بعد عمل المعادلة": "* Engineering college after equivalency",
+  "* الجامعات التكنولوجية": "* Technological universities",
+  "* المعاهد الفنية": "* Technical institutes",
+  "هل يمكن للخريج الالتحاق بسوق العمل مباشرة؟":
+    "Can graduates immediately enter the job market?",
+  "*أكيد ممكن ، وهيبقى جدير بالعمل بمجال تخصصه بعد تخرجه مباشرة":
+    "* Certainly, graduates can enter the job market in their specialized field immediately after graduation.",
+  "ايه هي الشهادات اللي بيحصل عليها الطالب؟":
+    "What certificates does the student receive?",
+  "- الطالب بيحصل على :": "- The student receives:",
+  "* شهادة الدبلوم الفني لمدارس التكنولوجيا التطبيقية":
+    "* Diploma of Technical Education for Applied Technology Schools",
+  "* شهادة أكاديمية معتمدة دوليا": "* Internationally accredited academic certificate",
+  "* شهادة خبرة من شركة المصرية للإتصالات":
+    "* Experience certificate from Telecom Egypt",
+  "* شهادات مهنية خلال فترة التدريب العملي":
+    "* Professional certificates during the practical training period",
+  "ايه هي طبيعة اختبارات القبول والمقابلة الشخصية؟":
+    "What is the nature of the admission tests and the personal interview?",
+  "- مبدأيا كدة أحب أطمنكم ، اختبارات القبول مش صعبة والأسئلة مش تعجيزية ولا حاجة ومش هيتطلب منك تحل 200 سؤال في تلت ساعة والكلام ده لا خالص الأسئلة بتبقى عن الماث والانجلش واللغة العربية واسئلة كلها في مستوى طالب تالتة اعدادي وده طبيعي وعادي جدا وخاصة انك طالب في تالتة اعدادي ف هتتسأل في ايه مثلا؟! كله تراكمي ودرسته قبل كدة ف لا تقلق و مش محتاج تاخد كورس مخصوص للاختبارات ولا المقابلة الشخصية ، هتاخد كورس اه ولكن لنفسك تتعلم حاجة جديدة لنفسك أنت سواء لغة جديدة أو تجرب تتعلم برمجة أو تاخد فكرة عن التخصصات والتكنولوجيا بشكل عام ، في WE هتتعلم انه مش هدفك من التعليم هو الامتحان ولا التقديرات وبس، الامتحان ده تقييم ليك ولتحصيلك الدراسي أما إنت فلازم تحط في دماغك إنك بتتعلم لنفسك أنت وبتطور نفسك للأحسن دايما 💙":
+    "- Initially, I want to assure you that the admission tests are not difficult, the questions are not impossible, and you won't be required to solve 200 questions in half an hour. Generally, the questions will cover math, English, and Arabic language, and they will be at the level of a third-year preparatory student. This is very normal and quite okay, especially since you are in the third year of preparatory school. You'll be asked about things you've studied before, so don't worry. You don't need a specialized course for the tests or the personal interview. You can take a course, but make it for your personal growth. Learn something new for yourself, like a new language or programming, or get an idea about different fields and technologies. At WE, you will learn that your education is not just about exams and grades. Exams are an evaluation of your academic achievement, but remember that you are learning for yourself and constantly improving. 💙",
+  "مين اللي بيشرح المناهج ؟": "Who teaches the curriculum?",
+  "- بما ان المناهج عندنا مستواها عالي ومميز ف أكيد لازم اللي يشرحها يكونوا مهندسين ومعلمين ودكاترة محترفين وذوي خبرة في مجالات تخصصهم وعندهم دراية باللي بيحصل في سوق العمل وتجارب حياتية، هتلاقيهم بيشرحوا باحترافية ، هدفهم الأول والأخير إنك تفهم ، مش بيزهقوا من الأسئلة بل على العكس بيحبوا الأسئلة وبيجاوبوا على أسئلتك في مجال تخصصهم وعلى حسب خبرتهم العملية حتى لو الأسئلة دي خرجت برة المنهج المهم عندهم إنك تتعلم ومش هيبخلوا عليك بمعلومة، لو تعبت هتلاقيهم أول حد جنبك وفي ظهرك بيشجعوك إنك تكمل وبيدعموك طول الوقت وبيبذلوا مجهود عظيم وجبار والبسمة ما بتروحش من على وشوشهم دايما مهتمين بيك بيحبوك وخايفين على مصلحتك، مهما اتكلمنا مش هنوفيهم حقهم فعلا وصعب احساسنا تجاههم يتوصف بالكلام، ممكن تفتكره مجرد كلام لكن هتحس بيه كله لو مريت بيه وهتعرف إنه مش كلام وخلاص دي خلاصة تجربة حقيقية ... تجربة لا تعوض💜":
+    "- Since our curriculum is of a high and distinguished level, it's necessary for those who teach it to be professional engineers, teachers, and experienced professors in their specialized fields. They should have a good understanding of the current job market and practical life experiences. You'll find them explaining the subjects with professionalism, and their primary and ultimate goal is to ensure your understanding. They don't get tired of questions; on the contrary, they love questions and are eager to answer them in their field of expertise. Depending on their practical experience, they'll even answer questions that may go beyond the curriculum. What's important to them is your learning. They won't hesitate to share knowledge with you. If you face difficulties, they'll be the first ones by your side, supporting and encouraging you. They put in great and commendable effort, always having a smile on their faces. They genuinely care about you, love you, and are concerned about your well-being. No matter how much we talk about them, words can't fully describe our feelings towards them. You might think it's just words, but you'll feel all of this if you go through this experience. You'll realize it's not just words; it's the outcome of a real experience... an irreplaceable experience. 💜",
+  "أنا من مدرسة عربي ،هل ده هيأثر عليا وخصوصا اني عرفت ان المواد باللغة الانجليزية؟":
+    "I am from an Arabic school. Will this affect me, especially since I learned that the subjects are in English?",
+  "- عشان نبقى صادقين أنت ممكن تستغرب الموضوع او تستثقله شوية في مواد زي الرياضيات مثلا أو في مواد التخصص في الاول وبس ودي كلنا بنبقى أول مرة نشوف مصطلحاتها أصلا ولكن مع الوقت وبسرعة هتلاقيك اتعودت ومعندكش أي مشكلة زيك زي طالب المدارس اللغات وده طبعا بيبقى باجتهادك وشغلك على نفسك مع الدعم من المهندسين والمدرسين وهتلاقيهم بيبدأوا معاك واحدة واحدة لحد ما تتعود":
+    "- To be honest, you might find this challenging or a bit overwhelming at first, especially in subjects like mathematics or specialized courses in the beginning. All of us encounter terminology we've never seen before. However, with time, you'll quickly get used to it, and you won't face any problems. Just like students in language schools, it all comes down to your dedication and efforts, along with the support from the engineers and teachers. They will start with you step by step until you become accustomed.",
+  "رابط التقديم على المدرسة":
+    "Link to apply for the school",
+  "الآن وقتك للانضمام إلى مدارس وي للتكنولوجيا التطبيقية، يمكنك التقديم من خلال اللينك التالي:":
+    "Now is your time to join WE Schools for Applied Technology. You can apply through the following link:",
+  "اضغط هنا": "Click here",
+  
+
+
+  "تواصل معنا": "Contact Us",
+  "اتصل بنا": "Contact Us",
+  "نحن هنا من أجلك، كيف يمكننا مساعدتك؟": "We're here for you. How can we assist you?",
+  "أدخل اسمك": "Enter your name",
+  "أدخل بريدك الإلكتروني": "Enter your email address",
+  "أدخل رسالتك": "Enter your message",
+  "إرسال": "Send",
+  "دقهلية المنصورة": "Dakahlia, Mansoura",
+
+
+  "عرض اقل": "Show Less",
+  "اتصل بالمدرسة": "school_contact",
+  "شروط المدرسة": "school_terms",
+  "أقسام المدرسة": "school_debartments",
+  "شركاء المدرسة": "school_partners",
+  "عرض المزيد": "Show More",
+  "المطورون": "developers",
+  "كرم محمود": "karemMahmoud",
+  "مصطفى جمال": "mustafaGamal",
+  "عنهم": "aboutThem"
+  
+
+
+
+  
+
+
+
+
+
+
   
   
   

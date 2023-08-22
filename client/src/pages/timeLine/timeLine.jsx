@@ -77,7 +77,7 @@ const TimeLine = () => {
 <section className="lg:w-[75%]   ">
         <h1 className="text-3xl bg-sec text-white rounded m-auto w-40 p-2 text-center font-semibold uppercase mt-3  mb-5">time line</h1>
         
-        <div className="w-[60%] my-7 drop-shadow-md m-auto h-max">
+        <div className="lg:w-[60%] md:w-[70%] w-[90%] my-7 drop-shadow-md m-auto h-max">
           <Search onSearch={handleSearch} />
         </div>
         

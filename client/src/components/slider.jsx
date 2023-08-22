@@ -4,8 +4,6 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import 'swiper/css';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Slider = ({ slides, coverOrContain }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -61,7 +59,7 @@ const Slider = ({ slides, coverOrContain }) => {
       {slides.map((s, index) => (
         <SwiperSlide key={index} className="flex items-center justify-center drop-shadow">
           <div className="md:h-[550px] h-[300px] w-full flex items-center justify-center">
-            <LazyLoadImage  effect="blur" src={s.img} alt="Photo" className={`rounded-lg w-full h-full drop-shadow-md ${coverOrContain} `} />
+            <img   src={s.img} alt="Photo" className={`rounded-lg w-full h-full drop-shadow-md  ${coverOrContain} `} />
           </div>
         </SwiperSlide>
       ))}

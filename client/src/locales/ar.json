@@ -8,9 +8,21 @@
   "Home Page": "الصفحة الرئيسية",
   "WeTech Applied Technology School": "مدرسة وي للتكنولوجيا التطبيقية",
   "In Mansoura": "في المنصورة",
-  "Learn programming and explore an exciting world in communication and networking technology at WeTech School.": "تعلم  البرمجة واستكشف عالمًا مشوقًا في تقنية الاتصالات والشبكات في مدرسة وي.",
-  "Explore Curriculum": "استكشف المناهج",
   "What is it?": "ما هي ؟",
-  "Welcome to 'We School of Applied Technology'! Our school is a leading institution specialized in providing excellent education in the fields of programming, communications, and networks. At 'We School of Applied Technology', we strive to empower our students with the knowledge and skills necessary to excel in the rapidly evolving world of technology.": "مرحبًا بك في \"مدرسة وي للتكنولوجيا التطبيقية\"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في \"وي للتكنولوجيا التطبيقية\"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور."
+  "Welcome to 'We School of Applied Technology'! Our school is a leading institution specialized in providing excellent education in the fields of programming, communications, and networks. At 'We School of Applied Technology', we strive to empower our students with the knowledge and skills necessary to excel in the rapidly evolving world of technology.": "مرحبًا بك في \"مدرسة وي للتكنولوجيا التطبيقية\"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في \"وي للتكنولوجيا التطبيقية\"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور.",
+    "We Applied Technology School": "_مدرسة وي للتكنولوجيا التطبيقية",
+    "Learn programming and explore an exciting world in communication and networking technology at WeTech School.":
+      "_تعلم  البرمجة واستكشف عالمًا مشوقًا في تقنية الاتصالات والشبكات في مدرسة وي.",
+    "Change Language": "_تغير اللغة",
+    "Networks": "_الشبكات",
+    "Programming": "_البرمجة",
+    "Communications": "_الاتصالات",
+    "In this section, we study the field of networks and cybersecurity. We study the design, management, and protection of networks from cyber threats.":
+      "_في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.",
+    "In this section, we study the field of programming and software development. We study the development of web applications and the technologies used in software programming.":
+      "_في هذا القسم، ندرس مجال البرمجة وتطوير البرمجيات. نقوم بدراسة تطوير تطبيقات الويب والتقنيات المستخدمة في برمجة البرامج.",
+    "In this section, we study the field of communications science. We study the fundamentals of communications, various communication technologies, and their applications in the modern world of communications.":
+      "_في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث."
+    
 
 }

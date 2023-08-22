@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { BsChevronDown, BsChevronUp } from 'react-icons/bs'
+import { Trans } from 'react-i18next';
 ;
 const ListItem = ({ title, content }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -15,7 +16,7 @@ const ListItem = ({ title, content }) => {
         className={`flex flex-row justify-between items-center text-md  md:justify-center w-full text-center md:text-xl font-bold py-3 px-6  bg-[#6e237e] text-white drop-shadow-md  rounded-t-lg `}
         onClick={toggleExpand}
       >
-        {title}
+        <Trans>{title}</Trans>
         <span className="inline-block mr-5 transform transition-transform">
           {isExpanded ? <BsChevronUp /> : <BsChevronDown />}
         </span>
@@ -24,7 +25,7 @@ const ListItem = ({ title, content }) => {
       <div className="bg-white   drop-shadow-lg  rounded-b-lg ">
           {content.map((item, index) => (
             <p key={index} className=" text-md p-5 py-2 md:text-lg text-gray-800">
-              {item}
+              <Trans>{item}</Trans>
             </p>
           ))}
         </div>
