@@ -1,5 +1,6 @@
 const fileModel = require("../mongo/fileModel.js");
 const postModel = require("../mongo/postModel.js");
+const profilePictureModel = require("../mongo/profilePicture.js");
 const UserModel = require("../mongo/userModel.js");
 
 
@@ -9,6 +10,9 @@ const createPost = async (postFields, files) => {
   try {
     const { user, content } = postFields;
     const {firstName,lastName,email,role,picture} = user
+    const date = new Date();
+    const postDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+    
  
     const post = new postModel({
       user:{
@@ -21,6 +25,7 @@ const createPost = async (postFields, files) => {
       content,
       files,
       likes: [], 
+      postDate
     });
 
     await post.save();
@@ -143,7 +148,7 @@ const uploadFile = async (buffer, originalname, mimetype,fileSize) => {
 const readFile = async (req, res) => {
   try {
     const fileId = req.params.id;
-    const file = await fileModel.findById(fileId);
+    const file = await fileModel.findById(fileId) || await profilePictureModel.findById(fileId);
 
     if (!file) {
       return res.status(404).json({ error: 'File not found' });

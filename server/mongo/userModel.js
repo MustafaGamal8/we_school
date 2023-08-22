@@ -5,9 +5,7 @@ const userSchema = mongoose.Schema({
     type:Number,
   },
   picture:{
-    name: String,
-    data: Buffer,
-    contentType: String,
+    type:String
   },
   firstName:{
       type:String,

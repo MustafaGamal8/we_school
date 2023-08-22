@@ -69,7 +69,7 @@ const TimeLine = () => {
 
 
   return ( 
-<div className="flex flex-col-reverse lg:flex-row  gap-5 w-full">
+<div className="flex flex-col-reverse lg:flex-row  gap-5 w-full lg:pt-14">
   
 <img className=" absolute lg:top-0 top-80 right-0 z-[-1] w-full drop-shadow-xl " src="/assets/wave.svg" alt="" />
 
@@ -82,7 +82,7 @@ const TimeLine = () => {
         </div>
         
         <div className="flex flex-col gap-5">
-          {!filteredPosts ? null : (
+          {!filteredPosts ? (<h1 className="text-main text-xl text-center"> There is no posts</h1>) : (
             filteredPosts.map(post => (
               <Post key={post._id} post={post} handleOpenModal={handleOpenModal} />
             ))
@@ -91,7 +91,7 @@ const TimeLine = () => {
       </section>
 
   
-  <section className="   lg:w-[25%] lg:mt-0 mt-5  p-2  bg-white rounded drop-shadow-md  border-l-2 border-main">
+  <section className=" h-full  lg:w-[25%] lg:mt-0 mt-5  p-2  bg-white rounded drop-shadow-md  border-l-2 border-main">
     <h1 className="text-3xl bg-sec text-white rounded m-auto w-40 p-2 text-center font-semibold uppercase mb-3 ">Tasks</h1>
     <div className="scrollbar-hide rounded  flex  lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-2 lg:w-full w-[95%] m-auto  shadow">
       <div className="w-96"><Task /></div>

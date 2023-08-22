@@ -89,7 +89,7 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
 
               <a
                 download
-                href={ "https://we-school-api.vercel.app/"+ file.fileLink  }
+                href={ "https://we-school-api.vercel.app"+ file.fileLink  }
                 className="bg-white drop-shadow-lg hover:bg-main hover:text-white rounded-full p-2 cursor-pointer text-xl"
               >
                 <AiOutlineDownload />

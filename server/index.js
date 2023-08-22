@@ -44,6 +44,7 @@ const {
   loginUser,
   createInvitationCode,
   getInvitationCodes,
+  editUser
 } = require('./functions/users');
 
 const {
@@ -88,10 +89,11 @@ const startServer = async () => {
     // Auth routes
     app.post('/auth/signup', signUp);
     app.post('/auth/login', loginUser);
-    app.get('/auth/users', getUsers);
     app.get('/auth/invitcode', getInvitationCodes);
     app.get('/auth/invitcode/:userType', createInvitationCode);
     app.get('/auth/confirm-email', confirmEmail);
+    app.get('/auth/users', getUsers);
+    app.post('/auth/edit-user/:user', upload.single('picture'), editUser);
 
     // Post routes
     app.get('/posts', readAllPosts);

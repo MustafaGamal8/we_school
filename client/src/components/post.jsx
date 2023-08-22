@@ -1,23 +1,26 @@
 import { FaCircleUser } from "react-icons/fa6"
 import { AiFillEye, AiOutlineHeart } from "react-icons/ai"
+import { BiTime} from "react-icons/bi"
 import Slider from './slider';
 import { toggleLike } from "../functions/posts";
 import { useEffect, useState } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
-const Post = ({handleOpenModal, post }) => {
-  const { _id, user, files, content , likes } = post
-  const  [isLiked,setIsLiked]  = useState(null)
-  const  [postLikes,setPostLikes]  = useState(likes)
-  
+const Post = ({ handleOpenModal, post }) => {
+  const { _id, user, files, content, likes,postDate } = post
+  const [isLiked, setIsLiked] = useState(null)
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+  const [postLikes, setPostLikes] = useState(likes)
+
   const PostFiles = [];
   const slides = []
-  
+
   const currentUser = JSON.parse(localStorage.getItem('user'))
 
-  useEffect(()=>{
+  useEffect(() => {
     setIsLiked(postLikes?.some(like => like.userId === currentUser._id))
-  },[])
+  }, [])
 
   const serverUrl = "https://we-school-api.vercel.app/"
 
@@ -29,8 +32,8 @@ const Post = ({handleOpenModal, post }) => {
   })
 
 
-  const handleLike = ()=>{
-    toggleLike(currentUser._id,_id)
+  const handleLike = () => {
+    toggleLike(currentUser._id, _id)
     if (postLikes?.some(like => like.userId === currentUser._id)) {
       setIsLiked(false);
       const updatedPostLikes = postLikes.filter(like => like.userId !== currentUser._id);
@@ -39,38 +42,49 @@ const Post = ({handleOpenModal, post }) => {
       setIsLiked(true);
       setPostLikes([...postLikes, { userId: currentUser._id, _id }]);
     }
-    
-
-    
-
   }
+
 
   return (
     <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl ">
 
       <div className="flex flex-col items-center">
-        <div className="flex items-center gap-3 text-xl mt-2">
-          <FaCircleUser className="text-sec text-2xl" />
+        <div className="flex items-center gap-2 text-2xl mt-2">
+          {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl +  user.picture}   className="h-full w-full object-cover"/></div> : (<FaCircleUser className="text-sec text-2xl" />) }
           <h1 className="text-sec capitalize">{user.firstName} {user.lastName}</h1>
         </div>
+        <hr  className="h-1 w-1/2 my-2 "/>
         <div className="b" >
           <p className="text-sm text-gray-600 ">{user.email}</p>
-          <p className="text-sm text-gray-600 text-center capitalize">{user.role}</p>
+          {postDate && <div className="text-sm text-gray-600 capitalize flex items-center justify-center gap-1"><BiTime /> <p>{postDate}</p></div>}
         </div>
       </div>
 
-      <div className="mt-5 rounded p-2 capitalize">
+      <div className="mt-5 rounded p-2 capitalize flex text-right">
         {content}
       </div>
 
       <div className="h-96  p-2   bg-white drop-shadow rounded-md ">
-        <Slider slides={slides} coverOrContain="object-contain" />
+        
+        {
+          screenWidth > 720 ? (<Slider slides={slides} coverOrContain="object-contain" />
+          ) : (<div className=" h-full flex items-center gap-5 overflow-x-scroll">
+            {
+              slides.map((s) => (
+                <LazyLoadImage src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
+              ))
+            }
+          </div>)
+        }
+
+
+
       </div>
 
 
       <div className="flex items-center justify-around w-full mt-7 ">
         <div className="flex flex-col items-center gap-2 text-lg">
-          <div onClick={handleLike} className={`group ${isLiked ? 'bg-red-400 text-white' : 'bg-white' } drop-shadow-md p-2 rounded-md cursor-pointer `}><AiOutlineHeart /></div>
+          <div onClick={handleLike} className={`group ${isLiked ? 'bg-red-400 text-white' : 'bg-white'} drop-shadow-md p-2 rounded-md cursor-pointer `}><AiOutlineHeart /></div>
           {postLikes?.length || "0"}
         </div>
 

@@ -25,6 +25,10 @@ const postSchema = mongoose.Schema({
       },
     },
   ],
+  postDate: {
+    required:true,
+    type:String
+  },
 
 })
 

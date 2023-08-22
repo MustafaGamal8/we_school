@@ -2,8 +2,9 @@ const InvitationModel = require("../mongo/InvitationModel.js");
 const UserModel = require("../mongo/userModel.js");
 const bcrypt = require('bcrypt');
 const { sendMail } = require("./mailConfirmation.js");
+const profilePictureModel = require("../mongo/profilePicture.js");
 
-const getUsers = async (req,res) => {
+const getUsers = async (req, res) => {
   try {
     const users = await UserModel.find();
     res.json(users);
@@ -14,12 +15,12 @@ const getUsers = async (req,res) => {
 };
 
 const signUp = async (req, res) => {
-  const { firstName, lastName, email, password, role,grade , code } = req.body;
+  const { firstName, lastName, email, password, role, grade, code } = req.body;
 
 
   try {
     // Check if the invitation code exists in the database
-    const isValidInvitation = await InvitationModel.exists({ code: code,userType: role + grade });
+    const isValidInvitation = await InvitationModel.exists({ code: code, userType: role + grade });
 
     if (!isValidInvitation) {
       return res.status(403).json({ error: 'Invalid invitation code' });
@@ -43,7 +44,7 @@ const signUp = async (req, res) => {
       password: hashedPassword,
       role,
       grade,
-      isConfirmed:false
+      isConfirmed: false
     });
 
     await userModel.save();
@@ -88,22 +89,22 @@ function generateInvitationCode() {
   return invitationCode;
 }
 
-const createInvitationCode = async (req,res) => {
-  const {userType} = req.params
+const createInvitationCode = async (req, res) => {
+  const { userType } = req.params
 
   try {
     // Check if an invitation code with the given user type already exists
     const existingInvitation = await InvitationModel.findOneAndDelete({ userType });
 
-    
-      const newInvitationCode = generateInvitationCode();
 
-      // Save the new invitation code to the database
-      const invitation = new InvitationModel({ code: newInvitationCode, userType });
-      await invitation.save();
+    const newInvitationCode = generateInvitationCode();
 
-      res.status(200).json({ invitationCode: newInvitationCode });
-    
+    // Save the new invitation code to the database
+    const invitation = new InvitationModel({ code: newInvitationCode, userType });
+    await invitation.save();
+
+    res.status(200).json({ invitationCode: newInvitationCode });
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Failed to generate invitation code' });
@@ -111,10 +112,53 @@ const createInvitationCode = async (req,res) => {
 };
 
 
-const getInvitationCodes =async (req,res)=>{
+const getInvitationCodes = async (req, res) => {
   const invitCodes = await InvitationModel.find()
   res.json(invitCodes)
 }
 
-module.exports = { getUsers, signUp, loginUser, createInvitationCode ,getInvitationCodes  };
+
+
+// 
+const editUser = async (req, res) => {
+  try {
+    const userId = req.params.user;
+    const { firstName, lastName, password } = req.body;
+    const user = await UserModel.findById(userId);
+
+    if (user && (await bcrypt.compare(password, user.password))) {
+      if (req.file) {
+        const { originalname, buffer, mimetype } = req.file;
+
+        const fileSizeInBytes = buffer.length;
+        const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
+        const fileSize = fileSizeInMB.toFixed(2) + 'Mb';
+
+        const profilePicture = new profilePictureModel({
+          name: originalname,
+          for: user._id,
+          data: buffer,
+          fileSize,
+        });
+
+        await profilePicture.save();
+        user.picture =  `/files/${profilePicture._id}`
+        
+      }
+
+      firstName ? user.firstName = firstName : null 
+      lastName  ? user.lastName = lastName : null
+      await user.save();
+
+      res.status(200).json({ message: 'Data updated successfully' });
+    } else {
+      return res.status(401).json({ error: 'Password is incorrect' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
+
+module.exports = { getUsers, signUp, loginUser, createInvitationCode, getInvitationCodes, editUser };
 
