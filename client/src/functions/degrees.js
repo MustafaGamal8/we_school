@@ -4,13 +4,20 @@ const baseUrl = "https://we-school-api.vercel.app"
 
 export const getDegree = async(StudentCode)=>{
   try {
-    console.log(StudentCode)
     const response = await axios.get(baseUrl + `/degrees/${StudentCode}`) 
-  return response.data
+    return response.data
     
   } catch (error) {
     return error.response.data
     
   }
-
+}
+export const getAllDegrees = async()=>{
+  try {
+    const response = await axios.get(baseUrl + `/degrees`) 
+    return response.data !== null ? true : false  
+  } catch (error) {
+     console.log(error) 
+    
+  }
 }

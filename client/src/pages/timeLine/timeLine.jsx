@@ -4,12 +4,14 @@ import Task from './../../components/task';
 import FilesModal from "../../components/filesModal";
 import { getPosts } from "../../functions/posts";
 import Search from "../../components/search";
+import { getAllTasks } from "../../functions/tasks";
 
 const TimeLine = () => {  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [postFiles, setPostFiles] = useState([]);
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]); 
+  const [tasks, setTasks] = useState([]);
 
 
   const handleOpenModal = (PostFiles) => {
@@ -25,11 +27,17 @@ const TimeLine = () => {
   
   const fetchPosts = async ()=>{
     const posts =  await getPosts()
-    setPosts(posts)
     setFilteredPosts(posts)
+    setPosts(posts)
+  }
+  const fetchTasks = async ()=>{
+    const tasks =  await getAllTasks()
+    setTasks(tasks)
+    console.log(tasks)
   }
   useEffect(()=>{
     fetchPosts()
+    fetchTasks()
   }
     ,[]
   )
@@ -75,14 +83,14 @@ const TimeLine = () => {
 
 
 <section className="lg:w-[75%]   ">
-        <h1 className="text-3xl bg-sec text-white rounded m-auto w-40 p-2 text-center font-semibold uppercase mt-3  mb-5">time line</h1>
+        <h1 className="text-3xl bg-white rounded-b m-auto w-80 p-2 text-center font-semibold uppercase mt-3  mb-5">time line</h1>
         
         <div className="lg:w-[60%] md:w-[70%] w-[90%] my-7 drop-shadow-md m-auto h-max">
           <Search onSearch={handleSearch} />
         </div>
         
-        <div className="flex flex-col gap-5">
-          {!filteredPosts ? (<h1 className="text-main text-xl text-center"> There is no posts</h1>) : (
+        <div className="flex flex-col gap-5 w-full">
+          {!filteredPosts ? null: (
             filteredPosts.map(post => (
               <Post key={post._id} post={post} handleOpenModal={handleOpenModal} />
             ))
@@ -91,16 +99,14 @@ const TimeLine = () => {
       </section>
 
   
-  <section className=" h-full  lg:w-[25%] lg:mt-0 mt-5  p-2  bg-white rounded drop-shadow-md  border-l-2 border-main">
+  <section className=" h-full  lg:w-[30%]  lg:mt-0 mt-5  lg:m-10 p-2  bg-white rounded drop-shadow-md  border-b-2 border-main">
     <h1 className="text-3xl bg-sec text-white rounded m-auto w-40 p-2 text-center font-semibold uppercase mb-3 ">Tasks</h1>
-    <div className="scrollbar-hide rounded  flex  lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-2 lg:w-full w-[95%] m-auto  shadow">
-      <div className="w-96"><Task /></div>
-      <div className="w-96"><Task /></div>
-      <div className="w-96"><Task /></div>
-      <div className="w-96"><Task /></div>
-      <div className="w-96"><Task /></div>
-      <div className="w-96"><Task /></div>
-      <div className="w-96"><Task /></div>
+
+    <div className="scrollbar-hide rounded  flex   lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-3 w-full  m-auto ">
+      {tasks ? tasks.map(task=>(
+        <div className="w-full  "><Task  Task={task}/></div>
+      )): <h1 className="capitalize text-xl">no tasks</h1> }
+      
       </div>
   </section>
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { RiArrowDropDownLine } from 'react-icons/ri';
 
 const Search = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,7 +31,7 @@ const Search = ({ onSearch }) => {
         onChange={handleInputChange}
       />
       <select
-        className="bg-transparent outline-none p-2 text-lg "
+        className=" bg-transparent outline-none p-2 text-lg  "
         value={searchCategory}
         onChange={handleSelectChange}
       >
@@ -38,8 +39,11 @@ const Search = ({ onSearch }) => {
         <option value="content">Post Content</option>
         <option value="email">Email</option>
       </select>
+      
     </div>
   );
 };
 
 export default Search;
+
+

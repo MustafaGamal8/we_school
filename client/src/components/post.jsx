@@ -46,21 +46,21 @@ const Post = ({ handleOpenModal, post }) => {
 
 
   return (
-    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto  border p-2 rounded text-sec bg-white  drop-shadow-xl ">
+    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl ">
 
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-2 text-2xl mt-2">
-          {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl +  user.picture}   className="h-full w-full object-cover"/></div> : (<FaCircleUser className="text-sec text-2xl" />) }
+          {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl +  user.picture}   className="h-full w-full object-cover rounded-full"/></div> : (<FaCircleUser className="text-sec text-2xl" />) }
           <h1 className="text-sec capitalize">{user.firstName} {user.lastName}</h1>
         </div>
         <hr  className="h-1 w-1/2 my-2 "/>
         <div className="b" >
-          <p className="text-sm text-gray-600 ">{user.email}</p>
+          <p className="text-sm text-gray-600  select-text">{user.email}</p>
           {postDate && <div className="text-sm text-gray-600 capitalize flex items-center justify-center gap-1"><BiTime /> <p>{postDate}</p></div>}
         </div>
       </div>
 
-      <div className="mt-5 rounded p-2 capitalize flex text-right">
+      <div className="mt-5 rounded p-2 capitalize flex text-right select-text">
         {content}
       </div>
 

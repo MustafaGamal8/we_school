@@ -37,7 +37,7 @@ const signUp = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create a new user with the hashed password
-    let userModel = new UserModel({
+    let user = new UserModel({
       firstName,
       lastName,
       email,
@@ -47,7 +47,7 @@ const signUp = async (req, res) => {
       isConfirmed: false
     });
 
-    await userModel.save();
+    await user.save();
     await sendMail(email)
     res.status(200).json({ msg: 'Account Created Successfully, Please Confirm Your Email' });
   } catch (err) {

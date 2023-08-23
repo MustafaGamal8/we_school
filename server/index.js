@@ -38,40 +38,19 @@ app.get('/', (req, res) => {
 const translate = require('translate-google');
 
 // Import functions for user management and posts
-const {
-  getUsers,
-  signUp,
-  loginUser,
-  createInvitationCode,
-  getInvitationCodes,
-  editUser
-} = require('./functions/users');
-
-const {
-  readAllFiles,
-  readFile,
-  uploadAndCreatePost,
-  readAllPosts,
-  togglePostLike,
-} = require('./functions/posts');
-
-const { confirmEmail } = require('./functions/mailConfirmation');
-const DegreesModel = require('./mongo/degreeModel');
-const {
-  upload_xlsx,
-  getDegrees,
-  getStudentDegrees,
-} = require('./functions/degrees');
+  const { getUsers,signUp,loginUser,createInvitationCode,getInvitationCodes,editUser}= require('./functions/users');
+  const { confirmEmail } = require('./functions/mailConfirmation');
+  const { readAllFiles, readFile, uploadAndCreatePost, readAllPosts, togglePostLike,} = require('./functions/posts');
+  const {upload_xlsx,getDegrees,getStudentDegrees,} = require('./functions/degrees');
+  const { uploadTask,getTasks } = require('./functions/task');
+  
 
 // Connect to MongoDB and start the server
 const startServer = async () => {
   try {
     connectDB(MONGODB_URL);
 
-    // Handle degrees upload
-    app.post('/degrees-upload', upload.single('file'), upload_xlsx);
-    app.get('/degrees', getDegrees);
-    app.get('/degrees/:code', getStudentDegrees);
+  
 
     // Handle translation
     app.post('/translate', async (req, res) => {
@@ -105,6 +84,19 @@ const startServer = async () => {
     app.get('/files', readAllFiles);
     app.get('/files/:id', readFile);
 
+
+
+      // Degrees routes
+      app.post('/degrees-upload', upload.single('file'), upload_xlsx);
+      app.get('/degrees', getDegrees);
+      app.get('/degrees/:code', getStudentDegrees);
+      
+      // tasks routs
+      app.post('/tasks-upload', uploadTask);
+      app.get('/tasks', getTasks);
+      
+      
+
     const PORT = process.env.PORT || 8000;
     app.listen(PORT, () =>
       console.log(`Server has started on port http://localhost:${PORT}`)
@@ -115,3 +107,11 @@ const startServer = async () => {
 };
 
 startServer();
+
+
+
+
+const schedule = require('node-schedule');
+
+
+

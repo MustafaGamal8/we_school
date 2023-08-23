@@ -50,9 +50,11 @@ const DashBoard = () => {
 
     <div className="w-[50%]"><Calendar /></div>
     <div className="w-[40%] flex flex-col justify-between h-full mt-10 ">
+
+      {/* لازم تحط الداتا عشان يشتغلو */}
+    {/* <div className="w-full h-20 mt-7 "><Task /></div>
     <div className="w-full h-20 mt-7 "><Task /></div>
-    <div className="w-full h-20 mt-7 "><Task /></div>
-    <div className="w-full h-20 mt-7 "><Task /></div>
+    <div className="w-full h-20 mt-7 "><Task /></div> */}
 
 
 

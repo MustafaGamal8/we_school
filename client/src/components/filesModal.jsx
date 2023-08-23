@@ -41,8 +41,9 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
     <Modal
       isOpen={isModalOpen}
       onRequestClose={toggleModal}
-      // className="absolute top-[50%] left-[50%] right-auto translate-y-[-50%] translate-x-[-50%] overflow-y-scroll"
-      style={{ content: modalStyle }}
+      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] overflow-y-scroll    rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg   h-96 w-80  md:w-[400px]   lg:w-[600px]               "
+      overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
+      
     >
       <div>
         <button
@@ -56,14 +57,14 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
       </div>
 
       <div className="flex flex-col gap-4   ">
-        <h1 className='text-xl text-sec text-center '>Number of files : {files.length}</h1>
+        <h1 className='text-xl text-sec text-center '>Files : {files.length}</h1>
         {!files ? (
           <>No files</>
         ) : (
           files.map((file) => (
             <div
               key={file._id}
-              className="flex items-center justify-between lg:px-10 px-2 bg-white drop-shadow rounded-md h-20"
+              className="flex items-center justify-between lg:px-10 px-2 bg-white drop-shadow rounded-md h-20 lg:w-[80%] m-auto"
             >
               <div className="flex items-center justify-center lg:w-1/2 bg-white h-full">
                 <svg

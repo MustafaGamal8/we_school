@@ -77,7 +77,6 @@ const getStudentDegrees = async (req, res) => {
 
     res.status(200).json(student);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'An error occurred' });
   }
 };
