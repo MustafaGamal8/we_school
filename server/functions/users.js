@@ -5,15 +5,15 @@ const { sendMail } = require("./mailConfirmation.js");
 const profilePictureModel = require("../mongo/profilePicture.js");
 const { body, validationResult } = require('express-validator');
 
-const signUpValidation = [
-  body('firstName').trim().notEmpty().withMsg('First name is required'),
-  body('lastName').trim().notEmpty().withMsg('Last name is required'),
-  body('email').trim().isEmail().withMsg('Invalid email format'),
-  body('password').isLength({ min: 6 }).withMsg('Password must be at least 6 characters'),
-  body('role').trim().notEmpty().withMsg('Role is required'),
-  body('grade').trim().notEmpty().withMsg('Grade is required'),
-  body('code').trim().notEmpty().withMsg('Invitation code is required'),
-];
+// const signUpValidation = [
+//   body('firstName').trim().notEmpty().withMsg('First name is required'),
+//   body('lastName').trim().notEmpty().withMsg('Last name is required'),
+//   body('email').trim().isEmail().withMsg('Invalid email format'),
+//   body('password').isLength({ min: 6 }).withMsg('Password must be at least 6 characters'),
+//   body('role').trim().notEmpty().withMsg('Role is required'),
+//   body('grade').trim().notEmpty().withMsg('Grade is required'),
+//   body('code').trim().notEmpty().withMsg('Invitation code is required'),
+// ];
 
 // Function to generate a random invitation code
 function generateInvitationCode() {
