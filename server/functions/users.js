@@ -6,13 +6,13 @@ const profilePictureModel = require("../mongo/profilePicture.js");
 const { body, validationResult } = require('express-validator');
 
 const signUpValidation = [
-  body('firstName').trim().notEmpty().withMessage('First name is required'),
-  body('lastName').trim().notEmpty().withMessage('Last name is required'),
-  body('email').trim().isEmail().withMessage('Invalid email format'),
-  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
-  body('role').trim().notEmpty().withMessage('Role is required'),
-  body('grade').trim().notEmpty().withMessage('Grade is required'),
-  body('code').trim().notEmpty().withMessage('Invitation code is required'),
+  body('firstName').trim().notEmpty().withMsg('First name is required'),
+  body('lastName').trim().notEmpty().withMsg('Last name is required'),
+  body('email').trim().isEmail().withMsg('Invalid email format'),
+  body('password').isLength({ min: 6 }).withMsg('Password must be at least 6 characters'),
+  body('role').trim().notEmpty().withMsg('Role is required'),
+  body('grade').trim().notEmpty().withMsg('Grade is required'),
+  body('code').trim().notEmpty().withMsg('Invitation code is required'),
 ];
 
 // Function to generate a random invitation code
@@ -32,7 +32,7 @@ const getUsers = async (req, res) => {
     res.json(users);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server Error" });
+    res.status(500).json({ msg: "Server Error" });
   }
 };
 
@@ -115,7 +115,7 @@ const resetPassword = async (req, res) => {
       user.resetCodeExpiration = undefined;
       await user.save();
 
-      return res.status(200).json({ message: 'Password reset successfully' });
+      return res.status(200).json({ msg: 'Password reset successfully' });
     } else {
       return res.status(400).json({ error: 'Invalid reset code or code has expired' });
     }
@@ -176,7 +176,7 @@ const editUser = async (req, res) => {
       if (lastName) user.lastName = lastName;
       await user.save();
 
-      res.status(200).json({ message: 'Data updated successfully' });
+      res.status(200).json({ msg: 'Data updated successfully' });
     } else {
       return res.status(401).json({ error: 'Password is incorrect' });
     }

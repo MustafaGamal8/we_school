@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineRollback } from 'react-icons/ai';
 import { FaChevronDown } from 'react-icons/fa';
-import { login, sendResetCode } from '../../functions/auth';
+import { login, resetPassword, sendResetCode } from '../../functions/auth';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
@@ -28,23 +28,27 @@ const Login = () => {
     password: Yup.string().min(6).max(12).required('Password is required'),
   });
 
-  const resetPasswordSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email format').required('Email is required'),
-    resetCode: Yup.string().when('isCodeSent', {
-      is: true,
-      then: Yup.string().required('Reset Code is required'),
-    }),
-    newPassword: Yup.string().when('isCodeSent', {
-      is: true,
-      then: Yup.string().min(6).max(12).required('New Password is required'),
-    }),
-    confirmPassword: Yup.string().when(['isCodeSent', 'newPassword'], {
-      is: (isCodeSent, newPassword) => isCodeSent && newPassword,
-      then: Yup.string()
-        .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
+
+  let resetPasswordSchema;
+
+  if (isCodeSent) {
+    resetPasswordSchema = Yup.object().shape({
+      resetCode: Yup.string().required('Reset Code is required'),
+      newPassword: Yup.string()
+        .min(6, 'New Password must be at least 6 characters')
+        .max(12, 'New Password can be at most 12 characters')
+        .required('New Password is required'),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref('newPassword')], 'Passwords must match')
         .required('Confirm Password is required'),
-    }),
-  });  
+    });
+  } else {
+    resetPasswordSchema = Yup.object().shape({
+      email: Yup.string()
+        .email('Invalid email format')
+        .required('Email is required'),
+    });
+  }
   
   
 
@@ -59,19 +63,20 @@ const Login = () => {
     theme: 'light',
     className: 'md:w-80 md:text-base w-60 text-sm',
   };
+  +3
 
   const Navigate = useNavigate();
 
-  const validateForm = async (validationSchema, formData) => {
-    try {
-      await validationSchema.validate(formData, { abortEarly: false });
-      toast.dismiss(); // Dismiss any previous error toasts
-    } catch (error) {
-      error.inner.forEach((err) => {
-        toast.error(err.message, toastConfig);
-      });
-    }
-  };
+  // const validateForm = async (validationSchema, formData) => {
+  //   try {
+  //     await validationSchema.validate(formData, { abortEarly: false });
+  //     toast.dismiss(); // Dismiss any previous error toasts
+  //   } catch (error) {
+  //     error.inner.forEach((err) => {
+  //       toast.error(err.message, toastConfig);
+  //     });
+  //   }
+  // };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -79,7 +84,6 @@ const Login = () => {
       ...formData,
       [name]: value,
     });
-    validateForm(schema, formData);
   };
 
   const handleInputChange_resetPassword = (e) => {
@@ -88,7 +92,6 @@ const Login = () => {
       ...resetPasswordForm,
       [name]: value,
     });
-    validateForm(resetPasswordSchema, resetPasswordForm);
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -102,11 +105,11 @@ const Login = () => {
       toast.info('Sending reset code...', toastConfig);
       const response = await sendResetCode(resetPasswordForm.email);
       const { error, msg } = response
-      console.log(response)
       if (error) {
         toast.error(error, toastConfig);
       } else {
         toast.success(msg, toastConfig);
+        setIsCodeSent(true)
       }
     } catch (error) {
       toast.error(error.message, toastConfig);
@@ -117,8 +120,17 @@ const Login = () => {
     e.preventDefault();
     try {
       await resetPasswordSchema.validate(resetPasswordForm, { abortEarly: false });
-      // Perform reset password logic
-      // ...
+      toast.info('Trying To Change Password ...', toastConfig);
+      const response = await resetPassword(resetPasswordForm.resetCode,resetPasswordForm.confirmPassword);
+      const { error, msg } = response
+      console.log(response)
+      if (error) {
+        toast.error(error, toastConfig);
+      } else {
+        toast.success(msg, toastConfig);
+        setIsCodeSent(false)
+        setIsModalOpen(false)
+      }
     } catch (error) {
       toast.error(error.message, toastConfig);
     }
@@ -236,6 +248,7 @@ const Login = () => {
               placeholder="Email"
               name="email"
               value={resetPasswordForm.email}
+              disabled={isCodeSent}
               onChange={handleInputChange_resetPassword}
             />
 

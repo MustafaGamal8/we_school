@@ -52,7 +52,7 @@ export const signUp = async (formData)=>{
 export const sendResetCode = async (email)=>{
   try {
    const response =  await axios.post(baseUrl + "/reset-password/send",{
-    email:email,
+    email
   })  
     
   return response.data
@@ -63,14 +63,20 @@ export const sendResetCode = async (email)=>{
 }
 
 
-// export const resetPassword = async (code,newPassword)=>{
-//   try {
+export const resetPassword = async (code,newPassword)=>{
+  try {
     
-//   } catch (error) { 
-//     return error.response.data
+   const response =  await axios.post(baseUrl + "/reset-password",{
+    code,
+    newPassword
+  })  
+  return response.data
     
-//   }
-// }
+  } catch (error) { 
+    return error.response.data
+    
+  }
+}
 
 
 
