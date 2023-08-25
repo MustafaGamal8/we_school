@@ -5,6 +5,9 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const app = express();
 const multer = require('multer');
+const { serve, setup } = require('swagger-ui-express');
+const swaggerDocument = require('./openapi-spec.json'); // Update this with the correct path
+
 app.use(bodyParser.json());
 app.use(cors());
 dotenv.config();
@@ -28,29 +31,36 @@ const checkSecretKey = (req, res, next) => {
 
 // app.use(checkSecretKey); // Uncomment this to use a passcode to the server
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'Hello from We School!',
-  });
-});
+app.use('/api-docs', serve, setup(swaggerDocument));
 
 // Import and initialize translate-google
 const translate = require('translate-google');
 
 // Import functions for user management and posts
-  const { getUsers,signUp,loginUser,createInvitationCode,getInvitationCodes,editUser}= require('./functions/users');
-  const { confirmEmail } = require('./functions/mailConfirmation');
-  const { readAllFiles, readFile, uploadAndCreatePost, readAllPosts, togglePostLike,} = require('./functions/posts');
-  const {upload_xlsx,getDegrees,getStudentDegrees,} = require('./functions/degrees');
-  const { uploadTask,getTasks } = require('./functions/task');
-  
+const {
+  getUsers,
+  signUp,
+  resetPassword,
+  loginUser,
+  createInvitationCode,
+  getInvitationCodes,
+  editUser,
+} = require('./functions/users');
+const { sendMail, confirmEmail, sendResetPasswordEmail } = require('./functions/mailConfirmation');
+const {
+  readAllFiles,
+  readFile,
+  uploadAndCreatePost,
+  readAllPosts,
+  togglePostLike,
+} = require('./functions/posts');
+const { upload_xlsx, getDegrees, getStudentDegrees } = require('./functions/degrees');
+const { uploadTask, getTasks } = require('./functions/task');
 
 // Connect to MongoDB and start the server
 const startServer = async () => {
   try {
     connectDB(MONGODB_URL);
-
-  
 
     // Handle translation
     app.post('/translate', async (req, res) => {
@@ -68,6 +78,8 @@ const startServer = async () => {
     // Auth routes
     app.post('/auth/signup', signUp);
     app.post('/auth/login', loginUser);
+    app.post('/auth/reset-password', resetPassword);
+    app.post('/auth/reset-password/send', sendResetPasswordEmail);
     app.get('/auth/invitcode', getInvitationCodes);
     app.get('/auth/invitcode/:userType', createInvitationCode);
     app.get('/auth/confirm-email', confirmEmail);
@@ -77,25 +89,20 @@ const startServer = async () => {
     // Post routes
     app.get('/posts', readAllPosts);
     app.post('/posts/upload', upload.array('files'), uploadAndCreatePost);
-    app.post('/posts/toggle-like',togglePostLike );
-    
-    
-    // files routes
+    app.post('/posts/toggle-like', togglePostLike);
+
+    // Files routes
     app.get('/files', readAllFiles);
     app.get('/files/:id', readFile);
 
+    // Degrees routes
+    app.post('/degrees-upload', upload.single('file'), upload_xlsx);
+    app.get('/degrees', getDegrees);
+    app.get('/degrees/:code', getStudentDegrees);
 
-
-      // Degrees routes
-      app.post('/degrees-upload', upload.single('file'), upload_xlsx);
-      app.get('/degrees', getDegrees);
-      app.get('/degrees/:code', getStudentDegrees);
-      
-      // tasks routs
-      app.post('/tasks-upload', uploadTask);
-      app.get('/tasks', getTasks);
-      
-      
+    // Tasks routes
+    app.post('/tasks-upload', uploadTask);
+    app.get('/tasks', getTasks);
 
     const PORT = process.env.PORT || 8000;
     app.listen(PORT, () =>
@@ -107,11 +114,3 @@ const startServer = async () => {
 };
 
 startServer();
-
-
-
-
-const schedule = require('node-schedule');
-
-
-

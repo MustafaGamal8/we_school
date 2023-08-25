@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "./components/loader/loader";
 import Home from './pages/home/home';
-import Login from './pages/login/login';
+import Login from './pages/auth/login';
 import { Routes,Route } from "react-router-dom";
 import Profile from "./pages/Profile/Profile";
 import  i18n from 'i18next';
@@ -14,6 +14,7 @@ import DashBoard from './pages/dashBoard/dashBoard';
 import TimeLine from './pages/timeLine/timeLine';
 import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
+import SignUp from "./pages/auth/signup";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,6 +64,7 @@ function App() {
       <Routes>
         <Route path="/"  element={<Home />}/>
         <Route path="/login"  element={<Login />}/>
+        <Route path="/signup"  element={<SignUp />}/>
 
         <Route path="/main/"  element={<Main />}>
           <Route path="profile"  element={<Profile />}/>
