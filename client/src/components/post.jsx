@@ -46,7 +46,7 @@ const Post = ({ handleOpenModal, post }) => {
 
 
   return (
-    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl ">
+    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-2 text-2xl mt-2">
@@ -55,8 +55,8 @@ const Post = ({ handleOpenModal, post }) => {
         </div>
         <hr  className="h-1 w-1/2 my-2 "/>
         <div className="b" >
-          <p className="text-sm text-gray-600  select-text">{user.email}</p>
-          {postDate && <div className="text-sm text-gray-600 capitalize flex items-center justify-center gap-1"><BiTime /> <p>{postDate}</p></div>}
+          <p className="text-sm text-gray-600  select-text dark:text-gray-400">{user.email}</p>
+          {postDate && <div className="text-sm text-gray-600 capitalize flex items-center justify-center gap-1 dark:text-gray-400"><BiTime /> <p>{postDate}</p></div>}
         </div>
       </div>
 
@@ -64,7 +64,7 @@ const Post = ({ handleOpenModal, post }) => {
         {content}
       </div>
 
-      <div className="h-96  p-2   bg-white drop-shadow rounded-md ">
+      <div className="h-96  p-2   bg-white drop-shadow rounded-md  dark:bg-slate-700">
         
         {
           screenWidth > 720 ? (<Slider slides={slides} coverOrContain="object-contain" />
@@ -84,7 +84,7 @@ const Post = ({ handleOpenModal, post }) => {
 
       <div className="flex items-center justify-around w-full mt-7 ">
         <div className="flex flex-col items-center gap-2 text-lg">
-          <div onClick={handleLike} className={`group ${isLiked ? 'bg-red-400 text-white' : 'bg-white'} drop-shadow-md p-2 rounded-md cursor-pointer `}><AiOutlineHeart /></div>
+          <div onClick={handleLike} className={`group ${isLiked ? 'bg-red-500 text-white' : 'bg-white text-red-500'} drop-shadow-md p-2 rounded-md cursor-pointer `}><AiOutlineHeart /></div>
           {postLikes?.length || "0"}
         </div>
 
