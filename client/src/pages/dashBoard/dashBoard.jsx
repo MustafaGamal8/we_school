@@ -85,7 +85,7 @@ const DashBoard = () => {
   <div className="w-full md:w-[40%]">
     <Calendar />
   </div>
-  <div className="w-[70%] m-auto md:w-[50%] flex flex-col md:flex-row  justify-between h-full mt-10 gap-x-3 ">
+  <div className="w-[80%] m-auto md:w-[50%] flex flex-col md:flex-row  justify-between h-full mt-10 gap-x-3 ">
     <BestPersonCard img="/public/assets/nardin.jpg"name="shady mahmooud"percent="95.5%" text="Innovator"color="#10B981"/>
     <BestPersonCard  img="/public/assets/nardin.jpg"   name="karem mahmoud"   percent="99.9%"  text="Top score"  color="#F59E0B"/>
 
@@ -98,15 +98,38 @@ const DashBoard = () => {
     {/* <div className="w-full h-20 mt-7 "><Task /></div>
     <div className="w-full h-20 mt-7 "><Task /></div>
     <div className="w-full h-20 mt-7 "><Task /></div> */}
-  <div className="w-[70%] m-auto md:w-[50%] flex flex-col md:flex-row  justify-between h-full mt-10 gap-x-3 ">
 
-   <h1 className="text-center text-main text-2xl">upload post </h1>
-    <p className="text-xl text-sec">just click on upload button and drag your file</p>
-    <button className="w-[25%] h-[35px] p-3 bg-main " onClick={handleOpenModal}>upload</button>
-    {isModalOpen &&
-    <UploadPostModal isOpen={true}  onClose={handleCloseModal} />
-    
-    }
+
+<div className="flex flex-col md:flex-row justify-between w-[80%] m-auto h-fit mt-10 space-y-4 md:space-y-0">
+
+
+<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+   <h1 className="text-center text-main text-2xl mb-4">Upload Your Post</h1>
+   <p className="text-xl text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
+   <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={handleOpenModal}>Upload</button>
+   {isModalOpen && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
+</div>
+
+<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+   <h1 className="text-center text-main text-2xl mb-4">Upload Degree files </h1>
+   <p className="text-xl text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
+   <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={handleOpenModal}>Upload</button>
+   {isModalOpen && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
+</div>
+
+
+<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+   <h1 className="text-center text-main text-2xl mb-4">Upload Your Post</h1>
+   <p className="text-xl text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
+   <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={handleOpenModal}>Upload</button>
+   {isModalOpen && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
+</div>
+
+
+
+
+
+
     </div>
     </>
     

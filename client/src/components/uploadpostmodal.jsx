@@ -60,7 +60,7 @@ function UploadPostModal({ isOpen, onClose }) {
     <Modal
       isOpen={isModalOpen}
       onRequestClose={toggleModal}
-      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg min-h-[500px] h-fit w-80 md:w-[600px] lg:w-[800px]"
+      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-lg border-none outline-none bg-[#f7f2fb] dark:bg-slate-800 p-2 drop-shadow-lg min-h-[500px] h-fit w-80 md:w-[600px] lg:w-[800px]"
       overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
     >
       <div>
@@ -77,7 +77,7 @@ function UploadPostModal({ isOpen, onClose }) {
         <h1 className="text-center uppercase text-2xl">Upload your file</h1>
         <input
   type="text"
-  className="w-[70%] px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-primary placeholder:text-main mt-5" placeholder="enter your text"/>
+  className="w-[70%] px-4 py-2 rounded-lg dark:bg-slate-800 dark:placeholder-white border border-gray-300 focus:outline-none focus:border-primary placeholder:text-main mt-5" placeholder="enter your text"/>
         <div
           className="border-dashed border-2 border-gray-300 rounded-lg p-8 mt-4 w-[70%] h-[250px] cursor-pointer relative"
           onDrop={handleDrop}
