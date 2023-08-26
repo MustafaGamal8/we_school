@@ -49,5 +49,35 @@ export const signUp = async (formData)=>{
 
 
 
+export const sendResetCode = async (email)=>{
+  try {
+   const response =  await axios.post(baseUrl + "/reset-password/send",{
+    email
+  })  
+    
+  return response.data
+  } catch (error) { 
+    return error.response.data
+    
+  }
+}
+
+
+export const resetPassword = async (code,newPassword)=>{
+  try {
+    
+   const response =  await axios.post(baseUrl + "/reset-password",{
+    code,
+    newPassword
+  })  
+  return response.data
+    
+  } catch (error) { 
+    return error.response.data
+    
+  }
+}
+
+
 
 
