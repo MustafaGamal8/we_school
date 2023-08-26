@@ -15,28 +15,9 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
     onClose()
   };
 
-  const modalStyle = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '90%',
-    maxWidth: '50%', 
-    minHeight: '500px',
-    background: 'white',
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-    borderRadius: '8px',
-    overflowY: 'scroll',
-    outline: 'none',
-    padding: '1rem',
-  };
 
-  const smScreenMediaQuery = window.matchMedia('(max-width: 920px)');
-  const largeScreenMediaQuery = window.matchMedia('(max-width: 1220px)');
 
-  if (smScreenMediaQuery.matches) {
-    modalStyle.maxWidth = '90%'; // For medium screens
-  }
+
   return (
     <Modal
       isOpen={isModalOpen}

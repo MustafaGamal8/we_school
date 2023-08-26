@@ -14,7 +14,11 @@ import DashBoard from './pages/dashBoard/dashBoard';
 import TimeLine from './pages/timeLine/timeLine';
 import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
+<<<<<<< HEAD
+import TableData from "./components/TableData/TableData";
+=======
 import SignUp from "./pages/auth/signup";
+>>>>>>> 161dfeffc8ce1144e2bd2344af4f68873220a34a
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -89,6 +93,8 @@ function App() {
         <Route path="/main/"  element={<Main />}>
           <Route path="profile"  element={<Profile />}/>
           <Route path="dashboard"  element={<DashBoard />}/>
+          <Route path="dashboard/tabledata"  element={<TableData />}/>
+
           <Route path="timeline"  element={<TimeLine />}/>
           <Route path="degree"  element={<Degree />}/>
           <Route path="settings"  element={<Settings />}/>

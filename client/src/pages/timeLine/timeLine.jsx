@@ -5,6 +5,7 @@ import FilesModal from "../../components/filesModal";
 import { getPosts } from "../../functions/posts";
 import Search from "../../components/search";
 import { getAllTasks } from "../../functions/tasks";
+import { FaCheckCircle  } from "react-icons/fa";
 
 const TimeLine = () => {  
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -105,7 +106,7 @@ const TimeLine = () => {
     <div className="scrollbar-hide rounded  flex   lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-3 w-full  m-auto ">
       {tasks ? tasks.map(task=>(
         <div className="w-full  "><Task  Task={task}/></div>
-      )): <h1 className="capitalize text-xl">no tasks</h1> }
+      )): <div className="capitalize flex items-center justify-around w-[50%] m-auto text-xl text-center"> <h1 className=" text-main ">tasks was  finished</h1><FaCheckCircle className="text-green-400" /></div> }
       
       </div>
   </section>

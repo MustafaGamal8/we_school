@@ -228,18 +228,18 @@ const Home = () => {
             <Trans>الأقسام</Trans>
           </h1>
 
-          <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5 dark:bg-slate-800">
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all dark:bg-slate-700 dark:text-white">
-              <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
-              <h1 className="text-center p-3 text-3xl font-bold text-main">
-                <Trans>الشبكات</Trans>
-              </h1>
-              <p className="text-center p-3">
-                <Trans>
-                  في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.
-                </Trans>
-              </p>
-            </div>
+      <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+          <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+          <h1 className="text-center p-3 text-3xl font-bold text-main">
+            <Trans>الشبكات</Trans>
+          </h1>
+          <p className="text-center p-3">
+            <Trans>
+              في هذا القسم، ندرس مجال الشبكات وأمن المعلومات السيبراني. نقوم بدراسة تصميم وإدارة الشبكات وحمايتها من التهديدات السيبرانية.
+            </Trans>
+          </p>
+        </div>
 
             <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all dark:bg-slate-700 dark:text-white">
               <img src="/assets/programming.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
@@ -253,19 +253,19 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all dark:bg-slate-700 dark:text-white">
-              <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
-              <h1 className="text-center p-3 text-3xl font-bold">
-                <Trans>الاتصالات</Trans>
-              </h1>
-              <p className="text-center p-3">
-                <Trans>
-                  في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث.
-                </Trans>
-              </p>
-            </div>
-          </div>
-        </section>
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+          <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
+          <h1 className="text-center p-3 text-3xl font-bold">
+            <Trans>الاتصالات</Trans>
+          </h1>
+          <p className="text-center p-3">
+            <Trans>
+              في هذا القسم، ندرس علوم الاتصالات. نقوم بدراسة أساسيات الاتصالات وتقنيات الاتصال المختلفة وتطبيقاتها في عالم الاتصالات الحديث.
+            </Trans>
+          </p>
+        </div>
+      </div>
+    </section>
 
         <section id="about_school" className="md:w-[60%] w-[80%] m-auto  drop-shadow-md">
           <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto dark:text-white">
