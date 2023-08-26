@@ -29,7 +29,7 @@ const Sidebar = ({user}) => {
 
 
   return (
-    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  lg:h-[100vh]   text-main  flex flex-col  items-center  relative`}>
+    <aside className={`  ${iscollapsed ? 'sideBarAnimation items-center' : 'sideBarAnimationR items-start'} bg-white drop-shadow-lg  lg:h-[100vh]   text-main  flex flex-col  items-center  relative dark:bg-slate-700 dark:text-white`}>
 
 
       <div className='absolute top-2 right-2 text-lg z-[2] cursor-pointer' onClick={() => setIsCollapsed(!iscollapsed)}>
@@ -38,13 +38,13 @@ const Sidebar = ({user}) => {
 
       <header className='w-full capitalize  '>
 
-        <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden  ">
+        <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden   dark:bg-slate-700 dark:text-white">
           <div className="flex  justify-center lg:mt-4 border-2 border-main w-max m-auto rounded-full ">
             <FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200  `} />
           </div>
           <div className="text-center mt-4">
           <div className="lg:mt-4 ">
-            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 flex items-center justify-center`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
+            <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 flex items-center justify-center dark:text-white`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
             <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    flex items-center justify-center`}>{user.role}</p>
           </div>
         </div>
@@ -63,7 +63,7 @@ const Sidebar = ({user}) => {
 
         <div  onClick={logout} className='w-full'><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
         
-        <div className={` ${iscollapsed ? 'hidden'  :null} w-full border-[1px] border-solid `}>
+        <div className={` ${iscollapsed ? 'hidden'  :null} w-full`}>
     
         <button className='w-full' onClick={() => {
           fetchAdvice();
@@ -100,7 +100,7 @@ const MenuItem = ({ icon, title, iscollapsed ,to }) => {
 }
 const Adviceitem = ({ icon, title, iscollapsed}) => {
   return (
-    <div  className="flex items-center  text-main bg-white p-1 gap-x-5 md:text-lg text-md hover:bg-main rounded  hover:text-white ">
+    <div  className="flex items-center  text-main bg-white p-1 gap-x-5 md:text-lg text-md hover:bg-main rounded  hover:text-white dark:bg-slate-800 dark:text-white">
       {icon}
       {!iscollapsed && <h1>{title}</h1>}
     </div>)}

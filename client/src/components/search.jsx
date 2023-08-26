@@ -19,7 +19,7 @@ const Search = ({ onSearch }) => {
   };
 
   return (
-    <div className="w-full h-full bg-white m-2 rounded-lg flex p-1">
+    <div className="w-full h-full bg-white m-2 rounded-lg flex p-1 dark:bg-slate-700 dark:text-white">
       <div className="bg-sec w-max h-full p-3 rounded-lg flex items-center justify-center">
         <FiSearch className="text-white" />
       </div>
