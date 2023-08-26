@@ -8,10 +8,10 @@ const Main = () => {
   return (
     <>
       {!user ? (
-        <div className="flex justify-center items-center h-screen bg-gradient-to-r from-blue-400 to-purple-500">
+        <div className="flex justify-center items-center h-screen bg-[#191919]">
           <Link
             to="/login"
-            className="p-3 bg-main text-white text-2xl rounded-md hover:bg-opacity-80 transition duration-300"
+            className="glow-on-hover flex items-center justify-center"
           >
             Please Login
           </Link>

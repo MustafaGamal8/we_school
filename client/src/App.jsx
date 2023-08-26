@@ -14,6 +14,7 @@ import DashBoard from './pages/dashBoard/dashBoard';
 import TimeLine from './pages/timeLine/timeLine';
 import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
+import TableData from "./components/TableData/TableData";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -67,6 +68,8 @@ function App() {
         <Route path="/main/"  element={<Main />}>
           <Route path="profile"  element={<Profile />}/>
           <Route path="dashboard"  element={<DashBoard />}/>
+          <Route path="dashboard/tabledata"  element={<TableData />}/>
+
           <Route path="timeline"  element={<TimeLine />}/>
           <Route path="degree"  element={<Degree />}/>
           <Route path="settings"  element={<Settings />}/>

@@ -100,7 +100,7 @@ const MenuItem = ({ icon, title, iscollapsed ,to }) => {
 }
 const Adviceitem = ({ icon, title, iscollapsed}) => {
   return (
-    <div  className="flex items-center  text-main bg-white p-1 gap-x-5 md:text-sm text-xs hover:bg-main rounded  hover:text-white ">
+    <div  className="flex items-center  text-main bg-white p-1 gap-x-5 md:text-lg text-md hover:bg-main rounded  hover:text-white ">
       {icon}
       {!iscollapsed && <h1>{title}</h1>}
     </div>)}
