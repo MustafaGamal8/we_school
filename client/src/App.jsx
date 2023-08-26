@@ -63,10 +63,10 @@ function App() {
       ar: { translation: arTranslation },
       en:{ translation : enTranslation }
     },
-    lng: defultLang  || "ar",  // Set default language to Arabic
-    fallbackLng: 'ar', // Fallback language if translation is missing for a key
+    lng: defultLang  || "ar",  
+    fallbackLng: 'ar', 
     interpolation: {
-      escapeValue: false, // React already sanitizes the output, so no need to escape
+      escapeValue: false, 
     },
   })
 

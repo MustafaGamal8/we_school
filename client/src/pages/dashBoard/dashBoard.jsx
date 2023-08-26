@@ -46,16 +46,7 @@ const DashBoard = () => {
           <h2 className="text-xl mt-4">
             You can upload by clicking on "Upload" and choose your file. Be careful when selecting a file. Have a nice time!
           </h2>
-          <div className="mt-8 flex flex-col items-start">
-            <label htmlFor="fileInput" className="h-[30px] p-5 bg-main w-[120px] rounded-lg hover:scale-[1.1] transition-[2s] flex flex-col justify-center items-center text-white drop-shadow-lg cursor-pointer">
-              <FaFileUpload className="mr-2" />
-              Upload
-            </label>
-            <input type="file" id="fileInput" className="hidden" onChange={handleFileChange} />
-          </div>
-          <button className="mt-4 h-[30px] p-5 bg-main w-[120px] rounded-lg hover:scale-[1.1] transition-[2s] flex flex-col justify-center items-center text-white drop-shadow-lg" onClick={handleUpload}>
-            Submit
-          </button>
+        
         </div>
 
         <div className="w-full md:w-[30%] p-5 flex flex-col justify-between items-start h-full m-auto">
@@ -100,27 +91,27 @@ const DashBoard = () => {
     <div className="w-full h-20 mt-7 "><Task /></div> */}
 
 
-<div className="flex flex-col md:flex-row justify-between w-[80%] m-auto h-fit mt-10 space-y-4 md:space-y-0">
+<div className="flex flex-col md:flex-row justify-between w-[80%] m-auto h-fit mt-10 space-y-4 md:space-y-0 ">
 
 
-<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center  items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
    <h1 className="text-center text-main text-2xl mb-4">Upload Your Post</h1>
-   <p className="text-xl text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
+   <p className="text-md text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
    <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={handleOpenModal}>Upload</button>
    {isModalOpen && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
 </div>
 
-<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center  h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
    <h1 className="text-center text-main text-2xl mb-4">Upload Degree files </h1>
-   <p className="text-xl text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
+   <p className="text-md text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
    <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={handleOpenModal}>Upload</button>
    {isModalOpen && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
 </div>
 
 
-<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+<div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center  h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
    <h1 className="text-center text-main text-2xl mb-4">Upload Your Post</h1>
-   <p className="text-xl text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
+   <p className="text-md text-sec mb-6 text-center">Simply click the upload button and drag your file</p>
    <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={handleOpenModal}>Upload</button>
    {isModalOpen && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
 </div>
