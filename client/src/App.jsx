@@ -14,10 +14,16 @@ import DashBoard from './pages/dashBoard/dashBoard';
 import TimeLine from './pages/timeLine/timeLine';
 import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
+import TableData from "./components/TableData/TableData";
 import SignUp from "./pages/auth/signup";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+
+
+  
+
+  
 
   const defultLang = localStorage.getItem("lang") 
 
@@ -26,6 +32,7 @@ function App() {
   }, 5000);
 
   useEffect(() => {
+    // lang
     const direction = defultLang === "en" ? "ltr" : "rtl";
     const alignment = defultLang === "en" ? "left" : "right";
   
@@ -33,6 +40,17 @@ function App() {
     document.querySelectorAll("p").forEach((h1) => {
       h1.style.textAlign = alignment;
     });
+    // theme
+    
+    const theme =  localStorage.getItem("theme")
+    if (theme ==  "dark") {
+     document.documentElement.classList.add('dark')
+    }else{
+      document.documentElement.classList.remove('dark')
+    }
+
+
+
   }, [defultLang]);
   
 
@@ -58,6 +76,9 @@ function App() {
     <>
     
       {/* {isLoading && <Loader />} */}
+
+      
+      
 
 
 

@@ -1,20 +1,5 @@
 
-.menuAnimitionOpen{
-  animation: .5s menuAnimition forwards;
-}
 
-
-@keyframes menuAnimition {
-  0%{
-    height: 0;
-  }
-
-  100%{
-    height: auto;
-    
-  }
-  
-}
 
 
 
@@ -28,6 +13,9 @@
   border-left: black 1px solid;
   animation: text-animition 3s infinite;
 }
+.dark .text-animition::after {
+  @apply bg-slate-800;
+}
 
 
 @keyframes text-animition {
@@ -37,7 +25,4 @@
   50%{
     width: 100%;
   }
-
-
-  
 }

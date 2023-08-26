@@ -205,7 +205,10 @@
 
 
 
-
+.dark body{
+  @apply bg-slate-800;
+     /* filter: brightness(150%); */
+}
 
 /* Tailwind config */
 @tailwind base;
