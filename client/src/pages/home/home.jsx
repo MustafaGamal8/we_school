@@ -133,7 +133,7 @@ const Home = () => {
 
         <img src="/logo.png" alt="" className="h-full " />
 
-        <div className="hidden  md:flex items-center justify-center lg:gap-3  whitespace-nowrap">
+        <div className="hidden  md:flex items-center justify-center lg:gap-3 lg:text-lg text-sm   whitespace-nowrap">
           <div onClick={() => handleMenuClick("school_contact")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
             <h1><Trans>تواصل</Trans></h1> <FaPhone className="text-xl" />
           </div>
@@ -154,7 +154,7 @@ const Home = () => {
           </div>
         </div>
 
-        <Link to={user ? "/main/timeline" : "/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold">
+        <Link to={user ? "/main/timeline" : "/login"} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold text-sm lg:text-lg">
           <Trans>تسجيل الدخول</Trans><CiUser className="md:text-2xl text-lg " />
         </Link>
       </nav>
@@ -203,7 +203,7 @@ const Home = () => {
         <img className="m-auto h-12 mt-10" src="/assets/mouseAnimition.gif" />
 
         <section id="school_partners" className="w-full">
-          <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto">
+          <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto dark:text-white">
             <MdPeopleAlt className="inline-block mr-2 text-2xl md:text-4xl " />
             <Trans>شركاؤنا</Trans>
           </h1>
@@ -223,13 +223,13 @@ const Home = () => {
 
 
         <section id="school_debartments" className="w-full mt-5">
-          <h1 className="md:text-3xl text-xl text-sec font-semibold animated-title text-center relative w-max m-auto">
+          <h1 className="md:text-3xl text-xl text-sec font-semibold animated-title text-center relative w-max m-auto dark:text-white">
             <MdClass className="inline-block mr-2 text-2xl md:text-4xl" />
             <Trans>الأقسام</Trans>
           </h1>
 
-      <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5">
-        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+      <div className="w-full bg-white mt-3 flex flex-col md:flex-row items-center justify-around gap-5 p-5 dark:bg-slate-800">
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all dark:bg-slate-700 dark:text-white">
           <img src="/assets/network.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
           <h1 className="text-center p-3 text-3xl font-bold text-main">
             <Trans>الشبكات</Trans>
@@ -253,7 +253,7 @@ const Home = () => {
               </p>
             </div>
 
-        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all">
+        <div className="bg-white drop-shadow flex-col rounded-lg w-[80%] md:w-[350px] h-[450px] flex hover:scale-[1.07] transition-all dark:bg-slate-700 dark:text-white">
           <img src="/assets/telycommunications.jfif" alt="" className="w-full h-[50%] object-cover rounded-lg" />
           <h1 className="text-center p-3 text-3xl font-bold">
             <Trans>الاتصالات</Trans>
