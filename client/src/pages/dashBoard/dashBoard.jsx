@@ -98,11 +98,16 @@ const DashBoard = () => {
     {/* <div className="w-full h-20 mt-7 "><Task /></div>
     <div className="w-full h-20 mt-7 "><Task /></div>
     <div className="w-full h-20 mt-7 "><Task /></div> */}
-    <button onClick={handleOpenModal}>upload</button>
+  <div className="w-[70%] m-auto md:w-[50%] flex flex-col md:flex-row  justify-between h-full mt-10 gap-x-3 ">
+
+   <h1 className="text-center text-main text-2xl">upload post </h1>
+    <p className="text-xl text-sec">just click on upload button and drag your file</p>
+    <button className="w-[25%] h-[35px] p-3 bg-main " onClick={handleOpenModal}>upload</button>
     {isModalOpen &&
     <UploadPostModal isOpen={true}  onClose={handleCloseModal} />
     
     }
+    </div>
     </>
     
 

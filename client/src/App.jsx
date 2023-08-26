@@ -14,11 +14,7 @@ import DashBoard from './pages/dashBoard/dashBoard';
 import TimeLine from './pages/timeLine/timeLine';
 import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
-<<<<<<< HEAD
-import TableData from "./components/TableData/TableData";
-=======
 import SignUp from "./pages/auth/signup";
->>>>>>> 161dfeffc8ce1144e2bd2344af4f68873220a34a
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
