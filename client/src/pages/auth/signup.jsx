@@ -99,7 +99,7 @@ const SignUp = () => {
 
   return (
     <>
-      <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]">
+      <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10] dark:bg-slate-700 dark:text-white">
         <Link
           to="/"
           className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold"
@@ -114,9 +114,9 @@ const SignUp = () => {
         <img className="absolute top-0 right-0 z-[-1] w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
         <section className="h-full mt-20 capitalize">
-          <h1 className="text-center text-5xl  capitalize lg:text-white ">sign up</h1>
+          <h1 className="text-center text-5xl  capitalize lg:text-white  dark:text-white">sign up</h1>
 
-          <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20">
+          <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20 dark:text-white dark:bg-slate-700">
             <div className=" h-full lg:w-[80%]">
               <img src="/assets/student2.jpg" alt="" className="h-full w-full" />
             </div>

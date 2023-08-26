@@ -157,7 +157,7 @@ const Login = () => {
 
   return (
     <>
-      <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10]">
+      <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10] dark:bg-slate-700 dark:text-white">
         <Link
           to="/"
           className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold"
@@ -173,9 +173,9 @@ const Login = () => {
         <img className="absolute top-0 right-0 z-[-1] w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
         <section className="h-full mt-20 capitalize">
-          <h1 className="text-center text-5xl  capitalize lg:text-white ">{'login'}</h1>
+          <h1 className="text-center text-5xl  capitalize lg:text-white  dark:text-white">login</h1>
 
-          <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20">
+          <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20 dark:bg-slate-700 dark:text-white ">
             <div className=" h-full lg:w-[80%]">
               <img src="/assets/student2.jpg" alt="" className="h-full w-full" />
             </div>
@@ -228,7 +228,7 @@ const Login = () => {
 
         <Modal
           isOpen={isModalOpen}
-          className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg  w-80 md:w-[400px] lg:w-[600px]"
+          className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg  w-80 md:w-[400px] lg:w-[600px] dark:bg-slate-800 dark:text-white"
           overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
 
         >

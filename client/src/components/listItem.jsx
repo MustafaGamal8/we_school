@@ -22,9 +22,9 @@ const ListItem = ({ title, content }) => {
         </span>
       </button>
       {isExpanded && (
-      <div className="bg-white   drop-shadow-lg  rounded-b-lg ">
+      <div className="bg-white   drop-shadow-lg  rounded-b-lg text-gray-800  dark:bg-slate-800 dark:text-white">
           {content.map((item, index) => (
-            <p key={index} className=" text-md p-5 py-2 md:text-lg text-gray-800">
+            <p key={index} className=" text-md p-5 py-2 md:text-lg ">
               <Trans>{item}</Trans>
             </p>
           ))}
