@@ -4,7 +4,7 @@ import Calendar from "../../components/calender";
 import Task from "../../components/task";
 import { Link } from "react-router-dom";
 import UploadPostModal from "../../components/uploadpostmodal";
-import UploadExcelModal from "../../components/UploadExelFile";
+import { NavLink } from 'react-router-dom'; // Make sure to import Link if you're using it
 
 
 
@@ -46,17 +46,22 @@ const DashBoard = () => {
     console.log(file);
   };
 
+
+  const userJSON = localStorage.getItem('user');
+  const user = JSON.parse(userJSON);
+  console.log(user);
+
   return (
     <>
  <div className="w-[95%] md:w-[80%] m-auto min-h-[300px] h-fit flex flex-col md:flex-row justify-between bg-[#b285f2] text-white mt-10 rounded-xl">
-        <div className="w-full md:w-[50%] p-5 flex flex-col justify-between items-start h-full">
-          <h1 className="text-2xl">Welcome to We School Dashboard</h1>
-          <h2 className="text-xl mt-4">
-            You can upload by clicking on "Upload" and choose your file. Be careful when selecting a file. Have a nice time!
-          </h2>
-        
-        </div>
-
+     <div className="w-full md:w-[50%] p-5 flex flex-col justify-between items-start h-full">
+  <h1 className="text-2xl">
+    Welcome <NavLink to="/main/profile">{user.firstName} {user.lastName}</NavLink> to We School Dashboard
+  </h1>
+  <h2 className="text-xl mt-4">
+    You can upload by clicking on "Upload" and choose your file. Be careful when selecting a file. Have a nice time!
+  </h2>
+</div>
         <div className="w-full md:w-[30%] p-5 flex flex-col justify-between items-start h-full m-auto">
           <img src="/assets/undraw_upload_re_pasx.svg" className="w-full" alt="" />
         </div>
