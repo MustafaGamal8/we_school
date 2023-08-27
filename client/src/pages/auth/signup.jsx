@@ -97,6 +97,8 @@ const SignUp = () => {
     });
   };
 
+  
+
   return (
     <>
       <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white h-20 text-main z-[10] dark:bg-slate-700 dark:text-white">
@@ -106,7 +108,7 @@ const SignUp = () => {
         >
           رجوع <AiOutlineRollback />
         </Link>
-        <img src="/logo.jpg" alt="" className="h-full" />
+        <img src="/logo.png" alt="" className="h-full" />
         <div></div>
       </nav>
 
@@ -131,7 +133,7 @@ const SignUp = () => {
               >
                 <div className="border-b border-bl w-full">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type="text"
                     placeholder="Email"
                     name="email"
@@ -140,7 +142,7 @@ const SignUp = () => {
                 </div>
                 <div className="flex border-b border-bl w-full">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type={isShowPassword ? 'text' : 'password'}
                     placeholder="Password"
                     name="password"
@@ -152,7 +154,7 @@ const SignUp = () => {
                 </div>
                 <div className="border-b border-bl w-full lg:w-[45%]">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type="text"
                     placeholder="First Name"
                     name="firstName"
@@ -161,7 +163,7 @@ const SignUp = () => {
                 </div>
                 <div className="border-b border-bl w-full lg:w-[45%]">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type="text"
                     placeholder="Last Name"
                     name="lastName"
@@ -170,7 +172,7 @@ const SignUp = () => {
                 </div>
                 <div className="border-b border-bl w-full ">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type="text"
                     placeholder="invit Code"
                     name="invitationCode"

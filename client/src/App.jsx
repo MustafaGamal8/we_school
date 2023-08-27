@@ -16,6 +16,7 @@ import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
 import TableData from "./components/TableData/TableData";
 import SignUp from "./pages/auth/signup";
+import Error from "./components/error";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +76,7 @@ function App() {
   return (
     <>
     
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
 
       
       
@@ -96,6 +97,9 @@ function App() {
           <Route path="degree"  element={<Degree />}/>
           <Route path="settings"  element={<Settings />}/>
         </Route>
+
+
+        <Route  path="*" element={<Error />}/>
 
       </Routes>
 

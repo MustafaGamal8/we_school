@@ -8,7 +8,8 @@ const Main = () => {
   return (
     <>
       {!user ? (
-        <div className="flex justify-center items-center h-screen bg-[#191919]">
+        <div className="flex flex-col justify-center items-center gap-5 h-screen bg-white dark:bg-slate-800">
+          <img src="/assets/login.svg" alt=""  className='h-40'/>
           <Link
             to="/login"
             className="glow-on-hover flex items-center justify-center"

@@ -25,6 +25,7 @@ const createPost = async (postFields, files) => {
 };
 
 const uploadAndCreatePost = async (req, res) => {
+  
   try {
     const user = await UserModel.findOne({ email: req.body.email });
 
@@ -40,7 +41,7 @@ const uploadAndCreatePost = async (req, res) => {
     if (req.files && req.files.length > 0) {
       for (const file of req.files) {
         const { originalname, buffer, mimetype } = file;
-        const fileSizeInBytes = buffer.length;
+        const fileSizeInBytes = buffer?.length;
         const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
         const fileSize = fileSizeInMB.toFixed(2) + "Mb";
 
@@ -51,9 +52,8 @@ const uploadAndCreatePost = async (req, res) => {
 
     await createPost({ user, content: req.body.content }, fileIds);
     res.status(200).json({ msg: 'Post created successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to create post' });
+  } catch (error) {
+    res.status(500).json({ error });
   }
 };
 

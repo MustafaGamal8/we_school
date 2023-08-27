@@ -8,7 +8,7 @@ function Footer() {
     <div className="bg-main lg:bg-transparent py-10 md:py-20 lg:px-20 md:flex md:justify-between md:items-center">
       <div className="md:w-1/4 mb-10 md:mb-0">
         <div className="flex items-center mb-6">
-          <img src="/public/logo.jpg" className="w-10 h-10 rounded-full" alt="" />
+          <img src="/logo.png" className="w-10 h-10 rounded-full" alt="" />
           <h2 className="ml-3 text-white text-xl"><Trans>مدرسة وي</Trans></h2>
         </div>
         <div className="flex space-x-4 text-white">
