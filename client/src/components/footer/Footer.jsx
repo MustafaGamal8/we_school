@@ -42,7 +42,7 @@ function Footer() {
       <div className="md:w-1/4 text-white">
         <h1 className="text-xl font-semibold mb-4"><Trans>المطورون</Trans></h1>
         <ul className="space-y-2">
-          <li><Trans>كرم محمود</Trans></li>
+          <li><Trans>كارم محمود</Trans></li>
           <li><Trans>مصطفى جمال</Trans></li>
           <li><Link to="/login" className="text-lg text-blue-500 hover:underline"><Trans>عنهم</Trans></Link></li>
         </ul>
