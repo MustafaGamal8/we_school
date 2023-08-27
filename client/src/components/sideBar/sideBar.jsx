@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'; // Make sure to import Link if you're using it
 import { FiSettings } from 'react-icons/fi';
-import { IoPersonOutline, IoLogOutOutline, IoSchoolOutline,IoArrowUp } from 'react-icons/io5';
+import { IoPersonOutline, IoLogOutOutline, IoSchoolOutline,IoArrowUp,IoPencil } from 'react-icons/io5';
 import { CiViewTimeline } from 'react-icons/ci';
 import { RxDashboard } from 'react-icons/rx';
 import { useState,useEffect } from 'react';
@@ -58,6 +58,8 @@ const Sidebar = ({user}) => {
         <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/degree"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/todolist"} icon={<IoPencil />} title={"To Do LIST"} iscollapsed={iscollapsed} />
+
 
         <MenuItem to={"/main/settings"} icon={<FiSettings />} title={"Settings"} iscollapsed={iscollapsed} />
 

@@ -1,11 +1,12 @@
+import { use } from 'i18next';
 import React, { useState } from 'react';
 
-function TableData() {
+function TableDataTeatcher() {
   const userJSON = localStorage.getItem('user');
   const user = JSON.parse(userJSON);
 
   const [data, setData] = useState([
-    { id: 1, name: `${user.firstName} ${user.lastName}`, grade: 'A', delete: 'delete' },
+    { id: 1, name: `${user.firstName} ${user.lastName}`, role: `${user.role}`, delete: 'delete' },
   ]);
 
   const handleDelete = (itemId) => {
@@ -20,7 +21,7 @@ function TableData() {
           <tr className="text-black dark:text-white text-center">
             <th className="px-4 py-2">ID</th>
             <th className="px-4 py-2">Name</th>
-            <th className="px-4 py-2">Grade</th>
+            <th className="px-4 py-2">role</th>
             <th className="px-4 py-2">Delete</th>
           </tr>
         </thead>
@@ -29,7 +30,7 @@ function TableData() {
             <tr key={item.id} className="bg-gray-100 text-center">
               <td className="border px-4 py-2">{item.id}</td>
               <td className="border px-4 py-2">{item.name}</td>
-              <td className="border px-4 py-2">{item.grade}</td>
+              <td className="border px-4 py-2">{item.role}</td>
               <td className="border px-4 py-2">
                 <button
                   className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
@@ -46,4 +47,4 @@ function TableData() {
   );
 }
 
-export default TableData;
+export default TableDataTeatcher;

@@ -17,6 +17,8 @@ import Settings from "./pages/settings/settings";
 import TableData from "./components/TableData/TableData";
 import SignUp from "./pages/auth/signup";
 import Error from "./components/error";
+import TableDataTeatcher from "./pages/tableDataTeatcher";
+import ToDoList from "./pages/ToDoList";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -76,7 +78,7 @@ function App() {
   return (
     <>
     
-      {isLoading && <Loader />}
+      {/* {isLoading && <Loader />} */}
 
       
       
@@ -95,7 +97,13 @@ function App() {
 
           <Route path="timeline"  element={<TimeLine />}/>
           <Route path="degree"  element={<Degree />}/>
+          <Route path="todolist"  element={<ToDoList />}/>
+
           <Route path="settings"  element={<Settings />}/>
+          <Route path="tabledata"  element={<TableData />}/>
+          <Route path="Tabledatateatcher"  element={<TableDataTeatcher />}/>
+
+
         </Route>
 
 
