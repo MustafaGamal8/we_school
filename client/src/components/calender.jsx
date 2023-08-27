@@ -18,7 +18,7 @@ const Calendar = () => {
   };
 
   return (
-    <div className="p-2 bg-white rounded-lg w-full shadow-xl">
+    <div className="p-2 bg-white rounded-lg w-full shadow-xl dark:bg-[#f0f0f0]">
       <div className="flex justify-between mb-2">
         <button
           className="text-blue-500 "

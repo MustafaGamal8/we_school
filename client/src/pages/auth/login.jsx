@@ -67,17 +67,6 @@ const Login = () => {
 
   const Navigate = useNavigate();
 
-  // const validateForm = async (validationSchema, formData) => {
-  //   try {
-  //     await validationSchema.validate(formData, { abortEarly: false });
-  //     toast.dismiss(); // Dismiss any previous error toasts
-  //   } catch (error) {
-  //     error.inner.forEach((err) => {
-  //       toast.error(err.message, toastConfig);
-  //     });
-  //   }
-  // };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -140,18 +129,20 @@ const Login = () => {
     e.preventDefault();
     try {
       await schema.validate(formData, { abortEarly: false });
-      toast.info('Logging in...', toastConfig);
+      const loadingToast = toast.loading('loading', toastConfig);
       const { msg, error } = await login(formData);
       if (error) {
         toast.error(error, toastConfig);
+        toast.dismiss(loadingToast)
       } else {
+        toast.dismiss(loadingToast);
         toast.success(msg, toastConfig);
         Navigate('/main/timeline');
       }
     } catch (error) {
-      error.inner.forEach((err) => {
+      error.inner ? error.inner.forEach((err) => {
         toast.error(err.message, toastConfig);
-      });
+      }): toast.error(error.message, toastConfig);
     }
   };
 
@@ -165,7 +156,7 @@ const Login = () => {
           رجوع <AiOutlineRollback />
         </Link>
 
-        <img src="/logo.jpg" alt="" className="h-full" />
+        <img src="/logo.png" alt="" className="h-full" />
         <div></div>
       </nav>
 
@@ -190,7 +181,7 @@ const Login = () => {
               >
                 <div className="border-b border-bl w-full">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type="text"
                     placeholder="Email"
                     name="email"
@@ -199,7 +190,7 @@ const Login = () => {
                 </div>
                 <div className="flex border-b border-bl w-full">
                   <input
-                    className="w-full outline-none bg-transparent text-main"
+                    className="w-full outline-none bg-transparent text-main dark:text-white"
                     type={isShowPassword ? 'text' : 'password'}
                     placeholder="Password"
                     name="password"

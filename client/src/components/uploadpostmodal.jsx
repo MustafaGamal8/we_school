@@ -1,24 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { AiOutlineDownload, AiOutlineUpload, AiFillMail, AiOutlineMail, AiOutlineFileImage, AiOutlineDelete, AiOutlineFileExcel } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 import { BiLoader } from "react-icons/bi";
+import { uploadPost } from "../functions/posts";
+import { toast } from "react-toastify";
 
 function UploadPostModal({ isOpen, onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
   const [droppedFiles, setDroppedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const [content, setContent] = useState("");
+
+  const fileInputRef = useRef(null);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
     onClose();
   };
 
-  const handleDrop = (e) => {
+  const handleSelectFiles = (e,action) => {
     e.preventDefault();
     const newDroppedFiles = [...droppedFiles];
-    const files = e.dataTransfer.files;
+    let files;
+    action == "choose" ? files = e.target.files :  files = e.dataTransfer.files;
+  
 
     for (let i = 0; i < files.length; i++) {
       newDroppedFiles.push(files[i]);
@@ -31,17 +38,22 @@ function UploadPostModal({ isOpen, onClose }) {
     e.preventDefault();
   };
 
-  const handleSharePost = () => {
+  const handleSharePost =  async() => {
     setUploading(true);
-
+    const isUploaded = await uploadPost(content,droppedFiles)
     setTimeout(() => {
       setUploadSuccess(true);
       setUploading(false);
-
-
       setDroppedFiles([]);
+      toggleModal()
     }, 2000);
   };
+
+  const handleOpenFileExplorer = () => {
+    fileInputRef.current.click(); 
+  };
+
+
 
   const getFileIcon = (fileName) => {
     if (fileName.toLowerCase().endsWith('.xlsx') || fileName.toLowerCase().endsWith('.xls')) {
@@ -64,12 +76,10 @@ function UploadPostModal({ isOpen, onClose }) {
       }, 3000);
     }
   }, [uploadSuccess]);
-
   return (
     <Modal
       isOpen={isModalOpen}
-      onRequestClose={toggleModal}
-      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg border-none outline-none bg-[#f7f2fb] dark:bg-slate-800 p-2 drop-shadow-lg min-h-[500px] h-fit w-80 md:w-[600px] lg:w-[800px]"
+      className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg border-none outline-none bg-[#f7f2fb] dark:bg-slate-800 p-2 drop-shadow-lg min-h-[500px] h-fit w-80 md:w-[800px] lg:w-[1000px]"
       overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
     >
       <div>
@@ -86,15 +96,11 @@ function UploadPostModal({ isOpen, onClose }) {
         <div className="flex flex-col items-center w-full">
 
           <div className="w-[70%] flex flex-col md:flex-row md:w-[70%] border-gray-300 border m-auto rounded-xl bg-gray-100 dark:bg-slate-800 p-2 md:p-5">
-            <input
+            <textarea
               type="text"
-              className="w-full md:w-[70%] px-4 py-2 rounded-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder:text-main outline-none"
+              className="w-full  px-4 py-2 rounded-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder:text-main outline-none"
               placeholder="Enter your text"
-            />
-            <input
-              type="date"
-              className="w-full md:w-[25%] flex justify-start items-start  px-4 py-2 mt-3 md:mt-0 md:ml-3 rounded-lg dark:bg-transparent  dark:text-white  dark:placeholder-white  placeholder:text-main  focus:outline-none"
-              placeholder="Pick a date"
+              onChange={(e) => setContent(e.target.value)}
             />
           </div>
 
@@ -102,9 +108,16 @@ function UploadPostModal({ isOpen, onClose }) {
 
         <div
           className="border-dashed border-2 border-gray-300 rounded-lg p-8 mt-4 w-[70%] h-[250px] cursor-pointer relative"
-          onDrop={handleDrop}
+          onDrop={()=>handleSelectFiles(event,"drop")}
           onDragOver={handleDragOver}
+          onClick={handleOpenFileExplorer}
         >
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={()=>handleSelectFiles(event,"choose")} 
+          />
           <div className="flex flex-col items-center justify-center h-full">
             <AiFillMail size={48} className="text-main mx-auto" />
             <p className="text-gray-500 mt-2 text-center">
@@ -127,9 +140,9 @@ function UploadPostModal({ isOpen, onClose }) {
           ))}
         </div>
         <button
-          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md`}
+          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer`}
           onClick={handleSharePost}
-          disabled={uploading || droppedFiles.length === 0 || uploadSuccess}
+          disabled={uploading }
         >
           {uploading ? <BiLoader className="animate-spin mr-2" /> : null}
           {uploading ? "UPLOADING..." : "Share Post"}
