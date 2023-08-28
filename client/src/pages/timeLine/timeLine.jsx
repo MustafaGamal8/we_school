@@ -30,7 +30,7 @@ const TimeLine = () => {
 
   const fetchPosts = async () => {
     const posts = await getPosts();
-    setFilteredPosts(posts);
+    setFilteredPosts(posts.reverse());
     setPosts(posts);
   };
 
@@ -83,7 +83,7 @@ const TimeLine = () => {
         alt=""
       />
 
-      <section className="lg:w-[75%]   ">
+      <section className="">
         <h1 className="text-3xl bg-white rounded-b m-auto w-80 p-2 text-center font-semibold uppercase mt-3  mb-5">
           time line
         </h1>

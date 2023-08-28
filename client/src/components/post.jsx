@@ -1,6 +1,6 @@
 import { FaCircleUser } from "react-icons/fa6"
 import { AiFillEye, AiOutlineHeart } from "react-icons/ai"
-import { BiTime} from "react-icons/bi"
+import { BiTime } from "react-icons/bi"
 import Slider from './slider';
 import { toggleLike } from "../functions/posts";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 
 const Post = ({ handleOpenModal, post }) => {
-  const { _id, user, files, content, likes,postDate } = post
+  const { _id, user, files, content, likes, postDate } = post
   const [isLiked, setIsLiked] = useState(null)
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [postLikes, setPostLikes] = useState(likes)
@@ -46,14 +46,14 @@ const Post = ({ handleOpenModal, post }) => {
 
 
   return (
-    <div className=" w-[95%] md:w-[50%] lg:w-[40%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
+    <div className=" w-[95%] md:w-[50%] : lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-2 text-2xl mt-2">
-          {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl +  user.picture}   className="h-full w-full object-cover rounded-full"/></div> : (<FaCircleUser className="text-sec text-2xl" />) }
+          {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl + user.picture} className="h-full w-full object-cover rounded-full" /></div> : (<FaCircleUser className="text-sec text-2xl" />)}
           <h1 className="text-sec capitalize">{user.firstName} {user.lastName}</h1>
         </div>
-        <hr  className="h-1 w-1/2 my-2 "/>
+        <hr className="h-1 w-1/2 my-2 " />
         <div className="b" >
           <p className="text-sm text-gray-600  select-text dark:text-gray-400">{user.email}</p>
           {postDate && <div className="text-sm text-gray-600 capitalize flex items-center justify-center gap-1 dark:text-gray-400"><BiTime /> <p>{postDate}</p></div>}
@@ -64,22 +64,25 @@ const Post = ({ handleOpenModal, post }) => {
         {content}
       </div>
 
-      <div className="h-96  p-2   bg-white drop-shadow rounded-md  dark:bg-slate-700">
-        
-        {
-          screenWidth > 720 ? (<Slider slides={slides} coverOrContain="object-contain" />
-          ) : (<div className=" h-full flex items-center gap-5 overflow-x-scroll">
-            {
-              slides.map((s) => (
-                <LazyLoadImage src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
-              ))
-            }
-          </div>)
-        }
-
-
-
-      </div>
+    {
+      slides.length >= 1 ?
+       <div className="h-96  p-2   bg-white drop-shadow rounded-md  dark:bg-slate-700">
+      {
+        screenWidth > 720 ? 
+        (<Slider slides={slides} customStyle={{coverOrContain:"object-contain" ,scale:"scale-150" }} />  ) 
+        :
+         (<div className=" h-full flex items-center gap-5 overflow-x-scroll">
+          {
+            slides.map((s) => (
+              <LazyLoadImage src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
+            ))
+          }
+        </div>)
+      }      
+    </div>
+    
+    :(<div className="h-20"></div>)
+    }
 
 
       <div className="flex items-center justify-around w-full mt-7 ">

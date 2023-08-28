@@ -40,22 +40,10 @@ const SignUp = () => {
     invitationCode: Yup.string().min(8).required('Invitation Code is required'),
     role: Yup.string().required('Please select a role'),
     grade: Yup.string().when('role', {
-      is: 'student',
-      then: Yup.string().required('Please select a grade'),
-      otherwise: Yup.string(),
+      is: 'Student',
+      then: Yup.string().required('Please select a grade').typeError('Please select a grade'),
     }),
   });
-
-  const validateForm = async () => {
-    try {
-      await schema.validate(formData, { abortEarly: false });
-      toast.dismiss(); // Dismiss any previous error toasts
-    } catch (error) {
-      error.inner.forEach((err) => {
-        toast.error(err.message, toastConfig);
-      });
-    }
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,20 +55,22 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    validateForm();
-
-    if (await schema.isValid(formData)) {
+    try {
+      await schema.validate(formData, { abortEarly: false });
       const loadingToast = toast.loading('loading', toastConfig);
       const { msg, error } = await signUp(formData);
-
       if (error) {
         toast.error(error, toastConfig);
-        toast.dismiss(loadingToast);
+        toast.dismiss(loadingToast)
       } else {
-        toast.success(msg, toastConfig);
         toast.dismiss(loadingToast);
+        toast.success(msg, toastConfig);
         Navigate('/main/timeline');
       }
+    } catch (error) {
+      error.inner ? error.inner.forEach((err) => {
+        toast.error(err.message, toastConfig);
+      }): toast.error(error.message, toastConfig);
     }
   };
 

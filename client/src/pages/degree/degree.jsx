@@ -17,9 +17,9 @@ function Degree() {
     try {
       await schema.validate({ studentCode }, { abortEarly: false });
       const response = await getDegree(studentCode);
-      const {error,msg} = response
+      const {error} = response
       error ? toast.error(error):setStudentData(response)
-      msg ? toast.success(error):null
+      !error ? toast.success("Congratulations"):null
     } catch (error) {
       toast.error(error.message); 
     }
@@ -45,7 +45,7 @@ function Degree() {
         <div className='md:w-80 w-40  m-auto h-max  md:h-full  '><img className='w-full h-full' src="/assets/empty-folder.svg" alt="" /></div>
       <h1 className='m-auto text-center md:text-3xl text-xl uppercase  text-[#4a486a] mt-5'>لا يوجد درجات حتي الان</h1>
       </div>) : (
-        <><h1 className="text-center text-2xl mt-5">ادخل رقم الجلوس</h1>
+        <><h1 className="text-center text-2xl mt-5 dark:text-white">ادخل رقم الجلوس</h1>
         <form onSubmit={handleSearch} className="input w-[90%] flex md:w-[600px] m-auto mt-10 justify-between bg-slate-200 rounded-[45px]">
           <input
             type="text"
@@ -61,14 +61,14 @@ function Degree() {
         </form>
 
         {
-          studentData && (
+          studentData ? (
             <div className="container mx-auto mt-10" id='table'>
               <div className=' mt-4 capitalize bg-sec p-2 text-white  rounded flex gap-2 items-center justify-around mx-5 md:text-xl'>
               <h1 >name :  {studentData.name}</h1>
               <h1 >code :  {studentData.code}</h1>
               </div>
               
-              <table className="min-w-full bg-white mt-14 text-left">
+              <table className="min-w-full bg-white mt-14 text-left dark:bg-slate-700 dark:text-white ">
                 <thead>
                   <tr>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
@@ -87,17 +87,17 @@ function Degree() {
                 </thead>
                 <tbody>
                   {studentData.subjects.map((subject) => (
-                    <tr key={subject._id} className="bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <tr key={subject._id} className="bg-gray-50  dark:bg-slate-700 ">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                         {subject.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 0 dark:text-gray-400 ">
                         {subject.studentDegree}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-sec">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-sec dark:text-white">
                         {subject.finalDegree}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 ">
                         {subject.taqdeer}
                       </td>
                     </tr>
@@ -105,7 +105,11 @@ function Degree() {
                 </tbody>
               </table>
             </div>
-          )
+          ):
+          (<div className='mt-20 flex flex-col gap-0  '>
+          <div className='md:w-80 w-40  m-auto h-max  md:h-full  '><img className='w-full h-full' src="/assets/empty-folder.svg" alt="" /></div>
+        <h1 className='m-auto text-center md:text-3xl text-xl uppercase  text-[#4a486a] mt-5'>ادخل رقم جلوسك</h1>
+        </div>)
         }
         
         </>

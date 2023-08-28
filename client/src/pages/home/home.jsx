@@ -273,7 +273,7 @@ const Home = () => {
             <Trans>صور من المدرسة</Trans>
           </h1>
 
-          <div className="w-full m-auto mt-10"><Slider slides={slides} coverOrContain={"object-cover"} /></div>
+          <div className="w-full m-auto mt-10"><Slider slides={slides} customStyle={{coverOrContain:"object-cover",scale:"scale-100"}} /></div>
 
         </section>
 

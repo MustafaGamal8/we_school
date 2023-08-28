@@ -22,7 +22,7 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
     <Modal
       isOpen={isModalOpen}
       onRequestClose={toggleModal}
-      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] overflow-y-scroll    rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg   h-96 w-80  md:w-[400px]   lg:w-[600px]               "
+      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] overflow-y-scroll    rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg   h-96 w-80  md:w-[400px]   lg:w-[600px]     dark:bg-slate-700  "
       overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
       
     >
@@ -38,16 +38,16 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
       </div>
 
       <div className="flex flex-col gap-4   ">
-        <h1 className='text-xl text-sec text-center '>Files : {files.length}</h1>
+        <h1 className='text-xl text-sec text-center  dark:text-white'>Files : {files.length}</h1>
         {!files ? (
           <>No files</>
         ) : (
           files.map((file) => (
             <div
               key={file._id}
-              className="flex items-center justify-between lg:px-10 px-2 bg-white drop-shadow rounded-md h-20 lg:w-[80%] m-auto"
+              className="flex items-center justify-between lg:px-10 px-2 bg-white drop-shadow rounded-md h-20 lg:w-[80%] m-auto dark:bg-slate-800"
             >
-              <div className="flex items-center justify-center lg:w-1/2 bg-white h-full">
+              <div className="flex items-center justify-center lg:w-1/2 bg-white h-full dark:bg-slate-800 dark:text-white">
                 <svg
                   className="h-full p-3"
                   xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
                   ></path>
                 </svg>
                 <div>
-                  <h1>{file.fileName || "file"}</h1>
+                <h1>{file.fileName ? (file.fileName.length > 15 ? `${file.fileName.slice(0, 10)}...${file.fileName.slice(-5)}` : file.fileName) : "file"}</h1>
                   <p>{file.fileSize || "unKnown"}</p>
                 </div>
               </div>
