@@ -53,7 +53,7 @@ function ToDoList() {
                 {tasks.map((task, index) => (
                     <li
                         key={index}
-                        className="flex items-center justify-between m-5 p-3  bg-slate-300 dark:bg-gray-200 dark:text-black rounded-xl "
+                        className="flex items-center justify-between m-5 p-3  bg-slate-300 dark:bg-gray-200 dark:text-black    rounded-xl "
                     >
                         {task}
                         <button
