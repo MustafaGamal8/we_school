@@ -39,7 +39,7 @@ function ToDoList() {
   return (
     <section >
     <img
-        className=" absolute bottom-0  scale-y-[-1] right-0 z-[-1] w-full drop-shadow-xl "
+        className=" fixed bottom-0  scale-y-[-1] right-0 z-[-1] w-full drop-shadow-xl "
         src="/assets/wave.svg"
         alt=""
       />

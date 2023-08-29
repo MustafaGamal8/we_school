@@ -19,6 +19,7 @@ import SignUp from "./pages/auth/signup";
 import Error from "./components/error";
 import TableDataTeatcher from "./pages/tableDataTeatcher";
 import ToDoList from "./pages/ToDoList";
+import About from "./pages/about/about";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -89,6 +90,8 @@ function App() {
         <Route path="/"  element={<Home />}/>
         <Route path="/login"  element={<Login />}/>
         <Route path="/signup"  element={<SignUp />}/>
+        <Route path="/about"  element={<About />}/>
+
 
         <Route path="/main/"  element={<Main />}>
           <Route path="profile"  element={<Profile />}/>
@@ -101,7 +104,9 @@ function App() {
 
           <Route path="settings"  element={<Settings />}/>
           <Route path="tabledata"  element={<TableData />}/>
-          <Route path="Tabledatateatcher"  element={<TableDataTeatcher />}/>
+          <Route path="Tabledatateatcher/:role"  element={<TableDataTeatcher />}/>
+        
+
 
 
         </Route>

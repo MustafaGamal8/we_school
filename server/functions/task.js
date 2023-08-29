@@ -6,7 +6,7 @@ const schedule = require('node-schedule');
 const deleteTasksWithEndDateToday = async () => {
   try {
     const date = new Date();
-    const today = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+    const today = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const tasksToDelete = await taskModel.deleteMany({ endDate: today });
     console.log(`${tasksToDelete.deletedCount} tasks deleted with endDate: ${today}`);
   } catch (error) {

@@ -44,7 +44,7 @@ function Footer() {
         <ul className="space-y-2">
           <li><Trans>كارم محمود</Trans></li>
           <li><Trans>مصطفى جمال</Trans></li>
-          <li><Link to="/login" className="text-lg text-blue-500 hover:underline"><Trans>عنهم</Trans></Link></li>
+          <li><Link to="/about" className="text-lg text-blue-500 hover:underline"><Trans>عنهم</Trans></Link></li>
         </ul>
       </div>
     </div>
