@@ -8,7 +8,6 @@ const deleteTasksWithEndDateToday = async () => {
     const date = new Date();
     const today = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const tasksToDelete = await taskModel.deleteMany({ endDate: today });
-    console.log(`${tasksToDelete.deletedCount} tasks deleted with endDate: ${today}`);
   } catch (error) {
     console.error('Error deleting tasks:', error);
   }

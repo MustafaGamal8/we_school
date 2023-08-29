@@ -73,25 +73,25 @@ const startServer = async () => {
     connectDB(MONGODB_URL);
 
     // Handle translation
-    app.post('/translate', async (req, res) => {
-      try {
-        const { msg } = req.body;
-        // Implement your translation logic here
-        // Example: const translatedMsg = await translate(msg, { from: 'ar', to: 'en' });
-        res.json({ msg: translatedMsg }); // Modify this line accordingly
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'An error occurred' });
-      }
-    });
+    // app.post('/translate', async (req, res) => {
+    //   try {
+    //     const { msg } = req.body;
+    //     // Implement your translation logic here
+    //     // Example: const translatedMsg = await translate(msg, { from: 'ar', to: 'en' });
+    //     res.json({ msg: translatedMsg }); // Modify this line accordingly
+    //   } catch (error) {
+    //     console.error(error);
+    //     res.status(500).json({ error: 'An error occurred' });
+    //   }
+    // });
 
     // Auth routes
     app.post('/auth/signup', signUp);
     app.post('/auth/login', loginUser);
     app.post('/auth/reset-password', resetPassword);
     app.post('/auth/reset-password/send', sendResetPasswordEmail);
-    app.get('/auth/invitcode', getInvitationCodes);
-    app.get('/auth/invitcode/:userType', createInvitationCode);
+    app.get('/auth/invitecode', getInvitationCodes);
+    app.get('/auth/invitecode/:userType', createInvitationCode);
     app.get('/auth/confirm-email', confirmEmail);
 
 

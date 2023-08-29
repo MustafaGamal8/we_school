@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {  FaSchool, FaUser } from "react-icons/fa";
+import { FaSchool, FaUser } from "react-icons/fa";
 import Calendar from "../../components/calender";
 import { Link } from "react-router-dom";
 import UploadPostModal from "../../components/uploadpostmodal";
@@ -7,6 +7,7 @@ import { getAllDegrees } from "../../functions/degrees";
 import { FaCircleUser } from "react-icons/fa6";
 import UploadDegreeModal from "../../components/UploadDegreeModal";
 import UploadTaskModal from "../../components/uploadTaskModal";
+import { changeInviteCode, getInviteCodes } from "../../functions/invitCodes";
 
 
 
@@ -93,10 +94,10 @@ const DashBoard = () => {
 
       <div className="w-[80%] m-auto h-fit flex flex-col md:flex-row shadow-2xl text-center mt-10 bg-transparent   gap-2" >
         <Headermain icon={<FaSchool />} title={"Bransh"} text={"mansoura"} color={"#10b981"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"students"}  color={"#dade18"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"students"} color={"#dade18"} />
 
         <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/teacher"} title={"teachers"} color={"#3b82f6"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"Admin"}  color={"#10d981"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"Admin"} color={"#10d981"} />
 
       </div>
 
@@ -111,7 +112,7 @@ const DashBoard = () => {
           {
             topThree && topThree.map((student, index) => (
 
-              <TopThreeCard img={student.picture} name={student.name } percent={student.finalDegree + "%"} code={student.code} />
+              <TopThreeCard img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
 
 
             ))
@@ -149,42 +150,13 @@ const DashBoard = () => {
           {isModalOpen.task && <UploadTaskModal isOpen={true} onClose={handleCloseModal} />}
         </div>
 
-
-
-
-
-
       </div>
 
 
 
-
-      <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black  ">
-      <table className="border border-slate-300 w-full text-center">
-    <thead>
-        <tr className="bg-main text-white">
-            <th className="p-3 text-lg">Grade</th>
-            <th className="p-3 text-lg">Code</th>
-            <th className="p-3 text-lg">Change code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr className="text-main dark:text-white">
-            <td className="p-3">Grade Value</td>
-            <td className="p-3">Code Value</td>
-            <td className="p-3 flex justify-center">
-                <button className="bg-main text-white md:w-[150px] p-3 flex items-center justify-center rounded-lg w-[35%] text-sm md:text-lg">Change</button>
-            </td>
-        </tr>
-        {/* You can add more rows here */}
-    </tbody>
-</table>
+      <InvitationCodes />
 
 
-
-
-
-      </div>
 
 
 
@@ -229,3 +201,58 @@ const TopThreeCard = ({ img, name, percent, code }) => {
     </div>
   );
 };
+
+
+
+const InvitationCodes = () => {
+  const [invitationCodes, setInvitationCodes] = useState(null)
+  const fetchInvitationCodes = async () => {
+
+    const response = await getInviteCodes()
+    setInvitationCodes(response)
+  }
+
+  useEffect(() => {
+    fetchInvitationCodes()
+
+  }, [])
+
+
+
+  const handleChangeCode = async (userType) => {
+    const response = await changeInviteCode(userType)
+    response&& fetchInvitationCodes()
+  }
+
+
+
+
+  return (
+    <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black   mb-5">
+      <table className="border-b border-slate-400 w-full text-center ">
+        <thead>
+          <tr className="bg-main text-white">
+            <th className="p-3 text-lg">For</th>
+            <th className="p-3 text-lg">Code</th>
+            <th className="p-3 md:text-lg ">Change code</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            invitationCodes && invitationCodes.map((code, index) => (
+              <tr key={index} className="text-main dark:text-white">
+                <td className="p-3">{code.userType}</td>
+                <td className="p-3">{code.code}</td>
+                <td className="p-3 flex justify-center">
+                  <button className="bg-main text-white md:w-[150px] p-3 flex items-center justify-center rounded-lg w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} >Change</button>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+
+    </div>
+
+  )
+}
