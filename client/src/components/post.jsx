@@ -50,12 +50,11 @@ const Post = ({ handleOpenModal, post }) => {
 
   const handleDeleteClick =  async() => {
     await deletePost(_id, currentUser._id)
-
     setShowOptions(false); 
   };
 
   return (
-    <div className=" relative w-[95%] md:w-[50%]  lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
+    <div className=" w-[95%] md:w-[50%] : lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
 <div className="relative">
       <div

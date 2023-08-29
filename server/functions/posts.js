@@ -178,5 +178,6 @@ module.exports = {
   readFile,
   readAllPosts,
   uploadAndCreatePost,
-  togglePostLike
+  togglePostLike,
+  deletePost
 };

@@ -75,7 +75,6 @@ function Profile() {
 
 
 
-<<<<<<< HEAD
         <div className="p-6 flex flex-col items-start ">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
@@ -154,78 +153,6 @@ function Profile() {
             )
           }
         </div>
-=======
-        <div className="p-6">
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
-      First Name
-    </label>
-    <div className="flex items-center">
-      <FaUser className="mr-2 text-gray-500" />
-      {isEditMode ? (
-        <input
-          type="text"
-          className="text-gray-600 outline-main  border-2 border-main p-1 rounded"
-          value={user.firstName}
-          onChange={(e) => handleInputChange('firstName', e.target.value)}
-        />
-      ) : (
-        <span className="text-gray-600">{user.firstName}</span>
-      )}
-    </div>
-  </div>
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
-      Last Name
-    </label>
-    <div className="flex items-center">
-      <FaUser className="mr-2 text-gray-500" />
-      {isEditMode ? (
-        <input
-          type="text"
-          className="text-gray-600 outline-main  border-2 border-main p-1 rounded"
-          value={user.lastName}
-          onChange={(e) => handleInputChange('lastName', e.target.value)}
-        />
-      ) : (
-        <span className="text-gray-600">{user.lastName}</span>
-      )}
-    </div>
-  </div>
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-      Email
-    </label>
-    <div className="flex items-center">
-      <FaEnvelope className="mr-2 text-gray-500" />
-        <span className="text-gray-600">{user.email}</span>
-    </div>
-  </div>
-  {user.role === "student" && (
-    <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="grade">
-        Grade
-      </label>
-      <div className="flex items-center">
-        <FaGraduationCap className="mr-2 text-gray-500" />
-          <span className="text-gray-600">{user.grade}</span>
-      </div>
-    </div>
-  )}
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
-      Role
-    </label>
-    <div className="flex items-center">
-      <FaEye className="mr-2 text-gray-500" />
-      <span className="text-gray-600">{user.role}</span>
-    </div>
-  </div>
-
-  
-</div>
-
->>>>>>> 30362d1d6bafd8095f76821d5ab6160bab14b291
 
 
         {/* edit mode */}
