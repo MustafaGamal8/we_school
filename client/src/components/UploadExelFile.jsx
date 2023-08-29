@@ -1,16 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
-import { AiOutlineDownload, AiOutlineUpload, AiFillMail, AiOutlineMail, AiOutlineFileImage, AiOutlineDelete, AiOutlineFileExcel } from "react-icons/ai";
+import {  AiFillMail,   AiOutlineDelete, AiOutlineFileExcel,  } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 import { BiLoader } from "react-icons/bi";
-import { uploadPost } from "../functions/posts";
 import { toast } from "react-toastify";
+import { uploadDegrees } from "../functions/degrees";
 
-function UploadExcelModal({ isOpen, onClose }) {
-  const [droppedFiles, setDroppedFiles] = useState([]);
+function UploadExcelModal({ isOpen, onClose }) 
+{const [droppedFiles, setDroppedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
-  const [content, setContent] = useState("");
   const fileInputRef = useRef(null);
 
   const toggleModal = () => {
@@ -23,7 +22,12 @@ function UploadExcelModal({ isOpen, onClose }) {
     const files = action === "choose" ? e.target.files : e.dataTransfer.files;
 
     for (let i = 0; i < files.length; i++) {
-      newDroppedFiles.push(files[i]);
+      const fileName = files[i].name.toLowerCase();
+      if (fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
+        newDroppedFiles.push(files[i]);
+      }else{
+        toast.error("Only xls and xlsx files are allowed");
+      }
     }
 
     setDroppedFiles(newDroppedFiles);
@@ -35,7 +39,8 @@ function UploadExcelModal({ isOpen, onClose }) {
 
   const handleSharePost = async () => {
     setUploading(true);
-    const isUploaded = await uploadPost(content, droppedFiles);
+    await uploadDegrees(droppedFiles)
+
     setTimeout(() => {
       setUploadSuccess(true);
       setUploading(false);
@@ -46,13 +51,6 @@ function UploadExcelModal({ isOpen, onClose }) {
 
   const handleOpenFileExplorer = () => {
     fileInputRef.current.click();
-  };
-
-  const getFileIcon = (fileName) => {
-    if (fileName.toLowerCase().endsWith('.xlsx') || fileName.toLowerCase().endsWith('.xls')) {
-      return <AiOutlineFileExcel size={28} className="text-blue-500" />;
-    }
-    return <AiOutlineFileImage size={28} className="text-main" />;
   };
 
   const handleDeleteFile = (index) => {
@@ -69,6 +67,7 @@ function UploadExcelModal({ isOpen, onClose }) {
       }, 3000);
     }
   }, [uploadSuccess]);
+
 
   return (
     <Modal
@@ -110,7 +109,7 @@ function UploadExcelModal({ isOpen, onClose }) {
         <div className="w-full">
           {droppedFiles.map((file, index) => (
             <div key={index} className="mt-4 flex items-center justify-between m-auto w-[60%]">
-              {getFileIcon(file.name)}
+              <AiOutlineFileExcel size={28} className="text-blue-500" />
               <p className="ml-2 text-xl">{file.name}</p>
               <button
                 onClick={() => handleDeleteFile(index)}
@@ -122,12 +121,12 @@ function UploadExcelModal({ isOpen, onClose }) {
           ))}
         </div>
         <button
-          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer`}
+          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer items-center flex`}
           onClick={handleSharePost}
           disabled={uploading}
         >
           {uploading ? <BiLoader className="animate-spin mr-2" /> : null}
-          {uploading ? "UPLOADING..." : "Share Post"}
+          {uploading ? "UPLOADING..." : "Upload degrees"}
         </button>
       </div>
     </Modal>
