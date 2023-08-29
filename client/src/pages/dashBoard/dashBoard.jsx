@@ -161,9 +161,9 @@ const DashBoard = () => {
       </div>
 
 
+<div className=" w-full md:w-[80%] flex flex-col md:flex-row m-auto items-center justify-between ">
 
-
-      <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black  ">
+      <div className="w-[50%] md:w-[50%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black  ">
       <table className="border border-slate-300 w-full text-center">
     <thead>
         <tr className="bg-main text-white">
@@ -191,6 +191,8 @@ const DashBoard = () => {
       </div>
 
 
+          <div className="w-[50%]"></div>
+      </div>
 
 
     </>
