@@ -54,8 +54,8 @@ export const sendResetCode = async (email)=>{
    const response =  await axios.post(baseUrl + "/reset-password/send",{
     email
   })  
-    
   return response.data
+  
   } catch (error) { 
     return error.response.data
     

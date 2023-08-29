@@ -1,108 +1,195 @@
 import { useState } from "react";
-import {CiUser } from "react-icons/ci"
-import {MdPhone,MdHome,MdListAlt,MdSchool,MdMenu,MdPeopleAlt,MdRemoveRedEye} from "react-icons/md"
-import { Link } from "react-router-dom";
-import { FaCamera } from "react-icons/fa";
-import { useEffect } from "react";
+import { FaUser, FaEnvelope, FaCamera, FaGraduationCap, FaEye, FaTimes, FaEdit } from "react-icons/fa";
 
 function Profile() {
-    const [isMenuOpen,setIsMenuOpen] = useState(false);
-    const [imageSrc, setImageSrc] = useState('/public/assets/nardin.jpg');
+  const currentUser = JSON.parse(localStorage.getItem('user'));
 
-    const handleMenuClick = () => {
-        setTimeout(() => {
-            setIsMenuOpen(false);
-        }, 300);
-    };
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [user,setUser] = useState({
+    picture:currentUser.picture,
+    firstName:currentUser.firstName,
+    lastName:currentUser.lastName,
+    email:currentUser.email,
+    role:currentUser.role,
+    grade:currentUser.grade
+  })
+  const [newUserData,setNewUserData] = useState(user)
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith('image/')) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const imageSrc = e.target.result;
-                localStorage.setItem('profileImage', imageSrc);
-                setImageSrc(imageSrc);
-            }
-            reader.readAsDataURL(file);
-        }
-    };
-    useEffect(() => {
-        const profileImage = localStorage.getItem('profileImage');
-        if (profileImage) {
-            setImageSrc(profileImage);
-        }
-    }, []);
-    
-    return (
-        <section className="m-auto w-full h-full">
-            
-      <img className="opacity-0 absolute top-0 right-0 z-[-1] w-full drop-shadow-xl md:opacity-[1]" src="/assets/wave.svg" alt="" />
+  
+  const handleToggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-            
-            <div className=" bg-lightGray flex flex-col items-center justify-center mt-4 ">
-            <div className="relative w-[300px] h-[300px] md:w-[300px] md:h-[300px] rounded-[50%] overflow-hidden border-4 border-solid border-sec bg-white">
-                <img src={imageSrc} className="w-[100%] h-[100%] object-cover rounded-[50%]" alt="" />                    <label htmlFor="input-file" className="absolute bottom-0 right-0 text-5xl text-white flex flex-col w-[100%] h-[100%] rounded-[50%] opacity-0 items-center justify-center hover:text-pink-500 cursor-pointer hover:opacity-[1]">
-                      <FaCamera />
-                    </label>
-                    <input type="file" accept="image/*" id="input-file" onChange={handleImageChange} className="sr-only" />
-                </div>
-                <h1 className="font-bold text-3xl mt-5 text-center"> الملف الشخصي</h1>
-                <form className="w-full mt-5 max-w-md" dir="rtl">
-                    <div className="mb-4">
-                        <label className="block text-main font-bold mb-2" htmlFor="username">
-                            اسم المستخدم:
-                        </label>
-                        <div className="relative">
-                            <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-main leading-tight focus:outline-none focus:shadow-outline"
-                                id="username"
-                                type="text"
-                                placeholder="اسم المستخدم"
-                            />
-                            <CiUser className="absolute left-2 top-2 text-lg text-gray " />
-                        </div>
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-main font-bold mb-2" htmlFor="email">
-                            البريد الإلكتروني:
-                        </label>
-                        <div className="relative">
-                            <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-main leading-tight focus:outline-none focus:shadow-outline"
-                                id="email"
-                                type="text"
-                                placeholder="البريد الإلكتروني"
-                            />
-                            <MdPeopleAlt className="absolute left-2 top-2 text-lg text-gray" />
-                        </div>
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-main font-bold mb-2" htmlFor="password">
-                            كلمة المرور:
-                        </label>
-                        <div className="relative">
-                            <input
-                                className="appearance-none border rounded w-full py-2 px-3 text-main leading-tight focus:outline-none focus:shadow-outline"
-                                id="password"
-                                type="password"
-                                placeholder="كلمة المرور"
-                            />
-                            <MdRemoveRedEye className="absolute left-2 top-2 text-lg text-gray" />
-                        </div>
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <button
-                            className="bg-main hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                            type="button"
-                        >
-                            تعديل
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-    );
+
+
+  
+
+
+  const handleImageChange = (e) => {
+    // ... (same as in your code)
+  };
+
+  const handleEditClick = () => {
+    setIsEditMode(!isEditMode);
+  };
+
+  const handleCancelClick = () => {
+    setIsEditMode(false);
+    setUser(newUserData)    
+  };
+
+
+  const handleInputChange = (field, value) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      [field]: value
+    }));
+  };
+
+  return (
+    <section className="flex justify-center items-center min-h-screen ">
+      <div className="bg-white p-8 rounded-lg shadow-lg lg:w-[40%] w-1/2 mdmax-w-md">
+        
+        <div className="relative mb-6 drop-shadow m-auto  w-40">
+          <img src={"https://we-school-api.vercel.app" + user.picture} className="w-32 h-32 mx-auto rounded-full" alt="Profile" />
+          {isEditMode && (
+            <label
+              htmlFor="input-file"
+              className="absolute bottom-[40%] left-[40%] p-2 bg-gray-300 rounded-full cursor-pointer"
+            >
+              <FaCamera />
+            </label>
+          )}
+          <input
+            type="file"
+            accept="image/*"
+            id="input-file"
+            onChange={handleImageChange}
+            className="sr-only "
+          />
+        </div>
+        <h1 className="text-2xl font-bold mb-4 text-center">الملف الشخصي</h1>
+
+
+
+        <div className="p-6">
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
+      First Name
+    </label>
+    <div className="flex items-center">
+      <FaUser className="mr-2 text-gray-500" />
+      {isEditMode ? (
+        <input
+          type="text"
+          className="text-gray-600 outline-main  border-2 border-main p-1 rounded"
+          value={user.firstName}
+          onChange={(e) => handleInputChange('firstName', e.target.value)}
+        />
+      ) : (
+        <span className="text-gray-600">{user.firstName}</span>
+      )}
+    </div>
+  </div>
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
+      Last Name
+    </label>
+    <div className="flex items-center">
+      <FaUser className="mr-2 text-gray-500" />
+      {isEditMode ? (
+        <input
+          type="text"
+          className="text-gray-600 outline-main  border-2 border-main p-1 rounded"
+          value={user.lastName}
+          onChange={(e) => handleInputChange('lastName', e.target.value)}
+        />
+      ) : (
+        <span className="text-gray-600">{user.lastName}</span>
+      )}
+    </div>
+  </div>
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+      Email
+    </label>
+    <div className="flex items-center">
+      <FaEnvelope className="mr-2 text-gray-500" />
+        <span className="text-gray-600">{user.email}</span>
+    </div>
+  </div>
+  {user.role === "student" && (
+    <div className="mb-4">
+      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="grade">
+        Grade
+      </label>
+      <div className="flex items-center">
+        <FaGraduationCap className="mr-2 text-gray-500" />
+          <span className="text-gray-600">{user.grade}</span>
+      </div>
+    </div>
+  )}
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
+      Role
+    </label>
+    <div className="flex items-center">
+      <FaEye className="mr-2 text-gray-500" />
+      <span className="text-gray-600">{user.role}</span>
+    </div>
+  </div>
+
+  
+</div>
+
+
+
+        {/* edit mode */}
+        <div className="flex justify-center space-x-4 mt-6">
+            {isEditMode ? (
+              <>
+                <button
+                  className="flex items-center bg-slate-700 text-white p-2"
+                  type="button"
+                  onClick={handleEditClick}
+                >
+                  حفظ
+                </button>
+                <button
+                  className="flex items-center bg-red-400 text-white p-2"
+                  type="button"
+                  onClick={handleCancelClick}
+                >
+                  <FaTimes className="mr-2" />
+                  إلغاء
+                </button>
+              </>
+            ) : (
+              <button
+                className="flex items-center bg-slate-700 text-white p-2 "
+                type="button"
+                onClick={handleEditClick}
+              >
+                <FaEdit className="mr-2" />
+                تعديل
+              </button>
+            )}
+          </div>
+      </div>
+
+
+
+
+
+      
+      {isModalOpen && <ResetPassowrdModal    
+          isOpen={true}
+          onClose={handleToggleModal} />}
+    </section>
+  );
 }
 
 export default Profile;

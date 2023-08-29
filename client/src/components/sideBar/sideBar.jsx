@@ -38,14 +38,15 @@ const Sidebar = ({user}) => {
 
       <header className='w-full capitalize  '>
 
-        <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden   dark:bg-slate-700 dark:text-white">
-          <div className="flex  justify-center lg:mt-4 border-2 border-main w-max m-auto rounded-full ">
-            <FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200  `} />
+        <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden   dark:bg-slate-700 dark:text-white mt-5">
+          <div className="flex  justify-center lg:mt-4 border-2 border-main w-max m-auto rounded-full  h-16 overflow-hidden ">
+            {user.picture ? ( <img  src={  "https://we-school-api.vercel.app"+user.picture} alt="" className='h-full w-full object-cover' />):<FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200  `} />}
+
           </div>
           <div className="text-center mt-4">
           <div className="lg:mt-4 ">
             <p className={`${iscollapsed ? 'text-base' : 'text-xl'} font-semibold text-gray-800 flex items-center justify-center dark:text-white`}>{user.firstName} {iscollapsed  ?  null: user.lastName}</p>
-            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    flex items-center justify-center`}>{user.role}</p>
+            <p className={` ${iscollapsed ? 'text-sm ' : 'text-sm'} text-gray-600    flex items-center justify-center dark:text-gray-200`}>{user.role}</p>
           </div>
         </div>
         </div>

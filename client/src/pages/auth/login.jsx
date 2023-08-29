@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible, AiOutlineRollback } from 'react-icons/ai';
-import { FaChevronDown } from 'react-icons/fa';
-import { login, resetPassword, sendResetCode } from '../../functions/auth';
+import { login} from '../../functions/auth';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
-import Modal from 'react-modal';
-import { MdClose } from 'react-icons/md';
+import ResetPassowrdModal from '../../components/resetPassowrdModal';
 
 const Login = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -29,28 +27,12 @@ const Login = () => {
   });
 
 
-  let resetPasswordSchema;
+  
+  const handleToggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-  if (isCodeSent) {
-    resetPasswordSchema = Yup.object().shape({
-      resetCode: Yup.string().required('Reset Code is required'),
-      newPassword: Yup.string()
-        .min(6, 'New Password must be at least 6 characters')
-        .max(12, 'New Password can be at most 12 characters')
-        .required('New Password is required'),
-      confirmPassword: Yup.string()
-        .oneOf([Yup.ref('newPassword')], 'Passwords must match')
-        .required('Confirm Password is required'),
-    });
-  } else {
-    resetPasswordSchema = Yup.object().shape({
-      email: Yup.string()
-        .email('Invalid email format')
-        .required('Email is required'),
-    });
-  }
-  
-  
+
 
   const toastConfig = {
     position: 'bottom-left',
@@ -75,55 +57,11 @@ const Login = () => {
     });
   };
 
-  const handleInputChange_resetPassword = (e) => {
-    const { name, value } = e.target;
-    setResetPasswordForm({
-      ...resetPasswordForm,
-      [name]: value,
-    });
-  };
 
   const handleTogglePasswordVisibility = () => {
     setIsShowPassword((prev) => !prev);
   };
 
-  const handleSendResetCode = async (e) => {
-    e.preventDefault();
-    try {
-      await resetPasswordSchema.validate(resetPasswordForm, { abortEarly: false });
-      toast.info('Sending reset code...', toastConfig);
-      const response = await sendResetCode(resetPasswordForm.email);
-      const { error, msg } = response
-      if (error) {
-        toast.error(error, toastConfig);
-      } else {
-        toast.success(msg, toastConfig);
-        setIsCodeSent(true)
-      }
-    } catch (error) {
-      toast.error(error.message, toastConfig);
-    }
-  };
-
-  const handleSubmit_resetPassword = async (e) => {
-    e.preventDefault();
-    try {
-      await resetPasswordSchema.validate(resetPasswordForm, { abortEarly: false });
-      toast.info('Trying To Change Password ...', toastConfig);
-      const response = await resetPassword(resetPasswordForm.resetCode,resetPasswordForm.confirmPassword);
-      const { error, msg } = response
-      console.log(response)
-      if (error) {
-        toast.error(error, toastConfig);
-      } else {
-        toast.success(msg, toastConfig);
-        setIsCodeSent(false)
-        setIsModalOpen(false)
-      }
-    } catch (error) {
-      toast.error(error.message, toastConfig);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -217,83 +155,10 @@ const Login = () => {
 
 
 
-        <Modal
-          isOpen={isModalOpen}
-          className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg  w-80 md:w-[400px] lg:w-[600px] dark:bg-slate-800 dark:text-white"
-          overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
 
-        >
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="close-button-style"
-          >
-            <MdClose size={24} />
-          </button>
-          <div className="h-10"></div>
-
-          <div className="flex flex-col items-center justify-center h-full px-4 md:px-8">
-            <h1 className="text-3xl font-semibold mb-6">Reset Your Password</h1>
-            <input
-              type="email"
-              className="w-full p-2 border rounded-lg mb-4"
-              placeholder="Email"
-              name="email"
-              value={resetPasswordForm.email}
-              disabled={isCodeSent}
-              onChange={handleInputChange_resetPassword}
-            />
-
-            <button
-              className="w-full bg-sec text-white py-2 px-4 rounded-lg mb-4 disabled:opacity-50"
-              disabled={!resetPasswordForm.email}
-              onClick={handleSendResetCode}
-            >
-              Send Code
-            </button>
-
-            <input
-              type="text"
-              className="w-full p-2 border rounded-lg mb-4"
-              placeholder="Reset Code"
-              name="resetCode"
-              value={resetPasswordForm.resetCode}
-              
-              disabled={!isCodeSent}
-              onChange={handleInputChange_resetPassword}
-            />
-
-            <input
-              type="password"
-              className="w-full p-2 border rounded-lg mb-4"
-              placeholder="New Password"
-              name="newPassword"
-              value={resetPasswordForm.newPassword}
-              
-              disabled={!isCodeSent}
-              onChange={handleInputChange_resetPassword}
-            />
-
-            <input
-              type="password"
-              className="w-full p-2 border rounded-lg mb-6"
-              placeholder="Confirm New Password"
-              name="confirmPassword"
-              value={resetPasswordForm.confirmPassword}
-              
-              disabled={!isCodeSent}
-              onChange={handleInputChange_resetPassword}
-            />
-
-            <button
-              className="w-full bg-main text-white py-2 px-4 rounded-lg"
-              onClick={handleSubmit_resetPassword}
-            >
-              Reset Password
-            </button>
-          </div>
-        </Modal>
-
-
+{isModalOpen && <ResetPassowrdModal    
+          isOpen={true}
+          onClose={handleToggleModal} />}
 
       </main>
     </>

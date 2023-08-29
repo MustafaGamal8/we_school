@@ -22,7 +22,7 @@ const Main = () => {
           <div className=' lg:fixed   '><Sidebar user={user} /></div>
           <div className='lg:w-[200px]'></div>
 
-          <section className="w-full">
+          <section className="w-full h-full" >
             <Outlet />
           </section>
         </main>
