@@ -17,7 +17,7 @@ import Settings from "./pages/settings/settings";
 import TableData from "./components/TableData/TableData";
 import SignUp from "./pages/auth/signup";
 import Error from "./components/error";
-import TableDataTeatcher from "./pages/tableDataTeatcher";
+import TableDataTeatcher from "./pages/tableData";
 import ToDoList from "./pages/ToDoList";
 import About from "./pages/about/about";
 
@@ -30,6 +30,8 @@ function App() {
   
 
   const defultLang = localStorage.getItem("lang") 
+  
+  const currentUser = JSON.parse(localStorage.getItem('user'))
 
   setTimeout(() => {
     setIsLoading(false)
@@ -95,8 +97,13 @@ function App() {
 
         <Route path="/main/"  element={<Main />}>
           <Route path="profile"  element={<Profile />}/>
+          {  (currentUser.role === 'teacher' || currentUser.role === 'admin') &&
+          (<>
           <Route path="dashboard"  element={<DashBoard />}/>
           <Route path="dashboard/tabledata"  element={<TableData />}/>
+          
+          </>)
+          }
 
           <Route path="timeline"  element={<TimeLine />}/>
           <Route path="degree"  element={<Degree />}/>

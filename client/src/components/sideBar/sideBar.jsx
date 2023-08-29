@@ -55,7 +55,9 @@ const Sidebar = ({user}) => {
 
 
       <main className={`  ${iscollapsed ?  '' : 'flex-col h-max' }  items-start lg:mt-10 my-3 uppercase flex lg:flex-col  h-full  gap-y-3 p-2`}>
+        { (user.role === 'teacher' || user.role === 'admin') && 
         <MenuItem to={"/main/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
+        }
         <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
         <MenuItem to={"/main/degree"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />

@@ -2,6 +2,7 @@ import React, { useEffect, useState  } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { getUsers } from '../functions/users';
 
 
 
@@ -13,21 +14,17 @@ function TableDataTeatcher() {
   
 
     const { role } = useParams();
-    console.log(role)
-  
     
  
 
+    const fetchUsersData = async () => {
+        const response = await getUsers()
+        setData(response)
+        console.log(response)
+    }
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(baseUrl);
-        setData(response.data);
-      } catch (error) {
-        toast.error("Couldn't get users data", error.message);
-      }
-    };
-    fetchData();
+    fetchUsersData()     
+
   }, []);
 
   const handleDelete = (itemId) => {

@@ -56,24 +56,26 @@ const Post = ({ handleOpenModal, post }) => {
   return (
     <div className=" w-[95%] md:w-[50%] : lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
-<div className="relative">
-      <div
-        className="h-10 w-10 absolute right-2  top-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full items-center justify-center flex"
-        onClick={() => setShowOptions(!showOptions)}
+{
+  (currentUser.role === 'teacher' || currentUser.role === 'admin') && (<div className="relative">
+  <div
+    className="h-10 w-10 absolute right-2  top-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full items-center justify-center flex"
+    onClick={() => setShowOptions(!showOptions)}
+  >
+    <FaEllipsisV />
+  </div>
+  {showOptions && (
+    <div className="options-container absolute right-0 top-14 bg-white dark:bg-gray-200 border border-gray-300 p-2 rounded shadow ">
+      <button
+        className=" text-red-500 hover:text-red-700 flex items-center gap-1"
+        onClick={handleDeleteClick}
       >
-        <FaEllipsisV />
-      </div>
-      {showOptions && (
-        <div className="options-container absolute right-0 top-14 bg-white dark:bg-gray-200 border border-gray-300 p-2 rounded shadow ">
-          <button
-            className=" text-red-500 hover:text-red-700 flex items-center gap-1"
-            onClick={handleDeleteClick}
-          >
-            <FaTrash /> Delete Post
-          </button>
-        </div>
-      )}
+        <FaTrash /> Delete Post
+      </button>
     </div>
+  )}
+</div>)  
+}
 
 
 
