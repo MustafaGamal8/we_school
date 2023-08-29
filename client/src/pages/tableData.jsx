@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { getUsers } from '../functions/users';
-
-const baseUrl = 'https://we-school-api.vercel.app/auth/users';
+import 'react-toastify/dist/ReactToastify.css';
 
 function TableDataTeacher() {
     const [data, setData] = useState([]);
-
+    const [confirmingAction, setConfirmingAction] = useState(null); 
     const { role } = useParams();
 
     const fetchUsersData = async () => {
@@ -20,57 +20,78 @@ function TableDataTeacher() {
     }, []);
 
     const handleDelete = (itemId) => {
-        const updatedData = data.filter((item) => item._id !== itemId);
-        setData(updatedData);
+        setConfirmingAction('delete');
+    };
+
+    const handleMakeAdmin = () => {
+        setConfirmingAction('makeAdmin');
+    };
+
+    const handleConfirm = (itemId) => {
+        if (confirmingAction === 'delete') {
+           
+            const updatedData = data.filter((item) => item._id !== itemId);
+            setData(updatedData);
+            toast.success('User deleted successfully');
+        } else if (confirmingAction === 'makeAdmin') {
+           
+            toast.success('User promoted to admin');
+        }
+
+        setConfirmingAction(null);
     };
 
     return (
         <div className="flex justify-center">
-            <table className="table-auto w-[90%] mt-8">
+            <table className="table-auto w-3/4 mt-8">
                 <thead>
-                    <tr className="text-black dark:text-white text-center bg-gray-300">
+                    <tr className="bg-main text-white">
                         <th className="px-4 py-2">ID</th>
                         <th className="px-4 py-2">Name</th>
                         <th className="px-4 py-2">Email</th>
                         <th className="px-4 py-2">Role</th>
                         {role === 'student' && <th className="px-4 py-2">Grade</th>}
-                        {role === 'teacher' && <th className="px-4 py-2">Upgrade</th>}
                         <th className="px-4 py-2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((item) =>
                         role === item.role ? (
-                            <tr key={item._id} className="text-center">
-                                <td className="border px-4 py-2">{item._id}</td>
-                                <td className="border px-4 py-2">
-                                    {item.firstName} {item.lastName}
-                                </td>
-                                <td className="border px-4 py-2">{item.email}</td>
-                                <td className="border px-4 py-2">{item.role}</td>
-                                {role === 'student' && <td className="border px-4 py-2">{item.grade}</td>}
-                                {role === 'teacher' && (
-                                    <td className="border px-4 py-2">
-                                        <button className="bg-blue-500 hover:bg-blue-700 text-white px-2 py-1 rounded">
-                                            Make Admin
-                                        </button>
+                            <tr key={item._id} className="border-b border-slate-200 text-center">
+                                <td className="px-4 py-2">{item._id}</td>
+                                <td className="px-4 py-2">{item.firstName} {item.lastName}</td>
+                                <td className="px-4 py-2">{item.email}</td>
+                                <td className="px-4 py-2">{item.role}</td>
+                                {role === 'student' && <td className="px-4 py-2">{item.grade}</td>}
+                                {role === 'admin' && (
+                                    <td className="px-4 py-2">
+                                        <div className="flex justify-around">
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white px-2 py-1 rounded" onClick={handleMakeAdmin}>
+                                                Make Admin
+                                            </button>
+                                            <button className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded" onClick={() => handleDelete(item._id)}>
+                                                Delete
+                                            </button>
+                                            {confirmingAction && (
+                                                <div className="confirmation-popup">
+                                                    <div className="confirmation-popup-inner">
+                                                        <p>Are you sure?</p>
+                                                        <div className='flex justify-between items-center '>
+                                                        <button className="bg-green-600 text-white rounded-lg w-[40%] " onClick={() => handleConfirm(item._id)}>Yes</button>
+                                                        <button className="bg-red-600 text-white rounded-lg w-[40%] " onClick={() => setConfirmingAction(null)}>No</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </td>
                                 )}
-                                <td className="border px-4 py-2">
-                                    <div className="flex justify-around">
-                                        <button
-                                            className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
-                                            onClick={() => handleDelete(item._id)}
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </td>
                             </tr>
                         ) : null
                     )}
                 </tbody>
             </table>
+            <ToastContainer />
         </div>
     );
 }
