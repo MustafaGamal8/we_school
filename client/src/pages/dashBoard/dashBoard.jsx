@@ -153,8 +153,6 @@ const DashBoard = () => {
       </div>
 
 
-<div className=" w-full md:w-[80%] flex flex-col md:flex-row m-auto items-center justify-between ">
-
       <InvitationCodes />
 
 
