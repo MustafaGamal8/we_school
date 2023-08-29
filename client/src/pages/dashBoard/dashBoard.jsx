@@ -159,15 +159,27 @@ const DashBoard = () => {
 
 
 
-      <div className="w-[70%] md:w-[80%]  flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black  ">
-        <div className="flex items-center justify-between mt-5 boreder border-slate-300 w-full text-main dark:text-white">
-          <h1 className="text-lg  " > grade</h1>
-          <h2 className="text-lg">code</h2>
-          <button className="bg-main text-white md:w-[150px] p-3 flex items-center justify-center rounded-lg w-[35%] text-sm md:text-lg ">change code</button>
+      <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black  ">
+      <table className="border border-slate-300 w-full text-center">
+    <thead>
+        <tr className="bg-main text-white">
+            <th className="p-3 text-lg">Grade</th>
+            <th className="p-3 text-lg">Code</th>
+            <th className="p-3 text-lg">Change code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr className="text-main dark:text-white">
+            <td className="p-3">Grade Value</td>
+            <td className="p-3">Code Value</td>
+            <td className="p-3 flex justify-center">
+                <button className="bg-main text-white md:w-[150px] p-3 flex items-center justify-center rounded-lg w-[35%] text-sm md:text-lg">Change</button>
+            </td>
+        </tr>
+        {/* You can add more rows here */}
+    </tbody>
+</table>
 
-
-
-        </div>
 
 
 
