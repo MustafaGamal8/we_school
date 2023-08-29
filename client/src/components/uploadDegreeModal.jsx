@@ -6,7 +6,7 @@ import { BiLoader } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { uploadDegrees } from "../functions/degrees";
 
-function UploadExcelModal({ isOpen, onClose }) 
+function UploadDegreeModal({ isOpen, onClose }) 
 {const [droppedFiles, setDroppedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -133,4 +133,4 @@ function UploadExcelModal({ isOpen, onClose })
   );
 }
 
-export default UploadExcelModal;
+export default UploadDegreeModal;

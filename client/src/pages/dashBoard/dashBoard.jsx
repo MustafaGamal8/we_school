@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { FaFileUpload, FaSchool, FaUser } from "react-icons/fa";
+import {  FaSchool, FaUser } from "react-icons/fa";
 import Calendar from "../../components/calender";
-import Task from "../../components/task";
 import { Link } from "react-router-dom";
 import UploadPostModal from "../../components/uploadpostmodal";
-import { NavLink } from 'react-router-dom'; // Make sure to import Link if you're using it
 import { getAllDegrees } from "../../functions/degrees";
 import { FaCircleUser } from "react-icons/fa6";
-import UploadExcelModal from './../../components/UploadExelFile';
+import UploadDegreeModal from "../../components/UploadDegreeModal";
+import UploadTaskModal from "../../components/uploadTaskModal";
 
 
 
@@ -21,7 +20,6 @@ const DashBoard = () => {
     task: false
   });
 
-  const [file, setFile] = useState(null);
 
   const handleOpenModal = (modalName) => {
     setIsModalOpen({
@@ -81,7 +79,7 @@ const DashBoard = () => {
       <div className="w-[95%] md:w-[80%] m-auto min-h-[300px] h-fit flex flex-col md:flex-row justify-between bg-[#b285f2] text-white mt-10 rounded-xl">
         <div className="w-full md:w-[50%] p-5 flex flex-col justify-between items-start h-full">
           <h1 className="text-2xl">
-            Welcome <NavLink to="/main/profile">{user.firstName} {user.lastName}</NavLink> to We School Dashboard
+            Welcome <Link to="/main/profile">{user.firstName} {user.lastName}</Link> to We School Dashboard
           </h1>
           <h2 className="text-xl mt-4">
             You can upload by clicking on "Upload" and choose your file. Be careful when selecting a file. Have a nice time!
@@ -95,14 +93,12 @@ const DashBoard = () => {
 
       <div className="w-[80%] m-auto h-fit flex flex-col md:flex-row shadow-2xl text-center mt-10 bg-transparent   gap-2" >
         <Headermain icon={<FaSchool />} title={"Bransh"} text={"mansoura"} color={"#10b981"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/TableDataTeatcher/student"} title={"students"} text={"1200"} color={"#dade18"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"students"}  color={"#dade18"} />
 
-        <Headermain icon={<FaUser />} linkTo={"/main/TableDataTeatcher/teatcher"} title={"teatchers"} text={"50"} color={"#3b82f6"} />
-        <Headermain icon={<FaUser />} title={"engineering"} text={"10"} color={"#10d981"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/teacher"} title={"teachers"} color={"#3b82f6"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"Admin"}  color={"#10d981"} />
 
       </div>
-
-
 
 
 
@@ -142,7 +138,7 @@ const DashBoard = () => {
           <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4">Upload Degree files </h1>
           <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center">Simply click the upload button and drag your file</p>
           <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={() => handleOpenModal("degree")}>Upload</button>
-          {isModalOpen.degree && <UploadExcelModal isOpen={true} onClose={handleCloseModal} />}
+          {isModalOpen.degree && <UploadDegreeModal isOpen={true} onClose={handleCloseModal} />}
         </div>
 
 
@@ -150,7 +146,7 @@ const DashBoard = () => {
           <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4">Upload Your Task</h1>
           <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center">Simply click the upload button and drag your file</p>
           <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={() => handleOpenModal("task")}>Upload</button>
-          {isModalOpen.task && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
+          {isModalOpen.task && <UploadTaskModal isOpen={true} onClose={handleCloseModal} />}
         </div>
 
 
@@ -208,11 +204,10 @@ export default DashBoard;
 
 const Headermain = ({ icon, title, text, color, linkTo }) => {
   return (
-    <Link to={linkTo} className={`flex items-center w-full drop-shadow-lg md:w-[100%] relative text-[#351b57] uppercase p-5 h-[120px] mt-5 rounded-lg gap-x-5 text-lg after:left-0 after:top-0 after:w-[1%] after:h-full after:bg-[#de68bf] after:absolute hover:after:w-full after:z-[-1] after:transition-all overflow-hidden hover:text-white`} style={{ background: color }}>
+    <Link to={linkTo} className={`flex items-center w-full drop-shadow-lg md:w-[100%] relative text-[#351b57] uppercase p-5 h-[120px] mt-5 rounded-lg gap-x-5 text-lg after:left-0 after:top-0 after:w-[1%] after:h-full after:bg-main after:absolute hover:after:w-full after:z-[-1] after:transition-all overflow-hidden hover:text-white`} style={{ background: color }}>
       <h1 className="text-[30px]">{icon}</h1>
       <div className="flex flex-col">
         <h1 className="text-2xl">{title}</h1>
-        <h2 className="text-lg">{text}</h2>
       </div>
     </Link>
   );

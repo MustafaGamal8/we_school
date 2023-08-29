@@ -113,22 +113,21 @@ const TimeLine = () => {
           Tasks
         </h1>
 
-        <div className="scrollbar-hide rounded  flex   lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-3 w-full  m-auto ">
+        <div className="scrollbar-hide rounded flex lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-3 w-full m-auto">
           {isLoading ? (
             <>
               <TaskLoadingAnimition />
               <TaskLoadingAnimition />
             </>
-          ) : tasks ? (
-            tasks.map((task) => (
-              <div className="w-full  ">
+          ) : tasks && tasks.length > 0 ? (
+            tasks.map((task, index) => (
+              <div key={index} className="w-full">
                 <Task Task={task} />
               </div>
             ))
           ) : (
-            <div className="capitalize flex items-center justify-around w-[50%] m-auto text-xl text-center">
-              {" "}
-              <h1 className=" text-main ">tasks was finished</h1>
+            <div className="capitalize flex items-center justify-center gap-1 w-[50%] m-auto text-xl text-center">
+              <h1 className="text-main dark:text-white whitespace-nowrap">No tasks available</h1>
               <FaCheckCircle className="text-green-400" />
             </div>
           )}

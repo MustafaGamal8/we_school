@@ -39,7 +39,7 @@ const Sidebar = ({user}) => {
       <header className='w-full capitalize  '>
 
         <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden   dark:bg-slate-700 dark:text-white mt-5">
-          <div className="flex  justify-center lg:mt-4 border-2 border-main w-max m-auto rounded-full  h-16 overflow-hidden ">
+          <div className="flex  justify-center lg:mt-4 border-2 border-main m-auto rounded-full  h-16 w-16 overflow-hidden ">
             {user.picture ? ( <img  src={  "https://we-school-api.vercel.app"+user.picture} alt="" className='h-full w-full object-cover' />):<FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200  `} />}
 
           </div>
