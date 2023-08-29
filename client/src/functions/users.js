@@ -23,7 +23,7 @@ export const editUser = async (user) => {
     formData.append('password', user.password);
     formData.append('picture', user.picture);
 
-    const response = await axios.put(`${baseUrl}/auth/users/${user._id}`, formData, {
+    const response = await axios.put(`${baseUrl}/users/${user._id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

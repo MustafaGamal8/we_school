@@ -140,7 +140,7 @@ function UploadPostModal({ isOpen, onClose }) {
           ))}
         </div>
         <button
-          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer`}
+          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer  items-center flex`}
           onClick={handleSharePost}
           disabled={uploading }
         >
