@@ -63,13 +63,29 @@ function TableDataTeacher() {
                                 <td className="px-4 py-2">{item.email}</td>
                                 <td className="px-4 py-2">{item.role}</td>
                                 {role === 'student' && <td className="px-4 py-2">{item.grade}</td>}
+                                {role === 'student' && <td className="px-4 py-2">       <button className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded" onClick={() => handleDelete(item._id)}>
+                                                Delete
+                                            </button>
+                                            {confirmingAction && (
+                                                <div className="confirmation-popup">
+                                                    <div className="flex items-center  justify-center flex-col">
+                                                        <p>Are you sure?</p>
+                                                        <div className='flex justify-between items-center w-full '>
+                                                        <button className="bg-green-600 text-white rounded-lg w-[40%] " onClick={() => handleConfirm(item._id)}>Yes</button>
+                                                        <button className="bg-red-600 text-white rounded-lg w-[40%] " onClick={() => setConfirmingAction(null)}>No</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}</td>}
+
+                                
                                 {role === 'admin' && (
                                     <td className="px-4 py-2">
                                         <div className="flex justify-around">
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white px-2 py-1 rounded" onClick={handleMakeAdmin}>
+                                            <button className="bg-green-500 hover:bg-green-700 w-[45%] text-white px-2 py-1 rounded" onClick={handleMakeAdmin}>
                                                 Make Admin
                                             </button>
-                                            <button className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded" onClick={() => handleDelete(item._id)}>
+                                            <button className="bg-red-500 hover:bg-red-700 w-[45%] text-white px-2 py-1 rounded" onClick={() => handleDelete(item._id)}>
                                                 Delete
                                             </button>
                                             {confirmingAction && (

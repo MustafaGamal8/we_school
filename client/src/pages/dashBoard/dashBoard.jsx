@@ -146,12 +146,12 @@ const DashBoard = () => {
         </div>
 
 
-        {/* <div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center  h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
+        <div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center  h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
           <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4">Upload Your Task</h1>
           <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center">Simply click the upload button and drag your file</p>
           <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={() => handleOpenModal("task")}>Upload</button>
           {isModalOpen.task && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
-        </div> */}
+        </div>
 
 
 
