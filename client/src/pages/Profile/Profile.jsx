@@ -117,7 +117,7 @@ function Profile() {
               {isEditMode ? (
                 <input
                   type="text"
-                  className="text-gray-700 outline-main  border-2 border-main p-1 rounded"
+                  className=" outline-main  border-2 border-sec p-1 rounded bg-transparent  text-slate-800 dark:text-white"
                   value={newUser.firstName}
                   onChange={(e) => handleInputChange('firstName', e.target.value)}
                 />
@@ -135,7 +135,7 @@ function Profile() {
               {isEditMode ? (
                 <input
                   type="text"
-                  className="text-gray-700 outline-main  border-2 border-main p-1 rounded"
+                  className=" outline-main  border-2 border-sec p-1 rounded bg-transparent text-slate-800 dark:text-white"
                   value={newUser.lastName}
                   onChange={(e) => handleInputChange('lastName', e.target.value)}
                 />

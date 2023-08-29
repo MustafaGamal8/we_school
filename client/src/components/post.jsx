@@ -2,9 +2,11 @@ import { FaCircleUser } from "react-icons/fa6"
 import { AiFillEye, AiOutlineHeart } from "react-icons/ai"
 import { BiTime } from "react-icons/bi"
 import Slider from './slider';
-import { toggleLike } from "../functions/posts";
+import { deletePost, toggleLike } from "../functions/posts";
 import { useEffect, useState } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+import { FaEllipsisV, FaTrash } from 'react-icons/fa';
 
 
 const Post = ({ handleOpenModal, post }) => {
@@ -12,6 +14,8 @@ const Post = ({ handleOpenModal, post }) => {
   const [isLiked, setIsLiked] = useState(null)
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [postLikes, setPostLikes] = useState(likes)
+  
+  const [showOptions, setShowOptions] = useState(false);
 
   const PostFiles = [];
   const slides = []
@@ -44,10 +48,37 @@ const Post = ({ handleOpenModal, post }) => {
     }
   }
 
+  const handleDeleteClick =  async() => {
+    await deletePost(_id, currentUser._id)
+
+    setShowOptions(false); 
+  };
 
   return (
-    <div className=" w-[95%] md:w-[50%]  lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
+    <div className=" relative w-[95%] md:w-[50%]  lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
+<div className="relative">
+      <div
+        className="h-10 w-10 absolute right-2  top-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full items-center justify-center flex"
+        onClick={() => setShowOptions(!showOptions)}
+      >
+        <FaEllipsisV />
+      </div>
+      {showOptions && (
+        <div className="options-container absolute right-0 top-14 bg-white dark:bg-gray-200 border border-gray-300 p-2 rounded shadow ">
+          <button
+            className=" text-red-500 hover:text-red-700 flex items-center gap-1"
+            onClick={handleDeleteClick}
+          >
+            <FaTrash /> Delete Post
+          </button>
+        </div>
+      )}
+    </div>
+
+
+
+    
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-2 text-2xl mt-2">
           {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl + user.picture} className="h-full w-full object-cover rounded-full" /></div> : (<FaCircleUser className="text-sec text-2xl" />)}

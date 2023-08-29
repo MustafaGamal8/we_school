@@ -107,7 +107,7 @@ const startServer = async () => {
     app.get('/posts', readAllPosts);
     app.post('/posts/upload', upload.array('files'), uploadAndCreatePost);
     app.post('/posts/toggle-like', togglePostLike);
-    app.delete('/posts/:post',deletePost)
+    app.delete('/posts/:post/:user',deletePost)
 
     // Files routes
     app.get('/files', readAllFiles);
