@@ -101,7 +101,7 @@ function App() {
 
           <Route path="settings"  element={<Settings />}/>
           <Route path="tabledata"  element={<TableData />}/>
-          <Route path="Tabledatateatcher"  element={<TableDataTeatcher />}/>
+          <Route path="Tabledatateatcher/:role"  element={<TableDataTeatcher />}/>
 
 
         </Route>

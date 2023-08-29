@@ -15,7 +15,7 @@ export const getDegree = async(StudentCode)=>{
 export const getAllDegrees = async()=>{
   try {
     const response = await axios.get(baseUrl + `/degrees`) 
-    return response.data !== null ? true : false  
+    return response.data   
   } catch (error) {
      console.log(error) 
     

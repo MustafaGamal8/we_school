@@ -1,42 +1,34 @@
-import React, { useState } from 'react';
-import { useTable } from 'react-table';
+import React, { useEffect, useState  } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+
+
+
+
+const baseUrl = 'https://we-school-api.vercel.app/auth/users';
 
 function TableDataTeatcher() {
-  const userJSON = localStorage.getItem('user');
-  const user = JSON.parse(userJSON);
+  const [data, setData] = useState([]);
+  
 
-  const data = [
-    { id: 1, name: `${user.firstName} ${user.lastName}`, role: `${user.role}`, delete: 'delete' },
-  ];
+    const { role } = useParams();
+    console.log(role)
+  
+    
+ 
 
-  const columns = [
-    { Header: 'ID', accessor: 'id' },
-    { Header: 'Name', accessor: 'name' },
-    { Header: 'Role', accessor: 'role' },
-    {
-      Header: 'Delete',
-      accessor: 'delete',
-      Cell: ({ row }) => (
-        <button
-          className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
-          onClick={() => handleDelete(row.original.id)}
-        >
-          {row.original.delete}
-        </button>
-      ),
-    },
-  ];
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({
-    columns,
-    data,
-  });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(baseUrl);
+        setData(response.data);
+      } catch (error) {
+        toast.error("Couldn't get users data", error.message);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleDelete = (itemId) => {
     const updatedData = data.filter((item) => item.id !== itemId);
@@ -45,37 +37,38 @@ function TableDataTeatcher() {
 
   return (
     <div className="flex justify-center">
-      <table className="table-auto w-3/4 mt-8" {...getTableProps()}>
+      <table className="table-auto w-3/4 mt-8">
         <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()} className="text-black dark:text-white text-center">
-              {headerGroup.headers.map(column => (
-                <th {...column.getHeaderProps()} className="px-4 py-2">
-                  {column.render('Header')}
-                </th>
-              ))}
-            </tr>
-          ))}
+          <tr className="text-black dark:text-white text-center">
+            <th className="px-4 py-2">ID</th>
+            <th className="px-4 py-2">Name</th>
+            <th className="px-4 py-2">email</th>
+            <th className="px-4 py-2">Role</th>
+            {role === "student" ? (<th className="px-4 py-2">grade</th>):null }
+
+            <th className="px-4 py-2">Delete</th>
+          </tr>
         </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
-            prepareRow(row);
-            return (
-              <tr
-                {...row.getRowProps()}
-                key={row.id}
-                className="bg-gray-100 text-center"
-              >
-                {row.cells.map(cell => {
-                  return (
-                    <td {...cell.getCellProps()} className="border px-4 py-2">
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
+        <tbody>
+          {data.map((item) => (
+         role === item.role ?(   <tr key={item.id} className="bg-gray-100 text-center">
+         <td className="border px-4 py-2">{item._id}</td>
+         <td className="border px-4 py-2">{item.firstName} {item.lastName}</td>
+         <td className="border px-4 py-2">{item.email}</td>
+
+         <td className="border px-4 py-2">{item.role}</td>
+         {role === "student" ?(<td className="border px-4 py-2">{item.grade}</td>) :null}
+
+         <td className="border px-4 py-2">
+           <button
+             className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
+             onClick={() => handleDelete(item.id)}
+           >
+             Delete
+           </button>
+         </td>
+       </tr>) :null
+          ))}
         </tbody>
       </table>
     </div>
