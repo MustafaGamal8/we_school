@@ -79,7 +79,7 @@ function TableDataTeacher() {
                                             )}</td>}
 
                                 
-                                {role === 'admin' && (
+                                {role === 'teatcher' && (
                                     <td className="px-4 py-2">
                                         <div className="flex justify-around">
                                             <button className="bg-green-500 hover:bg-green-700 w-[45%] text-white px-2 py-1 rounded" onClick={handleMakeAdmin}>
