@@ -39,13 +39,22 @@ const translate = require('translate-google');
 // Import functions for user management and posts
 const {
   getUsers,
+  editUser,
+  makeAdmin,
+  deleteUser,
+  newYear,
+} = require('./functions/users');
+const {
   signUp,
   resetPassword,
   loginUser,
   createInvitationCode,
-  getInvitationCodes,
-  editUser,
-} = require('./functions/users');
+  getInvitationCodes
+} = require('./functions/auth');
+
+
+
+
 const { sendMail, confirmEmail, sendResetPasswordEmail } = require('./functions/mailConfirmation');
 const {
   readAllFiles,
@@ -53,8 +62,9 @@ const {
   uploadAndCreatePost,
   readAllPosts,
   togglePostLike,
+  deletePost,
 } = require('./functions/posts');
-const { upload_xlsx, getDegrees, getStudentDegrees } = require('./functions/degrees');
+const { upload_xlsx, getDegrees, getStudentDegrees, getTopThree } = require('./functions/degrees');
 const { uploadTask, getTasks } = require('./functions/task');
 
 // Connect to MongoDB and start the server
@@ -83,13 +93,21 @@ const startServer = async () => {
     app.get('/auth/invitcode', getInvitationCodes);
     app.get('/auth/invitcode/:userType', createInvitationCode);
     app.get('/auth/confirm-email', confirmEmail);
-    app.get('/auth/users', getUsers);
-    app.post('/auth/edit-user/:user', upload.single('picture'), editUser);
+
+
+    
+    // users routes
+    app.get('/users', getUsers);
+    app.put('/users/:user', upload.single('picture'), editUser);
+    app.delete('/users/:user', deleteUser);
+    app.put('/users/admin/:user', makeAdmin);
+    app.put('/users/newYear', newYear);
 
     // Post routes
     app.get('/posts', readAllPosts);
     app.post('/posts/upload', upload.array('files'), uploadAndCreatePost);
     app.post('/posts/toggle-like', togglePostLike);
+    app.delete('/posts/:post/:user',deletePost)
 
     // Files routes
     app.get('/files', readAllFiles);

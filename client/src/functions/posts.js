@@ -58,3 +58,17 @@ export const uploadPost = async (content, files) => {
     return false;
   }
 };
+
+
+
+export const deletePost =  async(post_id,user_id) => {
+  try {
+  const response = await axios.delete(baseUrl + `/posts/${post_id}/${user_id}`)
+  
+   toast.success(response.data.msg)
+
+    
+  } catch (error) {
+     toast.error(error.response.data.error)    
+  }
+}

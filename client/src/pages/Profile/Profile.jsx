@@ -75,76 +75,84 @@ function Profile() {
 
 
 
-        <div className="p-6">
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
-      First Name
-    </label>
-    <div className="flex items-center">
-      <FaUser className="mr-2 text-gray-500" />
-      {isEditMode ? (
-        <input
-          type="text"
-          className="text-gray-600 outline-main  border-2 border-main p-1 rounded"
-          value={user.firstName}
-          onChange={(e) => handleInputChange('firstName', e.target.value)}
-        />
-      ) : (
-        <span className="text-gray-600">{user.firstName}</span>
-      )}
-    </div>
-  </div>
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
-      Last Name
-    </label>
-    <div className="flex items-center">
-      <FaUser className="mr-2 text-gray-500" />
-      {isEditMode ? (
-        <input
-          type="text"
-          className="text-gray-600 outline-main  border-2 border-main p-1 rounded"
-          value={user.lastName}
-          onChange={(e) => handleInputChange('lastName', e.target.value)}
-        />
-      ) : (
-        <span className="text-gray-600">{user.lastName}</span>
-      )}
-    </div>
-  </div>
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-      Email
-    </label>
-    <div className="flex items-center">
-      <FaEnvelope className="mr-2 text-gray-500" />
-        <span className="text-gray-600">{user.email}</span>
-    </div>
-  </div>
-  {user.role === "student" && (
-    <div className="mb-4">
-      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="grade">
-        Grade
-      </label>
-      <div className="flex items-center">
-        <FaGraduationCap className="mr-2 text-gray-500" />
-          <span className="text-gray-600">{user.grade}</span>
-      </div>
-    </div>
-  )}
-  <div className="mb-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
-      Role
-    </label>
-    <div className="flex items-center">
-      <FaEye className="mr-2 text-gray-500" />
-      <span className="text-gray-600">{user.role}</span>
-    </div>
-  </div>
-
-  
-</div>
-
+        <div className="p-6 flex flex-col items-start ">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstName">
+              First Name
+            </label>
+            <div className="flex items-center">
+              <FaUser className="mr-2 text-gray-500" />
+              {isEditMode ? (
+                <input
+                  type="text"
+                  className=" outline-main  border-2 border-sec p-1 rounded bg-transparent  text-slate-800 dark:text-white"
+                  value={newUser.firstName}
+                  onChange={(e) => handleInputChange('firstName', e.target.value)}
+                />
+              ) : (
+                <span className="">{newUser.firstName}</span>
+              )}
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastName">
+              Last Name
+            </label>
+            <div className="flex items-center">
+              <FaUser className="mr-2 text-gray-500" />
+              {isEditMode ? (
+                <input
+                  type="text"
+                  className=" outline-main  border-2 border-sec p-1 rounded bg-transparent text-slate-800 dark:text-white"
+                  value={newUser.lastName}
+                  onChange={(e) => handleInputChange('lastName', e.target.value)}
+                />
+              ) : (
+                <span className="">{newUser.lastName}</span>
+              )}
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <div className="flex items-center">
+              <FaEnvelope className="mr-2 text-gray-500" />
+              <span className="">{newUser.email}</span>
+            </div>
+          </div>
+          {newUser.role === "student" && (
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="grade">
+                Grade
+              </label>
+              <div className="flex items-center">
+                <FaGraduationCap className="mr-2 text-gray-500" />
+                <span className="">{newUser.grade}</span>
+              </div>
+            </div>
+          )}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="role">
+              Role
+            </label>
+            <div className="flex items-center">
+              <FaEye className="mr-2 text-gray-500" />
+              <span className="">{newUser.role}</span>
+            </div>
+          </div>
+          {
+            isEditMode && (
+              <button
+                onClick={handleToggleModal}
+                className="bg-main  text-white font-semibold py-2 px-4 rounded-md focus:outline-none  m-auto"
+              >
+                <MdLock className="inline-block mr-2" />
+                تغير كلمة السر
+              </button>
+            )
+          }
+        </div>
 
 
         {/* edit mode */}

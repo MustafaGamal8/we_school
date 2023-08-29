@@ -6,12 +6,12 @@ const UserModel = require("../mongo/userModel.js");
 const createPost = async (postFields, files) => {
   try {
     const { user, content } = postFields;
-    const { firstName, lastName, email, role, picture } = user;
+    const { _id , firstName, lastName, email, role, picture } = user;
     const date = new Date();
     const postDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     
     const post = new postModel({
-      user: { firstName, lastName, email, role, picture },
+      user: { _id,firstName, lastName, email, role, picture },
       content,
       files,
       likes: [],
@@ -145,11 +145,39 @@ const readAllFiles = async (req, res) => {
   }
 };
 
+const deletePost = async (req, res) => {
+  try {
+    const userId  = req.params.user;
+    const postId  = req.params.post;
+    const user =  await UserModel.findById(userId)
+    const post =  await postModel.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    if (user.role === 'admin') {      
+      await post.deleteOne();
+    return res.json({msg: 'Post Successfully deleted'})
+    }
+
+    if (post.user._id !== userId) {
+      return res.status(404).json({ error: "You are not allowed to delete this post" });
+    }
+    await post.deleteOne();
+    
+    res.status(200).json({ msg: 'Your Post deleted successfully' });    
+  } catch (error) {
+    res.status(500).json({ error: error.message });    
+  }
+}
+
 module.exports = {
   uploadFile,
   readAllFiles,
   readFile,
   readAllPosts,
   uploadAndCreatePost,
-  togglePostLike
+  togglePostLike,
+  deletePost
 };
