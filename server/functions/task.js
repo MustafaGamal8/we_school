@@ -6,7 +6,7 @@ const schedule = require('node-schedule');
 const deleteTasksWithEndDateToday = async () => {
   try {
     const date = new Date();
-    const today = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}/${date.getFullYear()}`;
+    const today = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const tasksToDelete = await taskModel.deleteMany({ endDate: today });
     console.log(`${tasksToDelete.deletedCount} tasks deleted with endDate: ${today}`);
   } catch (error) {
@@ -17,10 +17,20 @@ const deleteTasksWithEndDateToday = async () => {
 const scheduledJob = schedule.scheduleJob('0 23 * * *', deleteTasksWithEndDateToday);
 
 const uploadTask = async (req, res) => {
-  const { email, password, task, endDate } = req.body;
+  const { email, task, endDate } = req.body;
   try {
+    const date = new Date();
+
+    if (!task ||!endDate) {
+      return res.status(400).json({ error: 'task and end date are required.' });
+    }
+
+    if (new Date(endDate) < date) {
+      return res.status(400).json({ error: 'Task end date cannot be before today.' });
+    }
+    
     const user = await UserModel.findOne({ email });
-    if (user && (await bcrypt.compare(password, user.password))) {
+    if (user) {
       const newTask = new taskModel({
         user: {
           _id: user._id,
@@ -30,7 +40,7 @@ const uploadTask = async (req, res) => {
           picture: user.picture
         },
         task,
-        endDate: endDate || "Undefined"
+        endDate: endDate || Undefined
       });
       await newTask.save();
       res.status(200).json({ msg: 'Task Added Successfully' });
@@ -41,6 +51,7 @@ const uploadTask = async (req, res) => {
     res.status(500).json({ error: error });
   }
 };
+
 
 const getTasks = async (req, res) => {
   try {
