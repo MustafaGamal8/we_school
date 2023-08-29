@@ -46,7 +46,7 @@ const Post = ({ handleOpenModal, post }) => {
 
 
   return (
-    <div className=" w-[95%] md:w-[50%] : lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
+    <div className=" w-[95%] md:w-[50%]  lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-2 text-2xl mt-2">

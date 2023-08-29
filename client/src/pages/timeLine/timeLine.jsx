@@ -115,10 +115,10 @@ const TimeLine = () => {
 
         <div className="scrollbar-hide rounded  flex   lg:flex-col gap-y-5 gap-2 lg:overflow-hidden overflow-x-scroll p-3 w-full  m-auto ">
           {isLoading ? (
-            <>
+            <div className="w-full  ">
               <TaskLoadingAnimition />
               <TaskLoadingAnimition />
-            </>
+            </div>
           ) : tasks ? (
             tasks.map((task) => (
               <div className="w-full  ">

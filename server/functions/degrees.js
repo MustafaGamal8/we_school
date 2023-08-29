@@ -49,6 +49,8 @@ const getDegrees = async (req, res) => {
   }
 };
 
+
+
 const getStudentDegrees = async (req, res) => {
   try {
     const studentCode = req.params.code;
@@ -68,5 +70,7 @@ const getStudentDegrees = async (req, res) => {
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+
+
 
 module.exports = { upload_xlsx, getDegrees, getStudentDegrees };

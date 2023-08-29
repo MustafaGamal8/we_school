@@ -19,7 +19,7 @@ const Sidebar = ({user}) => {
   const fetchAdvice = () => {
   axios.get('https://api.adviceslip.com/advice')
     .then(response => setAdvice(response.data.slip.advice))
-    .catch(error => alert(error, "check your internet connection"));
+    // .catch(error => alert(error, "check your internet connection"));
 }
 
   useEffect(() => {

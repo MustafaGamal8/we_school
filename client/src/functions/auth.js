@@ -62,7 +62,6 @@ export const sendResetCode = async (email)=>{
   }
 }
 
-
 export const resetPassword = async (code,newPassword)=>{
   try {
     

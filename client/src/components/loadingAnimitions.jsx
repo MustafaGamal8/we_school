@@ -7,7 +7,7 @@ import React from 'react';
 export const PostLoadingAnimition = () => {
   return (
     
-    <div className="w-[95%] md:w-[50%] lg:w-[40%] m-auto border p-2 rounded text-sec bg-white drop-shadow-xl animate-pulse dark:bg-slate-700">
+    <div className="w-[45%] md:w-[50%] lg:w-[40%] m-auto border p-2 rounded text-sec bg-white drop-shadow-xl animate-pulse dark:bg-slate-700">
 
     <div className="flex flex-col items-center">
       <div className="flex items-center gap-2 text-2xl mt-2">
@@ -56,7 +56,7 @@ export const PostLoadingAnimition = () => {
 
 export const TaskLoadingAnimition = () => {
   return ( 
-    <div className="group relative lg:w-96 w-60 rounded-md p-3 bg-white flex flex-col gap-2 overflow-hidden group border-x-4 border-main drop-shadow-lg animate-pulse dark:bg-slate-600">
+    <div className="group relative lg:w-96 w-60 rounded-md p-3 bg-white flex flex-col gap-2 overflow-hidden group border-x-4 border-main drop-shadow-lg animate-pulse dark:bg-slate-600 m-2">
             <div className='flex items-center gap-2'>
               <FaCircleUser className="text-sec text-2xl" />
               <div className="h-5 w-20 bg-gray-300 dark:bg-slate-500"></div>

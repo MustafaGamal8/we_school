@@ -145,11 +145,40 @@ const readAllFiles = async (req, res) => {
   }
 };
 
+const deletePost = (req, res) => {
+  try {
+    const postId = req.params.id;
+    const {email} = req.body
+    const user = UserModel.findOne({email})
+
+    const post = postModel.findById(postId);
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    if (user.role === 'admin') {      
+    post.remove();
+    return res.json({msg: 'Post Successfully deleted'})
+    }
+
+    if (post.user.email!== email) {
+      return res.status(404).json({ error: "You are not allowed to delete this post" });
+    }
+    post.remove();
+    
+    res.status(200).json({ msg: 'Your Post deleted successfully' });    
+  } catch (error) {
+    res.status(500).json({ error: error.message });    
+  }
+}
+
 module.exports = {
   uploadFile,
   readAllFiles,
   readFile,
   readAllPosts,
   uploadAndCreatePost,
-  togglePostLike
+  togglePostLike,
+  deletePost
 };
