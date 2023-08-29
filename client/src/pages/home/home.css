@@ -1,7 +1,9 @@
 
 
 
-
+.text-animition{
+  font-weight: 900;
+}
 
 .text-animition::after{
   content: "";
