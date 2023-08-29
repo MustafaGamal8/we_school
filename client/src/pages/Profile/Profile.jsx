@@ -10,7 +10,6 @@ function Profile() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [user, setUser] = useState({
     _id: currentUser._id,
     picture: "https://we-school-api.vercel.app" + currentUser.picture,

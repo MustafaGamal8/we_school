@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const baseUrl = 'https://we-school-api.vercel.app/auth/users';
+const baseUrl = 'https://we-school-api.vercel.app';
 
 export const getUsers = async () => {
   try {
-    const response = await axios.get(baseUrl);
+    const response = await axios.get(baseUrl + "/users");
     return response.data;
   } catch ( error) {
      toast.error("Couldn't get users")
