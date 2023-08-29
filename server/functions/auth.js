@@ -102,7 +102,7 @@ const resetPassword = async (req, res) => {
 };
 
 const createInvitationCode = async (req, res) => {
-  const { userType } = req.params
+  const  {userType}  = req.params
 
   try {
     const existingInvitation = await InvitationModel.findOneAndDelete({ userType });

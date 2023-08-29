@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getUsers } from '../functions/users';
 import 'react-toastify/dist/ReactToastify.css';
 
-function TableDataTeacher() {
+function TableData() {
     const [data, setData] = useState([]);
     const [confirmingAction, setConfirmingAction] = useState(null); 
     const { role } = useParams();
@@ -112,4 +112,4 @@ function TableDataTeacher() {
     );
 }
 
-export default TableDataTeacher;
+export default TableData;

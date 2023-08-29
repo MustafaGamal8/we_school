@@ -31,13 +31,13 @@ const Search = ({ onSearch }) => {
         onChange={handleInputChange}
       />
       <select
-        className=" bg-transparent outline-none p-2 text-lg  "
+        className=" bg-transparent outline-none p-2 text-lg   "
         value={searchCategory}
         onChange={handleSelectChange}
       >
-        <option value="userName">User Name</option>
-        <option value="content">Post Content</option>
-        <option value="email">Email</option>
+        <option className="dark:text-slate-800" value="userName">User Name</option>
+        <option className="dark:text-slate-800" value="content">Post Content</option>
+        <option className="dark:text-slate-800" value="email">Email</option>
       </select>
       
     </div>

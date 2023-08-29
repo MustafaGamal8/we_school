@@ -14,12 +14,12 @@ import DashBoard from './pages/dashBoard/dashBoard';
 import TimeLine from './pages/timeLine/timeLine';
 import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
-import TableData from "./components/TableData/TableData";
 import SignUp from "./pages/auth/signup";
 import Error from "./components/error";
 import TableDataTeatcher from "./pages/tableData";
 import ToDoList from "./pages/ToDoList";
 import About from "./pages/about/about";
+import TableData from "./pages/tableData";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -101,7 +101,7 @@ function App() {
             (<>
 
               <Route path="dashboard" element={<DashBoard />} />
-          <Route path="dashboard/data/:role" element={<TableDataTeatcher />} />
+          <Route path="dashboard/data/:role" element={<TableData />} />
 
 
 
@@ -113,9 +113,7 @@ function App() {
           <Route path="todolist" element={<ToDoList />} />
 
           <Route path="settings" element={<Settings />} />
-          <Route path="tabledata" element={<TableData />} />
-
-
+          
         </Route>
 
 
