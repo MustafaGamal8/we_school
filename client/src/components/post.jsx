@@ -106,8 +106,8 @@ const Post = ({ handleOpenModal, post }) => {
         :
          (<div className=" h-full flex items-center gap-5 overflow-x-scroll">
           {
-            slides.map((s) => (
-              <LazyLoadImage src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
+            slides.map((s,index) => (
+              <LazyLoadImage key={index} src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
             ))
           }
         </div>)
