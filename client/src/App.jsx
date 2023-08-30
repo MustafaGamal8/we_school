@@ -43,7 +43,7 @@ function App() {
     const alignment = defultLang === "en" ? "left" : "right";
 
     document.body.dir = direction;
-    document.querySelectorAll("p").forEach((p) => {
+    document.querySelectorAll("p, h2").forEach((p) => {
       p.style.textAlign = alignment;
     });
 

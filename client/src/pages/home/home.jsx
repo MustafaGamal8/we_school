@@ -179,7 +179,7 @@ const Home = () => {
         </section>
 
         <section className="flex flex-col md:flex-row-reverse items-center justify-around px-5 w-full   pt-16 text-right">
-          <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative">
+          <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative ">
             <img
               className="md:h-96 h-60 w-full  rounded-lg transition-all duration-500 transform hover:scale-105"
               src="/assets/student.jpg"
@@ -187,8 +187,8 @@ const Home = () => {
             />
 
             <div className="absolute top-0 left-0 w-full h-full p-4 flex flex-col justify-center items-center text-white bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-100">
-              <h2 className="text-2xl font-semibold mb-4"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h2>
-              <p className="text-lg text-center">
+              <h2 className="md:text-2xl text-lg font-semibold mb-4"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h2>
+              <p className="md:text-lg text-center">
                 <Trans>تعلم  البرمجة واستكشف عالمًا مشوقًا في تقنية الاتصالات والشبكات في مدرسة وي.</Trans>
               </p>
               <button onClick={() => handleMenuClick("school_debartments")} className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-4 py-2 mt-4 rounded">
@@ -199,7 +199,7 @@ const Home = () => {
 
           <div className="md:w-[520px]  flex  flex-col justify-end  gap-3 mt-5 dark:text-white">
             <p className="font-semibold text-lg"><Trans>ما هي ؟</Trans></p>
-            <h1 className="text-main text-3xl  "><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
+            <h2 className="text-main text-3xl  "><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h2>
             <p className="md:text-lg"><Trans>مرحبًا بك في "مدرسة وي للتكنولوجيا التطبيقية"! مدرستنا هي مؤسسة رائدة متخصصة في تقديم تعليم متميز في مجالات البرمجة والاتصالات والشبكات. في "وي للتكنولوجيا التطبيقية"، نسعى لتمكين طلابنا بالمعرفة والمهارات اللازمة للتفوق في عالم التكنولوجيا سريع التطور.</Trans></p>
           </div>
         </section>
