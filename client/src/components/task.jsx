@@ -3,7 +3,6 @@ import {LuTimer} from 'react-icons/lu';
 
 const serverUrl = "https://we-school-api.vercel.app"
 const Task = ({Task}) => {
-  console.log(Task)
   const {user, task, endDate} = Task
   return ( 
     <div className=" group relative lg:w-96 w-60  rounded-md  p-3 bg-white flex flex-col gap-2   overflow-hidden     group border-x-4 border-main drop-shadow-lg   dark:bg-slate-800 dark:text-white">

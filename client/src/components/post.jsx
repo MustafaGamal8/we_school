@@ -11,6 +11,7 @@ import { FaEllipsisV, FaTrash } from 'react-icons/fa';
 
 const Post = ({ handleOpenModal, post }) => {
   const { _id, user, files, content, likes, postDate } = post
+  
   const [isLiked, setIsLiked] = useState(null)
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [postLikes, setPostLikes] = useState(likes)

@@ -112,7 +112,7 @@ const DashBoard = () => {
           {
             topThree && topThree.map((student, index) => (
 
-              <TopThreeCard img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
+              <TopThreeCard key={index} img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
 
 
             ))
