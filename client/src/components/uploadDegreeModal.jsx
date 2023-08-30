@@ -9,7 +9,6 @@ import { uploadDegrees } from "../functions/degrees";
 function UploadDegreeModal({ isOpen, onClose }) 
 {const [droppedFiles, setDroppedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
   const fileInputRef = useRef(null);
 
   const toggleModal = () => {
@@ -39,14 +38,15 @@ function UploadDegreeModal({ isOpen, onClose })
 
   const handleSharePost = async () => {
     setUploading(true);
-    await uploadDegrees(droppedFiles)
-
-    setTimeout(() => {
-      setUploadSuccess(true);
-      setUploading(false);
+    const {msg} = await uploadDegrees(droppedFiles)
+    
+    setUploading(false);
+    
+    if (msg) {
       setDroppedFiles([]);
       toggleModal();
-    }, 2000);
+    }
+    
   };
 
   const handleOpenFileExplorer = () => {
@@ -59,14 +59,6 @@ function UploadDegreeModal({ isOpen, onClose })
     setDroppedFiles(newDroppedFiles);
   };
 
-  useEffect(() => {
-    if (uploadSuccess) {
-      setTimeout(() => {
-        setUploadSuccess(false);
-        setDroppedFiles([]);
-      }, 3000);
-    }
-  }, [uploadSuccess]);
 
 
   return (

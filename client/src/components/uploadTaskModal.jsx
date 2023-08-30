@@ -7,7 +7,6 @@ import { uploadTask } from '../functions/tasks';
 const UploadTaskModal = ({ isOpen, onClose }) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
   const [uploading, setUploading] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
   const [content, setContent] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -18,23 +17,14 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
 
   const handleUploadTask = async () => {
     setUploading(true);
-    await uploadTask(content, selectedDate);
-    setTimeout(() => {
-      setUploadSuccess(true);
+    const {msg} = await uploadTask(content, selectedDate);
+    
       setUploading(false);
-      setContent("");
-      toggleModal();
-    }, 2000);
+      if (msg) {
+        msg &&  toggleModal();
+        setContent("");       
+      }
   };
-
-  useEffect(() => {
-    if (uploadSuccess) {
-      setTimeout(() => {
-        setUploadSuccess(false);
-        setContent("");
-      }, 3000);
-    }
-  }, [uploadSuccess]);
 
   return (
     <Modal
@@ -52,7 +42,7 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
         <div className="h-10"></div>
       </div>
       <div className="w-full flex flex-col items-center text-main">
-        <h1 className="text-center uppercase text-2xl p-3">Upload your file</h1>
+        <h1 className="text-center uppercase text-2xl p-3">Upload your Task</h1>
         <div className="flex flex-col items-center w-full">
           <div className="w-[70%] flex flex-col md:flex-row md:w-[70%] border-gray-300 border m-auto rounded-xl bg-gray-100 dark:bg-slate-800 p-2 md:p-5">
             <textarea
@@ -73,12 +63,12 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
           </div>
         </div>
         <button
-          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer items-center flex`}
+          className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer items-center flex gap-2`}
           onClick={handleUploadTask}
           disabled={uploading}
         >
           {uploading ? <BiLoader className="animate-spin mr-2" /> : null}
-          {uploading ? "UPLOADING..." : "Share Post"}
+          {uploading ? "UPLOADING..." : "Share Task"}
         </button>
       </div>
     </Modal>

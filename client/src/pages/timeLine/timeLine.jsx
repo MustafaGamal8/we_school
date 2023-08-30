@@ -83,7 +83,7 @@ const TimeLine = () => {
         alt=""
       />
 
-      <section className="">
+      <section className="w-full">
         <h1 className="text-3xl bg-white rounded-b m-auto w-80 p-2 text-center font-semibold uppercase mt-3  mb-5">
           time line
         </h1>
@@ -92,13 +92,12 @@ const TimeLine = () => {
           <Search onSearch={handleSearch} />
         </div>
 
-        <div className="flex flex-col gap-5 w-full">
+        <div className="flex flex-col gap-5 w-full ">
           {isLoading ? (
             <PostLoadingAnimition />
           ) : (
             filteredPosts &&
             filteredPosts.map((post) => (
-              
               <Post
                 key={post._id}
                 post={post}

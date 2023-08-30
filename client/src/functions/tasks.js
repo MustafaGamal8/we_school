@@ -20,13 +20,15 @@ export const  uploadTask = async( task, endDate )=>{
   
   const user = JSON.parse(localStorage.getItem('user'));
   try {
-    const response = await axios.post("http://localhost:8000" + `/tasks-upload`,{
+    const response = await axios.post(baseUrl + `/tasks-upload`,{
       email:user.email,
       task,
       endDate 
     }) 
     toast.success(response.data.msg)
+    return response.data
   } catch (error) {
      toast.error(error.response.data.error) 
+     return error.response.data
   }
 }
