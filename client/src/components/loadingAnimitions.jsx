@@ -7,7 +7,7 @@ import React from 'react';
 export const PostLoadingAnimition = () => {
   return (
     
-    <div className="w-[95%] md:w-[50%] lg:w-[40%] m-auto border p-2 rounded text-sec bg-white drop-shadow-xl animate-pulse dark:bg-slate-700">
+    <div className="w-[95%] md:w-[50%] lg:w-[45%] m-auto  border p-2 rounded text-sec bg-white drop-shadow-xl animate-pulse dark:bg-slate-700">
 
     <div className="flex flex-col items-center">
       <div className="flex items-center gap-2 text-2xl mt-2">

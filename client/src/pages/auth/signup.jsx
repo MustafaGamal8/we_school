@@ -39,10 +39,8 @@ const SignUp = () => {
     lastName: Yup.string().required('Last Name is required'),
     invitationCode: Yup.string().min(8).required('Invitation Code is required'),
     role: Yup.string().required('Please select a role'),
-    grade: Yup.string().when('role', {
-      is: 'Student',
-      then: Yup.string().required('Please select a grade').typeError('Please select a grade'),
-    }),
+    grade: Yup.string().required('Please select a grade').typeError('Please select a grade'),
+    
   });
 
   const handleInputChange = (e) => {
@@ -58,6 +56,7 @@ const SignUp = () => {
     try {
       await schema.validate(formData, { abortEarly: false });
       const loadingToast = toast.loading('loading', toastConfig);
+      console.log(formData, loadingToast);
       const { msg, error } = await signUp(formData);
       if (error) {
         toast.error(error, toastConfig);
@@ -189,10 +188,9 @@ const SignUp = () => {
                     <FaChevronDown className="w-5 h-5 text-main" />
                   </div>
                 </div>
-                {formData.role === 'student' && (
                   <div className="relative w-full">
                     <select
-                      className="w-full border border-gray-300 bg-white text-gray-900 rounded-md px-8 py-2 pr-8 focus:text-main appearance-none"
+                      className="w-full border border-gray-300 bg-white text-gray-900 rounded-md px-8 py-2 pr-8 focus:text-main appearance-none "
                       name="grade"
                       value={formData.grade}
                       onChange={handleInputChange}
@@ -208,7 +206,6 @@ const SignUp = () => {
                       <FaChevronDown className="w-5 h-5 text-main" />
                     </div>
                   </div>
-                )}
                 <button className="w-full bg-main text-white p-2 mx-3 rounded-lg capitalize">{'sign up'}</button>
                 <Link
                 to={"/login"}

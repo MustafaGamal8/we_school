@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSchool, FaUser } from "react-icons/fa";
 import Calendar from "../../components/calender";
 import { Link } from "react-router-dom";
-import { getAllDegrees } from "../../functions/degrees";
+import { getTopThree } from "../../functions/degrees";
 import { FaCircleUser } from "react-icons/fa6";
 import UploadPostModal from "../../components/uploadpostmodal";
 import UploadTaskModal from "../../components/uploadTaskModal";
@@ -37,36 +37,16 @@ const DashBoard = () => {
 
   const [topThree, setTopThree] = useState()
 
-  const getTopThree = async () => {
-    const degreeStore = await getAllDegrees();
-    const degrees = [];
+  const fetchTopThree = async () => {
+    const response = await getTopThree()
 
-    degreeStore.map((student) => {
-      let finalDegree = 0;
-      let studentDegree = 0;
-
-      student.subjects.map((subject) => {
-        finalDegree += subject.finalDegree;
-        studentDegree += subject.studentDegree;
-      });
-
-      degrees.push({
-        name: student.name,
-        code: student.code,
-        picture: student.picture,
-        finalDegree: (studentDegree / finalDegree) * 100,
-      });
-    });
-
-    degrees.sort((a, b) => b.finaldegree - a.finaldegree);
-
-    setTopThree(degrees.slice(0, 3))
+    setTopThree(response)
   };
 
 
   useEffect(() => {
-    getTopThree()
-      ;
+    fetchTopThree()
+
   }, [])
 
 
@@ -111,9 +91,7 @@ const DashBoard = () => {
         <div className="w-[80%] m-auto md:w-[50%] flex flex-col md:flex-row  justify-between h-full mt-10 gap-x-3 ">
           {
             topThree && topThree.map((student, index) => (
-
               <TopThreeCard key={index} img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
-
 
             ))
           }
@@ -188,13 +166,13 @@ const Headermain = ({ icon, title, text, color, linkTo }) => {
 const TopThreeCard = ({ img, name, percent, code }) => {
   return (
     <div
-      className="flex flex-col items-center justify-center w-full p-5 mt-10 md:mt-0 shadow-md rounded-lg border border-gray-200 hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-main ">
-      <div className="w-32 h-20">
+      className="flex flex-col items-center justify-center w-full p-5 mt-10 md:mt-0 shadow-md rounded-lg border border-gray-200 hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-main  h-full">
+      <div className="w-32 h-full">
         {
-          img ? <img className="rounded-full w-full h-full object-cover mb-4" src={img} alt={name} /> : <FaCircleUser className="text-white text-2xl w-full h-[80%]" />
+          img ? <img className="rounded-full w-full h-full object-cover mb-4" src={img} alt={name} /> : <FaCircleUser className="text-white  w-full h-[40%]" />
         }
       </div>
-      <h1 className="text-center text-2xl font-semibold text-white">{name}</h1>
+      <h1 className="text-center text-2xl font-semibold text-white capitalize">{name}</h1>
       <h2 className="text-center text-xl text-white mt-1">{percent}</h2>
       <p className="text-center text-white mt-2">{code}</p>
     </div>
@@ -228,7 +206,7 @@ const InvitationCodes = () => {
 
   return (
     <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black   mb-5">
-      <table className="border-b border-slate-400 w-full text-center ">
+      <table className="border-b-2 border-main dark:border-slate-400 w-full text-center ">
         <thead>
           <tr className="bg-main text-white">
             <th className="p-3 text-lg">For</th>
@@ -240,7 +218,7 @@ const InvitationCodes = () => {
           {
             invitationCodes && invitationCodes.map((code, index) => (
               <tr key={index} className="text-main dark:text-white">
-                <td className="p-3">{code.userType}</td>
+                <td className="p-3 capitalize">{code.userType}</td>
                 <td className="p-3">{code.code}</td>
                 <td className="p-3 flex justify-center">
                   <button className="bg-main text-white  w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} >Change</button>

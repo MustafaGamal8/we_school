@@ -55,7 +55,7 @@ const Post = ({ handleOpenModal, post }) => {
   };
 
   return (
-    <div className=" w-[95%] md:w-[50%] : lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
+    <div className=" w-[95%] md:w-[50%] lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
 {
   (currentUser.role === 'teacher' || currentUser.role === 'admin') && (<div className="relative">

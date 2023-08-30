@@ -9,6 +9,7 @@ import { AiOutlinePlus, AiOutlineMinus, AiOutlineInfoCircle } from 'react-icons/
 import { FaUserCircle } from 'react-icons/fa';
 import { logout } from '../../functions/auth';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 const Sidebar = ({user}) => {
@@ -19,7 +20,7 @@ const Sidebar = ({user}) => {
   const fetchAdvice = () => {
   axios.get('https://api.adviceslip.com/advice')
     .then(response => setAdvice(response.data.slip.advice))
-    .catch(error => alert(error, "check your internet connection"));
+    .catch(error => toast.error("check your internet connection"));
 }
 
   useEffect(() => {
@@ -40,7 +41,7 @@ const Sidebar = ({user}) => {
 
         <div className=" flex  lg:flex-col items-center justify-center gap-2  m-auto  lg:w-full w-max bg-white   overflow-hidden   dark:bg-slate-700 dark:text-white mt-5">
           <div className="flex  justify-center lg:mt-4 border-2 border-main m-auto rounded-full  h-16 w-16 overflow-hidden ">
-            {user.picture ? ( <img  src={  "https://we-school-api.vercel.app"+user.picture} alt="" className='h-full w-full object-cover' />):<FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200  `} />}
+            {user.picture ? ( <img  src={  "https://we-school-api.vercel.app"+user.picture} alt="" className='h-full w-full object-cover' />):<FaUserCircle className={` ${iscollapsed ? 'lg:text-3xl text-lg' : 'lg:text-6xl text-xl'} text-gray-200   w-full h-full`} />}
 
           </div>
           <div className="text-center mt-4">

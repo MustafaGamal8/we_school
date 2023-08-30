@@ -10,7 +10,6 @@ function UploadPostModal({ isOpen, onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
   const [droppedFiles, setDroppedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
   const [content, setContent] = useState("");
 
   const fileInputRef = useRef(null);
@@ -40,13 +39,13 @@ function UploadPostModal({ isOpen, onClose }) {
 
   const handleSharePost =  async() => {
     setUploading(true);
-    const isUploaded = await uploadPost(content,droppedFiles)
-    setTimeout(() => {
-      setUploadSuccess(true);
-      setUploading(false);
+    const {msg} = await uploadPost(content,droppedFiles)
+
+    setUploading(false);
+    if (msg) {
       setDroppedFiles([]);
-      toggleModal()
-    }, 2000);
+        toggleModal()
+      }
   };
 
   const handleOpenFileExplorer = () => {
@@ -68,14 +67,6 @@ function UploadPostModal({ isOpen, onClose }) {
     setDroppedFiles(newDroppedFiles);
   };
 
-  useEffect(() => {
-    if (uploadSuccess) {
-      setTimeout(() => {
-        setUploadSuccess(false);
-        setDroppedFiles([]);
-      }, 3000);
-    }
-  }, [uploadSuccess]);
   return (
     <Modal
       isOpen={isModalOpen}

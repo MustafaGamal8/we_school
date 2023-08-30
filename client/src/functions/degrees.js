@@ -36,8 +36,39 @@ export const uploadDegrees = async (excelfileList) => {
       });
 
       toast.success(response.data.msg);
+      return response.data;
     }
   } catch (error) {
     toast.error(error.response.data.error);
+    return error.response.data;
   }
 };
+
+
+export const getTopThree = async ()=>{
+  
+  const degreeStore = await getAllDegrees();
+  const degrees = [];
+
+  degreeStore.map((student) => {
+    let finalDegree = 0;
+    let studentDegree = 0;
+
+    student.subjects.map((subject) => {
+      finalDegree += subject.finalDegree;
+      studentDegree += subject.studentDegree;
+    });
+
+    degrees.push({
+      name: student.name,
+      code: student.code,
+      picture: student.picture,
+      finalDegree: (studentDegree / finalDegree) * 100,
+    });
+  });
+
+  degrees.sort((a, b) => b.finaldegree - a.finaldegree);
+
+
+  return degrees.slice(0, 3)
+}

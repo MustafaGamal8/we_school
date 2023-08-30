@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaUser, FaEnvelope, FaCamera, FaGraduationCap, FaEye, FaTimes, FaEdit } from "react-icons/fa";
+import { FaUser, FaEnvelope, FaCamera, FaGraduationCap, FaEye, FaTimes, FaEdit, FaUserCircle } from "react-icons/fa";
 import { editUser } from "../../functions/users";
 import ResetPassowrdModal from './../../components/resetPassowrdModal';
 import { MdLock, MdSave } from "react-icons/md";
@@ -14,7 +14,7 @@ function Profile() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [user, setUser] = useState({
     _id: currentUser._id,
-    picture: "https://we-school-api.vercel.app" + currentUser.picture,
+    picture: currentUser.picture && "https://we-school-api.vercel.app" + currentUser.picture,
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
     email: currentUser.email,
@@ -73,12 +73,12 @@ function Profile() {
 
       
     <img
-        className=" absolute bottom-0  scale-y-[-1] right-0 z-[-1] w-full drop-shadow-xl "
+        className=" absolute bottom-0  scale-y-[-1] right-0 z-[-1] w-full h-max drop-shadow-xl "
         src="/assets/wave.svg"
         alt=""
       />
     <img
-        className=" absolute top-0   right-0 z-[-1] w-full drop-shadow-xl "
+        className=" absolute top-0   right-0 z-[-1] w-full h-max drop-shadow-xl "
         src="/assets/wave.svg"
         alt=""
       />
@@ -86,7 +86,7 @@ function Profile() {
       <div className="flex flex-col items-center  bg-white p-8 rounded-lg shadow-lg lg:w-[40%] w-[90%] mdmax-w-md dark:bg-slate-700 dark:text-white">
 
         <div className="relative mb-6 drop-shadow m-auto  w-40">
-          <img src={user.picture} className="w-32 h-32 mx-auto rounded-full" alt="Profile" />
+          {user.picture ? <img src={user.picture} className="w-32 h-32 mx-auto rounded-full" alt="Profile" /> : <FaUserCircle className={`  text-gray-200  w-32 h-32`} />}
           {isEditMode && (
             <label
               htmlFor="input-file"
