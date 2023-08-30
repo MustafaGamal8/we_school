@@ -48,7 +48,7 @@ const Settings = () => {
       />
 
       <h1 className="w-80 bg-main text-white rounded m-auto mt-10 text-center md:text-3xl p-2 uppercase">
-        <Trans>settings</Trans>
+        <Trans>الاعدادات</Trans>
       </h1>
 
       <div className="w-[80%] bg-white text-black  h-[500px] m-auto mt-10 drop-shadow-xl rounded overscroll-y-auto flex flex-col items-start dark:bg-slate-700 dark:text-white p-5">
@@ -56,13 +56,13 @@ const Settings = () => {
         <div className="w-full h-full capitalize">
 
           <h1 className="text-2xl font-semibold  text-center ">
-            <Trans>general</Trans>
+            <Trans>عام</Trans>
           </h1>
 
           <div className="flex flex-col   justify-around p-4 h-full">
 
             <div className="flex items-center w-full  justify-around">
-              <h1 className="mr-2 text-xl flex items-center gap-1 "><Trans>Dark Mode</Trans>      {theme === 'light' ? <FiMoon /> : <FiSun />}</h1>
+              <h1 className="mr-2 text-xl flex items-center gap-1 "><Trans>الوضع الليلي</Trans>      {theme === 'light' ? <FiMoon /> : <FiSun />}</h1>
               <label className="switch">
                 <input type="checkbox" onChange={toggleDarkMode} checked={theme === 'dark'} />
                 <span className="slider round"></span>
@@ -93,7 +93,7 @@ const Settings = () => {
 
             <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded w-80 m-auto flex items-center justify-center">
               <FiLogOut />
-              <h1 className="ml-2">Log Out</h1>
+              <h1 className="ml-2"><Trans>تسجيل الخروج</Trans></h1>
             </button>
 
           </div>

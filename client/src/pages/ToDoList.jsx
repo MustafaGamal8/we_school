@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { IoMdCloseCircle } from 'react-icons/io';
+import { Trans } from 'react-i18next';
 
 function ToDoList() {
   const [todoItem, setTodoItem] = useState('');
@@ -44,7 +45,7 @@ function ToDoList() {
         alt=""
       />
       
-    <h1 className='m-auto bg-main dark:bg-slate-700  w-80 mt-20 text-2xl rounded p-2 text-center text-white'>To Do</h1>
+    <h1 className='m-auto bg-main dark:bg-slate-700  w-80 mt-20 text-2xl rounded p-2 text-center text-white'><Trans>قائمة الانشطة</Trans> </h1>
 
 
       <div className='flex flex-col bg-white text-main dark:bg-slate-700 dark:text-white justify-start items-center w-[90%] md:w-[800px] min-h-[400px] h-fit mt-[200px] rounded-2xl drop-shadow-2xl m-auto'>
@@ -61,7 +62,7 @@ function ToDoList() {
             className="w-[30%] bg-main text-white p-3 rounded-[45px]"
             onClick={handleAdd}
           >
-            Add
+            <Trans>اضافة</Trans>
           </button>
         </div>
 

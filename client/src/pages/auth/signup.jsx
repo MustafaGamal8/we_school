@@ -5,6 +5,7 @@ import { signUp } from '../../functions/auth';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
+import { Trans } from 'react-i18next';
 
 const SignUp = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -105,7 +106,7 @@ const SignUp = () => {
         <img className="absolute top-0 right-0 z-[-1] w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
         <section className="h-full mt-20 capitalize">
-          <h1 className="text-center text-5xl  capitalize lg:text-white  dark:text-white">sign up</h1>
+          <h1 className="text-center text-5xl  capitalize lg:text-white  dark:text-white"><Trans>انشاء حساب</Trans></h1>
 
           <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20 dark:text-white dark:bg-slate-700">
             <div className=" h-full lg:w-[80%]">
@@ -179,10 +180,10 @@ const SignUp = () => {
                     }}
                   >
                     <option value="" disabled>
-                      Select Your Role
+                     <Trans>اختر دورك</Trans> 
                     </option>
-                    <option value="student">Student</option>
-                    <option value="teacher">Teacher</option>
+                    <option value="student"><Trans>طالب</Trans></option>
+                    <option value="teacher"><Trans>معلم</Trans></option>
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none p-2">
                     <FaChevronDown className="w-5 h-5 text-main" />
@@ -196,23 +197,23 @@ const SignUp = () => {
                       onChange={handleInputChange}
                     >
                       <option value="" disabled>
-                        Select Your Grade
+                     <Trans>اختر صفك</Trans>
                       </option>
-                      <option value="A">Grade 1 (A)</option>
-                      <option value="B">Grade 2 (B)</option>
-                      <option value="C">Grade 3 (C)</option>
+                      <option value="A"><Trans>الصف الاول</Trans></option>
+                      <option value="B"><Trans>الصف الثاني</Trans></option>
+                      <option value="C"><Trans>الصف الثالث</Trans></option>
                     </select>
                     <div className="absolute inset-y-0 right-0 flex items-center pointer-events-none p-2">
                       <FaChevronDown className="w-5 h-5 text-main" />
                     </div>
                   </div>
-                <button className="w-full bg-main text-white p-2 mx-3 rounded-lg capitalize">{'sign up'}</button>
+                <button className="w-full bg-main text-white p-2 mx-3 rounded-lg capitalize">{<Trans>انشاء حساب</Trans>}</button>
                 <Link
                 to={"/login"}
                   
                   className="lg:w-1/2 m-auto bg-main text-white p-2 rounded-lg capitalize text-center cursor-pointer"
                 >
-                  {'or login'}
+                  {<Trans>او تسجيل الدخول</Trans>}
                 </Link>
               </form>
             </section>
