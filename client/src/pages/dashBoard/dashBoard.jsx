@@ -92,12 +92,12 @@ const DashBoard = () => {
       </div>
 
 
-      <div className="w-[80%] m-auto h-fit flex flex-col md:flex-row shadow-2xl text-center mt-10 bg-transparent   gap-2" >
+      <div className="w-[80%] m-auto h-fit flex flex-col md:flex-col md:text-md lg:flex-row shadow-2xl text-center mt-10   gap-2" >
         <Headermain icon={<FaSchool />} title={"Bransh"} text={"mansoura"} color={"#10b981"} />
         <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"students"} color={"#dade18"} />
 
         <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/teacher"} title={"teachers"} color={"#3b82f6"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"Admin"} color={"#10d981"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"Admins"} color={"#10d981"} />
 
       </div>
 
@@ -176,7 +176,7 @@ const Headermain = ({ icon, title, text, color, linkTo }) => {
     <Link to={linkTo} className={`flex items-center w-full drop-shadow-lg md:w-[100%] relative text-[#351b57] uppercase p-5 h-[120px] mt-5 rounded-lg gap-x-5 text-lg after:left-0 after:top-0 after:w-[1%] after:h-full after:bg-main after:absolute hover:after:w-full after:z-[-1] after:transition-all overflow-hidden hover:text-white`} style={{ background: color }}>
       <h1 className="text-[30px]">{icon}</h1>
       <div className="flex flex-col">
-        <h1 className="text-2xl">{title}</h1>
+        <h1 className="text-lg ">{title}</h1>
       </div>
     </Link>
   );
@@ -243,7 +243,7 @@ const InvitationCodes = () => {
                 <td className="p-3">{code.userType}</td>
                 <td className="p-3">{code.code}</td>
                 <td className="p-3 flex justify-center">
-                  <button className="bg-main text-white md:w-[150px] p-3 flex items-center justify-center rounded-lg w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} >Change</button>
+                  <button className="bg-main text-white  w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} >Change</button>
                 </td>
               </tr>
             ))
