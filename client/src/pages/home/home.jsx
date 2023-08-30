@@ -1,20 +1,24 @@
-import { useState } from "react";
-import { CiUser } from "react-icons/ci"
-import { MdHome, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker, MdEmail } from "react-icons/md"
-import { BiShowAlt } from "react-icons/bi"
-import { HiOutlineMail } from "react-icons/hi"
-import { AiOutlineArrowUp } from "react-icons/ai"
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Trans } from 'react-i18next';
+import { useState } from 'react';
 
 import { FaHandshake, FaPhone, FaSchool, FaThLarge } from 'react-icons/fa';
+import { MdHome, MdMenu, MdPeopleAlt, MdEditLocation, MdClass, MdPhoneBluetoothSpeaker, MdEmail } from 'react-icons/md';
+import { BiShowAlt } from 'react-icons/bi/';
+import { HiOutlineMail } from 'react-icons/hi';
+import { AiOutlineArrowUp } from 'react-icons/ai';
 import { IoMdPhotos } from 'react-icons/io';
-import { Link } from "react-router-dom";
-import "./home.css"
-import ListItem from "../../components/listItem";
+import { CiUser } from 'react-icons/ci';
+import { BsFileText } from 'react-icons/bs';
+
+import './home.css';
+import ListItem from '../../components/listItem';
 import Slider from './../../components/slider';
-import { BsFileText } from "react-icons/bs";
-import Footer from "../../components/footer/Footer";
-import { Trans } from "react-i18next";
+import Footer from '../../components/footer/Footer';
+
 import i18n from 'i18next';
+
 
 const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -98,10 +102,10 @@ const Home = () => {
       <nav className="relative flex items-center justify-between px-2 drop-shadow bg-white  h-20 text-main z-[10]       dark:text-white   dark:bg-slate-700">
 
       <button onClick={changeLanguage} className="h-20  w-10 bg-white drop-shadow-xl rounded-b  dark:bg-slate-700   absolute -bottom-20 left-16  ">
-        <img src="/assets/language.svg" alt=""  className="w-full "/></button>
+        <img src="/assets/language.svg" alt=""  className="w-full h-full object-contain"/></button>
         
       <button onClick={toggleDarkMode} className="h-20  w-10 bg-white drop-shadow-xl rounded-b shadow-2xl shadow-white dark:bg-slate-700   absolute -bottom-20 left-2 ">
-        <img src="/assets/moon.svg" alt=""  className="w-full h-full "/>
+        <img src="/assets/moon.svg" alt=""  className="w-full h-full   object-contain"/>
       </button>
 
         {/* sm screen*/}
@@ -131,9 +135,9 @@ const Home = () => {
         </div>
         {/* end of sm screen*/}
 
-        <img src="/logo.png" alt="" className="h-full " />
+        <img src="/logo.png" alt="" className="h-full w-max  object-contain" />
 
-        <div className="hidden  md:flex items-center justify-center lg:gap-3 lg:text-lg text-sm   whitespace-nowrap">
+        <div className="hidden  md:flex items-center justify-center lg:gap-3 lg:text-lg text-xs   whitespace-nowrap">
           <div onClick={() => handleMenuClick("school_contact")} className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] z-[2]  hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg">
             <h1><Trans>تواصل</Trans></h1> <FaPhone className="text-xl" />
           </div>
@@ -177,7 +181,7 @@ const Home = () => {
         <section className="flex flex-col md:flex-row-reverse items-center justify-around px-5 w-full   pt-16 text-right">
           <div className="overflow-hidden bg-white p-2 rounded-lg drop-shadow-2xl relative">
             <img
-              className="md:h-96 h-60 rounded-lg transition-all duration-500 transform hover:scale-105"
+              className="md:h-96 h-60 w-full  rounded-lg transition-all duration-500 transform hover:scale-105"
               src="/assets/student.jpg"
               alt="الطلاب في مدرسة WeTech للتكنولوجيا التطبيقية"
             />
@@ -200,7 +204,7 @@ const Home = () => {
           </div>
         </section>
 
-        <img className="m-auto h-12 mt-10" src="/assets/mouseAnimition.gif" />
+        <img className="m-auto w-12 h-12 mt-10" src="/assets/mouseAnimition.gif" />
 
         <section id="school_partners" className="w-full">
           <h1 className="md:text-3xl  text-xl  text-sec font-semibold animated-title text-center relative w-max m-auto dark:text-white">
@@ -210,12 +214,12 @@ const Home = () => {
 
 
           <div className="w-full  bg-white  flex flex-col md:flex-row items-center justify-evenly gap-5 p-5 mt-10 dark:bg-slate-700">
-            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture1.png" alt="" /></div>
-            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture2.png" alt="" /></div>
-            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture3.png" alt="" /></div>
-            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture4.png" alt="" /></div>
-            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture5.png" alt="" /></div>
-            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full " src="/assets/Picture6.png" alt="" /></div>
+            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full h-full object-contain " src="/assets/Picture1.png" alt="" /></div>
+            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full  h-full object-contain " src="/assets/Picture2.png" alt="" /></div>
+            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full  h-full object-contain " src="/assets/Picture3.png" alt="" /></div>
+            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full  h-full object-contain " src="/assets/Picture4.png" alt="" /></div>
+            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full  h-full object-contain " src="/assets/Picture5.png" alt="" /></div>
+            <div className="bg-white  drop-shadow p-2 rounded-lg w-40 h-32 flex items-center justify-center hover:scale-125 transition-all"><img className="w-full  h-full object-contain " src="/assets/Picture6.png" alt="" /></div>
           </div>
         </section>
 
@@ -496,7 +500,7 @@ const Home = () => {
           </div>
 
           <div className="w-full flex flex-col md:w-[45%] ">
-            <div className="w-full  md:w-[100%]   "><img src="assets/undraw_profile_data_re_v81r.svg" className="object-cover" alt="" /></div>
+            <div className="w-full  md:w-[100%]   "><img src="assets/undraw_profile_data_re_v81r.svg" className="object-cover md:w-full h-full w-1/2 m-auto" alt="" /></div>
             <div className="w-full h-[40%] flex flex-col justify-between space-y-5 mt-10">
               <ContactInfo icon={<MdEditLocation />} text="دقهلية المنصورة" />
               <ContactInfo icon={<MdPhoneBluetoothSpeaker />} text="01001236789" />
