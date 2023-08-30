@@ -3,19 +3,6 @@ const postModel = require("../mongo/postModel.js");
 const profilePictureModel = require("../mongo/profilePicture.js");
 const UserModel = require("../mongo/userModel.js");
 
-
-const NodeCache = require('node-cache');
-const cache = new NodeCache();
-
-const updateCachedPosts = async () => {
-  try {
-    const posts = await postModel.find();
-    cache.set('allPosts', posts);
-  } catch (error) {
-    console.error('Failed to update cached posts:', error);
-  }
-};
-
 const createPost = async (postFields, files) => {
   try {
     const { user, content,grade } = postFields;
@@ -33,8 +20,6 @@ const createPost = async (postFields, files) => {
     });
 
     await post.save();
-    
-    await updateCachedPosts();
   } catch (error) {
     throw error;
   }
@@ -73,18 +58,10 @@ const uploadAndCreatePost = async (req, res) => {
   }
 };
 
-
 const readAllPosts = async (req, res) => {
   try {
-    const cachedPosts = cache.get('allPosts');
-
-    if (cachedPosts) {
-      res.status(200).json(cachedPosts);
-    } else {
-      const posts = await postModel.find();
-      cache.set('allPosts', posts);
-      res.status(200).json(posts);
-    }
+    const posts = await postModel.find();
+    res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ error: 'Failed to get posts' });
   }
@@ -182,16 +159,14 @@ const deletePost = async (req, res) => {
 
     if (user.role === 'admin') {      
       await post.deleteOne();
-      await updateCachedPosts();
-      return res.json({msg: 'Post Successfully deleted'})
+    return res.json({msg: 'Post Successfully deleted'})
     }
 
     if (post.user._id !== userId) {
       return res.status(404).json({ error: "You are not allowed to delete this post" });
     }
-    
     await post.deleteOne();
-    await updateCachedPosts();
+    
     res.status(200).json({ msg: 'Your Post deleted successfully' });    
   } catch (error) {
     res.status(500).json({ error: error.message });    
