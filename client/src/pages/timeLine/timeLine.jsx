@@ -98,6 +98,7 @@ const TimeLine = () => {
           ) : (
             filteredPosts &&
             filteredPosts.map((post) => (
+              
               <Post
                 key={post._id}
                 post={post}

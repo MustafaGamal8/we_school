@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { FaSchool, FaUser } from "react-icons/fa";
 import Calendar from "../../components/calender";
 import { Link } from "react-router-dom";
-import UploadPostModal from "../../components/uploadpostmodal";
 import { getAllDegrees } from "../../functions/degrees";
 import { FaCircleUser } from "react-icons/fa6";
-import UploadDegreeModal from "../../components/UploadDegreeModal";
+import UploadPostModal from "../../components/uploadpostmodal";
 import UploadTaskModal from "../../components/uploadTaskModal";
 import { changeInviteCode, getInviteCodes } from "../../functions/invitCodes";
+import UploadDegreeModal from './../../components/uploadDegreeModal';
 
 
 
@@ -112,7 +112,7 @@ const DashBoard = () => {
           {
             topThree && topThree.map((student, index) => (
 
-              <TopThreeCard img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
+              <TopThreeCard key={index} img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
 
 
             ))
