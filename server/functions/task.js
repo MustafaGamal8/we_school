@@ -8,12 +8,14 @@ const deleteTasksWithEndDateToday = async () => {
     const date = new Date();
     const today = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const tasksToDelete = await taskModel.deleteMany({ endDate: today });
+    
   } catch (error) {
     console.error('Error deleting tasks:', error);
   }
 };
 
 const scheduledJob = schedule.scheduleJob('0 23 * * *', deleteTasksWithEndDateToday);
+
 
 const uploadTask = async (req, res) => {
   const { email, task, endDate,grade } = req.body;
