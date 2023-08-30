@@ -5,9 +5,10 @@ import { Trans } from 'react-i18next';
 
 function Footer() {
   return (
-    <div className="bg-main lg:bg-transparent py-10 md:py-20 lg:px-20 md:flex md:justify-between md:items-center">
+    <div className="bg-main lg:bg-transparent py-10 md:py-20 lg:px-20 flex flex-col md:flex-row md:justify-between justify-center gap-5 items-center">
+      
       <div className="md:w-1/4 mb-10 md:mb-0">
-        <div className="flex items-center mb-6">
+        <div className="flex  items-center mb-6">
           <img src="/logo.png" className="w-10 h-10 rounded-full" alt="" />
           <h2 className="ml-3 text-white text-xl"><Trans>مدرسة وي</Trans></h2>
         </div>
