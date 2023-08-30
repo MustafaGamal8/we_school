@@ -15,15 +15,11 @@ function generateInvitationCode() {
 
 const signUp = async (req, res) => {
 
-  const errors = validationResult(req.body);
-  if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
-  }
-
   const { firstName, lastName, email, password, role, grade, code } = req.body;
+  const userType = role == "student"? "student" + grade : "teacher";
 
   try {
-    const isValidInvitation = await InvitationModel.exists({ code: code, userType: role + grade });
+    const isValidInvitation = await InvitationModel.exists({ code, userType });
 
     if (!isValidInvitation) {
       return res.status(403).json({ error: 'Invalid invitation code' });

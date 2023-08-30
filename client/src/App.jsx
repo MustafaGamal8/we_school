@@ -78,7 +78,7 @@ function App() {
 
 
   return (
-    <main className="w-screen overflow-hidden">
+    <main className="w-screen overflow-x-hidden">
 
       {/* {isLoading && <Loader />} */}
 

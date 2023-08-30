@@ -94,7 +94,7 @@ const Login = () => {
           رجوع <AiOutlineRollback />
         </Link>
 
-        <img src="/logo.png" alt="" className="h-full" />
+        <img src="/logo.png" alt="" className="h-full w-max" />
         <div></div>
       </nav>
 

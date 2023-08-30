@@ -1,13 +1,13 @@
 import axios from "axios"
 import { toast } from "react-toastify";
 
-const baseUrl = "https://we-school-api.vercel.app/auth"
+const baseUrl = "https://we-school-api.vercel.app"
 
 
 
 export const login = async (formData)=>{
   try {
-   const response =  await axios.post(baseUrl + "/login",{
+   const response =  await axios.post(baseUrl + "/auth/login",{
     email:formData.email,
     password:formData.password
   })
@@ -31,7 +31,7 @@ export const logout = () => {
 
 export const signUp = async (formData)=>{  
   try {
-    const response =  await axios.post(baseUrl + "/signup",{
+    const response =  await axios.post(baseUrl + "/auth/signup",{
     firstName:formData.firstName,
     lastName:formData.lastName,
     email:formData.email,
@@ -40,6 +40,7 @@ export const signUp = async (formData)=>{
     role:formData.role,
     grade: formData.grade
   })
+  console.log(response)
   return response.data
     
   } catch (error) {
