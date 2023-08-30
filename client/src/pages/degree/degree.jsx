@@ -3,6 +3,8 @@ import { getAllDegrees, getDegree } from '../../functions/degrees';
 import * as yup from 'yup';
 import { toast } from "react-toastify";
 import { useEffect } from 'react';
+import { Trans } from 'react-i18next';
+
 function Degree() {
   const [studentCode, setStudentCode] = useState("");
   const [studentData, setStudentData] = useState(null);
@@ -43,9 +45,9 @@ function Degree() {
       { isThereDegrees == false ? 
       (<div className='mt-20 flex flex-col gap-0  '>
         <div className='md:w-80 w-40  m-auto h-max  md:h-full  '><img className='w-full h-full' src="/assets/empty-folder.svg" alt="" /></div>
-      <h1 className='m-auto text-center md:text-3xl text-xl uppercase  text-[#4a486a] mt-5'>لا يوجد درجات حتي الان</h1>
+      <h1 className='m-auto text-center md:text-3xl text-xl uppercase  text-[#4a486a] mt-5'><Trans>لا يوجد درجات حتى الان</Trans></h1>
       </div>) : (
-        <><h1 className="text-center text-2xl mt-5 dark:text-white">ادخل رقم الجلوس</h1>
+        <><h1 className="text-center text-2xl mt-5 dark:text-white"><Trans>ادخل رقم الجلوس</Trans></h1>
         <form onSubmit={handleSearch} className="input w-[90%] flex md:w-[600px] m-auto mt-10 justify-between bg-slate-200 rounded-[45px]">
           <input
             type="text"
@@ -72,16 +74,16 @@ function Degree() {
                 <thead>
                   <tr>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
-                      المادة
+                      <Trans>المادة</Trans>
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
-                      الدرجة
+                      <Trans>الدرجة</Trans>
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
-                      الدرجة النهائية
+                      <Trans>الدرجة النهائية</Trans>
                     </th>
                     <th className="px-6 py-3 border-b-2 border-gray-300 text-xs font-semibold uppercase tracking-wider">
-                      تقدير
+                      <Trans>تقدير</Trans>
                     </th>
                   </tr>
                 </thead>
@@ -108,7 +110,7 @@ function Degree() {
           ):
           (<div className='mt-20 flex flex-col gap-0  '>
           <div className='md:w-80 w-40  m-auto h-max  md:h-full  '><img className='w-full h-full' src="/assets/empty-folder.svg" alt="" /></div>
-        <h1 className='m-auto text-center md:text-3xl text-xl uppercase  text-[#4a486a] mt-5'>ادخل رقم جلوسك</h1>
+        <h1 className='m-auto text-center md:text-3xl text-xl uppercase  text-[#4a486a] mt-5'><Trans>ادخل رقم جلوسك</Trans>  </h1>
         </div>)
         }
         

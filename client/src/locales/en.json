@@ -154,9 +154,27 @@
   "المطورون": "developers",
   "كارم محمود": "karem Mahmoud",
   "مصطفى جمال": "mustafa Gamal",
-  "عنهم": "aboutThem"
-  
-
+  "عنهم": "aboutThem",
+  "رجوع":"back",
+  "او انشاء حساب":"or signup"
+  ,
+  "نسيت كلمة المرور":"forget password"
+  ,
+  "الملف الشخصي":"profile"
+  ,"تعديل":"edit",
+  "الغاء":"cancle",
+  "حفظ":"save",
+  "نعم":"yes"
+  ,"لا":"No",
+"تغير كلمة السر":"Change password",
+"لا يوجد درجات حتى الان":"There are no grades yet"
+,"ادخل رقم الجلوس":"Enter the seat number",
+"ادخل رقم جلوسك"  :"Enter your seat number",
+"المادة":"subject",
+"الدرجة":"degree",
+"الدرجة النهائية":"final degree",
+"تقدير":"appreciation",
+"":""
 
 
   

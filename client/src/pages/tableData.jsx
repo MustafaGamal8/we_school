@@ -7,12 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 function TableData() {
     const [data, setData] = useState([]);
     const [confirmingAction, setConfirmingAction] = useState(null);
+    const [confirmingItemId, setConfirmingItemId] = useState(null);
+    const [confirmationShown, setConfirmationShown] = useState(false);
     const { role } = useParams();
 
     const fetchUsersData = async () => {
         const response = await getUsers();
         setData(response);
-        console.log(response);
     };
 
     useEffect(() => {
@@ -21,10 +22,14 @@ function TableData() {
 
     const handleDelete = (itemId) => {
         setConfirmingAction('delete');
+        setConfirmingItemId(itemId);
+        setConfirmationShown(true);
     };
 
-    const handleMakeAdmin = () => {
+    const handleMakeAdmin = (itemId) => {
         setConfirmingAction('makeAdmin');
+        setConfirmingItemId(itemId);
+        setConfirmationShown(true);
     };
 
     const handleConfirm = (itemId) => {
@@ -37,6 +42,8 @@ function TableData() {
         }
 
         setConfirmingAction(null);
+        setConfirmingItemId(null);
+        setConfirmationShown(false);
     };
 
     return (
@@ -70,7 +77,7 @@ function TableData() {
                                         <td className="px-4 py-2">{item.grade}</td>
                                     )}
                                     <td className="px-4 py-2">
-                                        {role === 'student' && (
+                                        {role === 'student' ? (
                                             <div>
                                                 <button
                                                     className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
@@ -78,11 +85,11 @@ function TableData() {
                                                 >
                                                     Delete
                                                 </button>
-                                                {confirmingAction === 'delete' && (
+                                                {confirmingAction === 'delete' && confirmingItemId === item._id && confirmationShown && (
                                                     <div className="confirmation-popup">
-                                                        <div className="flex items-center  justify-center flex-col">
+                                                        <div className="flex items-center justify-center flex-col">
                                                             <p>Are you sure?</p>
-                                                            <div className="flex justify-between items-center w-full ">
+                                                            <div className="flex justify-between items-center w-full">
                                                                 <button
                                                                     className="bg-green-600 text-white rounded-lg w-[40%]"
                                                                     onClick={() => handleConfirm(item._id)}
@@ -91,7 +98,7 @@ function TableData() {
                                                                 </button>
                                                                 <button
                                                                     className="bg-red-600 text-white rounded-lg w-[40%]"
-                                                                    onClick={() => setConfirmingAction(null)}
+                                                                    onClick={() => setConfirmationShown(false)}
                                                                 >
                                                                     No
                                                                 </button>
@@ -100,12 +107,11 @@ function TableData() {
                                                     </div>
                                                 )}
                                             </div>
-                                        )}
-                                        {role === 'teacher' && (
+                                        ) : role === 'teacher' ? (
                                             <div className="flex justify-around">
                                                 <button
                                                     className="bg-green-500 hover:bg-green-700 w-[45%] text-white px-2 py-1 rounded"
-                                                    onClick={handleMakeAdmin}
+                                                    onClick={() => handleMakeAdmin(item._id)}
                                                 >
                                                     Make Admin
                                                 </button>
@@ -115,11 +121,11 @@ function TableData() {
                                                 >
                                                     Delete
                                                 </button>
-                                                {confirmingAction === 'delete' && (
+                                                {confirmingAction === 'delete' && confirmingItemId === item._id && confirmationShown && (
                                                     <div className="confirmation-popup">
                                                         <div className="confirmation-popup-inner">
                                                             <p>Are you sure?</p>
-                                                            <div className="flex justify-between items-center ">
+                                                            <div className="flex justify-between items-center">
                                                                 <button
                                                                     className="bg-green-600 text-white rounded-lg w-[40%]"
                                                                     onClick={() => handleConfirm(item._id)}
@@ -128,7 +134,7 @@ function TableData() {
                                                                 </button>
                                                                 <button
                                                                     className="bg-red-600 text-white rounded-lg w-[40%]"
-                                                                    onClick={() => setConfirmingAction(null)}
+                                                                    onClick={() => setConfirmationShown(false)}
                                                                 >
                                                                     No
                                                                 </button>
@@ -137,35 +143,13 @@ function TableData() {
                                                     </div>
                                                 )}
                                             </div>
-                                        )}
-                                        {role === 'admin' && (
+                                        ) : (
                                             <button
                                                 className="bg-red-500 hover:bg-red-700 text-white px-2 py-1 rounded"
                                                 onClick={() => handleDelete(item._id)}
                                             >
                                                 Delete
                                             </button>
-                                        )}
-                                        {confirmingAction === 'delete' && (
-                                            <div className="confirmation-popup">
-                                                <div className="flex items-center  justify-center flex-col">
-                                                    <p>Are you sure?</p>
-                                                    <div className="flex justify-between items-center w-full ">
-                                                        <button
-                                                            className="bg-green-600 text-white rounded-lg w-[40%]"
-                                                            onClick={() => handleConfirm(item._id)}
-                                                        >
-                                                            Yes
-                                                        </button>
-                                                        <button
-                                                            className="bg-red-600 text-white rounded-lg w-[40%]"
-                                                            onClick={() => setConfirmingAction(null)}
-                                                        >
-                                                            No
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         )}
                                     </td>
                                 </tr>
