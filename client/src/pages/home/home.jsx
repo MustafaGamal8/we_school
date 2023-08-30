@@ -172,7 +172,7 @@ const Home = () => {
 
 
         <section id="school_main" className="mt-10">
-          <div className="text-center  mt-20 bg-white rounded-lg w-96  m-auto py-2 drop-shadow dark:bg-slate-800 dark:text-white">
+          <div className="text-center  mt-20 bg-white rounded-lg md:w-96  m-auto py-2 drop-shadow dark:bg-slate-800 dark:text-white">
             <h1 className="text-xl md:text-2xl drop-shadow text-center"><Trans>مدرسة وي للتكنولوجيا التطبيقية</Trans></h1>
             <h2 className="mt-2 md:text-2xl  text-[#6e237e] relative w-max m-auto text-animition "><Trans>في المنصورة</Trans></h2>
           </div>

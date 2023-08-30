@@ -43,10 +43,9 @@ function App() {
     const alignment = defultLang === "en" ? "left" : "right";
 
     document.body.dir = direction;
-    document.querySelectorAll("p").forEach((h1) => {
-      h1.style.textAlign = alignment;
+    document.querySelectorAll("p").forEach((p) => {
+      p.style.textAlign = alignment;
     });
-    // theme
 
     const theme = localStorage.getItem("theme")
     if (theme == "dark") {
@@ -79,7 +78,7 @@ function App() {
 
 
   return (
-    <>
+    <main className="w-screen overflow-hidden">
 
       {/* {isLoading && <Loader />} */}
 
@@ -124,7 +123,7 @@ function App() {
 
 
 
-    </>
+    </main>
   );
 }
 
