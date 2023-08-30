@@ -18,7 +18,7 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
 
   const handleUploadTask = async () => {
     setUploading(true);
-     await uploadTask(content,selectedDate)
+    await uploadTask(content, selectedDate);
     setTimeout(() => {
       setUploadSuccess(true);
       setUploading(false);
@@ -57,18 +57,18 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
           <div className="w-[70%] flex flex-col md:flex-row md:w-[70%] border-gray-300 border m-auto rounded-xl bg-gray-100 dark:bg-slate-800 p-2 md:p-5">
             <textarea
               type="text"
-              className="w-full px-4 py-2 rounded-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder:text-main outline-none"
+              className="w-full px-4 py-2 rounded-lg text-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder-text-main outline-none"
               placeholder="Enter your text"
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <div className="mt-4">
+          <div className="mt-4 w-[70%] flex items-center justify-center text-center">
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="w-full px-4 py-2 rounded-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder-text-main outline-none"
+              className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-md text-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder-text-main outline-none"
             />
           </div>
         </div>
