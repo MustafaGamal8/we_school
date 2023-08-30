@@ -17,7 +17,9 @@ const TimeLine = () => {
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [tasks, setTasks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // Add a loading state
+  const [isLoading, setIsLoading] = useState(true); 
+  
+  const currentUser = JSON.parse(localStorage.getItem('user'))
 
   const handleOpenModal = (PostFiles) => {
     setPostFiles(PostFiles);
@@ -98,6 +100,7 @@ const TimeLine = () => {
           ) : (
             filteredPosts &&
             filteredPosts.map((post) => (
+              ( post.grade == "All" || post.grade ==  currentUser.grade || !post.grade)&&
               <Post
                 key={post._id}
                 post={post}
@@ -121,6 +124,7 @@ const TimeLine = () => {
             </>
           ) : tasks && tasks.length > 0 ? (
             tasks.map((task, index) => (
+              ( task.grade == "All" || task.grade ==  currentUser.grade || !task.grade) && 
               <div key={index} className="w-full">
                 <Task Task={task} />
               </div>

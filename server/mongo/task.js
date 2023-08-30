@@ -10,6 +10,10 @@ const taskSchema = new mongoose.Schema({
     type:String,
     required:true
   },
+  grade:{
+    type:String,
+    required:true
+  },
   endDate:{
     type:String,
     required:true

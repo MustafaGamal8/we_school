@@ -26,6 +26,7 @@ export const login = async (formData)=>{
 export const logout = () => {
   localStorage.removeItem('user');
   toast.success("logged out")
+  
 };
 
 

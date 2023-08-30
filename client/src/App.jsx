@@ -16,7 +16,6 @@ import Degree from "./pages/degree/degree";
 import Settings from "./pages/settings/settings";
 import SignUp from "./pages/auth/signup";
 import Error from "./components/error";
-import TableDataTeatcher from "./pages/tableData";
 import ToDoList from "./pages/ToDoList";
 import About from "./pages/about/about";
 import TableData from "./pages/tableData";
@@ -96,7 +95,7 @@ function App() {
 
         <Route path="/main/" element={<Main />}>
           <Route path="profile" element={<Profile />} />
-          {/* { currentUser && (currentUser.role === 'teacher' || currentUser.role === 'admin') &&
+           { currentUser && (currentUser.role === 'teacher' || currentUser.role === 'admin') &&
             (<>
 
 <Route path="dashboard" element={<DashBoard />} />

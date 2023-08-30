@@ -16,13 +16,14 @@ export const getAllTasks = async()=>{
 }
 
 
-export const  uploadTask = async( task, endDate )=>{
+export const  uploadTask = async( task,grade, endDate )=>{
   
   const user = JSON.parse(localStorage.getItem('user'));
   try {
     const response = await axios.post(baseUrl + `/tasks-upload`,{
       email:user.email,
       task,
+      grade,
       endDate 
     }) 
     toast.success(response.data.msg)

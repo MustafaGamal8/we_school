@@ -17,6 +17,10 @@ const postSchema = mongoose.Schema({
     fileLink: String ,
     fileSize:String,
   }],
+  grade:{
+    type:String,
+    required:true
+  },
   likes: [
     {
       userId: {

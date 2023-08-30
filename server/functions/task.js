@@ -16,7 +16,7 @@ const deleteTasksWithEndDateToday = async () => {
 const scheduledJob = schedule.scheduleJob('0 23 * * *', deleteTasksWithEndDateToday);
 
 const uploadTask = async (req, res) => {
-  const { email, task, endDate } = req.body;
+  const { email, task, endDate,grade } = req.body;
   try {
     const date = new Date();
 
@@ -39,7 +39,8 @@ const uploadTask = async (req, res) => {
           picture: user.picture
         },
         task,
-        endDate: endDate || Undefined
+        grade,
+        endDate: endDate || undefined
       });
       await newTask.save();
       res.status(200).json({ msg: 'Task Added Successfully' });

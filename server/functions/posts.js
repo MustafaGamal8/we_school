@@ -5,7 +5,7 @@ const UserModel = require("../mongo/userModel.js");
 
 const createPost = async (postFields, files) => {
   try {
-    const { user, content } = postFields;
+    const { user, content,grade } = postFields;
     const { _id , firstName, lastName, email, role, picture } = user;
     const date = new Date();
     const postDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
@@ -13,6 +13,7 @@ const createPost = async (postFields, files) => {
     const post = new postModel({
       user: { _id,firstName, lastName, email, role, picture },
       content,
+      grade,
       files,
       likes: [],
       postDate
@@ -50,7 +51,7 @@ const uploadAndCreatePost = async (req, res) => {
       }
     }
 
-    await createPost({ user, content: req.body.content }, fileIds);
+    await createPost({ user, content: req.body.content ,grade:req.body.grade }, fileIds);
     res.status(200).json({ msg: 'Post created successfully' });
   } catch (error) {
     res.status(500).json({ error });
