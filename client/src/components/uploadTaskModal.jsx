@@ -35,7 +35,7 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
       }, 3000);
     }
   }, [uploadSuccess]);
-
+const [value,setValue] = useState("")
   return (
     <Modal
       isOpen={isModalOpen}
@@ -63,14 +63,33 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <div className="mt-4 w-[70%] flex items-center justify-center text-center">
+          <div className="mt-4 w-[70%] flex flex-col items-center justify-center text-center">
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
               className="w-full px-4 py-2 rounded-lg border border-gray-300 shadow-md text-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder-text-main outline-none"
             />
+            <select
+                    className="w-full border mt-6 border-gray-300 bg-white text-gray-900 rounded-md px-8 py-2 pr-8 focus:text-main appearance-none"
+                    name="role"
+                    value={value}
+                    onChange={(e) => {
+                      setValue(e.target.value);
+                    }}
+                  >
+                    <option value="" disabled>
+                      Select grade 
+                    </option>
+                    <option value="Grade A">Grade A</option>
+                    <option value="Grade B">Grade B</option>
+                    <option value="Grade C">Grade C</option>
+                    <option value="ALL">ALL</option>
+
+
+                  </select>
           </div>
+          
         </div>
         <button
           className={`mt-8 btn-share bg-main hover:bg-sec text-white px-4 py-2 rounded-md cursor-pointer items-center flex`}
