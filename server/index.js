@@ -34,7 +34,7 @@ const checkSecretKey = (req, res, next) => {
 app.use('/api-docs', serve, setup(swaggerDocument));
 
 // Import and initialize translate-google
-const translate = require('translate-google');
+// const translate = require('translate-google');
 
 // Import functions for user management and posts
 const {
@@ -103,7 +103,7 @@ const startServer = async () => {
     app.put('/users/:user', upload.single('picture'), editUser);
     app.post('/users/admin', makeAdmin);
     app.post('/users/teacher', makeTeacher);
-    app.put('/users/newYear', newYear);
+    app.post('/users/newYear', newYear);
 
     // Post routes
     app.get('/posts', readAllPosts);

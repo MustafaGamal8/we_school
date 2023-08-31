@@ -10,6 +10,7 @@ import { changeInviteCode, getInviteCodes } from "../../functions/invitCodes";
 import UploadDegreeModal from './../../components/uploadDegreeModal';
 import { Trans } from "react-i18next";
 import Modal from 'react-modal';
+import { newYear } from "../../functions/users";
 
 Modal.setAppElement('#root')
 
@@ -35,8 +36,8 @@ const DashBoard = () => {
     setIsConfirmationModalOpen(false);
   };
 
-  const handleConfirmNextYear = () => {
-    alert("Moving to the next year!");
+  const handleConfirmNextYear = async () => {
+    await newYear()
     setIsConfirmationModalOpen(false);
   };
 
@@ -96,7 +97,7 @@ const DashBoard = () => {
         <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"الطلاب"} color={"#dade18"} />
 
         <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/teacher"} title={"المعلمون"} color={"#3b82f6"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"المسؤولون"} color={"#10d981"} />
+        {user.role == "admin" &&<Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"المسؤولون"} color={"#10d981"} />}
 
       </div>
 
@@ -159,22 +160,24 @@ const DashBoard = () => {
         isOpen={isConfirmationModalOpen}
         onRequestClose={handleCloseConfirmationModal}
         contentLabel="Next Year Confirmation Modal"
-        className="modal"
-        overlayClassName="modal-overlay"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-lg border-none outline-none bg-[#f7f2fb] dark:bg-slate-800 p-2 drop-shadow-lg min-h-[500px] h-fit w-80 md:w-[800px] lg:w-[1000px] "
+        overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
+      
       >
-        <div className="w-[80%] flex-col flex items-center justify-center md:w-[60%] mt-10 m-auto">
+        <div className="w-full flex-col flex items-center justify-center  mt-10 m-auto">
         <div className="text-center bg-white drop-shadow-2xl rounded-xl w-[50%] p-5 m-auto">
           <p><Trans>هل انت متاكد من انك تريد ان تقوم بتقديم عام دراسي جديد ان قم بذلك سيتم ترقية الطلاب للصف المقبل</Trans></p>
-          <div className="mt-4">
-            <button onClick={handleConfirmNextYear} className="mr-4 bg-green-500 text-white px-4 py-2 rounded"><Trans>نعم</Trans></button>
+          <div className="mt-4 flex gap-5 items-center justify-center">
+            <button onClick={handleConfirmNextYear} className="mr-4 bg-green-500 text-white px-4 py-2 rounded" ><Trans>نعم</Trans></button>
             <button onClick={handleCloseConfirmationModal} className="bg-red-500 text-white px-4 py-2 rounded"><Trans>لا</Trans></button>
           </div>
         </div>
         </div>
       </Modal>
-      <button className="w-full bg-main  p-3 rounded-3xl h-[50px] flex items-center justify-center text-white" onClick={handleOpenConfirmationModal}>
+
+      {user.role == "admin" && <button className="w-full bg-main  p-3 rounded-3xl h-[50px] flex items-center justify-center text-white" onClick={handleOpenConfirmationModal}>
         <Trans>السنة التالية</Trans>
-      </button>
+      </button>}
 
       
     

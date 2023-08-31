@@ -18,6 +18,10 @@ const Settings = () => {
 
     i18n.changeLanguage(currentLanguage == "en" ? "ar" : "en")
     localStorage.setItem("lang", currentLanguage == "en" ? "ar" : "en")
+    if (currentLanguage === "en") {
+      document.body.style.cssText = `
+   font-family: 'Rubik', sans-serif;`
+    }
     window.location.reload()
   }
   const toggleDarkMode = () => {

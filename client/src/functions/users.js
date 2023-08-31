@@ -42,7 +42,7 @@ export const deleteUsers = async (users) => {
   const currentUser = JSON.parse(localStorage.getItem('user'));
 
   try {
-    const response = await axios.post(`${"http://localhost:8000"}/users`,{
+    const response = await axios.post(`${baseUrl}/users`,{
       users,
       _id:currentUser._id,
        password: currentUser.password,
@@ -87,5 +87,18 @@ export const  makeTeacehr = async (users,grade)=>{
     window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
+  }
+}
+
+
+
+
+export const newYear = async() => {
+  try {
+    const response = await axios.post(`${baseUrl}/users/newYear`);
+    toast.success(response.data.msg);
+  } catch (error) {
+    toast.error(error.response.data.error);
+    
   }
 }

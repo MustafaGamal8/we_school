@@ -159,7 +159,7 @@ const deleteUser = async (req, res) => {
 
 const newYear = async (req, res) => {
   try {
-    const users = await UserModel.findAll({ role: "student" })
+    const users = await UserModel.find({ role: "student" })
 
     users.forEach(async (user) => {
 
@@ -168,12 +168,11 @@ const newYear = async (req, res) => {
         case 'B': user.grade = 'C'; break
         case 'C': user.grade = 'graduated'; break
       }
-
       await user.save();
     })
     res.status(200).json({ msg: 'Users updated successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'An error occurred' });
+    res.status(500).json({ error: error.message });
   }
 }
 
