@@ -1,8 +1,8 @@
 import  axios  from 'axios';
 import { toast } from 'react-toastify';
 
-const baseUrl = 'https://we-school-api.vercel.app'
 
+const baseUrl = 'https://we-school-api.vercel.app'
 
 export const getPosts = async ()=>{
   try {

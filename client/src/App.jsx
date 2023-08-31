@@ -99,7 +99,7 @@ function App() {
 
         <Route path="/main/" element={<Main />}>
           <Route path="profile" element={<Profile />} />
-          {currentUser && (currentUser.role !== 'student') &&
+          {currentUser && (currentUser.role != 'student') &&
             (<>
 
               <Route path="dashboard" element={<DashBoard />} />

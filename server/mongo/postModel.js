@@ -3,9 +3,13 @@ const   mongoose  = require("mongoose");
 
 
 const postSchema = mongoose.Schema({
-  user:{
+  userId:{
     type:Object,
     required:true
+  },
+  user:{
+    
+    type:Object,    
   },
   content:{
     type:String,

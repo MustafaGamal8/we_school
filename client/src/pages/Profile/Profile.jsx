@@ -113,7 +113,7 @@ function Profile() {
               First Name
             </label>
             <div className="flex items-center">
-              <FaUser className="mr-2 text-gray-500" />
+              <FaUser className="mx-2 text-gray-500" />
               {isEditMode ? (
                 <input
                   type="text"
@@ -131,7 +131,7 @@ function Profile() {
               Last Name
             </label>
             <div className="flex items-center">
-              <FaUser className="mr-2 text-gray-500" />
+              <FaUser className="mx-2 text-gray-500" />
               {isEditMode ? (
                 <input
                   type="text"
@@ -149,7 +149,7 @@ function Profile() {
               Email
             </label>
             <div className="flex items-center">
-              <FaEnvelope className="mr-2 text-gray-500" />
+              <FaEnvelope className="mx-2 text-gray-500" />
               <span className="">{newUser.email}</span>
             </div>
           </div>
@@ -159,7 +159,7 @@ function Profile() {
                 Grade
               </label>
               <div className="flex items-center">
-                <FaGraduationCap className="mr-2 text-gray-500" />
+                <FaGraduationCap className="mx-2 text-gray-500" />
                 <span className="">{newUser.grade}</span>
               </div>
             </div>
@@ -169,7 +169,7 @@ function Profile() {
               Role
             </label>
             <div className="flex items-center">
-              <FaEye className="mr-2 text-gray-500" />
+              <FaEye className="mx-2 text-gray-500" />
               <span className="">{newUser.role}</span>
             </div>
           </div>
@@ -179,7 +179,7 @@ function Profile() {
                 onClick={handleToggleModal}
                 className="bg-main  text-white font-semibold py-2 px-4 rounded-md focus:outline-none  m-auto"
               >
-                <MdLock className="inline-block mr-2" />
+                <MdLock className="inline-block mx-2" />
                 <Trans>تغير كلمة السر</Trans>
               </button>
             )
@@ -196,15 +196,16 @@ function Profile() {
                 type="button"
                 onClick={handleSaveClick}
               >
-                <MdSave className="mr-2" />
+                <MdSave className="mx-2" />
                <Trans>حفظ</Trans> 
               </button>
+              <div></div>
               <button
                 className="flex items-center bg-red-400 text-white p-2 rounded"
                 type="button"
                 onClick={handleCancelClick}
               >
-                <FaTimes className="mr-2 " />
+                <FaTimes className="mx-2 " />
                 <Trans>الغاء</Trans>
               </button>
             </>
@@ -214,7 +215,7 @@ function Profile() {
               type="button"
               onClick={handleEditClick}
             >
-              <FaEdit className="mr-2" />
+              <FaEdit className="mx-2" />
              <Trans>تعديل</Trans> 
             </button>
           )}
