@@ -8,6 +8,7 @@ import UploadPostModal from "../../components/uploadpostmodal";
 import UploadTaskModal from "../../components/uploadTaskModal";
 import { changeInviteCode, getInviteCodes } from "../../functions/invitCodes";
 import UploadDegreeModal from './../../components/uploadDegreeModal';
+import { Trans } from "react-i18next";
 
 
 
@@ -60,10 +61,10 @@ const DashBoard = () => {
       <div className="w-[95%] md:w-[80%] m-auto min-h-[300px] h-fit flex flex-col md:flex-row justify-between bg-[#b285f2] text-white mt-10 rounded-xl">
         <div className="w-full md:w-[50%] p-5 flex flex-col justify-between items-start h-full">
           <h1 className="text-2xl">
-            Welcome <Link to="/main/profile">{user.firstName} {user.lastName}</Link> to We School Dashboard
+            <Trans>مرحبا</Trans> <Link to="/main/profile">{user.firstName} {user.lastName}</Link><Trans>بك في مدرسة وي</Trans>
           </h1>
           <h2 className="text-xl mt-4">
-            You can upload by clicking on "Upload" and choose your file. Be careful when selecting a file. Have a nice time!
+            <Trans>يمكنك التحميل بالضغط على تحميل واختيار الملف الخاص بك. كن حذرًا عند اختيار ملف. استمتع بوقتك!</Trans>
           </h2>
         </div>
         <div className="w-full md:w-[30%] p-5 flex flex-col justify-between items-start h-full m-auto">
@@ -73,11 +74,11 @@ const DashBoard = () => {
 
 
       <div className="w-[80%] m-auto h-fit flex flex-col md:flex-col md:text-md lg:flex-row shadow-2xl text-center mt-10   gap-2" >
-        <Headermain icon={<FaSchool />} title={"Bransh"} text={"mansoura"} color={"#10b981"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"students"} color={"#dade18"} />
+        <Headermain icon={<FaSchool />} title={"المؤسسة"} text={"mansoura"} color={"#10b981"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/student"} title={"الطلاب"} color={"#dade18"} />
 
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/teacher"} title={"teachers"} color={"#3b82f6"} />
-        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"Admins"} color={"#10d981"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/teacher"} title={"المعلمون"} color={"#3b82f6"} />
+        <Headermain icon={<FaUser />} linkTo={"/main/dashboard/data/admin"} title={"المسؤولون"} color={"#10d981"} />
 
       </div>
 
@@ -88,7 +89,7 @@ const DashBoard = () => {
         <div className="w-full md:w-[30%]">
           <Calendar />
         </div>
-        <div className="w-[80%] m-auto md:w-[50%] flex flex-col md:flex-row  justify-between h-full mt-10 gap-x-3 ">
+        <div className="w-full m-auto md:w-[50%]  flex  flex-row  justify-between  mt-10 gap-x-3 ">
           {
             topThree && topThree.map((student, index) => (
               <TopThreeCard key={index} img={student.picture} name={student.name} percent={student.finalDegree + "%"} code={student.code} />
@@ -129,6 +130,9 @@ const DashBoard = () => {
         </div>
 
       </div>
+      <div className="w-[80%]  flex items-center justify-center md:w-[60%] mt-10 m-auto ">
+        <button className="w-full bg-main tetx-white p-3 rounded-3xl h-[50px] flex items-center justify-center text-white ">Next Year</button>
+      </div>
 
 
       <InvitationCodes />
@@ -154,7 +158,7 @@ const Headermain = ({ icon, title, text, color, linkTo }) => {
     <Link to={linkTo} className={`flex items-center w-full drop-shadow-lg md:w-[100%] relative text-[#351b57] uppercase p-5 h-[120px] mt-5 rounded-lg gap-x-5 text-lg after:left-0 after:top-0 after:w-[1%] after:h-full after:bg-main after:absolute hover:after:w-full after:z-[-1] after:transition-all overflow-hidden hover:text-white`} style={{ background: color }}>
       <h1 className="text-[30px]">{icon}</h1>
       <div className="flex flex-col">
-        <h1 className="text-lg ">{title}</h1>
+        <h1 className="text-lg "><Trans>{title}</Trans></h1>
       </div>
     </Link>
   );
@@ -166,14 +170,14 @@ const Headermain = ({ icon, title, text, color, linkTo }) => {
 const TopThreeCard = ({ img, name, percent, code }) => {
   return (
     <div
-      className="flex flex-col items-center justify-center w-full p-5 mt-10 md:mt-0 shadow-md rounded-lg border border-gray-200 hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-main  h-full">
-      <div className="w-32 h-full">
+      className="flex flex-col items-center justify-center p-5 mt-10 md:mt-0 shadow-md rounded-lg border border-gray-200 hover:shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer bg-[#e4a039] w-[30%]  h-[100%]">
+      <div className="w-32] h-full">
         {
-          img ? <img className="rounded-full w-full h-full object-cover mb-4" src={img} alt={name} /> : <FaCircleUser className="text-white  w-full h-[40%]" />
+          img ? <img className="rounded-full w-full h-full object-cover " src={img} alt={name} /> : <FaCircleUser className="text-white  w-full h-[40%]" />
         }
       </div>
-      <h1 className="text-center text-2xl font-semibold text-white capitalize">{name}</h1>
-      <h2 className="text-center text-xl text-white mt-1">{percent}</h2>
+      <h1 className="text-center text-sm md:text-2xl font-semibold text-white capitalize">{name}</h1>
+      <h2 className="text-centertext-sm md:text-lg text-white mt-1">{percent}</h2>
       <p className="text-center text-white mt-2">{code}</p>
     </div>
   );
