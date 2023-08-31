@@ -10,6 +10,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { logout } from '../../functions/auth';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Trans } from 'react-i18next';
 
 
 const Sidebar = ({user}) => {
@@ -57,17 +58,17 @@ const Sidebar = ({user}) => {
 
       <main className={`  ${iscollapsed ?  '' : 'flex-col h-max' }  items-start lg:mt-10 my-3 uppercase flex lg:flex-col  h-full  gap-y-3 p-2`}>
         { (user.role === 'teacher' || user.role === 'admin') && 
-        <MenuItem to={"/main/dashboard"} icon={<RxDashboard />} title={"DashBoard"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/dashboard"} icon={<RxDashboard />} title={"لوحة التحكم"} iscollapsed={iscollapsed} />
         }
-        <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"Profile"} iscollapsed={iscollapsed} />
-        <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"Timeline"} iscollapsed={iscollapsed} />
-        <MenuItem to={"/main/degree"} icon={<IoSchoolOutline />} title={"Degrees"} iscollapsed={iscollapsed} />
-        <MenuItem to={"/main/todolist"} icon={<IoPencil />} title={"To Do LIST"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/profile"} icon={<IoPersonOutline />} title={"الملف الشخصي"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/timeline"} icon={<CiViewTimeline />} title={"المنشورات"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/degree"} icon={<IoSchoolOutline />} title={"الدرجات"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/todolist"} icon={<IoPencil />} title={"قائمة الانشطة"} iscollapsed={iscollapsed} />
 
 
-        <MenuItem to={"/main/settings"} icon={<FiSettings />} title={"Settings"} iscollapsed={iscollapsed} />
+        <MenuItem to={"/main/settings"} icon={<FiSettings />} title={"الاعدادات"} iscollapsed={iscollapsed} />
 
-        <div  onClick={logout} className='w-full'><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"Logout"} iscollapsed={iscollapsed} /></div>
+        <div  onClick={logout} className='w-full'><MenuItem to={"/"} icon={<IoLogOutOutline />} title={"تسجيل الخروج"} iscollapsed={iscollapsed} /></div>
         
         <div className={` ${iscollapsed ? 'hidden'  :null} w-full`}>
     
@@ -99,7 +100,7 @@ const MenuItem = ({ icon, title, iscollapsed ,to }) => {
   return (
     <NavLink to={to} className="flex items-center  gap-x-2 lg:gap-x-5 text-lg hover:bg-main rounded p-2 hover:text-white  lg:h-max h-full    w-full cd client">
       {icon}
-      {!iscollapsed && <h1>{title}</h1>}
+      {!iscollapsed && <h1><Trans>{title}</Trans></h1>}
     </NavLink>
 
   );
@@ -108,7 +109,7 @@ const Adviceitem = ({ icon, title, iscollapsed}) => {
   return (
     <div  className="flex items-center  text-main bg-white p-1 gap-x-5 md:text-lg text-md hover:bg-main rounded  hover:text-white dark:bg-slate-800 dark:text-white">
       {icon}
-      {!iscollapsed && <h1>{title}</h1>}
+      {!iscollapsed && <h1><Trans>{title}</Trans></h1>}
     </div>)}
 
 

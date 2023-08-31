@@ -154,10 +154,49 @@
   "المطورون": "developers",
   "كارم محمود": "karem Mahmoud",
   "مصطفى جمال": "mustafa Gamal",
-  "عنهم": "aboutThem"
-  
-
-
+  "عنهم": "aboutThem",
+  "رجوع":"back",
+  "او انشاء حساب":"or signup"
+  ,
+  "نسيت كلمة المرور":"forget password"
+  ,
+  "الملف الشخصي":"profile"
+  ,"تعديل":"edit",
+  "الغاء":"cancle",
+  "حفظ":"save",
+  "نعم":"yes"
+  ,"لا":"No",
+"تغير كلمة السر":"Change password",
+"لا يوجد درجات حتى الان":"There are no grades yet"
+,"ادخل رقم الجلوس":"Enter the seat number",
+"ادخل رقم جلوسك"  :"Enter your seat number",
+"المادة":"subject",
+"الدرجة":"degree",
+"الدرجة النهائية":"final degree",
+"تقدير":"appreciation",
+"لوحة التحكم":"Dashboard",
+"المنشورات":"Time line",
+"الاعدادات":"Settings",
+"تسجيل الخروج":"Log out",
+"تغير النصيحة":"Change Advice",
+"قائمة الانشطة":"TO DO LIST",
+"الدرجات":"Degrees"
+,"عام":"General",
+"الوضع الليلي":"Dark Mode",
+"اضافة":"add",
+"البريد الالكتروني":"email",
+"كلمة المرور":"password",
+"الاسم الاول":"frist name",
+"اسم العائلة":"last name",
+"اختر صفك":"select your grade",
+"اختر دورك":"select your role"
+,"انشاء حساب":"sign up"
+,"طالب":"Student",
+"معلم":"Teacher"
+,"الصف الاول":"Grade 1 (A)",
+"الصف الثاني":"Grade 2 (B)",
+"الصف الثالث":"Grade 3 (C)",
+"او تسجيل الدخول":"or login"
 
   
 

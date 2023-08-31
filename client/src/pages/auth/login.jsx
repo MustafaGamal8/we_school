@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 import { useNavigate, Link } from 'react-router-dom';
 import ResetPassowrdModal from '../../components/resetPassowrdModal';
+import { Trans } from 'react-i18next';
+
 
 const Login = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -91,7 +93,8 @@ const Login = () => {
           to="/"
           className="flex items-center justify-center gap-1 cursor-pointer relative m-2  p-2 hover:text-white after:-z-[1] hover:after:w-full after:h-full after:absolute after:top-0 after:bg-main after:transition-all after:duration-200 after:w-0  after:rounded-lg font-semibold"
         >
-          رجوع <AiOutlineRollback />
+         <Trans>رجوع</Trans>
+           <AiOutlineRollback />
         </Link>
 
         <img src="/logo.png" alt="" className="h-full w-max" />
@@ -102,7 +105,7 @@ const Login = () => {
         <img className="absolute top-0 right-0 z-[-1] w-full drop-shadow-xl" src="/assets/wave.svg" alt="" />
 
         <section className="h-full mt-20 capitalize">
-          <h1 className="text-center text-5xl  capitalize lg:text-white  dark:text-white">login</h1>
+          <h1 className="text-center text-5xl  capitalize lg:text-white  dark:text-white">تسجيل الدخول</h1>
 
           <div className="flex flex-col lg:flex-row-reverse w-[70%]  lg:h-[550px]  m-auto bg-white drop-shadow-lg rounded-lg overflow-hidden mt-20 dark:bg-slate-700 dark:text-white ">
             <div className=" h-full lg:w-[80%]">
@@ -139,14 +142,14 @@ const Login = () => {
                   </h1>
                 </div>
 
-                <button className="w-full bg-main text-white p-2 mx-3 rounded-lg capitalize">{'login'}</button>
-                <div className='text-center  cursor-pointer  w-full ' onClick={() => { setIsModalOpen(true) }}>forget password ?</div>
+                <button className="w-full bg-main text-white p-2 mx-3 rounded-lg capitalize">{<Trans>تسجيل الدخول</Trans>}</button>
+                <div className='text-center  cursor-pointer  w-full ' onClick={() => { setIsModalOpen(true) }}><Trans>نسيت كلمة المرور</Trans> ?</div>
 
                 <Link
                   to={"/signup"}
                   className="lg:w-1/2 m-auto bg-main text-white p-2 rounded-lg capitalize text-center cursor-pointer"
                 >
-                  {'or sign up'}
+                  {<Trans>او انشاء حساب</Trans>}
                 </Link>
               </form>
             </section>

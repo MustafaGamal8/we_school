@@ -3,6 +3,8 @@ import { FaUser, FaEnvelope, FaCamera, FaGraduationCap, FaEye, FaTimes, FaEdit, 
 import { editUser } from "../../functions/users";
 import ResetPassowrdModal from './../../components/resetPassowrdModal';
 import { MdLock, MdSave } from "react-icons/md";
+import { Trans } from 'react-i18next';
+
 
 function Profile() {
   const currentUser = JSON.parse(localStorage.getItem('user'));
@@ -101,7 +103,7 @@ function Profile() {
           />
         </div>
 
-        <h1 className="text-2xl font-bold mb-4 text-center">الملف الشخصي</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center"><Trans>الملف الشخصي</Trans> </h1>
 
 
 
@@ -178,7 +180,7 @@ function Profile() {
                 className="bg-main  text-white font-semibold py-2 px-4 rounded-md focus:outline-none  m-auto"
               >
                 <MdLock className="inline-block mr-2" />
-                تغير كلمة السر
+                <Trans>تغير كلمة السر</Trans>
               </button>
             )
           }
@@ -195,7 +197,7 @@ function Profile() {
                 onClick={handleSaveClick}
               >
                 <MdSave className="mr-2" />
-                حفظ
+               <Trans>حفظ</Trans> 
               </button>
               <button
                 className="flex items-center bg-red-400 text-white p-2 rounded"
@@ -203,7 +205,7 @@ function Profile() {
                 onClick={handleCancelClick}
               >
                 <FaTimes className="mr-2 " />
-                إلغاء
+                <Trans>الغاء</Trans>
               </button>
             </>
           ) : (
@@ -213,7 +215,7 @@ function Profile() {
               onClick={handleEditClick}
             >
               <FaEdit className="mr-2" />
-              تعديل
+             <Trans>تعديل</Trans> 
             </button>
           )}
         </div>
