@@ -43,6 +43,7 @@ const {
   makeAdmin,
   deleteUser,
   newYear,
+  makeTeacher,
 } = require('./functions/users');
 const {
   signUp,
@@ -98,9 +99,10 @@ const startServer = async () => {
     
     // users routes
     app.get('/users', getUsers);
+    app.post('/users', deleteUser);
     app.put('/users/:user', upload.single('picture'), editUser);
-    app.delete('/users/:user', deleteUser);
-    app.put('/users/admin/:user', makeAdmin);
+    app.post('/users/admin', makeAdmin);
+    app.post('/users/teacher', makeTeacher);
     app.put('/users/newYear', newYear);
 
     // Post routes

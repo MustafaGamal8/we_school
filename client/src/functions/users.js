@@ -13,8 +13,6 @@ export const getUsers = async () => {
 };
 
 
-
-
 export const editUser = async (user) => {
   try {
     const formData = new FormData();
@@ -38,3 +36,56 @@ export const editUser = async (user) => {
     toast.error(error.response.data.message);
   }
 };
+
+
+export const deleteUsers = async (users) => {
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+
+  try {
+    const response = await axios.post(`${"http://localhost:8000"}/users`,{
+      users,
+      _id:currentUser._id,
+       password: currentUser.password,
+    });
+    toast.success(response.data.msg);
+    window.location.reload()
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+
+
+}
+
+
+
+
+export const  makeAdmin = async (users)=>{
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  try {
+    const response = await axios.post(`${"http://localhost:8000"}/users/admin`,{
+      users,
+      _id:currentUser._id,
+       password: currentUser.password,
+    });
+    toast.success(response.data.msg);
+    window.location.reload()
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}
+export const  makeTeacehr = async (users,grade)=>{
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  try {
+    const response = await axios.post(`${"http://localhost:8000"}/users/teacher`,{
+      users,
+      grade,
+      _id:currentUser._id,
+       password: currentUser.password,
+       
+    });
+    toast.success(response.data.msg);
+    window.location.reload()
+  } catch (error) {
+    toast.error(error.response.data.error);
+  }
+}

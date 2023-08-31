@@ -22,7 +22,7 @@ const FilesModal = ({ postFiles,isOpen ,onClose}) => {
     <Modal
       isOpen={isModalOpen}
       onRequestClose={toggleModal}
-      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] overflow-y-scroll    rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg   h-96 w-80  md:w-[400px]   lg:w-[600px]     dark:bg-slate-700  "
+      className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] overflow-y-auto    rounded-lg border-none outline-none bg-[#f7f2fb] p-2 drop-shadow-lg   h-96 w-80  md:w-[400px]   lg:w-[600px]     dark:bg-slate-700  "
       overlayClassName="bg-[#48535a] bg-opacity-50 w-full h-full fixed top-0 left-0"
       
     >

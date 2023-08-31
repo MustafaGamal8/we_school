@@ -31,10 +31,10 @@ export const toggleLike = async (userId,postId)=>{
 
 
 export const uploadPost = async (content, files) => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const currentUser = JSON.parse(localStorage.getItem('user'));
   try {
     const formData = new FormData();
-    formData.append('email', user.email);
+    formData.append('email', currentUser.email);
     formData.append('content', content);
 
     // Append each file to the formData

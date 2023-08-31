@@ -77,7 +77,6 @@ const UploadTaskModal = ({ isOpen, onClose }) => {
               <option value="C">Grade C</option>
               <option value="All">ALL</option>
 
-
             </select>
           </div>
 

@@ -68,7 +68,6 @@ function Profile() {
   return (
     <section className="flex justify-center items-center h-screen w-full lg:static relative ">
 
-
       
     <img
         className=" absolute bottom-0  scale-y-[-1] right-0 z-[-1] w-full h-max drop-shadow-xl "
@@ -81,7 +80,7 @@ function Profile() {
         alt=""
       />
 
-      <div className="flex flex-col items-center  bg-white p-8 rounded-lg shadow-lg lg:w-[40%] w-[90%] mdmax-w-md dark:bg-slate-700 dark:text-white">
+      <div className="flex flex-col items-center  bg-white p-8 rounded-lg shadow-lg lg:w-[40%] w-[90%] mdmax-w-md dark:bg-slate-700 dark:text-white md:mt-0  mt-40">
 
         <div className="relative mb-6 drop-shadow m-auto  w-40">
           {user.picture ? <img src={user.picture} className="w-32 h-32 mx-auto rounded-full" alt="Profile" /> : <FaUserCircle className={`  text-gray-200  w-32 h-32`} />}

@@ -20,7 +20,7 @@ const Main = () => {
       ) : (
         <main className="flex flex-col lg:flex-row w-full ">
           <div className=' lg:fixed   '><Sidebar user={user} /></div>
-          <div className='lg:w-[200px]'></div>
+          <div className='lg:w-[200px] '></div>
 
           <section className="w-full h-full" >
             <Outlet />
