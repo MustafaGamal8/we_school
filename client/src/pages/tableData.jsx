@@ -94,15 +94,19 @@ function TableData() {
               role === item.role ? (
                 <tr
                   key={item._id}
-                  className="border-b border-slate-200 text-center text-black dark:text-white"
+                  className="border-b border-slate-200 text-center bg-slate-200 dark:bg-slate-500  text-black dark:text-white"
                 >
                   <td className="px-4 py-2">
-                    <label className="container">
-                      <input type="checkbox"
-                        checked={selectedUsers.includes(item._id)}
-                        onChange={() => handleUserSelect(item._id)} />
-                      <span className="checkmark"></span>
-                    </label>
+                  <label className="container">
+  <input
+    type="checkbox"
+    checked={selectedUsers.includes(item._id)}
+    onChange={() => handleUserSelect(item._id)}
+    className="hidden"
+  />
+  <span className={`checkmark`}></span>
+</label>
+
                   </td>
                   <td className="px-4 py-2">{item._id}</td>
                   <td className="px-4 py-2">
@@ -145,12 +149,12 @@ function TableData() {
           </div>
         )}
 
-
+        <div className='w-[50%] flex items-center justify-around m-auto mt-10 ' >
       {
         currentUser.role == "admin" && (
-          <div className='flex w-[50%]  m-auto mb-5 gap-3  '>
+          <div className='flex  flex-col md:flex-row   w-[50%]  m-auto mb-5 gap-3  '>
 
-        <button onClick={handleDelete} className='text-white bg-red-400 p-3 rounded m-auto h-12 w-20 '>Delete</button>
+        <button onClick={handleDelete} className='text-white bg-red-400 p-3  rounded m-auto h-12 w-full md:w-[30%] '>Delete</button>
         {
           role === 'teacher' && (
             <button onClick={handleMakeAdmin} className='text-white bg-green-400 p-3 rounded m-auto h-12 w-max  whitespace-nowrap'>Make Admin</button>
@@ -159,10 +163,13 @@ function TableData() {
 
         {
           role === 'admin' && (
-            <div className='flex flex-col items-center justify-center'>
-            <button onClick={handleMakeTeacher} className='text-white bg-green-400 p-3 rounded m-auto h-12 w-max  whitespace-nowrap'>Make Teacher</button>
+            <div className='flex flex-col md:flex-row  items-center justify-between'>
+              <div className=' w-full md:w-[40%]'>
+            <button onClick={handleMakeTeacher} className='text-white bg-green-400 p-3 rounded m-auto h-fit  md:w-max  '>Make Teacher</button>
+            </div >
+            <div   className=' w-full md:w-[40%] md:mt-0 mt-3'>
              <select
-              className="w-full border mt-6 border-gray-300 bg-white text-gray-900 rounded-md p-2 focus:text-main appearance-none"
+              className=" p-3 rounded m-auto h-12 w-full  whitespace-nowrap dark:bg-slate-400 text-white  bg-slate-600 outline-none appearance-none"
               name="role"
               value={grade}
               onChange={(e) => {
@@ -176,6 +183,7 @@ function TableData() {
               <option value="B">Grade B</option>
               <option value="C">Grade C</option>
             </select>
+            </div>
           </div>
           )
         }      
@@ -183,6 +191,7 @@ function TableData() {
       </div>
         )
       }
+    </div>
     </div>
   );
 }

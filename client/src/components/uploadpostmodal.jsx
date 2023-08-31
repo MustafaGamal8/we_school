@@ -11,6 +11,8 @@ function UploadPostModal({ isOpen, onClose }) {
   const [droppedFiles, setDroppedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [content, setContent] = useState("");
+  const [grade, setGrade] = useState("");
+
 
   const fileInputRef = useRef(null);
 
@@ -84,17 +86,27 @@ function UploadPostModal({ isOpen, onClose }) {
       </div>
       <div className="w-full flex flex-col items-center text-main">
         <h1 className="text-center uppercase text-2xl p-3">Upload your file</h1>
-        <div className="flex flex-col items-center w-full">
+        <div className="flex flex-col justify-between items-center w-[70%]">
 
-          <div className="w-[70%] flex flex-col md:flex-row md:w-[70%] border-gray-300 border m-auto rounded-xl bg-gray-100 dark:bg-slate-800 p-2 md:p-5">
+          <div className="w-[100%] flex flex-col md:flex-row md:w-[100%] border-gray-300 border m-auto rounded-xl bg-gray-100 dark:bg-slate-800 p-2 md:p-5">
             <textarea
               type="text"
               className="w-full  px-4 py-2 rounded-lg dark:bg-transparent dark:text-white dark:placeholder-white focus:outline-none placeholder:text-main outline-none"
               placeholder="Enter your text"
               onChange={(e) => setContent(e.target.value)}
             />
+            
           </div>
+          <select className="w-full border mt-6 border-gray-300 bg-white dark:bg-slate-700 dark:text-white text-gray-900 rounded-md px-8 py-2 pr-8 focus:text-main appearance-none" name="role"  value={grade} onChange={(e)=>{setGrade(e.target.value)}}  >
+              <option value="" disabled>
+                Select grade
+              </option>
+              <option value="A">Grade A</option>
+              <option value="B">Grade B</option>
+              <option value="C">Grade C</option>
+              <option value="All">ALL</option>
 
+            </select>
         </div>
 
         <div
@@ -109,6 +121,7 @@ function UploadPostModal({ isOpen, onClose }) {
             style={{ display: "none" }}
             onChange={()=>handleSelectFiles(event,"choose")} 
           />
+         
           <div className="flex flex-col items-center justify-center h-full">
             <AiFillMail size={48} className="text-main mx-auto" />
             <p className="text-gray-500 mt-2 text-center">
