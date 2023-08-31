@@ -9,6 +9,9 @@ import UploadTaskModal from "../../components/uploadTaskModal";
 import { changeInviteCode, getInviteCodes } from "../../functions/invitCodes";
 import UploadDegreeModal from './../../components/uploadDegreeModal';
 import { Trans } from "react-i18next";
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root')
 
 
 
@@ -21,6 +24,21 @@ const DashBoard = () => {
     degree: false,
     task: false
   });
+
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+
+  const handleOpenConfirmationModal = () => {
+    setIsConfirmationModalOpen(true);
+  };
+
+  const handleCloseConfirmationModal = () => {
+    setIsConfirmationModalOpen(false);
+  };
+
+  const handleConfirmNextYear = () => {
+    alert("Moving to the next year!");
+    setIsConfirmationModalOpen(false);
+  };
 
 
   const handleOpenModal = (modalName) => {
@@ -108,38 +126,59 @@ const DashBoard = () => {
 
 
         <div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center  items-center h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
-          <h1 className="text-center text-main dark:text-slate-200 text-2xl mb-4">Upload Your Post</h1>
-          <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center">Simply click the upload button and drag your file</p>
+          <h1 className="text-center text-main dark:text-slate-200 text-2xl mb-4"><Trans>تحميل منشورك</Trans></h1>
+          <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center"><Trans>ما عليك سوى النقر على زر التحميل واسحب ملفك</Trans>e</p>
           <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={() => handleOpenModal("post")}>Upload</button>
           {isModalOpen.post && <UploadPostModal isOpen={true} onClose={handleCloseModal} />}
         </div>
 
         <div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center  h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
-          <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4">Upload Degree files </h1>
-          <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center">Simply click the upload button and drag your file</p>
+          <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4"><Trans>تحميل ملف الدرجات</Trans> </h1>
+          <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center"><Trans>ما عليك سوى النقر على زر التحميل واسحب ملفك</Trans></p>
           <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={() => handleOpenModal("degree")}>Upload</button>
           {isModalOpen.degree && <UploadDegreeModal isOpen={true} onClose={handleCloseModal} />}
         </div>
 
 
         <div className="md:w-[30%] m-auto w-[80%] md:m-0 flex flex-col justify-center items-center  h-[300px] bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-gray-300 p-6">
-          <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4">Upload Your Task</h1>
-          <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center">Simply click the upload button and drag your file</p>
+          <h1 className="text-center text-main  dark:text-slate-200 text-2xl mb-4"><Trans>قم بتحميل مهمتك</Trans></h1>
+          <p className="text-md text-sec  dark:text-slate-200 mb-6 text-center"><Trans>ما عليك سوى النقر على زر التحميل واسحب ملفك</Trans></p>
           <button className="w-[50%] py-3 bg-main rounded-lg text-white flex items-center justify-center shadow-md" onClick={() => handleOpenModal("task")}>Upload</button>
           {isModalOpen.task && <UploadTaskModal isOpen={true} onClose={handleCloseModal} />}
         </div>
 
       </div>
-      <div className="w-[80%]  flex items-center justify-center md:w-[60%] mt-10 m-auto ">
-        <button className="w-full bg-main tetx-white p-3 rounded-3xl h-[50px] flex items-center justify-center text-white ">Next Year</button>
-      </div>
+      
 
 
       <InvitationCodes />
 
 
+      <div className="w-[80%] flex-col flex items-center justify-center md:w-[60%] mt-10 m-auto">
+      <Modal
+        isOpen={isConfirmationModalOpen}
+        onRequestClose={handleCloseConfirmationModal}
+        contentLabel="Next Year Confirmation Modal"
+        className="modal"
+        overlayClassName="modal-overlay"
+      >
+        <div className="w-[80%] flex-col flex items-center justify-center md:w-[60%] mt-10 m-auto">
+        <div className="text-center bg-white drop-shadow-2xl rounded-xl w-[50%] p-5 m-auto">
+          <p><Trans>هل انت متاكد من انك تريد ان تقوم بتقديم عام دراسي جديد ان قم بذلك سيتم ترقية الطلاب للصف المقبل</Trans></p>
+          <div className="mt-4">
+            <button onClick={handleConfirmNextYear} className="mr-4 bg-green-500 text-white px-4 py-2 rounded"><Trans>نعم</Trans></button>
+            <button onClick={handleCloseConfirmationModal} className="bg-red-500 text-white px-4 py-2 rounded"><Trans>لا</Trans></button>
+          </div>
+        </div>
+        </div>
+      </Modal>
+      <button className="w-full bg-main  p-3 rounded-3xl h-[50px] flex items-center justify-center text-white" onClick={handleOpenConfirmationModal}>
+        <Trans>السنة التالية</Trans>
+      </button>
 
-
+      
+    
+    </div>
 
 
     </>
@@ -213,9 +252,9 @@ const InvitationCodes = () => {
       <table className="border-b-2 border-main dark:border-slate-400 w-full text-center ">
         <thead>
           <tr className="bg-main text-white">
-            <th className="p-3 text-lg">For</th>
-            <th className="p-3 text-lg">Code</th>
-            <th className="p-3 md:text-lg ">Change code</th>
+            <th className="p-3 text-lg"><Trans>خاص ب</Trans></th>
+            <th className="p-3 text-lg"><Trans>الكود</Trans></th>
+            <th className="p-3 md:text-lg "><Trans>تغير الكود</Trans></th>
           </tr>
         </thead>
         <tbody>
@@ -225,7 +264,7 @@ const InvitationCodes = () => {
                 <td className="p-3 capitalize">{code.userType}</td>
                 <td className="p-3">{code.code}</td>
                 <td className="p-3 flex justify-center">
-                  <button className="bg-main text-white  w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} >Change</button>
+                  <button className="bg-main text-white  w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} ><Trans>تغير</Trans></button>
                 </td>
               </tr>
             ))
