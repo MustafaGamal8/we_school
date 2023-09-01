@@ -166,7 +166,7 @@ const DashBoard = () => {
       >
         <div className="w-full flex-col flex items-center justify-center  mt-10 m-auto">
         <div className="text-center bg-white drop-shadow-2xl rounded-xl w-[50%] p-5 m-auto">
-          <p><Trans>هل انت متاكد من انك تريد ان تقوم بتقديم عام دراسي جديد ان قم بذلك سيتم ترقية الطلاب للصف المقبل</Trans></p>
+          <p><Trans> هل انت متاكد من انك تريد ان تقوم بتقديم عام دراسي جديد ان قم بذلك سيتم ترقية الطلاب للصف المقبل وحذف جميع المنشورات</Trans></p>
           <div className="mt-4 flex gap-5 items-center justify-center">
             <button onClick={handleConfirmNextYear} className="mr-4 bg-green-500 text-white px-4 py-2 rounded" ><Trans>نعم</Trans></button>
             <button onClick={handleCloseConfirmationModal} className="bg-red-500 text-white px-4 py-2 rounded"><Trans>لا</Trans></button>

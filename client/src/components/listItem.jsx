@@ -11,7 +11,7 @@ const ListItem = ({ title, content }) => {
   };
 
   return (
-    <div className="w-full mb-4 md:w-[60%] m-auto p-5">
+    <div className="w-full mb-4 md:w-[60%] m-auto p-5 select-text">
       <button
         className={`flex flex-row justify-between items-center text-md  md:justify-center w-full text-center md:text-xl font-bold py-3 px-6  bg-[#6e237e] text-white drop-shadow-md  rounded-t-lg `}
         onClick={toggleExpand}
