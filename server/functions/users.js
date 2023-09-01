@@ -1,6 +1,6 @@
 const UserModel = require("../mongo/userModel.js");
-import postModel from '../mongo/postModel';
-import FilesModal from './../../client/src/components/filesModal';
+const postModel = require( '../mongo/postModel')
+const fileModel =  require( '../mongo/fileModel.js')
 const profilePictureModel = require("../mongo/profilePicture.js");
 
 const getUsers = async (req, res) => {
@@ -178,7 +178,7 @@ const newYear = async (req, res) => {
       await user.save();
     })
 
-    await FilesModal.deleteMany()
+    await fileModel.deleteMany()
     await postModel.deleteMany()
 
 
@@ -197,3 +197,4 @@ module.exports = {
   deleteUser,
   newYear
 };
+
