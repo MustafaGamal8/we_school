@@ -227,31 +227,79 @@ const TopThreeCard = ({ img, name, percent, code }) => {
 
 
 
-const InvitationCodes = () => {
-  const [invitationCodes, setInvitationCodes] = useState(null)
-  const fetchInvitationCodes = async () => {
+// const InvitationCodes = () => {
+//   const [invitationCodes, setInvitationCodes] = useState(null)
+//   const fetchInvitationCodes = async () => {
 
-    const response = await getInviteCodes()
-    setInvitationCodes(response)
-  }
+//     const response = await getInviteCodes()
+//     setInvitationCodes(response)
+//   }
+
+//   useEffect(() => {
+//     fetchInvitationCodes()
+
+//   }, [])
+
+
+
+//   const handleChangeCode = async (userType) => {
+//     const response = await changeInviteCode(userType)
+//     response&& fetchInvitationCodes()
+//   }
+
+
+
+
+//   return (
+//     <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black   mb-5">
+//       <table className="border-b-2 border-main dark:border-slate-400 w-full text-center ">
+//         <thead>
+//           <tr className="bg-main text-white">
+//             <th className="p-3 text-lg"><Trans>خاص ب</Trans></th>
+//             <th className="p-3 text-lg"><Trans>الكود</Trans></th>
+//             <th className="p-3 md:text-lg "><Trans>تغير الكود</Trans></th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {
+//             invitationCodes && invitationCodes.map((code, index) => (
+//               <tr key={index} className="text-main dark:text-white">
+//                 <td className="p-3 capitalize">{code.userType}</td>
+//                 <td className="p-3">{code.code}</td>
+//                 <td className="p-3 flex justify-center">
+//                   <button className="bg-main text-white  w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} ><Trans>تغير</Trans></button>
+//                 </td>
+//               </tr>
+//             ))
+//           }
+//         </tbody>
+//       </table>
+
+//     </div>
+
+//   )
+// }
+
+
+const InvitationCodes = () => {
+  const [invitationCodes, setInvitationCodes] = useState(null);
+
+  const fetchInvitationCodes = async () => {
+    const response = await getInviteCodes();
+    setInvitationCodes(response);
+  };
 
   useEffect(() => {
-    fetchInvitationCodes()
-
-  }, [])
-
-
+    fetchInvitationCodes();
+  }, []);
 
   const handleChangeCode = async (userType) => {
-    const response = await changeInviteCode(userType)
-    response&& fetchInvitationCodes()
-  }
-
-
-
+    const response = await changeInviteCode(userType);
+    response && fetchInvitationCodes();
+  };
 
   return (
-    <div className="w-[70%] md:w-[80%]  mt-10 flex flex-col justify-between items-center drop-shadow-xl  m-auto borer[2px] border-black   mb-5">
+    <div className="w-[70%] md:w-[80%] mt-10 flex flex-col justify-between items-center drop-shadow-xl m-auto borer[2px] border-black mb-5">
       <table className="border-b-2 border-main dark:border-slate-400 w-full text-center ">
         <thead>
           <tr className="bg-main text-white">
@@ -261,21 +309,60 @@ const InvitationCodes = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            invitationCodes && invitationCodes.map((code, index) => (
-              <tr key={index} className="text-main dark:text-white">
-                <td className="p-3 capitalize">{code.userType}</td>
-                <td className="p-3">{code.code}</td>
+          {invitationCodes && (
+            <>
+              <tr className="text-main dark:text-white">
+                <td className="p-3 capitalize">teacher</td>
+                <td className="p-3 text-blue-400 select-text">{invitationCodes && invitationCodes.find((code) => code.userType === "teacher")?.code}</td>
                 <td className="p-3 flex justify-center">
-                  <button className="bg-main text-white  w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg" onClick={()=>handleChangeCode(code.userType)} ><Trans>تغير</Trans></button>
+                  <button
+                    className="bg-main text-white w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg"
+                    onClick={() => handleChangeCode('teacher')}
+                  >
+                    <Trans>تغير</Trans>
+                  </button>
                 </td>
               </tr>
-            ))
-          }
+              <tr className="text-main dark:text-white">
+                <td className="p-3 capitalize">studentA</td>
+                <td className="p-3 text-blue-400 select-text">{invitationCodes && invitationCodes.find((code) => code.userType === "studentA")?.code}</td>
+                <td className="p-3 flex justify-center">
+                  <button
+                    className="bg-main text-white w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg"
+                    onClick={() => handleChangeCode('studentA')}
+                  >
+                    <Trans>تغير</Trans>
+                  </button>
+                </td>
+              </tr>
+              <tr className="text-main dark:text-white">
+                <td className="p-3 capitalize">studentB</td>
+                <td className="p-3 text-blue-400 select-text">{invitationCodes && invitationCodes.find((code) => code.userType === "studentB")?.code}</td>
+                <td className="p-3 flex justify-center">
+                  <button
+                    className="bg-main text-white w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg"
+                    onClick={() => handleChangeCode('studentB')}
+                  >
+                    <Trans>تغير</Trans>
+                  </button>
+                </td>
+              </tr>
+              <tr className="text-main dark:text-white">
+                <td className="p-3 capitalize">studentC</td>
+                <td className="p-3 text-blue-400 select-text">{invitationCodes && invitationCodes.find((code) => code.userType === "studentC")?.code}</td>
+                <td className="p-3 flex justify-center">
+                  <button
+                    className="bg-main text-white w-full p-3 flex items-center justify-center rounded-lg md:w-[35%] text-sm md:text-lg"
+                    onClick={() => handleChangeCode('studentC')}
+                  >
+                    <Trans>تغير</Trans>
+                  </button>
+                </td>
+              </tr>
+            </>
+          )}
         </tbody>
       </table>
-
     </div>
-
-  )
-}
+  );
+};

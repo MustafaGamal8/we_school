@@ -1,4 +1,6 @@
 const UserModel = require("../mongo/userModel.js");
+import postModel from '../mongo/postModel';
+import FilesModal from './../../client/src/components/filesModal';
 const profilePictureModel = require("../mongo/profilePicture.js");
 
 const getUsers = async (req, res) => {
@@ -143,8 +145,13 @@ const deleteUser = async (req, res) => {
 
 
     if (users.length > 0) {
-      users.map(async (user) => {
-        await UserModel.findByIdAndDelete(user);
+      users.map(async (u) => {
+        const user = await UserModel.findById(u);
+        if ( user.email == "weschool-mansoura@gmail.com") {
+          return res.status(404).json({ error: 'you cant delete this account , its super admin' });
+        }else{
+          await user.remove();
+        }
       })
     }
 
@@ -170,7 +177,12 @@ const newYear = async (req, res) => {
       }
       await user.save();
     })
-    res.status(200).json({ msg: 'Users updated successfully' });
+
+    await FilesModal.deleteMany()
+    await postModel.deleteMany()
+
+
+    res.status(200).json({ msg: 'New Year congrats' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
