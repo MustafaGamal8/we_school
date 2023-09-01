@@ -56,6 +56,11 @@ function TableData() {
     }
 
     setConfirmingAction(null);
+    setTimeout(() => {
+      
+    window.location.reload()
+      
+    }, 1000);
   };
 
 

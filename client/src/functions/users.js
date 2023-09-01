@@ -48,7 +48,6 @@ export const deleteUsers = async (users) => {
        password: currentUser.password,
     });
     toast.success(response.data.msg);
-    window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
   }
@@ -68,7 +67,6 @@ export const  makeAdmin = async (users)=>{
        password: currentUser.password,
     });
     toast.success(response.data.msg);
-    window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
   }
@@ -84,7 +82,6 @@ export const  makeTeacehr = async (users,grade)=>{
        
     });
     toast.success(response.data.msg);
-    window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
   }
