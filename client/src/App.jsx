@@ -85,16 +85,12 @@ function App() {
 
       {isLoading && <Loader />}
 
-
-
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
-
-
+        
         <Route path="/main/" element={<Main />}>
           <Route path="profile" element={<Profile />} />
           {currentUser && (currentUser.role != 'student') &&

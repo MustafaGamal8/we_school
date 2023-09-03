@@ -136,31 +136,33 @@ const makeTeacher = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const { _id, password ,users } = req.body
-    const admin = await UserModel.findById(_id)
+    const { _id, password, users } = req.body;
+    const admin = await UserModel.findById(_id);
 
-    if (!admin && !admin.password == password) {
-      return res.status(404).json({ error: 'you are not allowed' });
+    if (!admin || admin.password !== password) {
+      return res.status(404).json({ error: 'You are not allowed' });
     }
 
+    const superAdminEmail = 'weschool-mansoura@gmail.com';
 
-    if (users.length > 0) {
-      users.map(async (u) => {
-        const user = await UserModel.findById(u);
-        if ( user.email == "weschool-mansoura@gmail.com") {
-          return res.status(404).json({ error: 'you cant delete this account , its super admin' });
-        }else{
-          await user.remove();
-        }
-      })
+    for (const u of users) {
+      const user = await UserModel.findById(u);
+
+      if (user.email === superAdminEmail) {
+        return res
+          .status(403)
+          .json({ error: 'You cannot delete this account; it is a super admin account' });
+      } else {
+        await user.deleteOne(); 
+      }
     }
 
-
-    res.status(200).json({ msg: 'User deleted successfully' });
+    res.status(200).json({ msg: 'Users deleted successfully' });
   } catch (error) {
-    res.status(500).json({ error:error });
+    res.status(500).json({ error: error.message });
   }
-}
+};
+
 
 
 
