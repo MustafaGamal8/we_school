@@ -19,7 +19,7 @@ function About() {
           ABOUT DEVELOPER TEAM
         </h1>
 
-        <div className="w-full p-5 flex flex-col-reverse md:flex-row justify-between items-center mt-10">
+        <div className="w-full p-5 flex m-auto  flex-col-reverse md:flex-row justify-between items-center mt-10">
           <div className="md:w-[50%] w-full text-main dark:text-slate-400 text-lg md:2xl mt-10 ">
             <p>
               We are a dynamic team of skilled web developers specializing in
@@ -60,7 +60,7 @@ function About() {
           TEAM MEMBERS
         </h1>
 
-        <div className="w-full p-5 flex flex-col-reverse md:flex-row justify-around items-center mt-10 text-main dark:text-slate-300">
+        <div className="w-full p-5 flex m-auto flex-col-reverse md:flex-row justify-around items-center mt-10 text-main dark:text-slate-300">
           <div className="md:w-[50%] w-full text-main dark:text-slate-400 text-lg md:2xl mt-10 ">
             <h1 className="text-4xl text-center relative font-semibold">
               Karem Mahmoud
@@ -125,7 +125,7 @@ function About() {
           </div>
         </div>
 
-        <div className="w-full p-5 flex flex-col md:flex-row justify-around items-center mt-24 text-main dark:text-slate-300">
+        <div className="w-full p-5 flex m-auto  flex-col md:flex-row justify-around items-center mt-24 text-main dark:text-slate-300">
           <div className="md:w-[50%] w-full flex items-center justify-center">
             <img
               className="md:w-[60%] w-[80%] rounded-[50%] object-cover "
