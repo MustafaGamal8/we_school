@@ -42,13 +42,12 @@ export const deleteUsers = async (users) => {
   const currentUser = JSON.parse(localStorage.getItem('user'));
 
   try {
-    const response = await axios.post(`${"http://localhost:8000"}/users`,{
+    const response = await axios.post(`${baseUrl}/users`,{
       users,
       _id:currentUser._id,
        password: currentUser.password,
     });
     toast.success(response.data.msg);
-    window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
   }
@@ -62,13 +61,12 @@ export const deleteUsers = async (users) => {
 export const  makeAdmin = async (users)=>{
   const currentUser = JSON.parse(localStorage.getItem('user'));
   try {
-    const response = await axios.post(`${"http://localhost:8000"}/users/admin`,{
+    const response = await axios.post(`${baseUrl}/users/admin`,{
       users,
       _id:currentUser._id,
        password: currentUser.password,
     });
     toast.success(response.data.msg);
-    window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
   }
@@ -76,7 +74,7 @@ export const  makeAdmin = async (users)=>{
 export const  makeTeacehr = async (users,grade)=>{
   const currentUser = JSON.parse(localStorage.getItem('user'));
   try {
-    const response = await axios.post(`${"http://localhost:8000"}/users/teacher`,{
+    const response = await axios.post(`${baseUrl}/users/teacher`,{
       users,
       grade,
       _id:currentUser._id,
@@ -84,8 +82,20 @@ export const  makeTeacehr = async (users,grade)=>{
        
     });
     toast.success(response.data.msg);
-    window.location.reload()
   } catch (error) {
     toast.error(error.response.data.error);
+  }
+}
+
+
+
+
+export const newYear = async() => {
+  try {
+    const response = await axios.post(`${baseUrl}/users/newYear`);
+    toast.success(response.data.msg);
+  } catch (error) {
+    toast.error(error.response.data.error);
+    
   }
 }

@@ -1,8 +1,8 @@
 import  axios  from 'axios';
 import { toast } from 'react-toastify';
 
-const baseUrl = 'https://we-school-api.vercel.app'
 
+const baseUrl = 'https://we-school-api.vercel.app'
 
 export const getPosts = async ()=>{
   try {
@@ -30,12 +30,13 @@ export const toggleLike = async (userId,postId)=>{
 
 
 
-export const uploadPost = async (content, files) => {
+export const uploadPost = async (content, files,grade) => {
   const currentUser = JSON.parse(localStorage.getItem('user'));
   try {
     const formData = new FormData();
     formData.append('email', currentUser.email);
     formData.append('content', content);
+    formData.append('grade', grade);
 
     // Append each file to the formData
     files.forEach(file => {

@@ -42,6 +42,10 @@ function App() {
     const alignment = defultLang === "en" ? "left" : "right";
 
     document.body.dir = direction;
+    if (defultLang === "en") {
+      document.body.style.cssText = `
+   font-family: 'Rubik', sans-serif;`
+    }
     document.querySelectorAll("p, h2").forEach((p) => {
       p.style.textAlign = alignment;
     });
@@ -79,9 +83,7 @@ function App() {
   return (
     <main className="w-screen overflow-x-hidden">
 
-      {/* {isLoading && <Loader />} */}
-
-
+      {isLoading && <Loader />}
 
 
 
@@ -95,23 +97,23 @@ function App() {
 
         <Route path="/main/" element={<Main />}>
           <Route path="profile" element={<Profile />} />
-           { currentUser && (currentUser.role === 'teacher' || currentUser.role === 'admin') &&
+          {currentUser && (currentUser.role != 'student') &&
             (<>
 
-<Route path="dashboard" element={<DashBoard />} />
-          <Route path="dashboard/data/:role" element={<TableData />} />
+              <Route path="dashboard" element={<DashBoard />} />
+              <Route path="dashboard/data/:role" element={<TableData />} />
 
 
             </>)
-          } 
-          
+          }
+
 
           <Route path="timeline" element={<TimeLine />} />
           <Route path="degree" element={<Degree />} />
           <Route path="todolist" element={<ToDoList />} />
 
           <Route path="settings" element={<Settings />} />
-          
+
         </Route>
 
 

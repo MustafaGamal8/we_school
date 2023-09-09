@@ -1,4 +1,6 @@
 const UserModel = require("../mongo/userModel.js");
+const postModel = require( '../mongo/postModel')
+const fileModel =  require( '../mongo/fileModel.js')
 const profilePictureModel = require("../mongo/profilePicture.js");
 
 const getUsers = async (req, res) => {
@@ -143,8 +145,13 @@ const deleteUser = async (req, res) => {
 
 
     if (users.length > 0) {
-      users.map(async (user) => {
-        await UserModel.findByIdAndDelete(user);
+      users.map(async (u) => {
+        const user = await UserModel.findById(u);
+        if ( user.email == "weschool-mansoura@gmail.com") {
+          return res.status(404).json({ error: 'you cant delete this account , its super admin' });
+        }else{
+          await user.remove();
+        }
       })
     }
 
@@ -159,7 +166,7 @@ const deleteUser = async (req, res) => {
 
 const newYear = async (req, res) => {
   try {
-    const users = await UserModel.findAll({ role: "student" })
+    const users = await UserModel.find({ role: "student" })
 
     users.forEach(async (user) => {
 
@@ -168,12 +175,16 @@ const newYear = async (req, res) => {
         case 'B': user.grade = 'C'; break
         case 'C': user.grade = 'graduated'; break
       }
-
       await user.save();
     })
-    res.status(200).json({ msg: 'Users updated successfully' });
+
+    await fileModel.deleteMany()
+    await postModel.deleteMany()
+
+
+    res.status(200).json({ msg: 'New Year congrats' });
   } catch (error) {
-    res.status(500).json({ error: 'An error occurred' });
+    res.status(500).json({ error: error.message });
   }
 }
 
@@ -186,3 +197,4 @@ module.exports = {
   deleteUser,
   newYear
 };
+

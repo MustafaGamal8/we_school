@@ -41,7 +41,7 @@ function UploadPostModal({ isOpen, onClose }) {
 
   const handleSharePost =  async() => {
     setUploading(true);
-    const {msg} = await uploadPost(content,droppedFiles)
+    const {msg} = await uploadPost(content,droppedFiles,grade)
 
     setUploading(false);
     if (msg) {

@@ -5,13 +5,13 @@ const UserModel = require("../mongo/userModel.js");
 
 const createPost = async (postFields, files) => {
   try {
-    const { user, content,grade } = postFields;
-    const { _id , firstName, lastName, email, role, picture } = user;
+    const { userId, content,grade } = postFields;
+    
     const date = new Date();
     const postDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     
     const post = new postModel({
-      user: { _id,firstName, lastName, email, role, picture },
+      userId,
       content,
       grade,
       files,
@@ -51,7 +51,7 @@ const uploadAndCreatePost = async (req, res) => {
       }
     }
 
-    await createPost({ user, content: req.body.content ,grade:req.body.grade }, fileIds);
+    await createPost({ userId:user._id, content: req.body.content ,grade:req.body.grade }, fileIds);
     res.status(200).json({ msg: 'Post created successfully' });
   } catch (error) {
     res.status(500).json({ error });
@@ -61,8 +61,19 @@ const uploadAndCreatePost = async (req, res) => {
 const readAllPosts = async (req, res) => {
   try {
     const posts = await postModel.find();
+
+    for (const post of posts) {
+      const user = await UserModel.findById(post.userId);
+      if (user) {
+        const { _id, firstName, lastName, email, role, picture } = user;
+        post.user = { _id, firstName, lastName, email, role, picture };
+      }
+    }
+
+
     res.status(200).json(posts);
   } catch (error) {
+    console.log(error.message);
     res.status(500).json({ error: 'Failed to get posts' });
   }
 };

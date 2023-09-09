@@ -7,6 +7,7 @@ const app = express();
 const multer = require('multer');
 const { serve, setup } = require('swagger-ui-express');
 const swaggerDocument = require('./openapi-spec.json'); // Update this with the correct path
+// const translate = require('translate-google');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -33,39 +34,21 @@ const checkSecretKey = (req, res, next) => {
 
 app.use('/api-docs', serve, setup(swaggerDocument));
 
+app.get("/",(req,res)=>{
+  res.send("Welcome To We Mansoura School Server")
+})
+
 // Import and initialize translate-google
-const translate = require('translate-google');
-
 // Import functions for user management and posts
-const {
-  getUsers,
-  editUser,
-  makeAdmin,
-  deleteUser,
-  newYear,
-  makeTeacher,
-} = require('./functions/users');
-const {
-  signUp,
-  resetPassword,
-  loginUser,
-  createInvitationCode,
-  getInvitationCodes
-} = require('./functions/auth');
+const { getUsers, editUser, makeAdmin, deleteUser, newYear, makeTeacher} = require('./functions/users');
 
 
 
 
+const {  signUp, resetPassword, loginUser, createInvitationCode, getInvitationCodes} = require('./functions/auth');
 const { sendMail, confirmEmail, sendResetPasswordEmail } = require('./functions/mailConfirmation');
-const {
-  readAllFiles,
-  readFile,
-  uploadAndCreatePost,
-  readAllPosts,
-  togglePostLike,
-  deletePost,
-} = require('./functions/posts');
-const { upload_xlsx, getDegrees, getStudentDegrees, getTopThree } = require('./functions/degrees');
+const {  readAllFiles, readFile, uploadAndCreatePost, readAllPosts, togglePostLike, deletePost,} = require('./functions/posts');
+const { upload_xlsx, getDegrees, getStudentDegrees } = require('./functions/degrees');
 const { uploadTask, getTasks } = require('./functions/task');
 
 // Connect to MongoDB and start the server
@@ -103,7 +86,7 @@ const startServer = async () => {
     app.put('/users/:user', upload.single('picture'), editUser);
     app.post('/users/admin', makeAdmin);
     app.post('/users/teacher', makeTeacher);
-    app.put('/users/newYear', newYear);
+    app.post('/users/newYear', newYear);
 
     // Post routes
     app.get('/posts', readAllPosts);
