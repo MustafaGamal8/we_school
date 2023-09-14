@@ -248,7 +248,7 @@ const Karem = () => {
     <>
     <div className="md:w-[50%] w-full flex items-center justify-center">
             <img
-              className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-white"
+              className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-black object-cover"
               src="/assets/WhatsApp Image 2023-05-27 at 6.05.12 PM.jpeg"
               alt="Web Development Team"
             />
