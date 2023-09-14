@@ -263,7 +263,7 @@ const Karem = () => {
         MERN STACK Developer
       </p>
       <h1 className="capitalize mt-4 text-left w-full">
-        Hello, I'm <a href="https://karemmahmouud.netlify.app/" className="text-green-400">Karem mahmoud </a>,
+        Hello, I'm <a href="https://karemmahmoud.vercel.app/" className="text-green-400">Karem mahmoud </a>,
         I am a front-end developer and I have experience in working on projects because I have implemented many projects, some of them medium, some complex, and some easy. But I work hard every day to develop myself and become one of the most important web developers. I have some little experience in <span className="text-green-400">MERN STACK</span>, as I am a passionate person and I love development. From myself, and I have a little experience in freelancing and working with a team. Thank you       
       </h1>
 
@@ -281,7 +281,7 @@ const Karem = () => {
           <FaLinkedin size={24} />
         </a>
         <a
-          href="https://www.facebook.com/mustafa.gamal.9231712"
+          href="https://github.com/karem880"
           target="_blank"
           rel="noopener noreferrer"
           className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
@@ -289,7 +289,7 @@ const Karem = () => {
           <FaFacebook size={24} />
         </a>
         <a
-          href="https://github.com/mustafagamal51112"
+          href="https://www.facebook.com/profile.php?id=100010546894506&mibextid=ZbWKwL"
           target="_blank"
           rel="noopener noreferrer"
           className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
@@ -332,7 +332,7 @@ const WebsiteListKarem = () => {
           {websites.map((website, index) => (
             <div key={index} className="bg-white rounded-lg shadow-md p-4 dark:bg-slate-700 drop-shadow-md">
               <a href={website.url} target="_blank" rel="noopener noreferrer">
-                <img src={website.imageUrl} alt={`${website.name} Preview`} className="w-full h-auto rounded mb-2 hover:scale-100 transition-all" />
+                <img src={website.imageUrl} alt={`${website.name} Preview`} className="w-full h-auto rounded mb-2 hover:scale-105 transition-all" />
               </a>
               <h2 className="text-lg font-semibold">
                 <a href={website.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
