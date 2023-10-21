@@ -19,7 +19,7 @@ function About() {
           ABOUT DEVELOPER TEAM
         </h1>
 
-        <div className="w-full p-5 flex flex-col-reverse md:flex-row justify-between items-center mt-10">
+        <div className="w-full p-5 flex m-auto  flex-col-reverse md:flex-row justify-between items-center mr-5 md:mr-16 mt-10">
           <div className="md:w-[50%] w-full text-main dark:text-slate-400 text-lg md:2xl mt-10 ">
             <p>
               We are a dynamic team of skilled web developers specializing in
@@ -60,72 +60,11 @@ function About() {
           TEAM MEMBERS
         </h1>
 
-        <div className="w-full p-5 flex flex-col-reverse md:flex-row justify-around items-center mt-10 text-main dark:text-slate-300">
-          <div className="md:w-[50%] w-full text-main dark:text-slate-400 text-lg md:2xl mt-10 ">
-            <h1 className="text-4xl text-center relative font-semibold">
-              Karem Mahmoud
-            </h1>
-            <p className=" text-2xl  mt-4 relative text-animition w-fit">
-              MERN STACK Developer
-            </p>
-            <p className="text-start">
-              I specialize in crafting immersive and visually stunning front-end
-              experiences using cutting-edge web technologies. My expertise lies
-              in creating captivating user interfaces that not only look
-              exceptional but also provide a seamless and intuitive user
-              experience. With a strong foundation in HTML, CSS, and JavaScript
-              (including ES6+), I build responsive and interactive designs that
-              adapt gracefully to various screen sizes. My proficiency in the
-              React library allows me to create dynamic interfaces that engage
-              users across different devices. Leveraging tools like Redux, I
-              ensure efficient state management and data handling, resulting in
-              smooth and performant applications. My goal is to transform your
-              ideas into pixel-perfect designs and captivating interactions,
-              leaving a lasting impression on your audience. Proficient in the
-              MERN stack, I design and develop dynamic web applications with a
-              strong foundation in MongoDB, Express, React, and Node.js,
-              ensuring seamless functionality and engaging user experiences.
-              Skilled in MERN stack development, I leverage MongoDB for
-              efficient data management, build interactive front-end interfaces
-              using React, and implement robust back-end logic with Express and
-              Node.js, delivering well-rounded and modern web solutions.
-            </p>
-
-            <div className="flex justify-between items-center mt-5 w-[50%] m-auto">
-              <a
-                href="https://www.linkedin.com/in/karem-mahmoud-963b84262/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin size={24} className="text-main dark:text-white" />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=100010546894506"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebook size={24} className="text-main dark:text-white" />
-              </a>
-              <a
-                href="https://karemmahmouud.netlify.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaUserAlt size={24} className="text-main dark:text-white" />
-              </a>
-            </div>
-          </div>
-
-          <div className="md:w-[50%] w-full flex items-center justify-center">
-            <img
-              className="md:w-[60%] w-[80%] rounded-[50%] object-cover "
-              src="/assets/WhatsApp Image 2023-05-27 at 6.05.12 PM.jpeg"
-              alt="Web Development Team"
-            />
-          </div>
+        <div className="w-full p-5 flex m-auto  flex-col justify-around items-center mt-24 text-main dark:text-slate-300">
+  <Karem/>          
         </div>
 
-        <div className="w-full p-5 flex flex-col justify-around items-center mt-24 text-main dark:text-slate-300">
+        <div className="w-full p-5 flex m-auto  flex-col justify-around items-center mt-24 text-main dark:text-slate-300">
           
 
 
@@ -234,7 +173,7 @@ const Mustafa = () => {
           <FaLinkedin size={24} />
         </a>
         <a
-          href="https://www.facebook.com/mustafa.gamal.9231712"
+          href="https://www.facebook.com/profile.php?id=100010546894506&mibextid=ZbWKwL"
           target="_blank"
           rel="noopener noreferrer"
           className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
@@ -242,7 +181,7 @@ const Mustafa = () => {
           <FaFacebook size={24} />
         </a>
         <a
-          href="https://github.com/mustafagamal51112"
+          href="https://github.com/karem880"
           target="_blank"
           rel="noopener noreferrer"
           className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
@@ -299,3 +238,114 @@ const WebsiteList = () => {
     </div>
   );
 };
+
+
+
+
+
+const Karem = () => {
+  return (
+    <>
+    <div className="md:w-[50%] w-full flex items-center justify-center">
+            <img
+              className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-black object-cover"
+              src="/assets/WhatsApp Image 2023-05-27 at 6.05.12 PM.jpeg"
+              alt="Web Development Team"
+            />
+          </div>
+    
+     
+          <div className="md:w-[60%] w-full text-main dark:text-slate-400 text-lg md:text-2xl mt-10">
+      <h1 className="text-4xl text-center relative font-semibold">
+       karem mahmoud
+      </h1>
+      <p className="text-2xl mt-4 relative text-animition w-max m-auto text-main">
+        MERN STACK Developer
+      </p>
+      <h1 className="capitalize mt-4 text-left w-full">
+        Hello, I'm <a href="https://karemmahmoud.vercel.app/" className="text-green-400">Karem mahmoud </a>,
+        I am a front-end developer and I have experience in working on projects because I have implemented many projects, some of them medium, some complex, and some easy. But I work hard every day to develop myself and become one of the most important web developers. I have some little experience in <span className="text-green-400">MERN STACK</span>, as I am a passionate person and I love development. From myself, and I have a little experience in freelancing and working with a team. Thank you       
+      </h1>
+
+  
+</div>
+
+
+      <div className="flex justify-between items-center mt-5 w-[50%] m-auto">
+        <a
+          href="https://www.linkedin.com/in/karem-mahmoud-963b84262/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
+        >
+          <FaLinkedin size={24} />
+        </a>
+        <a
+          href="https://github.com/karem880"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
+        >
+          <FaFacebook size={24} />
+        </a>
+        <a
+          href="https://www.facebook.com/profile.php?id=100010546894506&mibextid=ZbWKwL"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
+        >
+          <FaGithub size={24} />
+        </a>
+      </div>
+
+
+    
+      <WebsiteListKarem /> 
+    </>
+  );
+};
+
+const WebsiteListKarem = () => {
+  const websites = [
+    {
+      name: 'API qurcide generator',
+      url: 'https://karemmahmouud.netlify.app/project%20js/qurcode%20generator/qr.html',
+      imageUrl: 'https://shorturl.at/anwEI',
+    },
+    {
+      name: 'My caht boat',
+      url: 'https://karemmahmouud.netlify.app/project%20js/chat/index.html',
+      imageUrl: 'https://shorturl.at/mWX19',
+    },
+    {
+      name: 'Zaman Web',
+      url: 'https://zaman-web.vercel.app/',
+      imageUrl: 'https://shorturl.at/luMPZ',
+    },
+  ];
+
+  return (
+    <div className=" py-8 w-full">
+      <div className="container mx-auto">
+        <h1 className="text-3xl font-bold text-center mb-4">Websites I've Made</h1>
+        <div className="flex gap-4  ">
+          {websites.map((website, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-md p-4 dark:bg-slate-700 drop-shadow-md">
+              <a href={website.url} target="_blank" rel="noopener noreferrer">
+                <img src={website.imageUrl} alt={`${website.name} Preview`} className="w-full h-auto rounded mb-2 hover:scale-105 transition-all" />
+              </a>
+              <h2 className="text-lg font-semibold">
+                <a href={website.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                  {website.name}
+                </a>
+              </h2>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+
