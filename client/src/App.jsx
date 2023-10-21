@@ -22,15 +22,22 @@ import TableData from "./pages/tableData";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-
-
-
-
-
-
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')));
   const defultLang = localStorage.getItem("lang")
 
-  const currentUser = JSON.parse(localStorage.getItem('user'))
+
+
+  useEffect(() => {
+    const User = JSON.parse(localStorage.getItem('user'))
+    setCurrentUser(User);    
+  })
+
+
+
+
+
+
+
 
   setTimeout(() => {
     setIsLoading(false)
@@ -95,7 +102,6 @@ function App() {
           <Route path="profile" element={<Profile />} />
           {currentUser && (currentUser.role != 'student') &&
             (<>
-
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="dashboard/data/:role" element={<TableData />} />
 

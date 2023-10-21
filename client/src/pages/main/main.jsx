@@ -1,9 +1,17 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import Sidebar from '../../components/sideBar/sideBar';
 
 const Main = () => {
   const user = JSON.parse(localStorage.getItem('user'));
+  
+  const  navigate =useNavigate()
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {      
+    navigate('/')    
+    }    
+  })
 
   return (
     <>
