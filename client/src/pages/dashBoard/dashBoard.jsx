@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSchool, FaUser } from "react-icons/fa";
 import Calendar from "../../components/calender";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { getTopThree } from "../../functions/degrees";
 import { FaCircleUser } from "react-icons/fa6";
 import UploadPostModal from "../../components/uploadpostmodal";
@@ -25,6 +25,8 @@ const DashBoard = () => {
     degree: false,
     task: false
   });
+  
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
@@ -53,7 +55,6 @@ const DashBoard = () => {
     setIsModalOpen(false);
   };
 
-  const user = JSON.parse(localStorage.getItem('user'));
 
   const [topThree, setTopThree] = useState()
 
@@ -77,6 +78,9 @@ const DashBoard = () => {
 
   return (
     <>
+    {
+      user.role == "student"  ? <><Navigate to="/main/profile" /></> : (
+        <>
       <div className="w-[95%] md:w-[80%] m-auto min-h-[300px] h-fit flex flex-col md:flex-row justify-between bg-[#b285f2] text-white mt-10 rounded-xl">
         <div className="w-full md:w-[50%] p-5 flex flex-col justify-between items-start h-full">
           <h1 className="text-2xl">
@@ -184,6 +188,10 @@ const DashBoard = () => {
     </div>
 
 
+    </>
+      )
+    }
+    
     </>
 
 

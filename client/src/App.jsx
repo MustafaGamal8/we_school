@@ -27,10 +27,7 @@ function App() {
 
 
 
-  useEffect(() => {
-    const User = JSON.parse(localStorage.getItem('user'))
-    setCurrentUser(User);    
-  })
+  
 
 
 
@@ -100,14 +97,9 @@ function App() {
         
         <Route path="/main/" element={<Main />}>
           <Route path="profile" element={<Profile />} />
-          {currentUser && (currentUser.role != 'student') &&
-            (<>
+          
               <Route path="dashboard" element={<DashBoard />} />
               <Route path="dashboard/data/:role" element={<TableData />} />
-
-
-            </>)
-          }
 
 
           <Route path="timeline" element={<TimeLine />} />
