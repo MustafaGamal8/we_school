@@ -6,16 +6,17 @@ const schedule = require('node-schedule');
 const deleteTasksWithEndDateToday = async () => {
   try {
     const date = new Date();
-    const today = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${(date.getDate()+1).toString().padStart(2, '0')}`;
+    const today = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${(date.getDate()).toString().padStart(2, '0')}`;
 
     // Delete tasks with end date before or equal to today
-    const tasksToDelete = await taskModel.deleteMany({ endDate: { $lte: "2023-8-34" } });
-    console.log(tasksToDelete.length);
+    const tasksToDelete = await taskModel.deleteMany({ endDate: { $lte: today } });
+    
   } catch (error) {
     console.error('Error deleting tasks:', error);
   }
 };
-const scheduledJob = schedule.scheduleJob('0 23 * * *', deleteTasksWithEndDateToday);
+// const scheduledJob = schedule.scheduleJob('0 23 * * *', deleteTasksWithEndDateToday);
+const scheduledJob = schedule.scheduleJob('6 15 * * *', deleteTasksWithEndDateToday);
 
 const uploadTask = async (req, res) => {
   const { email, task, endDate,grade } = req.body;
