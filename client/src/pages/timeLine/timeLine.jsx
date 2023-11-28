@@ -100,7 +100,7 @@ const TimeLine = () => {
           ) : (
             filteredPosts &&
             filteredPosts.map((post) => (
-              ( currentUser.role !== "student"  || post.grade == "All" || post.grade ==  currentUser.grade || !post.grade)&&
+              ( currentUser.role !== "student"  || post.grade == "All" || post.grade ==  currentUser.grade || !post.grade  )&& post.user &&
               <Post
                 key={post._id}
                 post={post}

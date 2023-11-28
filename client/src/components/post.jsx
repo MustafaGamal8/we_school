@@ -11,11 +11,12 @@ import { FaEllipsisV, FaTrash } from 'react-icons/fa';
 
 const Post = ({ handleOpenModal, post }) => {
   const { _id, user, files, content, likes, postDate } = post
-  
+
+
   const [isLiked, setIsLiked] = useState(null)
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
   const [postLikes, setPostLikes] = useState(likes)
-  
+
   const [showOptions, setShowOptions] = useState(false);
 
   const PostFiles = [];
@@ -49,46 +50,50 @@ const Post = ({ handleOpenModal, post }) => {
     }
   }
 
-  const handleDeleteClick =  async() => {
+  const handleDeleteClick = async () => {
     await deletePost(_id, currentUser._id)
-    setShowOptions(false); 
+    setShowOptions(false);
   };
 
   return (
+    <>
+    {
+      post &&
+    
     <div className=" w-[95%] md:w-[50%] lg:w-[45%] m-auto   border p-2 rounded text-sec bg-white  drop-shadow-xl  dark:bg-slate-800 dark:text-white">
 
-{
-  (currentUser.role === 'teacher' || currentUser.role === 'admin') && (<div className="relative">
-  <div
-    className="h-10 w-10 absolute right-2  top-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full items-center justify-center flex"
-    onClick={() => setShowOptions(!showOptions)}
-  >
-    <FaEllipsisV />
-  </div>
-  {showOptions && (
-    <div className="options-container absolute right-0 top-14 bg-white dark:bg-gray-200 border border-gray-300 p-2 rounded shadow ">
-      <button
-        className=" text-red-500 hover:text-red-700 flex items-center gap-1"
-        onClick={handleDeleteClick}
-      >
-        <FaTrash /> Delete Post
-      </button>
-    </div>
-  )}
-</div>)  
-}
+      {
+        (currentUser.role === 'teacher' || currentUser.role === 'admin') && (<div className="relative">
+          <div
+            className="h-10 w-10 absolute right-2  top-2 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-500 rounded-full items-center justify-center flex"
+            onClick={() => setShowOptions(!showOptions)}
+          >
+            <FaEllipsisV />
+          </div>
+          {showOptions && (
+            <div className="options-container absolute right-0 top-14 bg-white dark:bg-gray-200 border border-gray-300 p-2 rounded shadow ">
+              <button
+                className=" text-red-500 hover:text-red-700 flex items-center gap-1"
+                onClick={handleDeleteClick}
+              >
+                <FaTrash /> Delete Post
+              </button>
+            </div>
+          )}
+        </div>)
+      }
 
 
 
-    
+
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-2 text-2xl mt-2">
-          {user.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl + user.picture} className="h-full w-full object-cover rounded-full" /></div> : (<FaCircleUser className="text-sec text-2xl" />)}
-          <h1 className="text-sec capitalize">{user.firstName} {user.lastName}</h1>
+          {user?.picture ? <div className="h-12 bg-white drop-shadow-lg rounded-full overflow-hidden"><img src={serverUrl + user.picture} className="h-full w-full object-cover rounded-full" /></div> : (<FaCircleUser className="text-sec text-2xl" />)}
+          <h1 className="text-sec capitalize">{user?.firstName} {user?.lastName}</h1>
         </div>
         <hr className="h-1 w-1/2 my-2 " />
         <div className="b" >
-          <p className="text-sm text-gray-600  select-text dark:text-gray-400">{user.email}</p>
+          <p className="text-sm text-gray-600  select-text dark:text-gray-400">{user?.email}</p>
           {postDate && <div className="text-sm text-gray-600 capitalize flex items-center justify-center gap-1 dark:text-gray-400"><BiTime /> <p>{postDate}</p></div>}
         </div>
       </div>
@@ -97,25 +102,25 @@ const Post = ({ handleOpenModal, post }) => {
         {content}
       </div>
 
-    {
-      slides.length >= 1 ?
-       <div className="h-96  p-2   bg-white drop-shadow rounded-md  dark:bg-slate-700">
       {
-        screenWidth > 720 ? 
-        (<Slider slides={slides} customStyle={{coverOrContain:"object-contain" ,scale:"scale-150" }} />  ) 
-        :
-         (<div className=" h-full flex items-center gap-5 overflow-x-scroll">
-          {
-            slides.map((s,index) => (
-              <LazyLoadImage key={index} src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
-            ))
-          }
-        </div>)
-      }      
-    </div>
-    
-    :(<div className="h-20"></div>)
-    }
+        slides.length >= 1 ?
+          <div className="h-96  p-2   bg-white drop-shadow rounded-md  dark:bg-slate-700">
+            {
+              screenWidth > 720 ?
+                (<Slider slides={slides} customStyle={{ coverOrContain: "object-contain", scale: "scale-150" }} />)
+                :
+                (<div className=" h-full flex items-center gap-5 overflow-x-scroll">
+                  {
+                    slides.map((s, index) => (
+                      <LazyLoadImage key={index} src={s.img} className="object-contain h-[70%] rounded drop-shadow-lg" />
+                    ))
+                  }
+                </div>)
+            }
+          </div>
+
+          : (<div className="h-20"></div>)
+      }
 
 
       <div className="flex items-center justify-around w-full mt-7 ">
@@ -133,6 +138,10 @@ const Post = ({ handleOpenModal, post }) => {
 
 
     </div>
+  }
+  
+  </>
+
   );
 }
 
