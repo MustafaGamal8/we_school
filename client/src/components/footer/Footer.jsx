@@ -23,6 +23,7 @@ function Footer() {
         <h1 className="text-xl font-semibold mb-4"><Trans>اتصل بنا</Trans></h1>
         <ul className="space-y-2">
           <li ><Trans>weschoolmansoura@gmail.com</Trans></li>
+             <li >01023257791</li>
          
     
         </ul>
