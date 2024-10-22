@@ -20,6 +20,7 @@ export default function ElzatonaModal() {
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg max-w-lg w-full">
+            <h1>POV: اللي مستنيك بعد المدرسة </h1>
             <video src="/assets/wow.mp4" autoPlay controls className="w-full" />
             <button 
               onClick={toggleModal} 
