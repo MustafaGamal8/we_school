@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaTwitter, FaWhatsapp, FaMailBulk } from 'react-icons/fa';
 import { Trans } from 'react-i18next';
+import ElzatonaModal from '../elzatona';
 
 function Footer() {
   return (
@@ -47,6 +48,8 @@ function Footer() {
           <li><Link to="/about" className="text-lg text-blue-500 hover:underline"><Trans>عنهم</Trans></Link></li>
         </ul>
       </div>
+
+      <ElzatonaModal />
     </footer>
   );
 }
