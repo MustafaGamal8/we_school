@@ -49,7 +49,7 @@ function Footer() {
         </ul>
       </div>
 
-      <ElzatonaModal />
+      {/* <ElzatonaModal /> */}
     </footer>
   );
 }
