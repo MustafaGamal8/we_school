@@ -68,7 +68,7 @@ function About() {
 
 
 
-          <iframe src="https://mustafa-gamal.vercel.app/embed?lang=AR&color=%236e237e" width="100%" height="800" frameborder="0" style="border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1);"></iframe>
+          <iframe src="https://mustafa-gamal.vercel.app/embed?lang=AR&color=%236e237e" width="100%" height="800" frameBorder="0" style={{ borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}></iframe>
 
 
         </div>
