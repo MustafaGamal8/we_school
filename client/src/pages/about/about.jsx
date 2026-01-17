@@ -61,14 +61,14 @@ function About() {
         </h1>
 
         <div className="w-full p-5 flex m-auto  flex-col justify-around items-center mt-24 text-main dark:text-slate-300">
-  <Karem/>          
+          <Karem />
         </div>
 
         <div className="w-full p-5 flex m-auto  flex-col justify-around items-center mt-24 text-main dark:text-slate-300">
-          
 
 
-          <Mustafa />
+
+          <iframe src="https://mustafa-gamal.vercel.app/embed?lang=AR&color=%236e237e" width="100%" height="800" frameborder="0" style="border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1);"></iframe>
 
 
         </div>
@@ -139,60 +139,60 @@ export default About;
 const Mustafa = () => {
   return (
     <>
-    <div className="md:w-[50%] w-full flex items-center justify-center">
-            <img
-              className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-white"
-              src="/assets/mustafa.jpeg"
-              alt="Web Development Team"
-            />
-          </div>
-    
-    <div className="md:w-[60%] w-full text-main dark:text-slate-400 text-lg md:text-2xl mt-10">
-      <h1 className="text-4xl text-center relative font-semibold">
-        Mustafa Gamal
-      </h1>
-      <p className="text-2xl mt-4 relative text-animition w-max m-auto text-main">
-        MERN STACK Developer
-      </p>
-      <h1 className="capitalize mt-4 text-left w-full">
-        Hello, I'm <span className="text-green-400">Mustafa Gamal</span>,
-        and I'm passionate about programming. I have developed strong skills in JavaScript,
-        which led me to become a MERN stack developer. While this is my first <span className="text-green-400">MERN</span> project,
-        I'm excited to share more of my work in the future.
-        I leverage various technologies and tools within the MERN stack to enhance performance and scalability.
-        I follow best practices to ensure optimal results for the applications I develop.
-      </h1>
-
-      <div className="flex justify-between items-center mt-5 w-[50%] m-auto">
-        <a
-          href="https://www.linkedin.com/in/mustafa-gamal-ba48a7243/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
-        >
-          <FaLinkedin size={24} />
-        </a>
-        <a
-          href="https://www.facebook.com/profile.php?id=100010546894506&mibextid=ZbWKwL"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
-        >
-          <FaFacebook size={24} />
-        </a>
-        <a
-          href="https://github.com/karem880"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
-        >
-          <FaGithub size={24} />
-        </a>
+      <div className="md:w-[50%] w-full flex items-center justify-center">
+        <img
+          className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-white"
+          src="/assets/mustafa.jpeg"
+          alt="Web Development Team"
+        />
       </div>
 
+      <div className="md:w-[60%] w-full text-main dark:text-slate-400 text-lg md:text-2xl mt-10">
+        <h1 className="text-4xl text-center relative font-semibold">
+          Mustafa Gamal
+        </h1>
+        <p className="text-2xl mt-4 relative text-animition w-max m-auto text-main">
+          MERN STACK Developer
+        </p>
+        <h1 className="capitalize mt-4 text-left w-full">
+          Hello, I'm <span className="text-green-400">Mustafa Gamal</span>,
+          and I'm passionate about programming. I have developed strong skills in JavaScript,
+          which led me to become a MERN stack developer. While this is my first <span className="text-green-400">MERN</span> project,
+          I'm excited to share more of my work in the future.
+          I leverage various technologies and tools within the MERN stack to enhance performance and scalability.
+          I follow best practices to ensure optimal results for the applications I develop.
+        </h1>
 
-    </div>
-      <WebsiteList /> 
+        <div className="flex justify-between items-center mt-5 w-[50%] m-auto">
+          <a
+            href="https://www.linkedin.com/in/mustafa-gamal-ba48a7243/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
+          >
+            <FaLinkedin size={24} />
+          </a>
+          <a
+            href="https://www.facebook.com/profile.php?id=100010546894506&mibextid=ZbWKwL"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
+          >
+            <FaFacebook size={24} />
+          </a>
+          <a
+            href="https://github.com/karem880"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-main hover:text-slate-800 dark:text-white dark:hover:text-main transition-all"
+          >
+            <FaGithub size={24} />
+          </a>
+        </div>
+
+
+      </div>
+      <WebsiteList />
     </>
   );
 };
@@ -246,29 +246,29 @@ const WebsiteList = () => {
 const Karem = () => {
   return (
     <>
-    <div className="md:w-[50%] w-full flex items-center justify-center">
-            <img
-              className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-black object-cover"
-              src="/assets/WhatsApp Image 2023-05-27 at 6.05.12 PM.jpeg"
-              alt="Web Development Team"
-            />
-          </div>
-    
-     
-          <div className="md:w-[60%] w-full text-main dark:text-slate-400 text-lg md:text-2xl mt-10">
-      <h1 className="text-4xl text-center relative font-semibold">
-       karem mahmoud
-      </h1>
-      <p className="text-2xl mt-4 relative text-animition w-max m-auto text-main">
-        MERN STACK Developer
-      </p>
-      <h1 className="capitalize mt-4 text-left w-full">
-        Hello, I'm <a href="https://karemmahmoud.vercel.app/" className="text-green-400">Karem mahmoud </a>,
-        I am a front-end developer and I have experience in working on projects because I have implemented many projects, some of them medium, some complex, and some easy. But I work hard every day to develop myself and become one of the most important web developers. I have some little experience in <span className="text-green-400">MERN STACK</span>, as I am a passionate person and I love development. From myself, and I have a little experience in freelancing and working with a team. Thank you       
-      </h1>
+      <div className="md:w-[50%] w-full flex items-center justify-center">
+        <img
+          className="md:w-[60%] w-[80%] rounded-[50%] object-cover  hover:scale-125 transition-all duration-300 hover:shadow-xl hover:shadow-black object-cover"
+          src="/assets/WhatsApp Image 2023-05-27 at 6.05.12 PM.jpeg"
+          alt="Web Development Team"
+        />
+      </div>
 
-  
-</div>
+
+      <div className="md:w-[60%] w-full text-main dark:text-slate-400 text-lg md:text-2xl mt-10">
+        <h1 className="text-4xl text-center relative font-semibold">
+          karem mahmoud
+        </h1>
+        <p className="text-2xl mt-4 relative text-animition w-max m-auto text-main">
+          MERN STACK Developer
+        </p>
+        <h1 className="capitalize mt-4 text-left w-full">
+          Hello, I'm <a href="https://karemmahmoud.vercel.app/" className="text-green-400">Karem mahmoud </a>,
+          I am a front-end developer and I have experience in working on projects because I have implemented many projects, some of them medium, some complex, and some easy. But I work hard every day to develop myself and become one of the most important web developers. I have some little experience in <span className="text-green-400">MERN STACK</span>, as I am a passionate person and I love development. From myself, and I have a little experience in freelancing and working with a team. Thank you
+        </h1>
+
+
+      </div>
 
 
       <div className="flex justify-between items-center mt-5 w-[50%] m-auto">
@@ -299,8 +299,8 @@ const Karem = () => {
       </div>
 
 
-    
-      <WebsiteListKarem /> 
+
+      <WebsiteListKarem />
     </>
   );
 };
