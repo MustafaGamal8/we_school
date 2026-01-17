@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 
 const Slider = ({ slides, customStyle }) => {
   const [isMobile, setIsMobile] = useState(false);
-
+  const [isRTL, setIsRTL] = useState(false);
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
@@ -20,7 +20,13 @@ const Slider = ({ slides, customStyle }) => {
       setIsMobile(window.innerWidth < 768);
     };
 
+    const checkDirection = () => {
+      setIsRTL(document.documentElement.dir === 'rtl' || document.body.dir === 'rtl');
+    };
+
     handleResize();
+    checkDirection();
+
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -37,6 +43,7 @@ const Slider = ({ slides, customStyle }) => {
     loop: true,
     speed: isMobile ? 300 : 500,
     effect: isMobile ? 'slide' : 'slide',
+    dir: isRTL ? 'rtl' : 'ltr',
     navigation: {
       prevEl: '.swiper-button-prev',
       nextEl: '.swiper-button-next',
